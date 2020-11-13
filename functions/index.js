@@ -10,7 +10,7 @@ exports.incrementTotalCellCountForCellLine = functions.firestore
     .document('cfe-datasets/v1_1/cell-file-info/{cellId}').onCreate((snap, context) => {
         const newValue = snap.data();
         // access a particular field as you would any JS property
-        const fileInfo = newValue.file_info;
+        const fileInfo = newValue;
         
         const cellLine = fileInfo.CellLineName;
         console.log('adding new to ', cellLine)
