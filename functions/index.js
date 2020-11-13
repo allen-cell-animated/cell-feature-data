@@ -7,7 +7,7 @@ const db = app.firestore();
 const firestoreRef = db.collection('cfe-datasets').doc('v1_1');
 
 exports.incrementTotalCellCountForCellLine = functions.firestore
-    .document('cfe-datasets/v1_1/cell-feature-analysis/{cellId}').onCreate((snap, context) => {
+    .document('cfe-datasets/v1_1/cell-file-info/{cellId}').onCreate((snap, context) => {
         const newValue = snap.data();
         // access a particular field as you would any JS property
         const fileInfo = newValue.file_info;
