@@ -1,51 +1,41 @@
 
 const fsPromises = require('fs').promises;
-
+const map = require('lodash').map
 const features = require('../data/measured-features');
 const FirebaseHandler = require('./firebase-handler');
+const {
+    firestore
+} = require('./setup-firebase');
 
 const firebaseHandler = new FirebaseHandler('v1_1');
 
+const writeBatch = (batch) => Promise.all(batch);
+const ref = firestore.collection('cfe-datasets').doc('v1_1');
+
 const writeCellFeatureData = () => {
 
-    return fsPromises.readFile('./cell-feature-analysis.json')
-        .then((data) => JSON.parse(data))
-        .then((json) => {
-            const writeBatch = (batch) => Promise.all(batch)
-            const makePromises = (spliceList) => features.map((feature) => {
-               const featureName = `${feature.displayName} (${feature.unit})`
-               return spliceList.map((cellData) => {
-                   const value = cellData.measured_features[featureName];
-                   if (!value && value !== 0) {
-                       console.log('feature not formatted right', featureName, cellData)
-                       return Promise.resolve()
-                   }
-                   if (!cellData.file_info.CellId) {
-                       return Promise.resolve()
-                   }
-                   return firebaseHandler.writeData('measured-features-values', feature.key, { [cellData.file_info.CellId.toString()] : value})
-               })
-           })
-            const makeBatch = () => {
-                let batchToWrite = json.splice(0, 500);
-                console.log('writing set', batchToWrite.length)
-                if (batchToWrite.length) {
-                    return writeBatch(makePromises(batchToWrite))
-                        .then(() => {
-                            console.log('wrote', 'left:', json.length)
-                            setTimeout(makeBatch, 10000) // giving some write time 
-                        })
-                } else {
-                    console.log(batchToWrite, json.length)
-                    return Promise.resolve()
-                }
+    Promise.all(features.map(async (feature) => {
+        const data = await fsPromises.readFile(`data/${feature.key}.json`);
+        const json = JSON.parse(data);
+        const startingJson = json.slice(json.length - 26700)
+        const writeBatch = async () => {
+            const batchOfData = startingJson.splice(0, 500);
+
+            if (batchOfData.length) {
+                console.log(batchOfData.length, startingJson.length)
+                let batch = firestore.batch();
+                batchOfData.map(cellData => {
+                    let docRef = ref.collection(feature.key).doc(cellData.CellId.toString());
+                    batch.set(docRef, cellData);
+                })
+                await batch.commit();
+                writeBatch();
             }
-            return makeBatch()
+        }
+        writeBatch()
+  
 
-        })
-
-        .catch(console.log)
-
+        }))
 }
 
 writeCellFeatureData()

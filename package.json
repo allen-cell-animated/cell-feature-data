@@ -11,7 +11,8 @@
   },
   "scripts": {
     "test": "jest --env node --forceExit",
-    "copy-jsons": "node scripts/upload-data-from-jsons-v1.js"
+    "copy-jsons": "node scripts/upload-data-from-jsons-v1.js",
+    "upload-features": "node scripts/reformat-measured-features"
   },
   "repository": {
     "type": "git",
