@@ -15,21 +15,25 @@ const firebaseHandler = new FirebaseHandler('v2');
 
 const writeBatch = (batch) => Promise.all(batch);
 const ref = firestore.collection('cfe-datasets').doc('v2');
-const READ_JSON_FOLDER = "data-2-0";
-
+const READ_JSON_FOLDER = "data-2-0"
 const writeCellFeatureData = async () => {
-        const json = await fsPromises.readFile(`${READ_JSON_FOLDER}/measured-features-per-cell.json`);
-        const data = JSON.parse(json);
+        const data = await fsPromises.readFile(`${READ_JSON_FOLDER}/file-info.json`);
+        const cellLineDefs = await firebaseHandler.getData('cell-line-def');
+        const json = JSON.parse(data);
+        const startingJson = json;
         const writeBatch = async () => {
-            const batchOfData = data.splice(0, 500);
+            const batchOfData = startingJson.splice(0, 500);
 
             if (batchOfData.length) {
-                console.log(batchOfData.length, data.length)
+                console.log(batchOfData.length, startingJson.length)
                 let batch = firestore.batch();
                 batchOfData.map(cellData => {
-                    const id = Object.keys(cellData)[0]
-                    let docRef = ref.collection('measured-features-values').doc(id);
-                    batch.set(docRef, cellData[id]);
+                    const cellLineData = cellLineDefs[cellData[CELL_LINE_NAME_KEY]]
+                    const data = {
+                        [PROTEIN_NAME_KEY]: cellLineData[PROTEIN_DISPLAY_NAME_KEY]
+                    }
+                    let docRef = ref.collection('measured-features-values').doc(cellData.CellId.toString());
+                    batch.update(docRef, data);
                 })
                 await batch.commit();
                 writeBatch();

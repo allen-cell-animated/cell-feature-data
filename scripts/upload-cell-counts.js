@@ -1,5 +1,7 @@
 
 const fsPromises = require('fs').promises;
+const admin = require('firebase-admin');
+
 const map = require('lodash').map
 const features = require('../data/measured-features');
 const FirebaseHandler = require('./firebase-handler');
@@ -15,27 +17,27 @@ const firebaseHandler = new FirebaseHandler('v2');
 
 const writeBatch = (batch) => Promise.all(batch);
 const ref = firestore.collection('cfe-datasets').doc('v2');
-const READ_JSON_FOLDER = "data-2-0";
-
+const READ_JSON_FOLDER = "data-2-0"
 const writeCellFeatureData = async () => {
-        const json = await fsPromises.readFile(`${READ_JSON_FOLDER}/measured-features-per-cell.json`);
-        const data = JSON.parse(json);
-        const writeBatch = async () => {
-            const batchOfData = data.splice(0, 500);
+        const data = await fsPromises.readFile(`${READ_JSON_FOLDER}/file-info.json`);
+        const json = JSON.parse(data);
+        const counts = json.reduce((acc, ele) => {
 
-            if (batchOfData.length) {
-                console.log(batchOfData.length, data.length)
-                let batch = firestore.batch();
-                batchOfData.map(cellData => {
-                    const id = Object.keys(cellData)[0]
-                    let docRef = ref.collection('measured-features-values').doc(id);
-                    batch.set(docRef, cellData[id]);
-                })
-                await batch.commit();
-                writeBatch();
+            const cellLine = ele.CellLineName;
+            if (!acc[cellLine]) {
+                acc[cellLine] = 0;
             }
-        }
-        writeBatch()
+            acc[cellLine]++;
+            return acc;
+        }, {})
+        console.log(counts)
+        map(counts, (value, key) => {
+
+            ref.collection('cell-line-def').doc(key).update({
+                cellCount: value
+            })
+        })
+ 
 }
 
 writeCellFeatureData()

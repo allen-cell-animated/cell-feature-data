@@ -3,15 +3,15 @@ const fsPromises = require('fs').promises;
 
 const find = require('lodash').find;
 const { CELL_ID_KEY } = require('../constants');
-const features = require('../data/measured-features');
-const FirebaseHandler = require('./firebase-handler');
 const mapKeys = require('lodash').mapKeys;
 
-const firebaseHandler = new FirebaseHandler('v1_1');
+const JSON_READ_FOLDER = "dataset-2-0";
+const JSON_WRITE_FOLDER = "data-2-0";
+const features = require(`../${JSON_WRITE_FOLDER}/measured-features`);
 
 const writeCellFeatureData = async () => {
 
-    return fsPromises.readFile('./cell-feature-analysis.json')
+    return fsPromises.readFile(`./${JSON_READ_FOLDER}/cell-feature-analysis.json`)
         .then((data) => JSON.parse(data))
         .then((json) => {
                 const fileNameDoc = json.map((cellData) => {
@@ -23,7 +23,7 @@ const writeCellFeatureData = async () => {
                     })
                    return {[cellData.file_info[CELL_ID_KEY]]: newKeys};
                })
-               return fsPromises.writeFile(`data/measured-features-per-cell.json`, JSON.stringify(fileNameDoc))
+               return fsPromises.writeFile(`${JSON_WRITE_FOLDER}/measured-features-per-cell.json`, JSON.stringify(fileNameDoc))
             })
  
         }

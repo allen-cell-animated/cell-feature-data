@@ -1,12 +1,14 @@
 
 const fsPromises = require('fs').promises;
 
-const features = require('../data/measured-features');
 const FirebaseHandler = require('./firebase-handler');
 
+const READ_FOLDER = "dataset-2-0";
+const WRITE_FOLDER = "data-2-0"
+const features = require(`../${WRITE_FOLDER}/measured-features`);
 const writeCellFeatureData = () => {
 
-    return fsPromises.readFile('./cell-feature-analysis.json')
+    return fsPromises.readFile(`./${READ_FOLDER}/cell-feature-analysis.json`)
         .then((data) => JSON.parse(data))
         .then((json) => {
             Promise.all(features.map((feature) => {
@@ -23,7 +25,7 @@ const writeCellFeatureData = () => {
                    }
                    return { CellId : cellData.file_info.CellId, value: value };
                }, {})
-               return fsPromises.writeFile(`data/${feature.key}.json`, JSON.stringify(featureDoc))
+               return fsPromises.writeFile(`${WRITE_FOLDER}/${feature.key}.json`, JSON.stringify(featureDoc))
            })).then(() => process.exit(0))
  
 

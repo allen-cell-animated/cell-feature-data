@@ -11,13 +11,13 @@ const CELL_LINE_NAME_KEY = require('../constants').CELL_LINE_NAME_KEY;
 const CELL_LINE_DEF_PROTEIN_KEY = require('../constants').CELL_LINE_DEF_PROTEIN_KEY;
 const PROTEIN_DISPLAY_NAME_KEY = require('../constants').PROTEIN_DISPLAY_NAME_KEY;
 const CELL_LINE_DEF_STRUCTURE_KEY = require('../constants').CELL_LINE_DEF_STRUCTURE_KEY;
-const firebaseHandler = new FirebaseHandler('v1_1');
+const firebaseHandler = new FirebaseHandler('v2');
 
 const writeBatch = (batch) => Promise.all(batch);
-const ref = firestore.collection('cfe-datasets').doc('v1_1');
-
+const ref = firestore.collection('cfe-datasets').doc('v2');
+const READ_JSON_FOLDER = "data-2-0"
 const writeCellFeatureData = async () => {
-        const data = await fsPromises.readFile(`data/file-info.json`);
+        const data = await fsPromises.readFile(`${READ_JSON_FOLDER}/file-info.json`);
         const cellLineDefs = await firebaseHandler.getData('cell-line-def');
         const json = JSON.parse(data);
         const startingJson = json;
@@ -33,7 +33,7 @@ const writeCellFeatureData = async () => {
                     cellData[CELL_LINE_DEF_STRUCTURE_KEY] = cellLineData[CELL_LINE_DEF_STRUCTURE_KEY];
                     cellData[PROTEIN_DISPLAY_NAME_KEY] = cellLineData[PROTEIN_DISPLAY_NAME_KEY];
                     let docRef = ref.collection('cell-file-info').doc(cellData.CellId.toString());
-                    batch.set(docRef, cellData);
+                    batch.update(docRef, cellData);
                 })
                 await batch.commit();
                 writeBatch();

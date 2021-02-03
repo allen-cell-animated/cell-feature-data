@@ -1,0 +1,594 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20201201.005247.14433.0.001.json",
+    "dumpEventTime": "2020-12-01T00:52:47Z",
+    "dumpEventTimeStamp": "1606812767901",
+    "processId": 14433,
+    "cwd": "/Users/meganriel-mehan/dev/allen-inst/cell-feature-data",
+    "commandLine": [
+      "node",
+      "scripts/upload-cell-counts"
+    ],
+    "nodejsVersion": "v12.16.1",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "darwin",
+    "componentVersions": {
+      "node": "12.16.1",
+      "v8": "7.8.279.23-node.31",
+      "uv": "1.34.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.4",
+      "http_parser": "2.9.3",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.16.1/node-v12.16.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.16.1/node-v12.16.1.tar.gz"
+    },
+    "osName": "Darwin",
+    "osRelease": "17.7.0",
+    "osVersion": "Darwin Kernel Version 17.7.0: Thu Jun 18 21:21:34 PDT 2020; root:xnu-4570.71.82.5~1/RELEASE_X86_64",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i5-7267U CPU @ 3.10GHz",
+        "speed": 3100,
+        "user": 164564490,
+        "nice": 0,
+        "sys": 69490300,
+        "idle": 476556380,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-7267U CPU @ 3.10GHz",
+        "speed": 3100,
+        "user": 89726870,
+        "nice": 0,
+        "sys": 30068020,
+        "idle": 590758460,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-7267U CPU @ 3.10GHz",
+        "speed": 3100,
+        "user": 177445200,
+        "nice": 0,
+        "sys": 57437560,
+        "idle": 475670750,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-7267U CPU @ 3.10GHz",
+        "speed": 3100,
+        "user": 89484950,
+        "nice": 0,
+        "sys": 27570500,
+        "idle": 593497780,
+        "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo0",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo0",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "lo0",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::1",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 1
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "8c:85:90:ce:32:86",
+        "address": "fe80::1c21:2e71:9e91:4446",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 12
+      },
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "8c:85:90:ce:32:86",
+        "address": "10.0.1.103",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "awdl0",
+        "internal": false,
+        "mac": "22:b7:00:43:22:da",
+        "address": "fe80::20b7:ff:fe43:22da",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 14
+      },
+      {
+        "name": "utun0",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::60f3:d69a:684a:dc32",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 16
+      },
+      {
+        "name": "utun1",
+        "internal": false,
+        "mac": "00:00:00:00:00:00",
+        "address": "fe80::c93c:140d:e6f9:5f90",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 17
+      },
+      {
+        "name": "en5",
+        "internal": false,
+        "mac": "ac:de:48:00:11:22",
+        "address": "fe80::aede:48ff:fe00:1122",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 7
+      }
+    ],
+    "host": "Megans-MacBook-Pro.local"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x000000010015c5c2",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, v8::Local<v8::String>) [/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000100080dc8",
+      "symbol": "node::OnFatalError(char const*, char const*) [/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000100185167",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000100185103",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x000000010030b2f5",
+      "symbol": "v8::internal::Heap::FatalProcessOutOfMemory(char const*) [/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x000000010030c9c4",
+      "symbol": "v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000100309837",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x00000001003077fd",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000100312fba",
+      "symbol": "v8::internal::Heap::AllocateRawWithLightRetry(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000100313041",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x00000001002e035b",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationType, v8::internal::AllocationOrigin) [/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000100618718",
+      "symbol": "v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000100950919",
+      "symbol": "Builtins_CEntry_Return1_DontSaveFPRegs_ArgvOnStack_NoBuiltinExit [/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node]"
+    },
+    {
+      "pc": "0x0000119ff7c7bdd3",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2163433472,
+    "totalCommittedMemory": 2161764184,
+    "usedMemory": 2129924064,
+    "availableMemory": 50657728,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 33088,
+        "capacity": 32808,
+        "used": 32808,
+        "available": 0
+      },
+      "new_space": {
+        "memorySize": 16777216,
+        "committedMemory": 15729008,
+        "capacity": 8379648,
+        "used": 960520,
+        "available": 7419128
+      },
+      "old_space": {
+        "memorySize": 2099920896,
+        "committedMemory": 2099860168,
+        "capacity": 2083365584,
+        "used": 2083202376,
+        "available": 163208
+      },
+      "code_space": {
+        "memorySize": 1216512,
+        "committedMemory": 889184,
+        "capacity": 1155072,
+        "used": 841152,
+        "available": 313920
+      },
+      "map_space": {
+        "memorySize": 42733568,
+        "committedMemory": 42729600,
+        "capacity": 42430800,
+        "used": 42430800,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 2473984,
+        "committedMemory": 2473984,
+        "capacity": 2453624,
+        "used": 2453624,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 2784,
+        "used": 2784,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 8379648,
+        "used": 0,
+        "available": 8379648
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 162.587,
+    "kernelCpuSeconds": 6.65748,
+    "cpuConsumptionPercent": 132.222,
+    "maxRss": 2363393835008,
+    "pageFaults": {
+      "IORequired": 26,
+      "IONotRequired": 1247733
+    },
+    "fsActivity": {
+      "reads": 0,
+      "writes": 0
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "NVM_INC": "/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/include/node",
+    "TERM_PROGRAM": "vscode",
+    "NVM_CD_FLAGS": "",
+    "SHELL": "/bin/bash",
+    "TERM": "xterm-256color",
+    "TMPDIR": "/var/folders/k4/wn5bmr550vx6d6pj5cqwmvvw0000gn/T/",
+    "CONDA_SHLVL": "1",
+    "Apple_PubSub_Socket_Render": "/private/tmp/com.apple.launchd.31MzuSHnqO/Render",
+    "CONDA_PROMPT_MODIFIER": "(base) ",
+    "TERM_PROGRAM_VERSION": "1.51.1",
+    "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
+    "TERM_SESSION_ID": "2A545596-7BDB-46A3-A201-CDBE7802F808",
+    "NVM_DIR": "/Users/meganriel-mehan/.nvm",
+    "USER": "meganriel-mehan",
+    "CONDA_EXE": "/anaconda2/bin/conda",
+    "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.Oyypw9Ur5X/Listeners",
+    "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x0",
+    "_CE_CONDA": "",
+    "PATH": "/Users/meganriel-mehan/.pyenv/shims:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin:/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/meganriel-mehan/.pyenv/shims:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin:/anaconda2/bin:/anaconda2/condabin:/Users/meganriel-mehan/.local/bin:/Users/meganriel-mehan/anaconda/bin:/Users/meganriel-mehan/.local/bin:/Users/meganriel-mehan/anaconda/bin",
+    "CONDA_PREFIX": "/anaconda2",
+    "PWD": "/Users/meganriel-mehan/dev/allen-inst/cell-feature-data",
+    "LANG": "en_US.UTF-8",
+    "XPC_FLAGS": "0x0",
+    "_CE_M": "",
+    "XPC_SERVICE_NAME": "0",
+    "PYENV_SHELL": "bash",
+    "SHLVL": "3",
+    "HOME": "/Users/meganriel-mehan",
+    "VSCODE_GIT_ASKPASS_MAIN": "/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass-main.js",
+    "APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL": "true",
+    "CONDA_PYTHON_EXE": "/anaconda2/bin/python",
+    "LOGNAME": "meganriel-mehan",
+    "VSCODE_GIT_IPC_HANDLE": "/var/folders/k4/wn5bmr550vx6d6pj5cqwmvvw0000gn/T/vscode-git-0b2bf1dbd0.sock",
+    "NVM_BIN": "/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin",
+    "CONDA_DEFAULT_ENV": "base",
+    "VSCODE_GIT_ASKPASS_NODE": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Renderer).app/Contents/MacOS/Code Helper (Renderer)",
+    "GIT_ASKPASS": "/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass.sh",
+    "COLORTERM": "truecolor",
+    "_": "/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node",
+    "NODE_ENV": "production",
+    "FIREBASE_API_KEY": "AIzaSyBS_rvu-Q3HfsvVZOJ7gXun3ElrInERdjk",
+    "FIREBASE_AUTH_DOMAIN": "allen-cell-resource.firebaseapp.com",
+    "FIREBASE_DB_URL": "https://allen-cell-resource.firebaseio.comm",
+    "FIREBASE_ID": "allen-cell-resource",
+    "STORAGE_BUCKET": "allen-cell-resource.appspot.com",
+    "MESSAGING_SENDER_ID": "103881722438422725293",
+    "FIREBASE_TOKEN": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDDyPLyN58S0UBs\nKfKa4ZMXucYpXf8Gm8L6WTREpu5sz//H874ghB/khwMZbWI0uGRlYm4FHWA6CJSC\n499qseTEyMYmPR9yavs9m1oyLKNuN5AXPGnpsn+lRIcgB7uZ+qgSjuKwOx//tP1m\n4op3CftmgMpwwEfaqMv/NthIoWY/tKG/gnKSZa7+39dDsUEA8Hy2rye+OIQgTynZ\nOMWoqyaqvBBk1VflI8o5c5Tl9q0hyMmE3VFHgUSFrjes17Lx0JHIZ5z+d+xmHYdo\njO54vS35rjh4Weujs0DspYWr0rQ7bMpnSnHGvU2rVCKGSpJua36LtOnRp3U5N69F\nOghkgZbnAgMBAAECggEAAcm3gkPExaC4lGRLrWNq+vf82crcddx9Stj+s7PMkJzT\nqqlMrrJWMjmTayuHDpEyhYSBGbXbd5w1cv6Ov0QxoSRuPtInE93rPnRJPhUPRwXl\n4HhyRSqWpNU74KyBZ5YU69p3MoHPuH+YItTly9GBBL4fWyk+Xr5U4pdHIV6r9t/0\nzuklsNx2s+G/sm5Qu2mQuAHY6+kokKDkDg5B73QS6x0zARfyXrsjMxjC4n/h/FvR\ntVwJoD2MvMeaBfSM+fhx4exN/UU8VRNSjtVsrajHVKybZHeeFHytGXjVxZ7JJZMU\n3iv61SvhWECJ7msYdXmzBDsJoMxqz2cd3TQmAO/P8QKBgQD6N1pQ5jIgADtOCSjf\n9nn9IxkpBLqqTVk1zigsMr6B5DvceyTGsFjZ9gJ9KuzLS40B0uz+8hjNDCucTJxa\nmt92g1fD8jN0sqiZWXrthqsvz8hR7STg1VGqub+GWauFLgBWy/hfhFaXIgqjcfnz\nig7iM++wqqAeMtHm0VzXt6i2EQKBgQDIT4AzokwgRvNrbJKTM9N5jqN/ylpb8msT\nE7MkmTVp4ZyYu7qidBgssBp77FPjBExu3QjsMx0x054Q+pzl6ULd8jcF7ZaMhufv\nD7gsie9ZuCWazYCEc84x1NMSlpDvKml7aVczxaAF0x8Sc+cFu3IAP8tFoHx+PWSZ\nen0TH/yldwKBgFggKrUXfkv7COghHb5Tpv9a3z+tJLlaaLMkms2GScahxduPm5JH\nBeQuWw4Okju/rjgYO9RHHCkLwkhYSzE2HsI03DJtGWZejjcEZuFFbwF14w3HwhdV\nyl+g8C23Y0uSuhfX2vB5Qa4VFT4fpHL8CuXseNz2G1LHf1oWHubzDn6hAoGALtlp\nQqpS47m0dQuPvJ4CeAvEcb8CIz8vi+avn3+13m3GEnLV0+kTPmBx0UoU1KPMvKE1\n1Qifa2fzMEVtLNjBqudbtyc6buOem2sxyDj6oiFPqkUmKdRsBXuhYleUzls9EIAy\nxQkTxEj8m3RANDcDEsvY3xAKDfyN6tebKT3x+UECgYEAjjDAFpZ67ugBo4cXESFJ\nudOXsBEwRjSrF1MkrA8y69jDhvXQ4nZslb5fRqNj7b6uGFh26+zWa1SBk8tjrCV/\nOPD6SKx48m2L/WnrRFohWvCrBLbssDHtdLusrZBAbEMgoXLP7bfGTRhtjoM+ERTq\n/ocOQCt4TxvICQc6Tig85oI=\n-----END PRIVATE KEY-----\n",
+    "FIREBASE_EMAIL": "firebase-adminsdk-hlff4@allen-cell-resource.iam.gserviceaccount.com",
+    "TESTING_FIREBASE_API_KEY": "AIzaSyBS_rvu-Q3HfsvVZOJ7gXun3ElrInERdjk",
+    "TESTING_FIREBASE_AUTH_DOMAIN": "allen-cell-resource.firebaseapp.com",
+    "TESTING_FIREBASE_DB_URL": "https://allen-cell-resource.firebaseio.comm",
+    "TESTING_FIREBASE_ID": "allen-cell-resource",
+    "TESTING_STORAGE_BUCKET": "allen-cell-resource.appspot.com",
+    "TESTING_MESSAGING_SENDER_ID": "103881722438422725293",
+    "TESTING_FIREBASE_TOKEN": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDDyPLyN58S0UBs\nKfKa4ZMXucYpXf8Gm8L6WTREpu5sz//H874ghB/khwMZbWI0uGRlYm4FHWA6CJSC\n499qseTEyMYmPR9yavs9m1oyLKNuN5AXPGnpsn+lRIcgB7uZ+qgSjuKwOx//tP1m\n4op3CftmgMpwwEfaqMv/NthIoWY/tKG/gnKSZa7+39dDsUEA8Hy2rye+OIQgTynZ\nOMWoqyaqvBBk1VflI8o5c5Tl9q0hyMmE3VFHgUSFrjes17Lx0JHIZ5z+d+xmHYdo\njO54vS35rjh4Weujs0DspYWr0rQ7bMpnSnHGvU2rVCKGSpJua36LtOnRp3U5N69F\nOghkgZbnAgMBAAECggEAAcm3gkPExaC4lGRLrWNq+vf82crcddx9Stj+s7PMkJzT\nqqlMrrJWMjmTayuHDpEyhYSBGbXbd5w1cv6Ov0QxoSRuPtInE93rPnRJPhUPRwXl\n4HhyRSqWpNU74KyBZ5YU69p3MoHPuH+YItTly9GBBL4fWyk+Xr5U4pdHIV6r9t/0\nzuklsNx2s+G/sm5Qu2mQuAHY6+kokKDkDg5B73QS6x0zARfyXrsjMxjC4n/h/FvR\ntVwJoD2MvMeaBfSM+fhx4exN/UU8VRNSjtVsrajHVKybZHeeFHytGXjVxZ7JJZMU\n3iv61SvhWECJ7msYdXmzBDsJoMxqz2cd3TQmAO/P8QKBgQD6N1pQ5jIgADtOCSjf\n9nn9IxkpBLqqTVk1zigsMr6B5DvceyTGsFjZ9gJ9KuzLS40B0uz+8hjNDCucTJxa\nmt92g1fD8jN0sqiZWXrthqsvz8hR7STg1VGqub+GWauFLgBWy/hfhFaXIgqjcfnz\nig7iM++wqqAeMtHm0VzXt6i2EQKBgQDIT4AzokwgRvNrbJKTM9N5jqN/ylpb8msT\nE7MkmTVp4ZyYu7qidBgssBp77FPjBExu3QjsMx0x054Q+pzl6ULd8jcF7ZaMhufv\nD7gsie9ZuCWazYCEc84x1NMSlpDvKml7aVczxaAF0x8Sc+cFu3IAP8tFoHx+PWSZ\nen0TH/yldwKBgFggKrUXfkv7COghHb5Tpv9a3z+tJLlaaLMkms2GScahxduPm5JH\nBeQuWw4Okju/rjgYO9RHHCkLwkhYSzE2HsI03DJtGWZejjcEZuFFbwF14w3HwhdV\nyl+g8C23Y0uSuhfX2vB5Qa4VFT4fpHL8CuXseNz2G1LHf1oWHubzDn6hAoGALtlp\nQqpS47m0dQuPvJ4CeAvEcb8CIz8vi+avn3+13m3GEnLV0+kTPmBx0UoU1KPMvKE1\n1Qifa2fzMEVtLNjBqudbtyc6buOem2sxyDj6oiFPqkUmKdRsBXuhYleUzls9EIAy\nxQkTxEj8m3RANDcDEsvY3xAKDfyN6tebKT3x+UECgYEAjjDAFpZ67ugBo4cXESFJ\nudOXsBEwRjSrF1MkrA8y69jDhvXQ4nZslb5fRqNj7b6uGFh26+zWa1SBk8tjrCV/\nOPD6SKx48m2L/WnrRFohWvCrBLbssDHtdLusrZBAbEMgoXLP7bfGTRhtjoM+ERTq\n/ocOQCt4TxvICQc6Tig85oI=\n-----END PRIVATE KEY-----\n",
+    "TESTING_FIREBASE_EMAIL": "firebase-adminsdk-hlff4@allen-cell-resource.iam.gserviceaccount.com"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 24576,
+      "hard": "unlimited"
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": 67104768
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 1418,
+      "hard": 2128
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "/Users/meganriel-mehan/.nvm/versions/node/v12.16.1/bin/node",
+    "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+    "/usr/lib/libSystem.B.dylib",
+    "/usr/lib/libc++.1.dylib",
+    "/usr/lib/libDiagnosticMessagesClient.dylib",
+    "/usr/lib/libicucore.A.dylib",
+    "/usr/lib/libobjc.A.dylib",
+    "/usr/lib/libz.1.dylib",
+    "/usr/lib/system/libcache.dylib",
+    "/usr/lib/system/libcommonCrypto.dylib",
+    "/usr/lib/system/libcompiler_rt.dylib",
+    "/usr/lib/system/libcopyfile.dylib",
+    "/usr/lib/system/libcorecrypto.dylib",
+    "/usr/lib/system/libdispatch.dylib",
+    "/usr/lib/system/libdyld.dylib",
+    "/usr/lib/system/libkeymgr.dylib",
+    "/usr/lib/system/liblaunch.dylib",
+    "/usr/lib/system/libmacho.dylib",
+    "/usr/lib/system/libquarantine.dylib",
+    "/usr/lib/system/libremovefile.dylib",
+    "/usr/lib/system/libsystem_asl.dylib",
+    "/usr/lib/system/libsystem_blocks.dylib",
+    "/usr/lib/system/libsystem_c.dylib",
+    "/usr/lib/system/libsystem_configuration.dylib",
+    "/usr/lib/system/libsystem_coreservices.dylib",
+    "/usr/lib/system/libsystem_darwin.dylib",
+    "/usr/lib/system/libsystem_dnssd.dylib",
+    "/usr/lib/system/libsystem_info.dylib",
+    "/usr/lib/system/libsystem_m.dylib",
+    "/usr/lib/system/libsystem_malloc.dylib",
+    "/usr/lib/system/libsystem_network.dylib",
+    "/usr/lib/system/libsystem_networkextension.dylib",
+    "/usr/lib/system/libsystem_notify.dylib",
+    "/usr/lib/system/libsystem_sandbox.dylib",
+    "/usr/lib/system/libsystem_secinit.dylib",
+    "/usr/lib/system/libsystem_kernel.dylib",
+    "/usr/lib/system/libsystem_platform.dylib",
+    "/usr/lib/system/libsystem_pthread.dylib",
+    "/usr/lib/system/libsystem_symptoms.dylib",
+    "/usr/lib/system/libsystem_trace.dylib",
+    "/usr/lib/system/libunwind.dylib",
+    "/usr/lib/system/libxpc.dylib",
+    "/usr/lib/closure/libclosured.dylib",
+    "/usr/lib/libc++abi.dylib",
+    "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+    "/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics",
+    "/System/Library/Frameworks/CoreText.framework/Versions/A/CoreText",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO",
+    "/System/Library/Frameworks/ColorSync.framework/Versions/A/ColorSync",
+    "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/ATS",
+    "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ColorSyncLegacy.framework/Versions/A/ColorSyncLegacy",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices",
+    "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/HIServices.framework/Versions/A/HIServices",
+    "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/LangAnalysis.framework/Versions/A/LangAnalysis",
+    "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/PrintCore",
+    "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/QD.framework/Versions/A/QD",
+    "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/SpeechSynthesis.framework/Versions/A/SpeechSynthesis",
+    "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+    "/System/Library/Frameworks/CFNetwork.framework/Versions/A/CFNetwork",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate",
+    "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+    "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+    "/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration",
+    "/System/Library/Frameworks/CoreDisplay.framework/Versions/A/CoreDisplay",
+    "/System/Library/Frameworks/IOSurface.framework/Versions/A/IOSurface",
+    "/System/Library/Frameworks/Metal.framework/Versions/A/Metal",
+    "/System/Library/PrivateFrameworks/MultitouchSupport.framework/Versions/A/MultitouchSupport",
+    "/System/Library/Frameworks/Security.framework/Versions/A/Security",
+    "/System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore",
+    "/usr/lib/libbsm.0.dylib",
+    "/usr/lib/libauto.dylib",
+    "/System/Library/Frameworks/DiskArbitration.framework/Versions/A/DiskArbitration",
+    "/usr/lib/libarchive.2.dylib",
+    "/usr/lib/libxml2.2.dylib",
+    "/usr/lib/liblangid.dylib",
+    "/usr/lib/libCRFSuite.dylib",
+    "/usr/lib/libenergytrace.dylib",
+    "/usr/lib/system/libkxld.dylib",
+    "/usr/lib/libOpenScriptingUtil.dylib",
+    "/usr/lib/libcoretls.dylib",
+    "/usr/lib/libcoretls_cfhelpers.dylib",
+    "/usr/lib/libpam.2.dylib",
+    "/usr/lib/libsqlite3.dylib",
+    "/usr/lib/libxar.1.dylib",
+    "/usr/lib/libbz2.1.0.dylib",
+    "/usr/lib/liblzma.5.dylib",
+    "/usr/lib/libnetwork.dylib",
+    "/usr/lib/libapple_nghttp2.dylib",
+    "/usr/lib/libpcap.A.dylib",
+    "/usr/lib/libboringssl.dylib",
+    "/usr/lib/libusrtcp.dylib",
+    "/usr/lib/libapple_crypto.dylib",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/FSEvents",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/CarbonCore",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Metadata",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/OSServices.framework/Versions/A/OSServices",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SearchKit.framework/Versions/A/SearchKit",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/AE.framework/Versions/A/AE",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/LaunchServices",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/DictionaryServices.framework/Versions/A/DictionaryServices",
+    "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SharedFileList.framework/Versions/A/SharedFileList",
+    "/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS",
+    "/System/Library/PrivateFrameworks/NetAuth.framework/Versions/A/NetAuth",
+    "/System/Library/PrivateFrameworks/login.framework/Versions/A/Frameworks/loginsupport.framework/Versions/A/loginsupport",
+    "/System/Library/PrivateFrameworks/TCC.framework/Versions/A/TCC",
+    "/usr/lib/libmecabra.dylib",
+    "/System/Library/PrivateFrameworks/LinguisticData.framework/Versions/A/LinguisticData",
+    "/usr/lib/libmarisa.dylib",
+    "/System/Library/PrivateFrameworks/Lexicon.framework/Versions/A/Lexicon",
+    "/usr/lib/libChineseTokenizer.dylib",
+    "/usr/lib/libcmph.dylib",
+    "/usr/lib/libiconv.2.dylib",
+    "/System/Library/PrivateFrameworks/LanguageModeling.framework/Versions/A/LanguageModeling",
+    "/System/Library/Frameworks/CoreData.framework/Versions/A/CoreData",
+    "/System/Library/PrivateFrameworks/CoreEmoji.framework/Versions/A/CoreEmoji",
+    "/usr/lib/libcompression.dylib",
+    "/System/Library/Frameworks/OpenDirectory.framework/Versions/A/Frameworks/CFOpenDirectory.framework/Versions/A/CFOpenDirectory",
+    "/System/Library/PrivateFrameworks/APFS.framework/Versions/A/APFS",
+    "/usr/lib/libutil.dylib",
+    "/System/Library/Frameworks/ServiceManagement.framework/Versions/A/ServiceManagement",
+    "/System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Versions/A/BackgroundTaskManagement",
+    "/usr/lib/libxslt.1.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vImage.framework/Versions/A/vImage",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/vecLib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvDSP.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBNNS.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libQuadrature.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvMisc.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLAPACK.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLinearAlgebra.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libSparse.dylib",
+    "/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libSparseBLAS.dylib",
+    "/System/Library/PrivateFrameworks/GPUWrangler.framework/Versions/A/GPUWrangler",
+    "/System/Library/PrivateFrameworks/IOAccelerator.framework/Versions/A/IOAccelerator",
+    "/System/Library/PrivateFrameworks/IOPresentment.framework/Versions/A/IOPresentment",
+    "/System/Library/PrivateFrameworks/DSExternalDisplay.framework/Versions/A/DSExternalDisplay",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCoreFSCache.dylib",
+    "/System/Library/Frameworks/CoreImage.framework/Versions/A/CoreImage",
+    "/System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+    "/System/Library/PrivateFrameworks/GraphVisualizer.framework/Versions/A/GraphVisualizer",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Versions/A/MetalPerformanceShaders",
+    "/usr/lib/libFosl_dynamic.dylib",
+    "/System/Library/PrivateFrameworks/FaceCore.framework/Versions/A/FaceCore",
+    "/System/Library/Frameworks/OpenCL.framework/Versions/A/OpenCL",
+    "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/Resources/libFontParser.dylib",
+    "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/Resources/libFontRegistry.dylib",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libJPEG.dylib",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libTIFF.dylib",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libPng.dylib",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libGIF.dylib",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libJP2.dylib",
+    "/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libRadiance.dylib",
+    "/System/Library/PrivateFrameworks/AppleJPEG.framework/Versions/A/AppleJPEG",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSCore.framework/Versions/A/MPSCore",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSImage.framework/Versions/A/MPSImage",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSNeuralNetwork.framework/Versions/A/MPSNeuralNetwork",
+    "/System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSMatrix.framework/Versions/A/MPSMatrix",
+    "/System/Library/PrivateFrameworks/MetalTools.framework/Versions/A/MetalTools",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLU.dylib",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGFXShared.dylib",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLImage.dylib",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCVMSPluginSupport.dylib",
+    "/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCoreVMClient.dylib",
+    "/usr/lib/libcups.2.dylib",
+    "/System/Library/Frameworks/Kerberos.framework/Versions/A/Kerberos",
+    "/System/Library/Frameworks/GSS.framework/Versions/A/GSS",
+    "/usr/lib/libresolv.9.dylib",
+    "/System/Library/PrivateFrameworks/Heimdal.framework/Versions/A/Heimdal",
+    "/usr/lib/libheimdal-asn1.dylib",
+    "/System/Library/Frameworks/OpenDirectory.framework/Versions/A/OpenDirectory",
+    "/System/Library/PrivateFrameworks/CommonAuth.framework/Versions/A/CommonAuth",
+    "/System/Library/Frameworks/SecurityFoundation.framework/Versions/A/SecurityFoundation",
+    "/System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio",
+    "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+    "/System/Library/PrivateFrameworks/AppleSauce.framework/Versions/A/AppleSauce"
+  ]
+}
