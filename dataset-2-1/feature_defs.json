@@ -132,5 +132,69 @@
         "name": "Not determined"
       }
     }
+  },
+  {
+    "displayName": "Shape Mode 1",
+    "description": "Shape Mode 1",
+    "tooltip": "Shape Mode 1",
+    "unit": "std",
+    "key": "shape-mode-1",
+    "discrete": false
+  },
+  {
+    "displayName": "Shape Mode 2",
+    "description": "Shape Mode 2",
+    "tooltip": "Shape Mode 2",
+    "unit": "std",
+    "key": "shape-mode-2",
+    "discrete": false
+  },
+  {
+    "displayName": "Shape Mode 3",
+    "description": "Shape Mode 3",
+    "tooltip": "Shape Mode 3",
+    "unit": "std",
+    "key": "shape-mode-3",
+    "discrete": false
+  },
+  {
+    "displayName": "Shape Mode 4",
+    "description": "Shape Mode 4",
+    "tooltip": "Shape Mode 4",
+    "unit": "std",
+    "key": "shape-mode-4",
+    "discrete": false
+  },
+  {
+    "displayName": "Shape Mode 5",
+    "description": "Shape Mode 5",
+    "tooltip": "Shape Mode 5",
+    "unit": "std",
+    "key": "shape-mode-5",
+    "discrete": false
+  },
+  {
+    "displayName": "Shape Mode 6",
+    "description": "Shape Mode 6",
+    "tooltip": "Shape Mode 6",
+    "unit": "std",
+    "key": "shape-mode-6",
+    "discrete": false
+  },
+  {
+    "displayName": "Shape Mode 7",
+    "description": "Shape Mode 7",
+    "tooltip": "Shape Mode 7",
+    "unit": "std",
+    "key": "shape-mode-7",
+    "discrete": false
+  },
+  {
+    "displayName": "Shape Mode 8",
+    "description": "Shape Mode 8",
+    "tooltip": "Shape Mode 8",
+    "unit": "std",
+    "key": "shape-mode-8",
+    "discrete": false
   }
 ]
