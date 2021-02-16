@@ -7,7 +7,7 @@ const {
 class FirebaseHandler {
     constructor(id) {
         this.id = id
-        this.ref = firestore.collection('cfe-datasets').doc(id);
+        this.cellRef = firestore.collection('cell-data').doc(id);
     }
 
     uploadDatasetDoc(data) {
@@ -41,7 +41,6 @@ class FirebaseHandler {
                         if (Object.hasOwnProperty.call(feature, key)) {
                             const newValue = feature[key];
                             if (!isEqual( dbFeature[key], newValue)) {
-                                console.log(dbFeature[key], newValue)
                                 changedFeatures[key] = newValue
                             }
                         }
@@ -73,7 +72,7 @@ class FirebaseHandler {
         return Promise.all(array.map((ele) => this.ref.collection(collectionName).add(ele)))
     }
     uploadArrayUsingKeys(array, collectionName, docKey) {
-        return Promise.all(array.map((ele) => this.ref.collection(collectionName).doc(ele[docKey]).set(ele)))
+        return Promise.all(array.map((ele) => firestore.collection(collectionName).doc(ele[docKey]).set(ele)))
     }
     setData(collectionName, docName, data) {
         return this.ref.collection(collectionName).doc(docName).set(data).catch((e) => console.log(collectionName, docName, e))
