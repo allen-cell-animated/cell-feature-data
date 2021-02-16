@@ -30,17 +30,18 @@ const uploadDatasetAndManifest = () => {
             const manifestCheck = dataPrep.validate(manifest, schemas.manifest)
             if (datasetCheck.valid) {
                 // upload dataset
-                firebaseHandler.uploadDatasetDoc(dataset)
+                await firebaseHandler.uploadDatasetDoc(dataset)
             } else {
                 console.log(datasetCheck.error)
             }
             if (manifestCheck.valid) {
                 // upload manifest
-                firebaseHandler.uploadManifest(manifest)
+                await firebaseHandler.uploadManifest(manifest)
             } else {
                 console.log(manifestCheck.error)
             }
         })
+        .then(() => process.exit(0))
 
         .catch(console.log)
 
