@@ -1,30 +1,23 @@
 const fsPromises = require('fs').promises;
 const prompt = require('prompt');
 
-const dataPrep = require("./data-prep");
+const dataPrep = require("../scripts/data-prep");
 
-const FirebaseHandler = require('./firebase-handler');
-const READ_FOLDER = "dataset-2-1";
+const FirebaseHandler = require('../scripts/firebase-handler');
 
-const schemas = require("./schema");
+const schemas = require("../scripts/schema");
 
-const readFeatureData = async () => {
-    const data = await fsPromises.readFile(`./${READ_FOLDER}/feature_defs.json`)
+const readFeatureData = async (readFolder) => {
+    const data = await fsPromises.readFile(`${readFolder}/feature_defs.json`)
     return JSON.parse(data)
 }
 
-const readDatasetInfo = async () => {
-    const data = await fsPromises.readFile(`./${READ_FOLDER}/dataset.json`)
-    return JSON.parse(data)
-}
-
-const uploadFeatureDefs = async () => {
-    const featureDefs = await readFeatureData();
-    const dataset = await readDatasetInfo();
+const uploadFeatureDefs = async (datasetId, readFolder) => {
+    const featureDefs = await readFeatureData(readFolder);
     for (let index = 0; index < featureDefs.length; index++) {
         const feature = featureDefs[index];
         
-        const firebaseHandler = new FirebaseHandler(dataset.id);
+        const firebaseHandler = new FirebaseHandler(datasetId);
         const featureData = dataPrep.initialize(feature, schemas.featureDefSchema)
         const diffToDatabase = await firebaseHandler.checkFeatureExists(featureData)
         const featureCheck = dataPrep.validate(featureData, schemas.featureDef)
@@ -57,4 +50,4 @@ const uploadFeatureDefs = async () => {
 
 }
 
-uploadFeatureDefs()
+module.exports = uploadFeatureDefs

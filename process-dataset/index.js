@@ -1,5 +1,8 @@
 const fsPromises = require('fs').promises;
-const uploadDatasetAndManifest = require("./upload-dataset-and-manifest")
+
+const uploadDatasetAndManifest = require("./upload-dataset-and-manifest");
+const uploadFeatureDefs = require("./upload-feature-defs");
+
 const args = process.argv.slice(2);
 console.log('myArgs: ', args);
 
@@ -28,7 +31,10 @@ const processDataset = async () => {
         id
     } = datasetJson;
     console.log(id)
+    // 1. upload dataset description and manifest
     await uploadDatasetAndManifest(datasetJson, datasetReadFolder)
+    // 2. check dataset feature defs for new features, upload them if needed
+    await uploadFeatureDefs(id, datasetReadFolder)
     process.exit(0)
 }    
 
