@@ -1,3 +1,4 @@
+const { isEmpty, isEqual } = require('lodash');
 const {
     firestore
 } = require('./setup-firebase');
@@ -17,6 +18,10 @@ class FirebaseHandler {
         return firestore.collection("manifests").doc(this.id).set(data)
     }
 
+    uploadData(collectionName, data) {
+        return firestore.collection(collectionName).doc(this.id).set(data)
+    }
+
     getData(collectionName) {
         return this.ref.collection(collectionName).get()
             .then(snapshot => {
@@ -24,6 +29,36 @@ class FirebaseHandler {
                 snapshot.forEach((doc) => data[doc.id] = doc.data());
                 return data
             })
+    }
+
+    checkFeatureExists(feature) {
+        return firestore.collection("feature-definitions").doc(feature.key).get()
+            .then(snapshot => {
+                if (snapshot.exists ) {
+                    const changedFeatures = {}
+                    const dbFeature = snapshot.data();
+                    for (const key in feature) {
+                        if (Object.hasOwnProperty.call(feature, key)) {
+                            const newValue = feature[key];
+                            if (!isEqual( dbFeature[key], newValue)) {
+                                console.log(dbFeature[key], newValue)
+                                changedFeatures[key] = newValue
+                            }
+                        }
+                    }
+                    if (isEmpty(changedFeatures)) {
+                        return false
+                    }
+                    return changedFeatures;
+                } else {
+                    return false;
+                }
+            })
+    }
+
+    addFeature(feature) {
+        return firestore.collection("feature-definitions").doc(feature.key).set(feature)
+
     }
 
     checkData(collectionName, docName, dataKey, dataValue) {

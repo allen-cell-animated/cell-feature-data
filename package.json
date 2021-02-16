@@ -32,7 +32,8 @@
     "firebase-admin": "^8.7.0",
     "firebase-functions": "^3.7.0",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "prompt": "^1.1.0"
   },
   "devDependencies": {
     "jest": "^24.9.0"

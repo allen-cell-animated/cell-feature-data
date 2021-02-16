@@ -106,9 +106,59 @@ const manifestSchema = {
     ],
 }
 
+const featureDefSchema = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "featureDefSchema",
+    "title": "Feature Defs",
+    "description": "Measured features in the dataset",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "displayName": {
+            "description": "Human readable name",
+            "type": "string"
+        },
+        "description": {
+            "description": "Description of how the data was collected/measured",
+            "type": "string",
+        },
+        "tooltip": {
+            "description": "Shorter version of description",
+            "type": "string",
+        },
+        "unit": {
+            "description": "unit of measurement",
+            "type": "string",
+        },
+        "key": {
+            "description": "Id of the feature",
+            "type": "string",
+        },
+        "discrete": {
+            "description": "Whether it's a continuous measurement or not",
+            "type": "boolean",
+        },
+        "options": {
+            "description": "For discrete features, display items for each value",
+            "type": "object",
+        },
+
+    },
+    "required": [
+        "displayName",
+        "description",
+        "tooltip",
+        "unit",
+        "key",
+        "discrete",
+    ],
+}
+
 module.exports = {
     datasetSchema: datasetSchema,
     manifestSchema: manifestSchema,
+    featureDefSchema: featureDefSchema,
     dataset: ajv.compile(datasetSchema),
     manifest: ajv.compile(manifestSchema),
+    featureDef: ajv.compile(featureDefSchema),
 }
