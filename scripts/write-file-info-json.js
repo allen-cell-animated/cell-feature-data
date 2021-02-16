@@ -1,9 +1,6 @@
 
 const fsPromises = require('fs').promises;
 
-const features = require('../data/measured-features');
-const FirebaseHandler = require('./firebase-handler');
-
 const writeCellFeatureData = () => {
 
     return fsPromises.readFile('./dataset-2-0/cell-feature-analysis.json')

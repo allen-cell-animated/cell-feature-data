@@ -1,0 +1,45 @@
+const fsPromises = require('fs').promises;
+const dataPrep = require("../scripts/data-prep");
+
+const FirebaseHandler = require('../scripts/firebase-handler');
+
+const schemas = require("../scripts/schema");
+
+const uploadDatasetAndManifest = async (datasetJson, readFolder) => {
+
+    const readFeatureData = async () => {
+        const data = await fsPromises.readFile(`${readFolder}/feature_defs.json`)
+        return JSON.parse(data)
+    }
+
+    const featureData = await readFeatureData();
+    const dataset = dataPrep.initialize(datasetJson, schemas.datasetSchema)
+    const firebaseHandler = new FirebaseHandler(dataset.id)
+
+    const manifest = dataPrep.initialize(datasetJson, schemas.manifestSchema)
+    // will be updated when the data is uploaded
+    manifest.cellLineData = "";
+    manifest.albumPath = "";
+    manifest.featuresData = "";
+
+    manifest.featuresDisplayOrder = featureData.map(ele => ele.key)
+    const datasetCheck = dataPrep.validate(dataset, schemas.dataset)
+    const manifestCheck = dataPrep.validate(manifest, schemas.manifest)
+    if (datasetCheck.valid) {
+        // upload dataset
+        await firebaseHandler.uploadDatasetDoc(dataset)
+    } else {
+        console.log(datasetCheck.error)
+    }
+    if (manifestCheck.valid) {
+        // upload manifest
+        await firebaseHandler.uploadManifest(manifest)
+    } else {
+        console.log(manifestCheck.error)
+    }
+
+
+
+}
+
+module.exports = uploadDatasetAndManifest;
