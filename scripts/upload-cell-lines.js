@@ -26,6 +26,7 @@ const writeCellLineDefs = async () => {
     const firebaseHandler = new FirebaseHandler(id);
     return formatCellLineDefs()
         .then((json) => firebaseHandler.uploadArrayUsingKeys(json, "cell-line-def", "CellLineId_Name"))
+        .then(() => process.exit(0))
 
 }
 
