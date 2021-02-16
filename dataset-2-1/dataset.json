@@ -15,9 +15,9 @@
   "featuresData": "cell_feature_analysis.json",
   "cellLineData": "cell_line_defs.json",
   "albumPath": "albums",
-  "thumbnailRoot": "",
-  "downloadRoot": "",
-  "volumeViewerDataRoot": "",
+  "thumbnailRoot": "https://s3-us-west-2.amazonaws.com/bisque.allencell.org/v2.0.0/Cell-Viewer_Thumbnails",
+  "downloadRoot": "https://files.allencell.org/api/2.0/file/download?collection=cellviewer-2-0",
+  "volumeViewerDataRoot": "https://s3-us-west-2.amazonaws.com/bisque.allencell.org/v2.0.0/Cell-Viewer_Thumbnails",
   "defaultXAxis": "cell-volume",
   "defaultYAxis": "dna-volume",
   "featuresDisplayOrder": []

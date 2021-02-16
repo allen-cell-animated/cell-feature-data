@@ -4,8 +4,17 @@ const {
 
 
 class FirebaseHandler {
-    constructor(version) {
-        this.ref = firestore.collection('cfe-datasets').doc(version);
+    constructor(id) {
+        this.id = id
+        this.ref = firestore.collection('cfe-datasets').doc(id);
+    }
+
+    uploadDatasetDoc(data) {
+        return firestore.collection('dataset-descriptions').doc(data.id).set(data)
+    }
+
+    uploadManifest(data) {
+        return firestore.collection("manifests").doc(this.id).set(data)
     }
 
     getData(collectionName) {
