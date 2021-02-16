@@ -1,11 +1,9 @@
 const fsPromises = require('fs').promises;
 const dataPrep = require("../scripts/data-prep");
 
-const FirebaseHandler = require('../scripts/firebase-handler');
-
 const schemas = require("../scripts/schema");
 
-const uploadDatasetAndManifest = async (datasetJson, readFolder) => {
+const uploadDatasetAndManifest = async (firebaseHandler, datasetJson, readFolder) => {
 
     const readFeatureData = async () => {
         const data = await fsPromises.readFile(`${readFolder}/feature_defs.json`)
@@ -14,7 +12,6 @@ const uploadDatasetAndManifest = async (datasetJson, readFolder) => {
 
     const featureData = await readFeatureData();
     const dataset = dataPrep.initialize(datasetJson, schemas.datasetSchema)
-    const firebaseHandler = new FirebaseHandler(dataset.id)
 
     const manifest = dataPrep.initialize(datasetJson, schemas.manifestSchema)
     // will be updated when the data is uploaded

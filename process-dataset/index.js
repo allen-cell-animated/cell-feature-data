@@ -2,6 +2,8 @@ const fsPromises = require('fs').promises;
 
 const uploadDatasetAndManifest = require("./upload-dataset-and-manifest");
 const uploadFeatureDefs = require("./upload-feature-defs");
+const uploadCellLines = require("./upload-cell-lines");
+const FirebaseHandler = require('../scripts/firebase-handler');
 
 const args = process.argv.slice(2);
 console.log('myArgs: ', args);
@@ -31,10 +33,14 @@ const processDataset = async () => {
         id
     } = datasetJson;
     console.log(id)
+    const firebaseHandler = new FirebaseHandler(id);
+
     // 1. upload dataset description and manifest
-    await uploadDatasetAndManifest(datasetJson, datasetReadFolder)
+    await uploadDatasetAndManifest(firebaseHandler, datasetJson, datasetReadFolder)
     // 2. check dataset feature defs for new features, upload them if needed
-    await uploadFeatureDefs(id, datasetReadFolder)
+    await uploadFeatureDefs(firebaseHandler, datasetReadFolder)
+    // 3. upload cell lines 
+    await uploadCellLines(firebaseHandler, datasetReadFolder)
     process.exit(0)
 }    
 

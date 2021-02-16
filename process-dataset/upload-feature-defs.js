@@ -12,12 +12,11 @@ const readFeatureData = async (readFolder) => {
     return JSON.parse(data)
 }
 
-const uploadFeatureDefs = async (datasetId, readFolder) => {
+const uploadFeatureDefs = async (firebaseHandler, readFolder) => {
     const featureDefs = await readFeatureData(readFolder);
     for (let index = 0; index < featureDefs.length; index++) {
         const feature = featureDefs[index];
         
-        const firebaseHandler = new FirebaseHandler(datasetId);
         const featureData = dataPrep.initialize(feature, schemas.featureDefSchema)
         const diffToDatabase = await firebaseHandler.checkFeatureExists(featureData)
         const featureCheck = dataPrep.validate(featureData, schemas.featureDef)
