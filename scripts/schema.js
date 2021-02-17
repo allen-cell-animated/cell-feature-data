@@ -154,11 +154,65 @@ const featureDefSchema = {
     ],
 }
 
+const fileInfoSchema = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "fileInfoSchema",
+    "title": "File Info",
+    "description": "Metadata per cell",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "CellId": {
+            "description": "unique id for segmented cell",
+            "type": "number"
+        },
+        "FOVId": {
+            "description": "Field of view cell came from",
+            "type": "number",
+        },
+        "CellLineName": {
+            "description": "Id of cell line",
+            "type": "string",
+        },
+        "thumbnailPath": {
+            "description": "Path to thumbnail image for cell",
+            "type": "string",
+            "pattern": "(\w+).png"
+        },
+        "volumeviewerPath": {
+            "description": "path to 3d data for cell",
+            "type": "string",
+            "pattern": "(\w+).json"
+        },
+        "fovThumbnailPath": {
+            "description": "Path to fov thumbnail",
+            "type": "string",
+            "pattern": "(\w+).png"
+        },
+        "fovVolumeviewerPath": {
+            "description": "Path to the fov 3d data",
+            "type": "string",
+            "pattern": "(\w+).json"
+        },
+
+    },
+    "required": [
+        "displayName",
+        "description",
+        "tooltip",
+        "unit",
+        "key",
+        "discrete",
+    ],
+}
+
 module.exports = {
     datasetSchema: datasetSchema,
     manifestSchema: manifestSchema,
     featureDefSchema: featureDefSchema,
+    fileInfoSchema: fileInfoSchema,
     dataset: ajv.compile(datasetSchema),
     manifest: ajv.compile(manifestSchema),
     featureDef: ajv.compile(featureDefSchema),
+    fileInfo: ajv.compile(fileInfoSchema),
 }

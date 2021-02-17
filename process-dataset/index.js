@@ -4,6 +4,7 @@ const uploadDatasetAndManifest = require("./upload-dataset-and-manifest");
 const uploadFeatureDefs = require("./upload-feature-defs");
 const uploadCellLines = require("./upload-cell-lines");
 const formatAndWriteFileInfoJson = require("./write-file-info-json");
+const uploadFileInfo = require("./upload-file-info");
 
 const FirebaseHandler = require('../scripts/firebase-handler');
 
@@ -45,6 +46,8 @@ const processDataset = async () => {
     await uploadCellLines(firebaseHandler, datasetReadFolder)
     // 4. format file info, write to json locally
     await formatAndWriteFileInfoJson(datasetReadFolder, "./data")
+    // 5. upload file info per cell
+    await uploadFileInfo(firebaseHandler, "./data")
     process.exit(0)
 }    
 
