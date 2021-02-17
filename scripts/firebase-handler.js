@@ -22,6 +22,26 @@ class FirebaseHandler {
         return firestore.collection(collectionName).doc(this.id).set(data)
     }
 
+    getCellLineDefs() {
+        return firestore.collection("cell-line-def").get()
+         .then(snapshot => {
+             const data = {}
+             snapshot.forEach((doc) => data[doc.id] = doc.data());
+             return data
+         })
+    }
+
+    checkCellLineInDataset(id) {
+        return this.cellRef.collection("cell-line-def").doc(id).get()
+            .then(snapshot => {
+                if (snapshot.exists) {
+
+                    return snapshot.data()
+                }
+                return false;
+            })
+    }
+
     getData(collectionName) {
         return this.ref.collection(collectionName).get()
             .then(snapshot => {

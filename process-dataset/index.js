@@ -3,6 +3,8 @@ const fsPromises = require('fs').promises;
 const uploadDatasetAndManifest = require("./upload-dataset-and-manifest");
 const uploadFeatureDefs = require("./upload-feature-defs");
 const uploadCellLines = require("./upload-cell-lines");
+const formatAndWriteFileInfoJson = require("./write-file-info-json");
+
 const FirebaseHandler = require('../scripts/firebase-handler');
 
 const args = process.argv.slice(2);
@@ -39,8 +41,10 @@ const processDataset = async () => {
     await uploadDatasetAndManifest(firebaseHandler, datasetJson, datasetReadFolder)
     // 2. check dataset feature defs for new features, upload them if needed
     await uploadFeatureDefs(firebaseHandler, datasetReadFolder)
-    // 3. upload cell lines 
+    // 3. upload cell lines TODO: add check if cell line is already there
     await uploadCellLines(firebaseHandler, datasetReadFolder)
+    // 4. format file info, write to json locally
+    await formatAndWriteFileInfoJson(datasetReadFolder, "./data")
     process.exit(0)
 }    
 

@@ -10,9 +10,10 @@ const formatCellLineDefs = (readFolder) => (
 )
 
 const uploadCellLines = async (firebaseHandler, readFolder) => {
-
+    console.log("uploading cell lines..." )
     return formatCellLineDefs(readFolder)
         .then((json) => firebaseHandler.uploadArrayUsingKeys(json, "cell-line-def", "CellLineId_Name"))
+        .then(() => console.log("uploading cell lines complete"))
 }
 
 module.exports = uploadCellLines;

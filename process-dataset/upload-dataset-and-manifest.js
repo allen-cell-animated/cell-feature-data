@@ -4,7 +4,7 @@ const dataPrep = require("../scripts/data-prep");
 const schemas = require("../scripts/schema");
 
 const uploadDatasetAndManifest = async (firebaseHandler, datasetJson, readFolder) => {
-
+    console.log("uploading dataset description and manifest...");
     const readFeatureData = async () => {
         const data = await fsPromises.readFile(`${readFolder}/feature_defs.json`)
         return JSON.parse(data)
@@ -34,6 +34,7 @@ const uploadDatasetAndManifest = async (firebaseHandler, datasetJson, readFolder
     } else {
         console.log(manifestCheck.error)
     }
+    console.log("uploading dataset description and manifest complete");
 
 
 

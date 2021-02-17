@@ -13,10 +13,11 @@ const readFeatureData = async (readFolder) => {
 }
 
 const uploadFeatureDefs = async (firebaseHandler, readFolder) => {
+    console.log("uploading feature defs...")
     const featureDefs = await readFeatureData(readFolder);
     for (let index = 0; index < featureDefs.length; index++) {
         const feature = featureDefs[index];
-        
+
         const featureData = dataPrep.initialize(feature, schemas.featureDefSchema)
         const diffToDatabase = await firebaseHandler.checkFeatureExists(featureData)
         const featureCheck = dataPrep.validate(featureData, schemas.featureDef)
@@ -34,17 +35,17 @@ const uploadFeatureDefs = async (firebaseHandler, readFolder) => {
                 shouldWrite
             } = await prompt.get(['shouldWrite']);
             if (shouldWrite.toLowerCase() === "y") {
-                firebaseHandler.addFeature(feature)
+                await firebaseHandler.addFeature(feature)
             }
 
-        
-            
+
+
         } else if (featureCheck.valid) {
-            firebaseHandler.addFeature(feature)
+            await firebaseHandler.addFeature(feature)
         }
+
     }
-    process.exit(0)
-    
+    console.log("uploading feature defs complete")
 
 
 }
