@@ -6,7 +6,6 @@ const {
 } = require("lodash");
 const {
     CELL_LINE_NAME_KEY,
-    PROTEIN_DISPLAY_NAME_KEY,
     FILE_INFO_KEYS
 } = require("./constants");
 
@@ -53,16 +52,23 @@ const formatAndWritePerCellJsons = async (readFolder, outFolder) => {
 
             }
             
-            fileInfoJson.forEach(fileInfo => {
+            const fileInfoCheck = dataPrep.validate(fileInfoJson, schemas.fileInfo);
 
-                const fileInfoCheck = dataPrep.validate(fileInfo, schemas.fileInfo);
-                if (!fileInfoCheck.valid) {
-                    console.error("file info didn't match expected schema", fileInfoCheck.error, fileInfo)
-                    process.exit(1)
+            const measuredFeaturesCheck = dataPrep.validate(measuredFeaturesJson, schemas.measuredFeaturesDoc)
+            if (fileInfoCheck.valid && measuredFeaturesCheck) {
+                
+                return Promise.all([fsPromises.writeFile(`${outFolder}/cell-feature-analysis.json`, JSON.stringify(measuredFeaturesJson)),
+                 fsPromises.writeFile(`${outFolder}/file-info.json`, JSON.stringify(fileInfoJson))])
+            } else {
+                console.error("failed json validation")
+                if (fileInfoCheck.error) {
+                    console.error(fileInfoCheck.error)
                 }
-            })
-            return Promise.all([fsPromises.writeFile(`${outFolder}/cell-feature-analysis.json`, JSON.stringify(measuredFeaturesJson)),
-             fsPromises.writeFile(`${outFolder}/file-info.json`, JSON.stringify(fileInfoJson))])
+                if (measuredFeaturesCheck.error) {
+                    console.error(measuredFeaturesCheck.error)
+                }
+                process.exit(1);
+            }
         })
         .then(() => {
             console.log("writing out file info json complete")

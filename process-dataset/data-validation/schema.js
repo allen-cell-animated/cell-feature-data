@@ -14,8 +14,8 @@ const datasetSchema = {
             "type": "string"
         },
         "id": {
-              "description": "Id for the dataset",
-              "type": "string"
+            "description": "Id for the dataset",
+            "type": "string"
         },
         "version": {
             "description": "version year and number",
@@ -44,7 +44,7 @@ const datasetSchema = {
         "id",
         "image",
         "description",
-       
+
     ],
 }
 
@@ -159,52 +159,93 @@ const fileInfoSchema = {
     "$id": "fileInfoSchema",
     "title": "File Info",
     "description": "Metadata per cell",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "CellId": {
-            "description": "unique id for segmented cell",
-            "type": "number"
-        },
-        "FOVId": {
-            "description": "Field of view cell came from",
-            "type": "number",
-        },
-        "CellLineName": {
-            "description": "Id of cell line",
-            "type": "string",
-        },
-        "thumbnailPath": {
-            "description": "Path to thumbnail image for cell",
-            "type": "string",
-            "pattern": "(.)+(\.png)"
-        },
-        "volumeviewerPath": {
-            "description": "path to 3d data for cell",
-            "type": "string",
-            "pattern": "(.)+\.json"
-        },
-        "fovThumbnailPath": {
-            "description": "Path to fov thumbnail",
-            "type": "string",
-            "pattern": "(.)+\.png"
-        },
-        "fovVolumeviewerPath": {
-            "description": "Path to the fov 3d data",
-            "type": "string",
-            "pattern": "(.)+\.json"
-        },
+    "type": "array",
+    "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+            "CellId": {
+                "description": "unique id for segmented cell",
+                "type": "number"
+            },
+            "FOVId": {
+                "description": "Field of view cell came from",
+                "type": "number",
+            },
+            "CellLineName": {
+                "description": "Id of cell line",
+                "type": "string",
+            },
+            "thumbnailPath": {
+                "description": "Path to thumbnail image for cell",
+                "type": "string",
+                "pattern": "(.)+(\.png)"
+            },
+            "volumeviewerPath": {
+                "description": "path to 3d data for cell",
+                "type": "string",
+                "pattern": "(.)+\.json"
+            },
+            "fovThumbnailPath": {
+                "description": "Path to fov thumbnail",
+                "type": "string",
+                "pattern": "(.)+\.png"
+            },
+            "fovVolumeviewerPath": {
+                "description": "Path to the fov 3d data",
+                "type": "string",
+                "pattern": "(.)+\.json"
+            },
 
-    },
-    "required": [
-        "CellId",
-        "FOVId",
-        "CellLineName",
-        "thumbnailPath",
-        "volumeviewerPath",
-        "fovThumbnailPath",
-        "fovVolumeviewerPath"
-    ],
+        },
+        "required": [
+            "CellId",
+            "FOVId",
+            "CellLineName",
+            "thumbnailPath",
+            "volumeviewerPath",
+            "fovThumbnailPath",
+            "fovVolumeviewerPath"
+        ],
+    }
+}
+
+const measuredFeaturesDocSchema = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "measuredFeaturesSchema",
+    "title": "Measured features",
+    "description": "Data per cell needed to create the CFE plot",
+    "type": "object",
+    "type": "array",
+    "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+            "f": {
+                "description": "ordered array of measured features",
+                "type": "array",
+                "items": {
+                    "type": "number"
+                }
+            },
+            "p": {
+                "description": "Protein name",
+                "type": "string",
+            },
+            "t": {
+                "description": "Thumbnail Path",
+                "type": "string",
+            },
+
+
+        },
+        "required": [
+            "f",
+            "p",
+            "t",
+        ]
+    }
+
 }
 
 module.exports = {
@@ -216,4 +257,5 @@ module.exports = {
     manifest: ajv.compile(manifestSchema),
     featureDef: ajv.compile(featureDefSchema),
     fileInfo: ajv.compile(fileInfoSchema),
+    measuredFeaturesDoc: ajv.compile(measuredFeaturesDocSchema)
 }
