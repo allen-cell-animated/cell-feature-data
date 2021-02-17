@@ -1,5 +1,6 @@
 .DS_Store
 node_modules
 .env
-dataset-2-1/cell_feature_analysis.json
-data
+data/cell-feature-analysis.json
+data/file-info.json
+dataset-*/cell_feature_analysis.json

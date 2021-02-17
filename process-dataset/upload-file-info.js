@@ -3,11 +3,11 @@ const fsPromises = require('fs').promises;
 const {
     firestore
 } = require('../scripts/setup-firebase');
-const PROTEIN_NAME_KEY = require('../constants').PROTEIN_NAME_KEY;
-const CELL_LINE_NAME_KEY = require('../constants').CELL_LINE_NAME_KEY;
-const CELL_LINE_DEF_PROTEIN_KEY = require('../constants').CELL_LINE_DEF_PROTEIN_KEY;
-const PROTEIN_DISPLAY_NAME_KEY = require('../constants').PROTEIN_DISPLAY_NAME_KEY;
-const CELL_LINE_DEF_STRUCTURE_KEY = require('../constants').CELL_LINE_DEF_STRUCTURE_KEY;
+const PROTEIN_NAME_KEY = require('./constants').PROTEIN_NAME_KEY;
+const CELL_LINE_NAME_KEY = require('./constants').CELL_LINE_NAME_KEY;
+const CELL_LINE_DEF_PROTEIN_KEY = require('./constants').CELL_LINE_DEF_PROTEIN_KEY;
+const PROTEIN_DISPLAY_NAME_KEY = require('./constants').PROTEIN_DISPLAY_NAME_KEY;
+const CELL_LINE_DEF_STRUCTURE_KEY = require('./constants').CELL_LINE_DEF_STRUCTURE_KEY;
 
 
 const uploadFileInfo = async (firebaseHandler, readFolder) => {
@@ -17,7 +17,7 @@ const uploadFileInfo = async (firebaseHandler, readFolder) => {
     const json = JSON.parse(data);
     const startingJson = json;
     const writeBatch = async () => {
-        const batchOfData = startingJson.splice(0, 498); // max is 500, at most a batch of this size will have 2 cell lines to upload
+        const batchOfData = startingJson.splice(91812, 498); // max is 500, at most a batch of this size will have 2 cell lines to upload
 
         if (batchOfData.length) {
             console.log(batchOfData.length, startingJson.length)
