@@ -1,5 +1,6 @@
 const fsPromises = require('fs').promises;
-
+const schemas = require("./data-validation/schema");
+const dataPrep = require ("./data-validation/data-prep");
 const keys = [
     "CellId",
     "FOVId",
@@ -24,9 +25,16 @@ const formatAndWriteFileInfoJson = async (readFolder, outFolder) => {
                 }
                 return cellData.file_info.reduce((acc, cur, index) =>  {
                     
-                    acc[keys[index]] = cur
+                    acc[keys[index]] = cur;
                     return acc;
                 }, {});
+            }).forEach(fileInfo => {
+
+                const fileInfoCheck = dataPrep.validate(fileInfo, schemas.fileInfo);
+                if (!fileInfoCheck.valid) {
+                    console.log("file info didn't match expected schema", fileInfoCheck.error, fileInfo)
+                    process.exit(1)
+                }
             })
             return fsPromises.writeFile(`${outFolder}/file-info.json`, JSON.stringify(fileNameDoc))
         })

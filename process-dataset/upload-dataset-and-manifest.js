@@ -1,7 +1,6 @@
 const fsPromises = require('fs').promises;
-const dataPrep = require("../scripts/data-prep");
-
-const schemas = require("../scripts/schema");
+const dataPrep = require("./data-validation/data-prep");
+const schemas = require("./data-validation/schema");
 
 const uploadDatasetAndManifest = async (firebaseHandler, datasetJson, readFolder) => {
     console.log("uploading dataset description and manifest...");
