@@ -1,0 +1,24 @@
+{
+  "name": "hiPSC Single-Cell Image Dataset",
+  "version": "v2019.1",
+  "id": "aics_hipsc_v2019.1",
+  "image": "",
+  "description": "111",
+  "userData": {
+    "isNew": false,
+    "inReview": false,
+    "totalCells": 1111,
+    "totalFOVs": 1111,
+    "totalTaggedStructures": 11
+  },
+  "featureDefs": "feature_defs.json",
+  "featuresData": "features.json",
+  "cellLineData": "cell_line_defs.json",
+  "albumPath": "albums",
+  "thumbnailRoot": "",
+  "downloadRoot": "",
+  "volumeViewerDataRoot": "",
+  "defaultXAxis": "cellVolume",
+  "defaultYAxis": "dnaVolume",
+  "featuresDisplayOrder": []
+}
