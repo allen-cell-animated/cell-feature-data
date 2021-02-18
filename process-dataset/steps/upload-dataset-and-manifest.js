@@ -25,15 +25,20 @@ const uploadDatasetAndManifest = async (firebaseHandler, datasetJson, readFolder
         // upload dataset
         await firebaseHandler.uploadDatasetDoc(dataset)
     } else {
-        console.log(datasetCheck.error)
+        console.log(datasetCheck.error);
+        process.exit(1);
     }
     if (manifestCheck.valid) {
         // upload manifest
         await firebaseHandler.uploadManifest(manifest)
     } else {
         console.log(manifestCheck.error)
+        process.exit(1);
     }
     console.log("uploading dataset description and manifest complete");
+    return {
+        manifest: `${firebaseHandler.manifestEndpoint}/${firebaseHandler.id}`
+    }
 }
 
 module.exports = uploadDatasetAndManifest;

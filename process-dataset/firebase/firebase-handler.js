@@ -23,6 +23,10 @@ class FirebaseHandler {
         return firestore.collection(this.manifestEndpoint).doc(this.id).set(data)
     }
 
+    updateDatasetDoc(data) {
+        return firestore.collection(this.datasetDescriptionEndpoint).doc(this.id).update(data)
+    }
+
     updateManifest(data) {
         return firestore.collection(this.manifestEndpoint).doc(this.id).update(data)
     }

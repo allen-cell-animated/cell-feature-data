@@ -13,7 +13,7 @@
   },
   "featureDefs": "feature_defs.json",
   "featuresData": "cell_feature_analysis.json",
-  "cellLineData": "cell_line_defs.json",
+  "cellLineData": "cell_line_def.json",
   "albumPath": "albums",
   "thumbnailRoot": "https://s3-us-west-2.amazonaws.com/bisque.allencell.org/v2.0.0/Cell-Viewer_Thumbnails",
   "downloadRoot": "https://files.allencell.org/api/2.0/file/download?collection=cellviewer-2-0",
