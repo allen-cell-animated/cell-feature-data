@@ -37,3 +37,5 @@ AWS_ID=
 ```
 ## To run process:
 `node process-dataset [PATH/TO/DATASET]`
+or
+`npm run process-dataset [PATH/TO/DATASET]`
