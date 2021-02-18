@@ -8,11 +8,11 @@ const FirebaseHandler = require('./firebase-handler');
 const {
     firestore
 } = require('./setup-firebase');
-const PROTEIN_NAME_KEY = require('../constants').PROTEIN_NAME_KEY;
-const CELL_LINE_NAME_KEY = require('../constants').CELL_LINE_NAME_KEY;
-const CELL_LINE_DEF_PROTEIN_KEY = require('../constants').CELL_LINE_DEF_PROTEIN_KEY;
-const PROTEIN_DISPLAY_NAME_KEY = require('../constants').PROTEIN_DISPLAY_NAME_KEY;
-const CELL_LINE_DEF_STRUCTURE_KEY = require('../constants').CELL_LINE_DEF_STRUCTURE_KEY;
+const PROTEIN_NAME_KEY = require('../process-dataset/constants').PROTEIN_NAME_KEY;
+const CELL_LINE_NAME_KEY = require('../process-dataset/constants').CELL_LINE_NAME_KEY;
+const CELL_LINE_DEF_PROTEIN_KEY = require('../process-dataset/constants').CELL_LINE_DEF_PROTEIN_KEY;
+const PROTEIN_DISPLAY_NAME_KEY = require('../process-dataset/constants').PROTEIN_DISPLAY_NAME_KEY;
+const CELL_LINE_DEF_STRUCTURE_KEY = require('../process-dataset/constants').CELL_LINE_DEF_STRUCTURE_KEY;
 const firebaseHandler = new FirebaseHandler('v2');
 
 const writeBatch = (batch) => Promise.all(batch);

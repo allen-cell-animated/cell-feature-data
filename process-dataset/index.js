@@ -5,6 +5,7 @@ const uploadFeatureDefs = require("./upload-feature-defs");
 const uploadCellLines = require("./upload-cell-lines");
 const formatAndWritePerCellJsons = require("./write-per-cell-jsons");
 const uploadFileInfo = require("./upload-file-info");
+const uploadFileToS3 = require("./upload-to-aws");
 
 const FirebaseHandler = require('../scripts/firebase-handler');
 
@@ -45,9 +46,17 @@ const processDataset = async () => {
     // 3. upload cell lines TODO: add check if cell line is already there
     // await uploadCellLines(firebaseHandler, datasetReadFolder)
     // 4. format file info, write to json locally
-    await formatAndWritePerCellJsons(datasetReadFolder, "./data")
+    await formatAndWritePerCellJsons(datasetReadFolder, "./data");
     // 5. upload file info per cell
-    // await uploadFileInfo(firebaseHandler, "./data")
+    const fileInfoLocation = await uploadFileInfo(firebaseHandler, "./data");
+    // 6. upload json to aw3
+    const awsLocation = await uploadFileToS3(id, "./data");
+    // 7. update dataset manifest with location for data
+    const updateToManifest = {
+        ...fileInfoLocation, 
+        ...awsLocation
+    }
+    console.log(updateToManifest)
     process.exit(0)
 }    
 
