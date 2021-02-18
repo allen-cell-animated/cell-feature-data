@@ -3,7 +3,7 @@
 ## Setup
 ### Expected files in a dataset:
 - `dataset.json`: a json file with metadata about the dataset and the names of the other files, using the keys listed below
-- featureDefs: a json describing the measured features in this dataset, **the order of this document will dictate the display order of the features on the website. *
+- featureDefs: a json describing the measured features in this dataset, *the order of this document will dictate the display order of the features on the website.*
 - featuresData: a json listing the per cell data
 - cellLineData: a json of the cell line definitions
 
