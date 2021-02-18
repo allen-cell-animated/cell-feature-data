@@ -1,7 +1,7 @@
 # To process a dataset:
 
 ## Setup
-### Expected files in a dataset:
+### Expected files in a dataset directory:
 - `dataset.json`: a json file with metadata about the dataset and the names of the other files, using the keys listed below
 - featureDefs: a json describing the measured features in this dataset, *the order of this document will dictate the display order of the features on the website.*
 - featuresData: a json listing the per cell data
