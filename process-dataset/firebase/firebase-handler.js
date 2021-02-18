@@ -6,20 +6,25 @@ const {
 
 class FirebaseHandler {
     constructor(id) {
-        this.id = id
+        this.id = id;
+        this.featureDefEndpoint = "feature-definitions";
+        this.manifestEndpoint = "manifests";
+        this.datasetDescriptionEndpoint = "dataset-descriptions";
+        this.cellLineDefEndpoint = "cell-line-def";
+        this.cellFileInfoEndpoint = "cell-file-info";
         this.cellRef = firestore.collection('cell-data').doc(id);
     }
 
     uploadDatasetDoc(data) {
-        return firestore.collection('dataset-descriptions').doc(data.id).set(data)
+        return firestore.collection(this.datasetDescriptionEndpoint).doc(data.id).set(data)
     }
 
     uploadManifest(data) {
-        return firestore.collection("manifests").doc(this.id).set(data)
+        return firestore.collection(this.manifestEndpoint).doc(this.id).set(data)
     }
 
     updateManifest(data) {
-        return firestore.collection("manifests").doc(this.id).update(data)
+        return firestore.collection(this.manifestEndpoint).doc(this.id).update(data)
     }
 
     uploadData(collectionName, data) {
@@ -27,7 +32,7 @@ class FirebaseHandler {
     }
 
     getCellLineDefs() {
-        return firestore.collection("cell-line-def").get()
+        return firestore.collection(this.cellLineDefEndpoint).get()
          .then(snapshot => {
              const data = {}
              snapshot.forEach((doc) => data[doc.id] = doc.data());
@@ -36,7 +41,7 @@ class FirebaseHandler {
     }
 
     checkCellLineInDataset(id) {
-        return this.cellRef.collection("cell-line-def").doc(id).get()
+        return this.cellRef.collection(this.cellLineDefEndpoint).doc(id).get()
             .then(snapshot => {
                 if (snapshot.exists) {
 
@@ -47,7 +52,7 @@ class FirebaseHandler {
     }
 
     checkFeatureExists(feature) {
-        return firestore.collection("feature-definitions").doc(feature.key).get()
+        return firestore.collection(this.featureDefEndpoint).doc(feature.key).get()
             .then(snapshot => {
                 if (snapshot.exists ) {
                     const changedFeatures = {}
@@ -56,7 +61,7 @@ class FirebaseHandler {
                         if (Object.hasOwnProperty.call(feature, key)) {
                             const newValue = feature[key];
                             if (!isEqual( dbFeature[key], newValue)) {
-                                changedFeatures[key] = newValue
+                                changedFeatures[key] = dbFeature[key]
                             }
                         }
                     }
@@ -71,7 +76,7 @@ class FirebaseHandler {
     }
 
     addFeature(feature) {
-        return firestore.collection("feature-definitions").doc(feature.key).set(feature)
+        return firestore.collection(this.featureDefEndpoint).doc(feature.key).set(feature)
 
     }
 

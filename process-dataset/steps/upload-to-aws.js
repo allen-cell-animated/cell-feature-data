@@ -1,6 +1,8 @@
 const fsPromises = require('fs').promises;
 const AWS = require('aws-sdk');
 
+const { TEMP_LOCAL_CELL_FEATURE_JSON } = require("../constants");
+
 const s3 = new AWS.S3({
     accessKeyId: process.env.AWS_ID,
     secretAccessKey: process.env.AWS_SECRET
@@ -21,12 +23,12 @@ const upload = (params) => {
 
 const uploadFileToS3 = async (id, tmpFolder) => {
     console.log("uploading json to s3...");
-    const fileContent = await fsPromises.readFile(`${tmpFolder}/cell-feature-analysis.json`);
+    const fileContent = await fsPromises.readFile(`${tmpFolder}/${TEMP_LOCAL_CELL_FEATURE_JSON}`);
 
     // Setting up S3 upload parameters
     const params = {
         Bucket: "bisque.allencell.org",
-        Key: `${id}/cell-feature-analysis.json`, // File name you want to save as in S3
+        Key: `${id}/cell-feature-analysis.json`, // File name in S3
         Body: fileContent
     };
     return upload(params)

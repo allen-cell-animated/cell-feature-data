@@ -6,6 +6,8 @@ const CELL_LINE_DEF_NAME_KEY = "CellLineId_Name";
 const CELL_LINE_DEF_STRUCTURE_KEY = "StructureId_Name";
 const CELL_LINE_DEF_PROTEIN_KEY = "ProteinId_DisplayName";
 const PROTEIN_DISPLAY_NAME_KEY = 'ProteinId_DisplayName';
+const TEMP_LOCAL_FILE_INFO_JSON = "file-info.json";
+const TEMP_LOCAL_CELL_FEATURE_JSON = "cell-feature-analysis.json";
 const FILE_INFO_KEYS = [
     CELL_ID_KEY,
     FOV_ID_KEY,
@@ -25,5 +27,7 @@ module.exports = {
     CELL_LINE_DEF_STRUCTURE_KEY,
     CELL_LINE_DEF_PROTEIN_KEY,
     PROTEIN_DISPLAY_NAME_KEY,
-    FILE_INFO_KEYS
+    FILE_INFO_KEYS,
+    TEMP_LOCAL_FILE_INFO_JSON,
+    TEMP_LOCAL_CELL_FEATURE_JSON
 }

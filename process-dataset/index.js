@@ -55,7 +55,7 @@ const processDataset = async () => {
     }
 
     // 1. upload dataset description and manifest
-    await uploadDatasetAndManifest(firebaseHandler, datasetJson, datasetReadFolder);
+    await uploadDatasetAndManifest(firebaseHandler, datasetJson, datasetReadFolder, fileNames.featureDefs);
     // 2. check dataset feature defs for new features, upload them if needed
     await uploadFeatureDefs(firebaseHandler, datasetReadFolder, fileNames.featureDefs);
     // 3. upload cell lines TODO: add check if cell line is already there

@@ -9,7 +9,9 @@ const {
     CELL_LINE_NAME_KEY,
     FILE_INFO_KEYS,
     CELL_LINE_DEF_NAME_KEY,
-    CELL_LINE_DEF_PROTEIN_KEY
+    CELL_LINE_DEF_PROTEIN_KEY,
+    TEMP_LOCAL_CELL_FEATURE_JSON,
+    TEMP_LOCAL_FILE_INFO_JSON
 } = require("../constants");
 
 
@@ -54,8 +56,8 @@ const formatAndWritePerCellJsons = async (readFolder, outFolder, featureDataFile
             const measuredFeaturesCheck = dataPrep.validate(measuredFeaturesJson, schemas.measuredFeaturesDoc)
             if (fileInfoCheck.valid && measuredFeaturesCheck) {
                 
-                return Promise.all([fsPromises.writeFile(`${outFolder}/cell-feature-analysis.json`, JSON.stringify(measuredFeaturesJson)),
-                 fsPromises.writeFile(`${outFolder}/file-info.json`, JSON.stringify(fileInfoJson))])
+                return Promise.all([fsPromises.writeFile(`${outFolder}/${TEMP_LOCAL_CELL_FEATURE_JSON}`, JSON.stringify(measuredFeaturesJson)),
+                 fsPromises.writeFile(`${outFolder}/${TEMP_LOCAL_FILE_INFO_JSON}`, JSON.stringify(fileInfoJson))])
             } else {
                 console.error("failed json validation")
                 if (fileInfoCheck.error) {

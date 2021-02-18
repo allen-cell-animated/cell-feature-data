@@ -8,11 +8,11 @@ const CELL_LINE_NAME_KEY = require('../constants').CELL_LINE_NAME_KEY;
 const CELL_LINE_DEF_PROTEIN_KEY = require('../constants').CELL_LINE_DEF_PROTEIN_KEY;
 const PROTEIN_DISPLAY_NAME_KEY = require('../constants').PROTEIN_DISPLAY_NAME_KEY;
 const CELL_LINE_DEF_STRUCTURE_KEY = require('../constants').CELL_LINE_DEF_STRUCTURE_KEY;
-
+const TEMP_LOCAL_FILE_INFO_JSON = require("../constants").TEMP_LOCAL_FILE_INFO_JSON;
 
 const uploadFileInfo = async (firebaseHandler, readFolder) => {
     console.log("uploading file info...")
-    const data = await fsPromises.readFile(`${readFolder}/file-info.json`);
+    const data = await fsPromises.readFile(`${readFolder}/${TEMP_LOCAL_FILE_INFO_JSON}`);
     const cellLineDefs = await firebaseHandler.getCellLineDefs();
     const json = JSON.parse(data);
     const startingJson = json;
@@ -35,9 +35,9 @@ const uploadFileInfo = async (firebaseHandler, readFolder) => {
                 if (!cellLineInDb && !newCellLinesThisBatch.includes(cellLine)) {
                     console.log("adding cell line", cellLine)
                     newCellLinesThisBatch.push(cellLine)
-                    batch.set(firebaseHandler.cellRef.collection("cell-line-def").doc(cellLine), cellLineData)
+                    batch.set(firebaseHandler.cellRef.collection(firebaseHandler.cellLineDefEndpoint).doc(cellLine), cellLineData)
                 }
-                const docRef = firebaseHandler.cellRef.collection('cell-file-info').doc(cellData.CellId.toString());
+                const docRef = firebaseHandler.cellRef.collection(firebaseHandler.cellFileInfoEndpoint).doc(cellData.CellId.toString());
                 batch.set(docRef, cellData);
             }
 
