@@ -7,7 +7,7 @@ const formatAndWritePerCellJsons = require("./write-per-cell-jsons");
 const uploadFileInfo = require("./upload-file-info");
 const uploadFileToS3 = require("./upload-to-aws");
 
-const FirebaseHandler = require('../scripts/firebase-handler');
+const FirebaseHandler = require('./firebase/firebase-handler');
 
 const args = process.argv.slice(2);
 console.log('myArgs: ', args);
