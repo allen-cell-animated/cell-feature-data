@@ -1,13 +1,14 @@
 const fsPromises = require('fs').promises;
-const schemas = require("./data-validation/schema");
-const dataPrep = require ("./data-validation/data-prep");
 const {
     find
 } = require("lodash");
+
+const schemas = require("../data-validation/schema");
+const dataPrep = require ("../data-validation/data-prep");
 const {
     CELL_LINE_NAME_KEY,
     FILE_INFO_KEYS
-} = require("./constants");
+} = require("../constants");
 
 
 const readCellLines = (readFolder) => (

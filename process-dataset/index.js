@@ -1,15 +1,16 @@
 const fsPromises = require('fs').promises;
 
-const uploadDatasetAndManifest = require("./upload-dataset-and-manifest");
-const uploadFeatureDefs = require("./upload-feature-defs");
-const uploadCellLines = require("./upload-cell-lines");
-const formatAndWritePerCellJsons = require("./write-per-cell-jsons");
-const uploadCellCountsPerCellLine = require("./upload-cell-counts");
-const uploadFileInfo = require("./upload-file-info");
-const uploadFileToS3 = require("./upload-to-aws");
+const uploadDatasetAndManifest = require("./steps/upload-dataset-and-manifest");
+const uploadFeatureDefs = require("./steps/upload-feature-defs");
+const uploadCellLines = require("./steps/upload-cell-lines");
+const formatAndWritePerCellJsons = require("./steps/write-per-cell-jsons");
+const uploadCellCountsPerCellLine = require("./steps/upload-cell-counts");
+const uploadFileInfo = require("./steps/upload-file-info");
+const uploadFileToS3 = require("./steps/upload-to-aws");
 
 const FirebaseHandler = require('./firebase/firebase-handler');
 
+const TEMP_FOLDER = "./data";
 const args = process.argv.slice(2);
 console.log('Received: ', args);
 
@@ -47,13 +48,13 @@ const processDataset = async () => {
     // 3. upload cell lines TODO: add check if cell line is already there
     await uploadCellLines(firebaseHandler, datasetReadFolder)
     // 4. format file info, write to json locally
-    await formatAndWritePerCellJsons(datasetReadFolder, "./data");
+    await formatAndWritePerCellJsons(datasetReadFolder, TEMP_FOLDER);
     // 5. upload cell line subtotals
-    await uploadCellCountsPerCellLine("./data", firebaseHandler)
+    await uploadCellCountsPerCellLine(TEMP_FOLDER, firebaseHandler)
     // 6. upload file info per cell
-    const fileInfoLocation = await uploadFileInfo(firebaseHandler, "./data");
+    const fileInfoLocation = await uploadFileInfo(firebaseHandler, TEMP_FOLDER);
     // 7. upload json to aw3
-    const awsLocation = await uploadFileToS3(id, "./data");
+    const awsLocation = await uploadFileToS3(id, TEMP_FOLDER);
     // 8. update dataset manifest with location for data
     const updateToManifest = {
         ...fileInfoLocation, 

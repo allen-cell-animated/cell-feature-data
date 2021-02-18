@@ -1,8 +1,8 @@
 const fsPromises = require('fs').promises;
 const prompt = require('prompt');
 
-const dataPrep = require("./data-validation/data-prep");
-const schemas = require("./data-validation/schema");
+const dataPrep = require("../data-validation/data-prep");
+const schemas = require("../data-validation/schema");
 
 const readFeatureData = async (readFolder) => {
     const data = await fsPromises.readFile(`${readFolder}/feature_defs.json`)

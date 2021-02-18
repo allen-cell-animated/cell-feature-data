@@ -2,12 +2,12 @@ const fsPromises = require('fs').promises;
 
 const {
     firestore
-} = require('./firebase/setup-firebase');
-const PROTEIN_NAME_KEY = require('./constants').PROTEIN_NAME_KEY;
-const CELL_LINE_NAME_KEY = require('./constants').CELL_LINE_NAME_KEY;
-const CELL_LINE_DEF_PROTEIN_KEY = require('./constants').CELL_LINE_DEF_PROTEIN_KEY;
-const PROTEIN_DISPLAY_NAME_KEY = require('./constants').PROTEIN_DISPLAY_NAME_KEY;
-const CELL_LINE_DEF_STRUCTURE_KEY = require('./constants').CELL_LINE_DEF_STRUCTURE_KEY;
+} = require('../firebase/setup-firebase');
+const PROTEIN_NAME_KEY = require('../constants').PROTEIN_NAME_KEY;
+const CELL_LINE_NAME_KEY = require('../constants').CELL_LINE_NAME_KEY;
+const CELL_LINE_DEF_PROTEIN_KEY = require('../constants').CELL_LINE_DEF_PROTEIN_KEY;
+const PROTEIN_DISPLAY_NAME_KEY = require('../constants').PROTEIN_DISPLAY_NAME_KEY;
+const CELL_LINE_DEF_STRUCTURE_KEY = require('../constants').CELL_LINE_DEF_STRUCTURE_KEY;
 
 
 const uploadFileInfo = async (firebaseHandler, readFolder) => {
