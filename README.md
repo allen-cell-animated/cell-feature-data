@@ -2,10 +2,12 @@
 
 ## Setup
 ### Expected files in a dataset:
-- `dataset.json`: a json file with metadata about the dataset and the names of the other files
+- `dataset.json`: a json file with metadata about the dataset and the names of the other files, using the keys listed below
 - featureDefs: a json describing the measured features in this dataset
 - featuresData: a json listing the per cell data
 - cellLineData: a json of the cell line definitions
+
+For more on what these files should look like, look at `process-dataset/data-validation/schema.js`
 
 ### Needed in .env file:
 ```
