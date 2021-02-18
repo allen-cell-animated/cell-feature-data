@@ -45,12 +45,15 @@ const processDataset = async () => {
         cellLineData: datasetJson.cellLineData,
     }
     console.log(fileNames);
-    for (const key of fileNames) {
-        if (!fileNames[key]) {
-            console.error("Missing file name:", key);
-            process.exit(1);
+    for (const key in fileNames) {
+        if (Object.hasOwnProperty.call(fileNames, key)) {
+            if (!fileNames[key]) {
+                console.error("Missing file name:", key);
+                process.exit(1);
+            }
         }
     }
+
     // 1. upload dataset description and manifest
     await uploadDatasetAndManifest(firebaseHandler, datasetJson, datasetReadFolder);
     // 2. check dataset feature defs for new features, upload them if needed
