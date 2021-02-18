@@ -49,10 +49,10 @@ const processDataset = async () => {
     await uploadCellLines(firebaseHandler, datasetReadFolder)
     // 4. format file info, write to json locally
     await formatAndWritePerCellJsons(datasetReadFolder, TEMP_FOLDER);
-    // 5. upload cell line subtotals
-    await uploadCellCountsPerCellLine(TEMP_FOLDER, firebaseHandler)
-    // 6. upload file info per cell
+    // 5. upload file info per cell
     const fileInfoLocation = await uploadFileInfo(firebaseHandler, TEMP_FOLDER);
+    // 6. upload cell line subtotals
+    await uploadCellCountsPerCellLine(TEMP_FOLDER, firebaseHandler)
     // 7. upload json to aw3
     const awsLocation = await uploadFileToS3(id, TEMP_FOLDER);
     // 8. update dataset manifest with location for data
