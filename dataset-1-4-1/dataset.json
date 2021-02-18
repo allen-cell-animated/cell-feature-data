@@ -3,7 +3,7 @@
   "version": "v2019.1",
   "id": "aics_hipsc_v2019.1",
   "image": "",
-  "description": "111",
+  "description": "This dataset contains individual cells segmented from 3D Field of View (FOV) images taken of 20 fluorescently tagged structures in human induced pluripotent stem cells (hiPSCs). This dataset was collected from 2017 to 2019 and uses relatively simple 3D segmentation methods.",
   "userData": {
     "isNew": false,
     "inReview": false,
