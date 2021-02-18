@@ -7,17 +7,17 @@
   "userData": {
     "isNew": false,
     "inReview": false,
-    "totalCells": 1111,
-    "totalFOVs": 1111,
-    "totalTaggedStructures": 11
+    "totalCells": 39200,
+    "totalFOVs": 11023,
+    "totalTaggedStructures": 20
   },
   "featureDefs": "feature_defs.json",
   "featuresData": "features.json",
   "cellLineData": "cell_line_defs.json",
   "albumPath": "albums",
-  "thumbnailRoot": "",
-  "downloadRoot": "",
-  "volumeViewerDataRoot": "",
+  "thumbnailRoot": "https://s3-us-west-2.amazonaws.com/bisque.allencell.org/v1.4.0/Cell-Viewer_Thumbnails",
+  "downloadRoot": "https://files.allencell.org/api/2.0/file/download?collection=cellviewer-1-4",
+  "volumeViewerDataRoot": "https://s3-us-west-2.amazonaws.com/bisque.allencell.org/v1.4.0/Cell-Viewer_Thumbnails",
   "defaultXAxis": "cellVolume",
   "defaultYAxis": "dnaVolume",
   "featuresDisplayOrder": []
