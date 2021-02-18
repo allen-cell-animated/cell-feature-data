@@ -34,9 +34,6 @@ const uploadDatasetAndManifest = async (firebaseHandler, datasetJson, readFolder
         console.log(manifestCheck.error)
     }
     console.log("uploading dataset description and manifest complete");
-
-
-
 }
 
 module.exports = uploadDatasetAndManifest;

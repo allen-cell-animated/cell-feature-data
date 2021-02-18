@@ -7,23 +7,18 @@ const schemas = require("../data-validation/schema");
 const dataPrep = require ("../data-validation/data-prep");
 const {
     CELL_LINE_NAME_KEY,
-    FILE_INFO_KEYS
+    FILE_INFO_KEYS,
+    CELL_LINE_DEF_NAME_KEY,
+    CELL_LINE_DEF_PROTEIN_KEY
 } = require("../constants");
 
 
-const readCellLines = (readFolder) => (
-    fsPromises.readFile(`${readFolder}/cell_line_def.json`)
-    .then((data) => JSON.parse(data))
-)
-
-
-const formatAndWritePerCellJsons = async (readFolder, outFolder) => {
+const formatAndWritePerCellJsons = async (readFolder, outFolder, featureDataFileName, cellLines) => {
 
     console.log("writing out file info json...")
-    return fsPromises.readFile(`${readFolder}/cell_feature_analysis.json`)
+    return fsPromises.readFile(`${readFolder}/${featureDataFileName}`)
         .then((data) => JSON.parse(data))
         .then(async (json) => {
-            const cellLines = await readCellLines(readFolder);
             const measuredFeaturesJson = [];
             const fileInfoJson = [];
             for (let index = 0; index < json.length; index++) {
@@ -40,14 +35,15 @@ const formatAndWritePerCellJsons = async (readFolder, outFolder) => {
                 }, {});
                 fileInfoJson[index] = fileInfo;
                 const cellLine = find(cellLines, {
-                            "CellLineId/Name" : fileInfo[CELL_LINE_NAME_KEY]});
+                            [CELL_LINE_DEF_NAME_KEY]: fileInfo[CELL_LINE_NAME_KEY]
+                            });
                 if (!cellLine) {
                     console.error("No matching cell line for this cell in the dataset", fileInfo)
                     process.exit(1)
                 }
                 measuredFeaturesJson[index] = {
                     f: cellData.features,
-                    p: cellLine["ProteinId/DisplayName"],
+                    p: cellLine[CELL_LINE_DEF_PROTEIN_KEY],
                     t: fileInfo.thumbnailPath
                 }
 
