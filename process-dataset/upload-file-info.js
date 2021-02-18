@@ -2,7 +2,7 @@ const fsPromises = require('fs').promises;
 
 const {
     firestore
-} = require('../scripts/setup-firebase');
+} = require('./firebase/setup-firebase');
 const PROTEIN_NAME_KEY = require('./constants').PROTEIN_NAME_KEY;
 const CELL_LINE_NAME_KEY = require('./constants').CELL_LINE_NAME_KEY;
 const CELL_LINE_DEF_PROTEIN_KEY = require('./constants').CELL_LINE_DEF_PROTEIN_KEY;
@@ -15,7 +15,7 @@ const uploadFileInfo = async (firebaseHandler, readFolder) => {
     const data = await fsPromises.readFile(`${readFolder}/file-info.json`);
     const cellLineDefs = await firebaseHandler.getCellLineDefs();
     const json = JSON.parse(data);
-    const startingJson = json.splice(json.length - 224);
+    const startingJson = json;
     const writeBatch = async () => {
         const batchOfData = startingJson.splice(0, 498); // max is 500, at most a batch of this size will have 2 cell lines to upload
         if (batchOfData.length) {

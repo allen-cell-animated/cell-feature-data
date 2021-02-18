@@ -1,7 +1,7 @@
 
 const fsPromises = require('fs').promises;
 const map = require('lodash').map
-const FirebaseHandler = require('./firebase-handler');
+const FirebaseHandler = require('../process-dataset/firebase/firebase-handler');
 const {
     firestore
 } = require('./setup-firebase');

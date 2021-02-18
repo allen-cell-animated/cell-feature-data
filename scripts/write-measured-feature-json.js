@@ -1,7 +1,7 @@
 
 const fsPromises = require('fs').promises;
 
-const FirebaseHandler = require('./firebase-handler');
+const FirebaseHandler = require('../process-dataset/firebase/firebase-handler');
 
 const READ_FOLDER = "dataset-2-0";
 const WRITE_FOLDER = "data-2-0"
