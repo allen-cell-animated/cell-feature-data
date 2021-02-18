@@ -57,6 +57,7 @@ const processDataset = async () => {
         ...awsLocation
     }
     console.log(updateToManifest)
+    await firebaseHandler.updateManifest(updateToManifest)
     process.exit(0)
 }    
 

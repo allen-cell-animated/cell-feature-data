@@ -18,6 +18,10 @@ class FirebaseHandler {
         return firestore.collection("manifests").doc(this.id).set(data)
     }
 
+    updateManifest(data) {
+        return firestore.collection("manifests").doc(this.id).update(data)
+    }
+
     uploadData(collectionName, data) {
         return firestore.collection(collectionName).doc(this.id).set(data)
     }
