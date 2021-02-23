@@ -11,7 +11,9 @@ const {
     CELL_LINE_DEF_NAME_KEY,
     CELL_LINE_DEF_PROTEIN_KEY,
     TEMP_LOCAL_CELL_FEATURE_JSON,
-    TEMP_LOCAL_FILE_INFO_JSON
+    TEMP_LOCAL_FILE_INFO_JSON,
+    FOV_ID_KEY,
+    CELL_ID_KEY
 } = require("../constants");
 
 
@@ -35,7 +37,6 @@ const formatAndWritePerCellJsons = async (readFolder, outFolder, featureDataFile
                     acc[FILE_INFO_KEYS[index]] = cur;
                     return acc;
                 }, {});
-                fileInfoJson[index] = fileInfo;
                 const cellLine = find(cellLines, {
                             [CELL_LINE_DEF_NAME_KEY]: fileInfo[CELL_LINE_NAME_KEY]
                             });
@@ -43,10 +44,25 @@ const formatAndWritePerCellJsons = async (readFolder, outFolder, featureDataFile
                     console.error("No matching cell line for this cell in the dataset", fileInfo)
                     process.exit(1)
                 }
+                if (!fileInfo.thumbnailPath) {
+                        fileInfo.thumbnailPath = `/${cellLine.CellLineId_Name}/${cellLine.CellLineId_Name}_${fileInfo[FOV_ID_KEY]}_${fileInfo[CELL_ID_KEY]}.png`;
+                }
+                if (!fileInfo.fovThumbnailPath) {
+                    fileInfo.fovThumbnailPath = `/${cellLine.CellLineId_Name}/${cellLine.CellLineId_Name}_${fileInfo[FOV_ID_KEY]}.png`;
+                }
+                if (!fileInfo.volumeviewerPath) {
+                    fileInfo.volumeviewerPath = `/${cellLine.CellLineId_Name}/${cellLine.CellLineId_Name}_${fileInfo[FOV_ID_KEY]}_${fileInfo[CELL_ID_KEY]}.json`;
+                }
+                if (!fileInfo.fovVolumeviewerPath) {
+                    fileInfo.fovVolumeviewerPath = `/${cellLine.CellLineId_Name}/${cellLine.CellLineId_Name}_${fileInfo[FOV_ID_KEY]}.json`;
+                }
+                fileInfoJson[index] = fileInfo;
+
                 measuredFeaturesJson[index] = {
                     f: cellData.features,
                     p: cellLine[CELL_LINE_DEF_PROTEIN_KEY],
-                    t: fileInfo.thumbnailPath
+                    t: fileInfo.thumbnailPath,
+                    i: fileInfo.CellId,
                 }
 
             }
