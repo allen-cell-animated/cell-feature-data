@@ -18,7 +18,7 @@
   "thumbnailRoot": "https://s3-us-west-2.amazonaws.com/bisque.allencell.org/v1.4.0/Cell-Viewer_Thumbnails",
   "downloadRoot": "https://files.allencell.org/api/2.0/file/download?collection=cellviewer-1-4",
   "volumeViewerDataRoot": "https://s3-us-west-2.amazonaws.com/bisque.allencell.org/v1.4.0/Cell-Viewer_Thumbnails",
-  "defaultXAxis": "cell-volume",
-  "defaultYAxis": "dna-volume",
+  "defaultXAxis": "cellular-volume",
+  "defaultYAxis": "nuclear-volume",
   "featuresDisplayOrder": []
 }
