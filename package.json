@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AllenInstitute/cell-feature-data.git"
+    "url": "git+https://github.com/allen-cell-animated/cell-feature-data.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AllenInstitute/cell-feature-data/issues"
+    "url": "https://github.com/allen-cell-animated/cell-feature-data/issues"
   },
-  "homepage": "https://github.com/AllenInstitute/cell-feature-data#readme",
+  "homepage": "https://github.com/allen-cell-animated/cell-feature-data#readme",
   "dependencies": {
     "@google-cloud/firestore": "^2.6.1",
     "ajv": "^7.1.0",
