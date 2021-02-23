@@ -39,3 +39,7 @@ AWS_ID=
 `node process-dataset [PATH/TO/DATASET]`
 or
 `npm run process-dataset [PATH/TO/DATASET]`
+
+To skip the fileInfo upload but run all the other steps (fileInfo upload takes a long time because firebase limits to 500 uploads per request):
+
+`node process-dataset [PATH/TO/DATASET] true`
