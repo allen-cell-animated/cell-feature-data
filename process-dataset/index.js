@@ -15,6 +15,7 @@ const args = process.argv.slice(2);
 console.log('Received: ', args);
 
 const datasetReadFolder = args[0];
+const skipFileInfoUpload = args[1];
 
 const readDatasetInfo = async () => {
     const data = await fsPromises.readFile(`${datasetReadFolder}/dataset.json`)
@@ -63,7 +64,7 @@ const processDataset = async () => {
     // 4. format file info, write to json locally
     await formatAndWritePerCellJsons(datasetReadFolder, TEMP_FOLDER, fileNames.featuresData, formattedCellLines);
     // 5. upload file info per cell
-    const fileInfoLocation = await uploadFileInfo(firebaseHandler, TEMP_FOLDER);
+    const fileInfoLocation = await uploadFileInfo(firebaseHandler, TEMP_FOLDER, skipFileInfoUpload === "true");
     // 6. upload cell line subtotals
     await uploadCellCountsPerCellLine(TEMP_FOLDER, firebaseHandler);
     // 7. upload json to aw3
