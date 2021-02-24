@@ -23,7 +23,7 @@ const uploadFileInfo = async (firebaseHandler, readFolder, uploadFileInfo) => {
         const batchOfData = startingJson.splice(0, 498); // max is 500, at most a batch of this size will have 2 cell lines to upload
         if (batchOfData.length) {
             const newCellLinesThisBatch = [];
-            console.log(batchOfData.length, startingJson.length)
+            console.log("processing:", batchOfData.length, "left to process:", startingJson.length)
             const batch = firestore.batch();
             for (let index = 0; index < batchOfData.length; index++) {
                 const cellData = batchOfData[index];
