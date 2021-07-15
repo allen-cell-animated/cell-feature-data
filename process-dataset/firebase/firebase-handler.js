@@ -89,9 +89,7 @@ class FirebaseHandler {
             const doc = await firestore.collection(collectionName).doc(ele[docKey]).get()
             if (doc.exists) {
                 return firestore.collection(collectionName).doc(ele[docKey]).update(ele)
-
             } else {
-
                 return firestore.collection(collectionName).doc(ele[docKey]).set(ele)
             }
         }))
