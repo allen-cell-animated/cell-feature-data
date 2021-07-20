@@ -21,7 +21,7 @@ class FirebaseHandler {
     }
 
     uploadDatasetDoc(data) {
-        return firestore.collection(this.datasetDescriptionEndpoint).doc(data.id).set(data)
+        return firestore.collection(this.datasetDescriptionEndpoint).doc(data.id).set(data, {merge: true})
     }
 
     async uploadManifest(data) {
