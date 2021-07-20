@@ -37,6 +37,10 @@ const datasetSchema = {
             "description": "Optional display data",
             "type": "object",
         },
+        "production": {
+            "description": "Whether this dataset should only be shown in production",
+            "type": "boolean",
+        }
     },
     "required": [
         "name",
@@ -95,7 +99,7 @@ const manifestSchema = {
         "featuresDataOrder": {
             "description": "Ordered array of feature keys for packing and unpacking data",
             "type": "array",
-        }
+        },
     },
     "required": [
         "featuresDataPath",
@@ -171,11 +175,11 @@ const fileInfoSchema = {
         "properties": {
             "CellId": {
                 "description": "unique id for segmented cell",
-                "type": "number"
+                "type": ["number", "string"]
             },
             "FOVId": {
                 "description": "Field of view cell came from",
-                "type": "number",
+                "type": ["number", "string"]
             },
             "CellLineName": {
                 "description": "Id of cell line",
@@ -209,8 +213,6 @@ const fileInfoSchema = {
             "CellLineName",
             "thumbnailPath",
             "volumeviewerPath",
-            "fovThumbnailPath",
-            "fovVolumeviewerPath"
         ],
     }
 }
