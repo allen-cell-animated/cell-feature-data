@@ -188,22 +188,18 @@ const fileInfoSchema = {
             "thumbnailPath": {
                 "description": "Path to thumbnail image for cell",
                 "type": "string",
-                "pattern": "(.)+(\.png)"
             },
             "volumeviewerPath": {
                 "description": "path to 3d data for cell",
                 "type": "string",
-                "pattern": "(.)+\.json"
             },
             "fovThumbnailPath": {
                 "description": "Path to fov thumbnail",
                 "type": "string",
-                "pattern": "(.)+\.png"
             },
             "fovVolumeviewerPath": {
                 "description": "Path to the fov 3d data",
                 "type": "string",
-                "pattern": "(.)+\.json"
             },
 
         },
@@ -211,7 +207,6 @@ const fileInfoSchema = {
             "CellId",
             "FOVId",
             "CellLineName",
-            "thumbnailPath",
             "volumeviewerPath",
         ],
     }
