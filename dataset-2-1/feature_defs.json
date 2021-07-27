@@ -25,7 +25,7 @@
   },
   {
     "displayName": "DNA height",
-    "description": "The height of a nucleus of a given cell, as measured by the number of voxels that separates the bottom most and top most voxel in the segmented DNA image converted to units of \u00b5m.",
+    "description": "The height of the nucleus of a given cell, as measured by the number of voxels that separates the bottom most and top most voxel in the segmented DNA image converted to units of \u00b5m.",
     "tooltip": "The height of a nucleus, as measured by the number of voxels that separates the bottom most and top most voxel in the segmented DNA image converted to units of \u00b5m.",
     "unit": "\u00b5m",
     "key": "dna-height",
@@ -33,7 +33,7 @@
   },
   {
     "displayName": "DNA volume",
-    "description": "The volume of a nucleus of a given cell, as measured by the sum of individual volumes of segmented voxels in the segmented DNA image, in units of \u00b5m\u00b3.",
+    "description": "The volume of the nucleus of a given cell, as measured by the sum of individual volumes of segmented voxels in the segmented DNA image, in units of \u00b5m\u00b3.",
     "tooltip": "The volume of a nucleus, as measured by the sum of individual volumes of segmented voxels in the segmented DNA image, in units of \u00b5m\u00b3.",
     "unit": "\u00b5m\u00b3",
     "key": "dna-volume",
