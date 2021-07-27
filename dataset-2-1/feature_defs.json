@@ -25,7 +25,7 @@
   },
   {
     "displayName": "DNA height",
-    "description": "The height of a nucleus, as measured by the number of voxels that separates the bottom most and top most voxel in the segmented DNA image converted to units of \u00b5m.",
+    "description": "The height of a nucleus of a given cell, as measured by the number of voxels that separates the bottom most and top most voxel in the segmented DNA image converted to units of \u00b5m.",
     "tooltip": "The height of a nucleus, as measured by the number of voxels that separates the bottom most and top most voxel in the segmented DNA image converted to units of \u00b5m.",
     "unit": "\u00b5m",
     "key": "dna-height",
@@ -34,15 +34,15 @@
   {
     "displayName": "DNA volume",
     "description": "The volume of a nucleus of a given cell, as measured by the sum of individual volumes of segmented voxels in the segmented DNA image, in units of \u00b5m\u00b3.",
-    "tooltip": "The volume of a nucleus of a given cell, as measured by the sum of individual volumes of segmented voxels in the segmented DNA image, in units of \u00b5m\u00b3.",
+    "tooltip": "The volume of a nucleus, as measured by the sum of individual volumes of segmented voxels in the segmented DNA image, in units of \u00b5m\u00b3.",
     "unit": "\u00b5m\u00b3",
     "key": "dna-volume",
     "discrete": false
   },
   {
     "displayName": "DNA surface area",
-    "description": "The surface area of a nucleus of a given cell as measured by the sum of individual outer surface areas of segmented voxels (facing the background) in the segmented DNA image, in units of \u00b5m\u00b2.",
-    "tooltip": "The surface area of a nucleus of a given cell as measured by the sum of individual outer surface areas of segmented voxels (facing the background) in the segmented DNA image, in units of \u00b5m\u00b2.",
+    "description": "The surface area of the nucleus of a given cell as measured by the sum of individual outer surface areas of segmented voxels (facing the background) in the segmented DNA image, in units of \u00b5m\u00b2.",
+    "tooltip": "The surface area of the nucleus, as measured by the sum of individual outer surface areas of segmented voxels (facing the background) in the segmented DNA image, in units of \u00b5m\u00b2.",
     "unit": "\u00b5m\u00b2",
     "key": "dna-surface-area",
     "discrete": false
@@ -50,7 +50,7 @@
   {
     "displayName": "Cellular structure volume",
     "description": "The volume of the fluorescently labeled structure of a given cell, as measured by sum of individual volumes of segmented voxels in the segmented structure image, in units of \u00b5m\u00b3.",
-    "tooltip": "The volume of the fluorescently labeled structure of a given cell, as measured by sum of individual volumes of segmented voxels in the segmented structure image, in units of \u00b5m\u00b3.",
+    "tooltip": "The volume of the fluorescently labeled structure, as measured by sum of individual volumes of segmented voxels in the segmented structure image, in units of \u00b5m\u00b3.",
     "unit": "\u00b5m\u00b3",
     "key": "intracellular-structure-volume",
     "discrete": false
@@ -101,8 +101,8 @@
   },
   {
     "displayName": "Interphase & mitotic stages",
-    "description": "Which of our 5 stages of the cell cycle (determined by the shape of the DNA) a particular cell is currently in.",
-    "tooltip": "Which of our 5 stages of the cell cycle (determined by the shape of the DNA) a particular cell is currently in.",
+    "description": "Which of our 5 stages of the cell cycle (determined by the shape of the DNA) a given cell is currently in.",
+    "tooltip": "Which of our 5 stages of the cell cycle (determined by the shape of the DNA) a cell is currently in.",
     "unit": "stage",
     "key": "interphase-and-mitotic-stages",
     "discrete": true,
@@ -136,7 +136,7 @@
   {
     "displayName": "Shape Mode 1 - height",
     "description": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space. Variation in Shape Mode 1 corresponds to cell height.",
-    "tooltip": "Variation in Shape Mode 1 corresponds to cell height.",
+    "tooltip": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space. Variation in Shape Mode 1 corresponds to cell height.",
     "unit": "std",
     "key": "shape-mode-1",
     "discrete": false
@@ -183,8 +183,8 @@
   },
   {
     "displayName": "Shape Mode 7 - pear-ness",
-    "description": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space. Variation in Shape Mode 7 corresponds to how pear- shaped the cell appears, and the orientation of the “pear” from the top view.",
-    "tooltip": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space. Variation in Shape Mode 7 corresponds to how pear- shaped the cell appears, and the orientation of the “pear” from the top view.",
+    "description": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space. Variation in Shape Mode 7 corresponds to how pear-shaped the cell appears, and the orientation of the “pear” from the top view.",
+    "tooltip": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space. Variation in Shape Mode 7 corresponds to how pear-shaped the cell appears, and the orientation of the “pear” from the top view.",
     "unit": "std",
     "key": "shape-mode-7",
     "discrete": false
