@@ -16,7 +16,7 @@ const readImage = async (imageFileName) => {
     return fsPromises.readFile(`${datasetReadFolder}/${imageFileName}`)
 }
 
-const releaseDataset = async () => {
+const uploadDatasetImage = async () => {
 
     if (!datasetReadFolder) {
         console.log("NEED A DATASET FOLDER TO RELEASE")
@@ -66,4 +66,4 @@ const releaseDataset = async () => {
 
 }
 
-releaseDataset()
+uploadDatasetImage()
