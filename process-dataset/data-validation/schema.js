@@ -9,8 +9,8 @@ const datasetSchema = {
     "type": "object",
     "additionalProperties": false,
     "properties": {
-        "name": {
-            "description": "Name of the dataset",
+        "title": {
+            "description": "Display name of the dataset",
             "type": "string"
         },
         "id": {
@@ -43,7 +43,7 @@ const datasetSchema = {
         }
     },
     "required": [
-        "name",
+        "title",
         "version",
         "id",
         "image",
