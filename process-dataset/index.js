@@ -71,16 +71,18 @@ const processDataset = async () => {
     // 7. upload json to aws
     const awsLocation = await uploadFileToS3(firebaseHandler.id, TEMP_FOLDER);
     // 8. upload card image
-    const awsImageLocation = await uploadDatasetImage(firebaseHandler, datasetReadFolder, datasetJson.image)
+    const awsImageLocation = await uploadDatasetImage(firebaseHandler, datasetReadFolder, datasetJson.image);
     // 9. update dataset manifest with location for data
     const updateToManifest = {
         ...featureDefRef,
         ...fileInfoLocation, 
         ...awsLocation,
-        ...awsImageLocation
     }
     console.log("updating manifest", updateToManifest)
-    await firebaseHandler.updateDatasetDoc(manifestRef)
+    await firebaseHandler.updateDatasetDoc({
+        ...manifestRef,
+        ...awsImageLocation,
+    })
     await firebaseHandler.updateManifest(updateToManifest)
     process.exit(0)
 }    
