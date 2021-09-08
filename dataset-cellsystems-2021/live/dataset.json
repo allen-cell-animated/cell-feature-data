@@ -1,5 +1,5 @@
 {
-  "title": "hiPSC-derived cardiomyocyte live image dataset",
+  "title": "hiPSC-derived cardiomyocyte live dataset",
   "version": "2021.1",
   "name": "cellsystems_live",
   "image": "thumb_livecardio.png",
