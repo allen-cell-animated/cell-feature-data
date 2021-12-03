@@ -19,7 +19,10 @@
             "color": "#9D02D7",
             "name": "D32"
         }
-    }
+    },
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Expert score mean",
@@ -27,7 +30,10 @@
     "tooltip": "Mean expert score of level of sarcomeric z-disk organization of each cell (1 is least organized; 5 is most organized).",
     "unit": "",
     "key": "expert-score",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Combined organizational score",
@@ -35,7 +41,10 @@
     "tooltip": "Sarcomeric z-disk organizational score calculated using linear regression of expert scores as a function of 11 cell features fit on training dataset of expert scored cells.",
     "unit": "",
     "key": "cos",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Fraction area organized z-disks",
@@ -43,7 +52,10 @@
     "tooltip": "Fraction of cell area covered by organized z-disks, one of the five local patterns classified by the machine learning based alpha-actinin-2 pattern classifier.",
     "unit": "\u00b5m\u00b2",
     "key": "area-zdisk",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Fraction area organized puncta",
@@ -51,7 +63,10 @@
     "tooltip": "Fraction of cell area covered by organized puncta, one of the five local patterns classified by the machine learning based alpha-actinin-2 pattern classifier.",
     "unit": "\u00b5m\u00b2",
     "key": "area-orgpuncta",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Fraction area disorganized puncta",
@@ -59,7 +74,10 @@
     "tooltip": "Fraction of cell area covered by disorganized puncta, one of the five local patterns classified by the machine learning based alpha-actinin-2 pattern classifier.",
     "unit": "\u00b5m\u00b2",
     "key": "area-disorgpuncta",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Fraction area fibers",
@@ -67,7 +85,10 @@
     "tooltip": "Fraction of cell area covered by fibers, one of the five local patterns classified by the machine learning based alpha-actinin-2 pattern classifier.",
     "unit": "\u00b5m\u00b2",
     "key": "area-fibers",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Fraction area diffuse/other",
@@ -75,7 +96,10 @@
     "tooltip": "Fraction of cell area covered by diffuse/other, one of the five local patterns classified by the machine learning based alpha-actinin-2 pattern classifier.",
     "unit": "\u00b5m\u00b2",
     "key": "area-diffuse",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Fraction area background",
@@ -83,7 +107,10 @@
     "tooltip": "Fraction of cell area covered by background, one of the five local patterns classified by the machine learning based alpha-actinin-2 pattern classifier.",
     "unit": "\u00b5m\u00b2",
     "key": "area-background",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Max coefficient of variation",
@@ -91,7 +118,10 @@
     "tooltip": "Maximum coefficient of variation is one of three key Haralick correlation based metrics of global sarcomere structure alignment.",
     "unit": "",
     "key": "max-cov",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Peak height",
@@ -99,7 +129,10 @@
     "tooltip": "Peak height is one of three key Haralick correlation based metrics of global sarcomere structure alignment.",
     "unit": "",
     "key": "peak-height",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Peak distance",
@@ -107,7 +140,10 @@
     "tooltip": "Peak distance is one of three key Haralick correlation based metrics of global sarcomere structure alignment.",
     "unit": "\u00b5m",
     "key": "peak-distance",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Alpha-actinin-2 protein density",
@@ -115,7 +151,10 @@
     "tooltip": "Alpha-actinin-2 protein density in 2D segmented cell.",
     "unit": "a.u. x10\u00b6",
     "key": "protein-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Cell area",
@@ -123,7 +162,10 @@
     "tooltip": "2D segmented cell area.",
     "unit": "\u00b5m\u00b2",
     "key": "cell-area",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Cell aspect ratio",
@@ -131,7 +173,10 @@
     "tooltip": "2D segmented cell aspect ratio.",
     "unit": "",
     "key": "cell-aspect",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Experiment",
@@ -169,7 +214,10 @@
             "name": "Exp7",
             "color": "#e377c2"
         }
-    }
+    },
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Plate",
@@ -207,7 +255,10 @@
         	{"name": "5500000323",
         	 "color": "#3d95b8"
         }
-    }
+    },
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "Well",
@@ -365,7 +416,10 @@
         	{"name": "5500000323-B5",
         	 "color": "#545ca8"
         }
-    }
+    },
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "MYH6 transcript density",
@@ -373,7 +427,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "myh6-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "MYH7 transcript density",
@@ -381,7 +438,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "myh7-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "HPRT1 transcript density",
@@ -389,7 +449,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "hprt1-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "COL2A1 transcript density",
@@ -397,7 +460,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "col2a1-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "TCAP transcript density",
@@ -405,7 +471,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "tcap-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "BAG3 transcript density",
@@ -413,7 +482,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "bag3-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "ATP2A2 transcript density",
@@ -421,7 +493,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "atp2a2-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "H19 transcript density",
@@ -429,7 +504,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "h19-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "NKX2-5 transcript density",
@@ -437,7 +515,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "nkx25-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "CNTN5 transcript density",
@@ -445,7 +526,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "cntn5-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "MEF2C transcript density",
@@ -453,7 +537,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "mef2c-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "MYL7 transcript density",
@@ -461,7 +548,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "myl7-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "PLN transcript density",
@@ -469,7 +559,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "pln-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "PRSS35 transcript density",
@@ -477,7 +570,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "prss35-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "BMPER transcript density",
@@ -485,7 +581,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "bmper-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "VCAN transcript density",
@@ -493,7 +592,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "vcan-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "ACTN2 transcript density",
@@ -501,7 +603,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "actn2-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "TTN transcript density",
@@ -509,7 +614,10 @@
     "tooltip": "Transcript density in 2D segemented cells.",
     "unit": "count/\u00b5m\u00b2",
     "key": "ttn-density",
-    "discrete": false
+    "discrete": false,
+        "exclude": [
+      "groupBy"
+    ]
   },
   {
     "displayName": "ACTN2 transcript count",
@@ -517,6 +625,9 @@
     "tooltip": "Transcript count in 2D segemented cells.",
     "unit": "count",
     "key": "actn2-count",
-    "discrete": false
+    "discrete": false,
+    "exclude": [
+      "groupBy"
+    ]
   }
 ]
