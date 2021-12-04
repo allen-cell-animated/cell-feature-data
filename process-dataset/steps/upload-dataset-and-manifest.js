@@ -2,14 +2,9 @@ const fsPromises = require('fs').promises;
 const dataPrep = require("../data-validation/data-prep");
 const schemas = require("../data-validation/schema");
 
-const uploadDatasetAndManifest = async (firebaseHandler, datasetJson, readFolder, featureDefsFileName) => {
+const uploadDatasetAndManifest = async (firebaseHandler, datasetJson, readFolder, featureDefsData) => {
     console.log("uploading dataset description and manifest...");
-    const readFeatureData = async () => {
-        const data = await fsPromises.readFile(`${readFolder}/${featureDefsFileName}`)
-        return JSON.parse(data)
-    }
 
-    const featureData = await readFeatureData();
     const dataset = dataPrep.initialize(datasetJson, schemas.datasetSchema)
     dataset.production = false; // by default upload all datasets as a staging set
     const manifest = dataPrep.initialize(datasetJson, schemas.manifestSchema)
@@ -18,7 +13,7 @@ const uploadDatasetAndManifest = async (firebaseHandler, datasetJson, readFolder
     manifest.albumPath = "";
     manifest.featuresDataPath = "";
     manifest.featureDefsPath = "";
-    manifest.featuresDisplayOrder = featureData.map(ele => ele.key)
+    manifest.featuresDisplayOrder = featureDefsData.map(ele => ele.key)
     const datasetCheck = dataPrep.validate(dataset, schemas.dataset)
     const manifestCheck = dataPrep.validate(manifest, schemas.manifest)
     if (datasetCheck.valid) {

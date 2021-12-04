@@ -196,8 +196,8 @@ const fileInfoSchema = {
                 "description": "Field of view cell came from",
                 "type": ["number", "string"]
             },
-            "CellLineName": {
-                "description": "Id of cell line",
+            "groupBy": {
+                "description": "Id of feature the data is grouped by by default",
                 "type": "string",
             },
             "thumbnailPath": {
@@ -221,7 +221,7 @@ const fileInfoSchema = {
         "required": [
             "CellId",
             "FOVId",
-            "CellLineName",
+            "groupBy",
             "volumeviewerPath",
         ],
     }

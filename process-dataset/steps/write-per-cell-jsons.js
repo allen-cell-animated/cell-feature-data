@@ -15,7 +15,7 @@ const {
 } = require("../constants");
 
 
-const formatAndWritePerCellJsons = async (readFolder, outFolder, featureDataFileName, cellLines) => {
+const formatAndWritePerCellJsons = async (readFolder, outFolder, featureDataFileName, featureDefs, defaultGroupBy) => {
 
     console.log("writing out file info json...")
     return fsPromises.readFile(`${readFolder}/${featureDataFileName}`)
@@ -35,11 +35,9 @@ const formatAndWritePerCellJsons = async (readFolder, outFolder, featureDataFile
                     acc[FILE_INFO_KEYS[index]] = cur;
                     return acc;
                 }, {});
-                const cellLine = find(cellLines, {
-                    [CELL_LINE_DEF_NAME_KEY]: fileInfo[CELL_LINE_NAME_KEY]
-                });
-                if (!cellLine) {
-                    console.error("No matching cell line for this cell in the dataset", fileInfo)
+                const groupBy = find(featureDefs, {key: defaultGroupBy}).options[fileInfo.groupBy]
+                if (!groupBy) {
+                    console.error("No matching groupBy for this cell in the dataset", fileInfo)
                     process.exit(1)
                 }
 
@@ -47,7 +45,7 @@ const formatAndWritePerCellJsons = async (readFolder, outFolder, featureDataFile
 
                 measuredFeaturesJson[index] = {
                     f: cellData.features,
-                    p: cellLine[CELL_LINE_DEF_PROTEIN_KEY],
+                    p: groupBy.key || groupBy.name,
                     t: fileInfo.thumbnailPath,
                     i: fileInfo.CellId,
                 }

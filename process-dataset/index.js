@@ -55,24 +55,28 @@ const processDataset = async () => {
             }
         }
     }
+    const readFeatureData = async () => {
+        const data = await fsPromises.readFile(`${datasetReadFolder}/${fileNames.featureDefs}`)
+        return JSON.parse(data)
+    }
 
+    const featureDefsData = await readFeatureData();
+    const defaultGroupBy = datasetJson.defaultGroupBy;
     // 1. upload dataset description and manifest
-    const manifestRef = await uploadDatasetAndManifest(firebaseHandler, datasetJson, datasetReadFolder, fileNames.featureDefs);
+    const manifestRef = await uploadDatasetAndManifest(firebaseHandler, datasetJson, datasetReadFolder, featureDefsData);
     // 2. check dataset feature defs for new features, upload them if needed
-    const featureDefRef = await uploadFeatureDefs(firebaseHandler, datasetReadFolder, fileNames.featureDefs);
-    // 3. upload cell lines TODO: add check if cell line is already there
-    const formattedCellLines = await uploadCellLines(firebaseHandler, datasetReadFolder, fileNames.cellLineData);
-    // 4. format file info, write to json locally
-    await formatAndWritePerCellJsons(datasetReadFolder, TEMP_FOLDER, fileNames.featuresData, formattedCellLines);
-    // 5. upload file info per cell
+    const featureDefRef = await uploadFeatureDefs(firebaseHandler, featureDefsData);
+    // 3. format file info, write to json locally
+    await formatAndWritePerCellJsons(datasetReadFolder, TEMP_FOLDER, fileNames.featuresData, featureDefsData, defaultGroupBy);
+    // 4. upload file info per cell
     const fileInfoLocation = await uploadFileInfo(firebaseHandler, TEMP_FOLDER, skipFileInfoUpload === "true");
-    // 6. upload cell line subtotals
-    await uploadCellCountsPerCellLine(TEMP_FOLDER, firebaseHandler);
-    // 7. upload json to aws
+    // 5. upload cell line subtotals
+    await uploadCellCountsPerCellLine(TEMP_FOLDER, firebaseHandler, defaultGroupBy);
+    // 6. upload json to aws
     const awsLocation = await uploadFileToS3(firebaseHandler.id, TEMP_FOLDER);
-    // 8. upload card image
+    // 7. upload card image
     const awsImageLocation = await uploadDatasetImage(firebaseHandler, datasetReadFolder, datasetJson.image);
-    // 9. update dataset manifest with location for data
+    // 8. update dataset manifest with location for data
     const updateToManifest = {
         ...featureDefRef,
         ...fileInfoLocation, 

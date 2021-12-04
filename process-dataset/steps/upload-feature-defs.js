@@ -4,14 +4,8 @@ const prompt = require('prompt');
 const dataPrep = require("../data-validation/data-prep");
 const schemas = require("../data-validation/schema");
 
-const readFeatureData = async (readFolder, featureDefFileName) => {
-    const data = await fsPromises.readFile(`${readFolder}/${featureDefFileName}`)
-    return JSON.parse(data)
-}
-
-const uploadFeatureDefs = async (firebaseHandler, readFolder, featureDefFileName) => {
+const uploadFeatureDefs = async (firebaseHandler, featureDefs) => {
     console.log("uploading feature defs...")
-    const featureDefs = await readFeatureData(readFolder, featureDefFileName);
     for (let index = 0; index < featureDefs.length; index++) {
         const feature = featureDefs[index];
 
