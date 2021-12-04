@@ -20,6 +20,7 @@
   "volumeViewerDataRoot": "https://s3-us-west-2.amazonaws.com/bisque.allencell.org/v1.4.0/Cell-Viewer_Thumbnails",
   "defaultXAxis": "cellular-volume",
   "defaultYAxis": "nuclear-volume",
+  "defaultGroupBy": "cell-line",
   "featuresDisplayOrder": [],
   "featuresDataOrder": [
             "apical-proximity",

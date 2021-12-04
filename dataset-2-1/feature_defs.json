@@ -6,7 +6,7 @@
     "unit": "\u00b5m",
     "key": "cell-height",
     "discrete": false,
-       "exclude": [
+    "exclude": [
       "groupBy"
     ]
   },
@@ -17,7 +17,7 @@
     "unit": "\u00b5m\u00b3",
     "key": "cell-volume",
     "discrete": false,
-       "exclude": [
+    "exclude": [
       "groupBy"
     ]
   },
@@ -28,7 +28,7 @@
     "unit": "\u00b5m\u00b2",
     "key": "cell-surface-area",
     "discrete": false,
-       "exclude": [
+    "exclude": [
       "groupBy"
     ]
   },
@@ -39,7 +39,7 @@
     "unit": "\u00b5m",
     "key": "dna-height",
     "discrete": false,
-       "exclude": [
+    "exclude": [
       "groupBy"
     ]
   },
@@ -50,7 +50,7 @@
     "unit": "\u00b5m\u00b3",
     "key": "dna-volume",
     "discrete": false,
-       "exclude": [
+    "exclude": [
       "groupBy"
     ]
   },
@@ -250,5 +250,134 @@
     "exclude": [
       "groupBy"
     ]
+  },
+  {
+    "key": "cell-line",
+    "displayName": "Labeled Structure",
+    "description": "Name of the cellular structure that has been fluorescently labeled in each cell line",
+    "tooltip": "Name of the cellular structure that has been fluorescently labeled in each cell line",
+    "discrete": true,
+    "options": {
+      "AICS-5": {
+        "color": "",
+        "name": "Matrix adhesions",
+        "key": "Paxillin"
+      },
+      "AICS-7": {
+        "color": "",
+        "name": "Actin filaments",
+        "key": "Alpha-actinin-1"
+      },
+      "AICS-10": {
+        "color": "",
+        "name": "Endoplasmic reticulum",
+        "key": "Sec61 beta"
+      },
+      "AICS-11": {
+        "color": "",
+        "name": "Mitochondria",
+        "key": "Tom20"
+      },
+      "AICS-12": {
+        "color": "",
+        "name": "Microtubules",
+        "key": "Alpha-tubulin"
+      },
+      "AICS-13": {
+        "color": "",
+        "name": "Nuclear envelope",
+        "key": "Lamin B1"
+      },
+      "AICS-14": {
+        "color": "",
+        "name": "Nucleolus (Dense Fibrillar Component)",
+        "key": "Fibrillarin"
+      },
+      "AICS-16": {
+        "color": "",
+        "name": "Actin filaments",
+        "key": "Beta-actin"
+      },
+      "AICS-17": {
+        "color": "",
+        "name": "Desmosomes",
+        "key": "Desmoplakin"
+      },
+      "AICS-22": {
+        "color": "",
+        "name": "Lysosome",
+        "key": "LAMP-1"
+      },
+      "AICS-23": {
+        "color": "",
+        "name": "Tight junctions",
+        "key": "Tight junction ZO-1"
+      },
+      "AICS-24": {
+        "color": "",
+        "name": "Actomyosin bundles",
+        "key": "Non-muscle myosin heavy chain IIB"
+      },
+      "AICS-25": {
+        "color": "",
+        "name": "Golgi",
+        "key": "Sialyltransferase 1"
+      },
+      "AICS-32": {
+        "color": "",
+        "name": "Centrosome",
+        "key": "Centrin-2"
+      },
+      "AICS-33": {
+        "color": "",
+        "name": "Peroxisomes",
+        "key": "Peroxisomal membrane protein PMP34"
+      },
+      "AICS-40": {
+        "color": "",
+        "name": "Endosomes",
+        "key": "Ras-related protein Rab-5A"
+      },
+      "AICS-53": {
+        "color": "",
+        "name": "Gap junctions",
+        "key": "Connexin-43"
+      },
+      "AICS-54": {
+        "color": "",
+        "name": "Plasma membrane",
+        "key": "CAAX domain of K-Ras"
+      },
+      "AICS-57": {
+        "color": "",
+        "name": "Nucleolus (Granular Component)",
+        "key": "Nucleophosmin"
+      },
+      "AICS-58": {
+        "color": "",
+        "name": "Adherens junctions",
+        "key": "Beta-catenin"
+      },
+      "AICS-61": {
+        "color": "",
+        "name": "Heterochromatin",
+        "key": "Histone H2B type 1-J"
+      },
+      "AICS-68": {
+        "color": "",
+        "name": "Cohesin",
+        "key": "SMC protein 1A"
+      },
+      "AICS-69": {
+        "color": "",
+        "name": "Nuclear pores",
+        "key": "Nucleoporin Nup153"
+      },
+      "AICS-94": {
+        "color": "",
+        "name": "RNA Speckles",
+        "key": "SON"
+      }
+    }
   }
 ]

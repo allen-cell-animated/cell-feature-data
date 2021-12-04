@@ -21,6 +21,7 @@
   "defaultXAxis": "cos",
   "defaultYAxis": "myh7-density",
   "defaultColorBy": "cell-age",
+  "defaultGroupBy": "rna-fish-targets",
   "featuresDisplayOrder": [
     "cell-age",
     "expert-score",

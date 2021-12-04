@@ -19,10 +19,7 @@
         "color": "#9D02D7",
         "name": "D32"
       }
-    },
-    "exclude": [
-      "groupBy"
-    ]
+    }
   },
   {
     "displayName": "Expert score mean",

@@ -100,6 +100,10 @@ const manifestSchema = {
             "description": "Default feature to color the data by",
             "type": "string",
         },
+        "defaultGroupBy": {
+            "description": "Default feature to group the data by with checkboxes",
+            "type": "string",
+        },
         "featuresDisplayOrder": {
             "description": "Ordered array of feature keys for display on front end",
             "type": "array",

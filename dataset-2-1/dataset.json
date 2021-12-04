@@ -20,6 +20,7 @@
   "volumeViewerDataRoot": "https://s3-us-west-2.amazonaws.com/bisque.allencell.org/v2.0.0/Cell-Viewer_Thumbnails",
   "defaultXAxis": "cell-volume",
   "defaultYAxis": "dna-volume",
+  "defaultGroupBy": "cell-line",
   "featuresDisplayOrder": [],
   "featuresDataOrder": [
     "cell-height",
