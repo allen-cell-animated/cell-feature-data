@@ -260,6 +260,7 @@
                 "name": "Adherens junctions",
                 "key": "Beta-catenin"
             }
-        }
+        },
+        "exclude": ["plot"]
     }
 ]

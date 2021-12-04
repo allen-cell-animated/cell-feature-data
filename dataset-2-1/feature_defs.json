@@ -378,6 +378,9 @@
         "name": "RNA Speckles",
         "key": "SON"
       }
-    }
+    },
+    "exclude": [
+      "plot"
+    ]
   }
 ]
