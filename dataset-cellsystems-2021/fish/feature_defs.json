@@ -639,7 +639,7 @@
     "discrete": true,
     "options": {
       "MYH6-MYH7": {
-        "color": "",
+        "color": "#FF82FF",
         "name": "MYH6-MYH7",
         "key": "561-638"
       },
@@ -649,7 +649,7 @@
         "key": "561-638"
       },
       "ATP2A2-H19": {
-        "color": "",
+        "color": "#FFFFA0",
         "name": "ATP2A2-H19",
         "key": "561-638"
       },
@@ -659,7 +659,7 @@
         "key": "561-638"
       },
       "NKX25-CNTN5": {
-        "color": "",
+        "color": "#CB1CCC",
         "name": "NKX25-CNTN5",
         "key": "561-638"
       },
