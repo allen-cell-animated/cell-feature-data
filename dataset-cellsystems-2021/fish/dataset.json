@@ -18,11 +18,20 @@
   "thumbnailRoot": "https://s3-us-west-2.amazonaws.com/bisque.allencell.org/cellsystems-2021-fish.1/Cell-Viewer_Thumbnails",
   "downloadRoot": "https://files.allencell.org/api/2.0/file/download?collection=cellsystems-2021-fish_1",
   "volumeViewerDataRoot": "https://s3-us-west-2.amazonaws.com/bisque.allencell.org/cellsystems-2021-fish.1/Cell-Viewer_Thumbnails",
-  "defaultXAxis": "cos",
-  "defaultYAxis": "myh7-density",
-  "defaultColorBy": "cell-age",
-  "defaultGroupBy": "rna-fish-targets",
+  "xAxis": {
+    "default": "cos"
+  },
+  "yAxis": {
+    "default": "myh7-density"
+  },
+  "colorBy": {
+    "default": "cell-age"
+  },
+  "groupBy": {
+    "default": "rna-fish-targets"
+  },
   "featuresDisplayOrder": [
+    "rna-fish-targets",
     "cell-age",
     "expert-score",
     "cos",
@@ -62,6 +71,7 @@
     "actn2-count"
   ],
   "featuresDataOrder": [
+    "rna-fish-targets",
     "cell-age",
     "expert-score",
     "cos",
@@ -99,5 +109,5 @@
     "actn2-density",
     "ttn-density",
     "actn2-count"
-  ]
+    ]
 }

@@ -160,102 +160,102 @@
         "tooltip": "Name of the cellular structure that has been fluorescently labeled in each cell line",
         "discrete": true,
         "options": {
-            "AICS-5": {
+            "5": {
                 "color": "#77207C",
                 "name": "Matrix adhesions",
                 "key": "Paxillin"
             },
-            "AICS-7": {
+            "7": {
                 "color": "#FF96FF",
                 "name": "Actin filaments",
                 "key": "Alpha-actinin-1"
             },
-            "AICS-10": {
+            "10": {
                 "color": "#FFFFB5",
                 "name": "Endoplasmic reticulum",
                 "key": "Sec61 beta"
             },
-            "AICS-11": {
+            "11": {
                 "color": "#FFD184",
                 "name": "Mitochondria",
                 "key": "Tom20"
             },
-            "AICS-12": {
+            "12": {
                 "color": "#6B4500",
                 "name": "Microtubules",
                 "key": "Alpha-tubulin"
             },
-            "AICS-13": {
+            "13": {
                 "color": "#084AE7",
                 "name": "Nuclear envelope",
                 "key": "Lamin B1"
             },
-            "AICS-14": {
+            "14": {
                 "color": "#A9D1E5",
                 "name": "Nucleolus (Dense Fibrillar Component)",
                 "key": "Fibrillarin"
             },
-            "AICS-16": {
+            "16": {
                 "color": "#FFB1FF",
                 "name": "Actin filaments",
                 "key": "Beta-actin"
             },
-            "AICS-17": {
+            "17": {
                 "color": "#A850E8",
                 "name": "Desmosomes",
                 "key": "Desmoplakin"
             },
-            "AICS-22": {
+            "22": {
                 "color": "#AD952A",
                 "name": "Lysosome",
                 "key": "LAMP-1"
             },
-            "AICS-23": {
+            "23": {
                 "color": "#A850D4",
                 "name": "Tight junctions",
                 "key": "Tight junction ZO-1"
             },
-            "AICS-24": {
+            "24": {
                 "color": "#FF82FF",
                 "name": "Actomyosin bundles",
                 "key": "Non-muscle myosin heavy chain IIB"
             },
-            "AICS-25": {
+            "25": {
                 "color": "#B7952A",
                 "name": "Golgi",
                 "key": "Sialyltransferase 1"
             },
-            "AICS-32": {
+            "32": {
                 "color": "#9D7000",
                 "name": "Centrosome",
                 "key": "Centrin-2"
             },
-            "AICS-33": {
+            "33": {
                 "color": "#FFD16E",
                 "name": "Peroxisomes",
                 "key": "Peroxisomal membrane protein PMP34"
             },
-            "AICS-40": {
+            "40": {
                 "color": "#FFD150",
                 "name": "Endosomes",
                 "key": "Ras-related protein Rab-5A"
             },
-            "AICS-53": {
+            "53": {
                 "color": "#A850C0",
                 "name": "Gap junctions",
                 "key": "Connexin-43"
             },
-            "AICS-54": {
+            "54": {
                 "color": "#FFD2FF",
                 "name": "Plasma membrane",
                 "key": "CAAX domain of K-Ras"
             },
-            "AICS-57": {
+            "57": {
                 "color": "#88D1E5",
                 "name": "Nucleolus (Granular Component)",
                 "key": "Nucleophosmin"
             },
-            "AICS-58": {
+            "58": {
                 "color": "#CB1CCC",
                 "name": "Adherens junctions",
                 "key": "Beta-catenin"

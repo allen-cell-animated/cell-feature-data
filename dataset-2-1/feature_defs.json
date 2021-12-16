@@ -5,10 +5,7 @@
     "tooltip": "The height of a cell, as measured by the number of voxels that separates the bottom most and top most voxels in the segmented image converted to units of \u00b5m.",
     "unit": "\u00b5m",
     "key": "cell-height",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Cell volume",
@@ -16,10 +13,7 @@
     "tooltip": "The volume of a cell, as measured by the sum of individual volumes of segmented voxels in the segmented cell image, in units of \u00b5m\u00b3.",
     "unit": "\u00b5m\u00b3",
     "key": "cell-volume",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Cell surface area",
@@ -27,10 +21,7 @@
     "tooltip": "The surface area of a cell, as measured by the sum of individual outer surface areas of segmented voxels (facing the background) in the segmented cell image, in units of \u00b5m\u00b2.",
     "unit": "\u00b5m\u00b2",
     "key": "cell-surface-area",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "DNA height",
@@ -38,10 +29,7 @@
     "tooltip": "The height of a nucleus, as measured by the number of voxels that separates the bottom most and top most voxel in the segmented DNA image converted to units of \u00b5m.",
     "unit": "\u00b5m",
     "key": "dna-height",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "DNA volume",
@@ -49,10 +37,7 @@
     "tooltip": "The volume of a nucleus, as measured by the sum of individual volumes of segmented voxels in the segmented DNA image, in units of \u00b5m\u00b3.",
     "unit": "\u00b5m\u00b3",
     "key": "dna-volume",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "DNA surface area",
@@ -60,10 +45,7 @@
     "tooltip": "The surface area of the nucleus, as measured by the sum of individual outer surface areas of segmented voxels (facing the background) in the segmented DNA image, in units of \u00b5m\u00b2.",
     "unit": "\u00b5m\u00b2",
     "key": "dna-surface-area",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Cellular structure volume",
@@ -71,10 +53,7 @@
     "tooltip": "The volume of the fluorescently labeled structure, as measured by sum of individual volumes of segmented voxels in the segmented structure image, in units of \u00b5m\u00b3.",
     "unit": "\u00b5m\u00b3",
     "key": "intracellular-structure-volume",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Anaphase segmentation complete",
@@ -96,10 +75,7 @@
         "color": "#838383",
         "name": "Not determined"
       }
-    },
-    "exclude": [
-      "groupBy"
-    ]
+    }
   },
   {
     "displayName": "Interphase or mitosis",
@@ -121,10 +97,7 @@
         "color": "#838383",
         "name": "Not determined"
       }
-    },
-    "exclude": [
-      "groupBy"
-    ]
+    }
   },
   {
     "displayName": "Interphase & mitotic stages",
@@ -158,10 +131,7 @@
         "color": "#838383",
         "name": "Not determined"
       }
-    },
-    "exclude": [
-      "groupBy"
-    ]
+    }
   },
   {
     "displayName": "Shape Mode 1 - height",
@@ -169,10 +139,7 @@
     "tooltip": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space. Variation in Shape Mode 1 corresponds to cell height.",
     "unit": "std",
     "key": "shape-mode-1",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Shape Mode 2 - volume",
@@ -180,10 +147,7 @@
     "tooltip": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space. Variation in Shape Mode 2 corresponds to cell volume.",
     "unit": "std",
     "key": "shape-mode-2",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Shape Mode 3 - major tilt",
@@ -191,10 +155,7 @@
     "tooltip": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space. Variation in Shape Mode 3 corresponds to how much the cell is tilted in z along the major axis of the cell.",
     "unit": "std",
     "key": "shape-mode-3",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Shape Mode 4 - minor tilt",
@@ -202,10 +163,7 @@
     "tooltip": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space.  Variation in Shape Mode 3 corresponds to how much the cell is tilted in z along the minor axis of the cell.",
     "unit": "std",
     "key": "shape-mode-4",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Shape Mode 5 - elongation",
@@ -213,10 +171,7 @@
     "tooltip": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space.  Variation in Shape Mode 5 corresponds to elongation along the major axis of the cell from the top view.",
     "unit": "std",
     "key": "shape-mode-5",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Shape Mode 6 - bean-ness",
@@ -224,10 +179,7 @@
     "tooltip": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space. Variation in Shape Mode 6 corresponds to how bean-shaped the cell appears, and the orientation of the “bean” from the top view.",
     "unit": "std",
     "key": "shape-mode-6",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Shape Mode 7 - pear-ness",
@@ -235,10 +187,7 @@
     "tooltip": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space. Variation in Shape Mode 7 corresponds to how pear-shaped the cell appears, and the orientation of the “pear” from the top view.",
     "unit": "std",
     "key": "shape-mode-7",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Shape Mode 8 - wedge",
@@ -246,10 +195,7 @@
     "tooltip": "All principal components (PCs) were z-scored by dividing the PC values by the standard deviation (σ) of that PC. The z-scored principal components are referred to as “Shape Modes” and the combination of the first 8 Shape Modes creates the 8-dimensional generative shape space. Variation in Shape Mode 8 corresponds to how trapezoidal the cell appears in z and the orientation of the trapezoid from the side view.",
     "unit": "std",
     "key": "shape-mode-8",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "key": "cell-line",
@@ -258,122 +204,122 @@
     "tooltip": "Name of the cellular structure that has been fluorescently labeled in each cell line",
     "discrete": true,
     "options": {
-      "AICS-5": {
+      "5": {
         "color": "#77207C",
         "name": "Matrix adhesions",
         "key": "Paxillin"
       },
-      "AICS-7": {
+      "7": {
         "color": "#FFB1FF",
         "name": "Actin filaments",
         "key": "Alpha-actinin-1"
       },
-      "AICS-10": {
+      "10": {
         "color": "#FFFFB5",
         "name": "Endoplasmic reticulum",
         "key": "Sec61 beta"
       },
-      "AICS-11": {
+      "11": {
         "color": "#FFD184",
         "name": "Mitochondria",
         "key": "Tom20"
       },
-      "AICS-12": {
+      "12": {
         "color": "#6B4500",
         "name": "Microtubules",
         "key": "Alpha-tubulin"
       },
-      "AICS-13": {
+      "13": {
         "color": "#084AE7",
         "name": "Nuclear envelope",
         "key": "Lamin B1"
       },
-      "AICS-14": {
+      "14": {
         "color": "#A9D1E5",
         "name": "Nucleolus (Dense Fibrillar Component)",
         "key": "Fibrillarin"
       },
-      "AICS-16": {
+      "16": {
         "color": "#FFB1FF",
         "name": "Actin filaments",
         "key": "Beta-actin"
       },
-      "AICS-17": {
+      "17": {
         "color": "#A850E8",
         "name": "Desmosomes",
         "key": "Desmoplakin"
       },
-      "AICS-22": {
+      "22": {
         "color": "#AD952A",
         "name": "Lysosome",
         "key": "LAMP-1"
       },
-      "AICS-23": {
+      "23": {
         "color": "#A850D4",
         "name": "Tight junctions",
         "key": "Tight junction ZO-1"
       },
-      "AICS-24": {
+      "24": {
         "color": "#FF82FF",
         "name": "Actomyosin bundles",
         "key": "Non-muscle myosin heavy chain IIB"
       },
-      "AICS-25": {
+      "25": {
         "color": "#B7952A",
         "name": "Golgi",
         "key": "Sialyltransferase 1"
       },
-      "AICS-32": {
+      "32": {
         "color": "#9D7000",
         "name": "Centrosome",
         "key": "Centrin-2"
       },
-      "AICS-33": {
+      "33": {
         "color": "#FFD16E",
         "name": "Peroxisomes",
         "key": "Peroxisomal membrane protein PMP34"
       },
-      "AICS-40": {
+      "40": {
         "color": "#FFD150",
         "name": "Endosomes",
         "key": "Ras-related protein Rab-5A"
       },
-      "AICS-53": {
+      "53": {
         "color": "#A850C0",
         "name": "Gap junctions",
         "key": "Connexin-43"
       },
-      "AICS-54": {
+      "54": {
         "color": "#FFD2FF",
         "name": "Plasma membrane",
         "key": "CAAX domain of K-Ras"
       },
-      "AICS-57": {
+      "57": {
         "color": "#88D1E5",
         "name": "Nucleolus (Granular Component)",
         "key": "Nucleophosmin"
       },
-      "AICS-58": {
+      "58": {
         "color": "#CB1CCC",
         "name": "Adherens junctions",
         "key": "Beta-catenin"
       },
-      "AICS-61": {
+      "61": {
         "color": "#305098",
         "name": "Heterochromatin",
         "key": "Histone H2B type 1-J"
       },
-      "AICS-68": {
+      "68": {
         "color": "#306598",
         "name": "Cohesin",
         "key": "SMC protein 1A"
       },
-      "AICS-69": {
+      "69": {
         "color": "#0840E7",
         "name": "Nuclear pores",
         "key": "Nucleoporin Nup153"
       },
-      "AICS-94": {
+      "94": {
         "color": "#3292C9",
         "name": "RNA Speckles",
         "key": "SON"
