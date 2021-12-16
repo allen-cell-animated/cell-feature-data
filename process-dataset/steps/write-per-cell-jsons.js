@@ -15,7 +15,7 @@ const {
 } = require("../constants");
 
 
-const formatAndWritePerCellJsons = async (readFolder, outFolder, featureDataFileName, featureDefs, defaultGroupBy) => {
+const formatAndWritePerCellJsons = async (readFolder, outFolder, featureDataFileName, featureDefs, defaultGroupBy, defaultGroupByIndex) => {
 
     console.log("writing out file info json...")
     return fsPromises.readFile(`${readFolder}/${featureDataFileName}`)
@@ -25,21 +25,19 @@ const formatAndWritePerCellJsons = async (readFolder, outFolder, featureDataFile
             const fileInfoJson = [];
             for (let index = 0; index < json.length; index++) {
                 const cellData = json[index];
-
                 if (cellData.file_info.length !== FILE_INFO_KEYS.length) {
                     console.error("file info in not in expected format")
                     process.exit(1)
                 }
                 const fileInfo = cellData.file_info.reduce((acc, cur, index) => {
-
                     acc[FILE_INFO_KEYS[index]] = cur;
                     return acc;
                 }, {});
-                const groupBy = find(featureDefs, {key: defaultGroupBy}).options[fileInfo.groupBy]
-                if (!groupBy) {
-                    console.error("No matching groupBy for this cell in the dataset", fileInfo)
-                    process.exit(1)
-                }
+
+                const categoryValue = cellData.features[defaultGroupByIndex];
+                const groupBy = find(featureDefs, {
+                    key: defaultGroupBy
+                }).options[categoryValue]
 
                 fileInfoJson[index] = fileInfo;
 
@@ -49,7 +47,6 @@ const formatAndWritePerCellJsons = async (readFolder, outFolder, featureDataFile
                     t: fileInfo.thumbnailPath,
                     i: fileInfo.CellId,
                 }
-
             }
 
             const fileInfoCheck = dataPrep.validate(fileInfoJson, schemas.fileInfo);

@@ -88,21 +88,73 @@ const manifestSchema = {
             "description": "Root url for 3d images",
             "type": "string",
         },
-        "defaultXAxis": {
-            "description": "Default feature to plot on x axis",
-            "type": "string",
+        "xAxis": {
+            "description": "Settings for the x axis",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the axis",
+                    "type": "string",
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
         },
-        "defaultYAxis": {
-            "description": "Default feature to plot on y axis",
-            "type": "string",
+        "yAxis": {
+            "description": "Settings for the y axis",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the axis",
+                    "type": "string",
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
         },
-        "defaultColorBy": {
-            "description": "Default feature to color the data by",
-            "type": "string",
+        "colorBy": {
+            "description": "Settings for the color by menu",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key to color the data by",
+                    "type": "string",
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
         },
-        "defaultGroupBy": {
-            "description": "Default feature to group the data by with checkboxes",
-            "type": "string",
+        "groupBy": {
+            "description": "Settings for the grouping menu",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the group menu",
+                    "type": "string",
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
         },
         "featuresDisplayOrder": {
             "description": "Ordered array of feature keys for display on front end",
@@ -120,8 +172,8 @@ const manifestSchema = {
         "thumbnailRoot",
         "downloadRoot",
         "volumeViewerDataRoot",
-        "defaultXAxis",
-        "defaultYAxis",
+        "xAxis",
+        "yAxis",
         "featuresDisplayOrder",
         "featuresDataOrder"
     ],

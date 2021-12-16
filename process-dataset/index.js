@@ -1,9 +1,10 @@
 const fsPromises = require('fs').promises;
+const findIndex = require("lodash").findIndex;
 
 const uploadDatasetAndManifest = require("./steps/upload-dataset-and-manifest");
 const uploadFeatureDefs = require("./steps/upload-feature-defs");
 const formatAndWritePerCellJsons = require("./steps/write-per-cell-jsons");
-const uploadCellCountsPerCellLine = require("./steps/upload-cell-counts");
+const uploadCellCountsPerCategory = require("./steps/upload-cell-counts");
 const uploadFileInfo = require("./steps/upload-file-info");
 const uploadFileToS3 = require("./steps/upload-to-aws");
 const uploadDatasetImage = require("./steps/upload-dataset-image")
@@ -60,17 +61,19 @@ const processDataset = async () => {
     }
 
     const featureDefsData = await readFeatureData();
-    const defaultGroupBy = datasetJson.defaultGroupBy;
+    const defaultGroupBy = datasetJson.groupBy.default;
+    const defaultGroupByIndex = datasetJson.featuresDataOrder.indexOf(defaultGroupBy);
+
     // 1. upload dataset description and manifest
     const manifestRef = await uploadDatasetAndManifest(firebaseHandler, datasetJson, datasetReadFolder, featureDefsData);
     // 2. check dataset feature defs for new features, upload them if needed
     const featureDefRef = await uploadFeatureDefs(firebaseHandler, featureDefsData);
     // 3. format file info, write to json locally
-    await formatAndWritePerCellJsons(datasetReadFolder, TEMP_FOLDER, fileNames.featuresData, featureDefsData, defaultGroupBy);
+    await formatAndWritePerCellJsons(datasetReadFolder, TEMP_FOLDER, fileNames.featuresData, featureDefsData, defaultGroupBy, defaultGroupByIndex);
     // 4. upload file info per cell
     const fileInfoLocation = await uploadFileInfo(firebaseHandler, TEMP_FOLDER, skipFileInfoUpload === "true");
     // 5. upload cell line subtotals
-    await uploadCellCountsPerCellLine(TEMP_FOLDER, firebaseHandler, defaultGroupBy);
+    await uploadCellCountsPerCategory(TEMP_FOLDER, firebaseHandler, defaultGroupBy);
     // 6. upload json to aws
     const awsLocation = await uploadFileToS3(firebaseHandler.id, TEMP_FOLDER);
     // 7. upload card image
