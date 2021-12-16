@@ -2,7 +2,6 @@ const fsPromises = require('fs').promises;
 
 const uploadDatasetAndManifest = require("./steps/upload-dataset-and-manifest");
 const uploadFeatureDefs = require("./steps/upload-feature-defs");
-const uploadCellLines = require("./steps/upload-cell-lines");
 const formatAndWritePerCellJsons = require("./steps/write-per-cell-jsons");
 const uploadCellCountsPerCellLine = require("./steps/upload-cell-counts");
 const uploadFileInfo = require("./steps/upload-file-info");
