@@ -174,6 +174,7 @@ const manifestSchema = {
         "volumeViewerDataRoot",
         "xAxis",
         "yAxis",
+        "groupBy",
         "featuresDisplayOrder",
         "featuresDataOrder"
     ],
