@@ -27,10 +27,7 @@
     "tooltip": "Mean expert score of level of sarcomeric z-disk organization of each cell (1 is least organized; 5 is most organized).",
     "unit": "",
     "key": "expert-score",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Combined organizational score",
@@ -38,10 +35,7 @@
     "tooltip": "Sarcomeric z-disk organizational score calculated using linear regression of expert scores as a function of 11 cell features fit on training dataset of expert scored cells.",
     "unit": "",
     "key": "cos",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Fraction area organized z-disks",
@@ -49,10 +43,7 @@
     "tooltip": "Fraction of cell area covered by organized z-disks, one of the five local patterns classified by the machine learning based alpha-actinin-2 pattern classifier.",
     "unit": "\u00b5m\u00b2",
     "key": "area-zdisk",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Fraction area organized puncta",
@@ -60,10 +51,7 @@
     "tooltip": "Fraction of cell area covered by organized puncta, one of the five local patterns classified by the machine learning based alpha-actinin-2 pattern classifier.",
     "unit": "\u00b5m\u00b2",
     "key": "area-orgpuncta",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Fraction area disorganized puncta",
@@ -71,10 +59,7 @@
     "tooltip": "Fraction of cell area covered by disorganized puncta, one of the five local patterns classified by the machine learning based alpha-actinin-2 pattern classifier.",
     "unit": "\u00b5m\u00b2",
     "key": "area-disorgpuncta",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Fraction area fibers",
@@ -82,10 +67,7 @@
     "tooltip": "Fraction of cell area covered by fibers, one of the five local patterns classified by the machine learning based alpha-actinin-2 pattern classifier.",
     "unit": "\u00b5m\u00b2",
     "key": "area-fibers",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Fraction area diffuse/other",
@@ -93,10 +75,7 @@
     "tooltip": "Fraction of cell area covered by diffuse/other, one of the five local patterns classified by the machine learning based alpha-actinin-2 pattern classifier.",
     "unit": "\u00b5m\u00b2",
     "key": "area-diffuse",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Fraction area background",
@@ -104,10 +83,7 @@
     "tooltip": "Fraction of cell area covered by background, one of the five local patterns classified by the machine learning based alpha-actinin-2 pattern classifier.",
     "unit": "\u00b5m\u00b2",
     "key": "area-background",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Max coefficient of variation",
@@ -115,10 +91,7 @@
     "tooltip": "Maximum coefficient of variation is one of three key Haralick correlation based metrics of global sarcomere structure alignment.",
     "unit": "",
     "key": "max-cov",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Peak height",
@@ -126,10 +99,7 @@
     "tooltip": "Peak height is one of three key Haralick correlation based metrics of global sarcomere structure alignment.",
     "unit": "",
     "key": "peak-height",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Peak distance",
@@ -137,10 +107,7 @@
     "tooltip": "Peak distance is one of three key Haralick correlation based metrics of global sarcomere structure alignment.",
     "unit": "\u00b5m",
     "key": "peak-distance",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Alpha-actinin-2 protein density",
@@ -148,10 +115,7 @@
     "tooltip": "Alpha-actinin-2 protein density in 2D segmented cell.",
     "unit": "a.u. x10\u00b6",
     "key": "protein-density",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Cell area",
@@ -159,10 +123,7 @@
     "tooltip": "2D segmented cell area.",
     "unit": "\u00b5m\u00b2",
     "key": "cell-area",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Cell aspect ratio",
@@ -170,10 +131,7 @@
     "tooltip": "2D segmented cell aspect ratio.",
     "unit": "",
     "key": "cell-aspect",
-    "discrete": false,
-    "exclude": [
-      "groupBy"
-    ]
+    "discrete": false
   },
   {
     "displayName": "Experiment",
@@ -203,10 +161,7 @@
         "name": "Exp5",
         "color": "#9467bd"
       }
-    },
-    "exclude": [
-      "groupBy"
-    ]
+    }
   },
   {
     "displayName": "Plate",
@@ -300,10 +255,7 @@
         "name": "5500000103",
         "color": "#4b68ae"
       }
-    },
-    "exclude": [
-      "groupBy"
-    ]
+    }
   },
   {
     "displayName": "Well",
@@ -617,9 +569,6 @@
         "name": "5500000103-C5",
         "color": "#5956a5"
       }
-    },
-    "exclude": [
-      "groupBy"
-    ]
+    }
   }
 ]
