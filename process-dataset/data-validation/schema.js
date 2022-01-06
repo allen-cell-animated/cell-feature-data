@@ -175,6 +175,7 @@ const manifestSchema = {
         "xAxis",
         "yAxis",
         "groupBy",
+        "colorBy",
         "featuresDisplayOrder",
         "featuresDataOrder"
     ],
