@@ -529,53 +529,43 @@
     "options": {
       "0": {
         "color": "#1F77B4",
-        "name": "MYH6-MYH7",
-        "key": "561-638"
+        "name": "MYH6-MYH7"
       },
       "1": {
         "color": "#FF7F0E",
-        "name": "HPRT1-COL2A1",
-        "key": "561-638"
+        "name": "HPRT1-COL2A1"
       },
       "2": {
         "color": "#2CA02C",
-        "name": "ATP2A2-H19",
-        "key": "561-638"
+        "name": "ATP2A2-H19"
       },
       "3": {
         "color": "#D62728",
-        "name": "TCAP-BAG3",
-        "key": "561-638"
+        "name": "TCAP-BAG3"
       },
       "4": {
         "color": "#9467BD",
-        "name": "NKX25-CNTN5",
-        "key": "561-638"
+        "name": "NKX25-CNTN5"
       },
       "5": {
         "color": "#8C564B",
-        "name": "MEF2C-MYL7",
-        "key": "561-638"
+        "name": "MEF2C-MYL7"
       },
       "6": {
         "color": "#E377C2",
-        "name": "PLN-PRSS35",
-        "key": "561-638"
+        "name": "PLN-PRSS35"
       },
       "7": {
         "color": "#7F7F7F",
-        "name": "BMPER-VCAN",
-        "key": "561-638"
+        "name": "BMPER-VCAN"
       },
       "8": {
         "color": "#BCBD22",
-        "name": "ACTN2-TTN",
-        "key": "561-638"
+        "name": "ACTN2-TTN"
       },
       "9": {
         "color": "#17BECF",
-        "name": "TTN-ACTN2",
-        "key": "561-638"
+        "name": "TTN-ACTN2"
       }
     }
   }
