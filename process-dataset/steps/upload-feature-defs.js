@@ -1,5 +1,7 @@
-const fsPromises = require('fs').promises;
 const prompt = require('prompt');
+const map = require("lodash").map;
+const uniq = require("lodash").uniq;
+const filter = require("lodash").filter;
 
 const dataPrep = require("../data-validation/data-prep");
 const schemas = require("../data-validation/schema");
@@ -8,7 +10,15 @@ const uploadFeatureDefs = async (firebaseHandler, featureDefs) => {
     console.log("uploading feature defs...")
     for (let index = 0; index < featureDefs.length; index++) {
         const feature = featureDefs[index];
-
+        if (feature.discrete) {
+            // check if the keys in the options are unique, if they exist
+            const noOptions = map(feature.options).length;
+            const noUniqueKeys = filter(uniq(map(feature.options, "key"))).length;
+            if (noUniqueKeys > 0 && noUniqueKeys !== noOptions) {
+                console.error("Feature def keys are not unique")
+                return process.exit(1)
+            }
+        }
         const featureData = dataPrep.initialize(feature, schemas.featureDefSchema)
         const diffToDatabase = await firebaseHandler.checkFeatureExists(featureData)
         const featureCheck = dataPrep.validate(featureData, schemas.featureDef)
@@ -34,7 +44,7 @@ const uploadFeatureDefs = async (firebaseHandler, featureDefs) => {
         } else if (featureCheck.valid) {
             await firebaseHandler.addFeature(feature)
         }
-        
+
     }
     console.log("uploading feature defs complete")
     return {
