@@ -522,54 +522,60 @@
   {
     "displayName": "RNA FISH Targets",
     "description": "Pair of gene transcripts assayed by RNA fluorescence in situ hybridization (RNA FISH)",
-    "tooltip": "",
+    "tooltip": "Pair of gene transcripts assayed by RNA fluorescence in situ hybridization (RNA FISH)",
     "unit": "",
     "key": "rna-fish-targets",
     "discrete": true,
     "options": {
       "0": {
-        "color": "#FF82FF",
-        "name": "MYH6-MYH7"
+        "color": "#1F77B4",
+        "name": "MYH6-MYH7",
+        "key": "561-638"
       },
       "1": {
-        "color": "",
+        "color": "#FF7F0E",
         "name": "HPRT1-COL2A1",
         "key": "561-638"
       },
       "2": {
-        "color": "#FFFFA0",
-        "name": "ATP2A2-H19"
+        "color": "#2CA02C",
+        "name": "ATP2A2-H19",
+        "key": "561-638"
       },
       "3": {
-        "color": "",
+        "color": "#D62728",
         "name": "TCAP-BAG3",
         "key": "561-638"
       },
       "4": {
-        "color": "#CB1CCC",
-        "name": "NKX25-CNTN5"
+        "color": "#9467BD",
+        "name": "NKX25-CNTN5",
+        "key": "561-638"
       },
       "5": {
-        "color": "",
-        "name": "MEF2C-MYL7"
+        "color": "#8C564B",
+        "name": "MEF2C-MYL7",
+        "key": "561-638"
       },
       "6": {
-        "color": "",
+        "color": "#E377C2",
         "name": "PLN-PRSS35",
         "key": "561-638"
       },
       "7": {
-        "color": "",
-        "name": "BMPER-VCAN"
+        "color": "#7F7F7F",
+        "name": "BMPER-VCAN",
+        "key": "561-638"
       },
       "8": {
-        "color": "",
+        "color": "#BCBD22",
         "name": "ACTN2-TTN",
         "key": "561-638"
       },
       "9": {
-        "color": "",
-        "name": "TTN-ACTN2"
+        "color": "#17BECF",
+        "name": "TTN-ACTN2",
+        "key": "561-638"
       }
     }
   }
