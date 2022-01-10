@@ -216,10 +216,6 @@ const featureDefSchema = {
         "options": {
             "description": "For discrete features, display items for each value",
             "type": "object",
-        },
-        "exclude": {
-            "description": "Parts of the app to exclude this feature from. Options are 'plot', 'colorBy', 'groupBy'",
-            "type": "array",
         }
     },
     "required": [
