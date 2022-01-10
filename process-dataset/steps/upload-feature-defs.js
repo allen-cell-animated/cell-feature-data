@@ -13,8 +13,8 @@ const uploadFeatureDefs = async (firebaseHandler, featureDefs) => {
         if (feature.discrete) {
             // check if the options key are unique
             const numKeys = filter(map(feature.options, "keys")).length; // filter will remove any undefined keys
-            const noUniqueKeys = uniq(numKeys).length;
-            if (numKeys > 0 && numKeys !== noUniqueKeys) {
+            const numUniqueKeys = uniq(numKeys).length;
+            if (numKeys > 0 && numKeys !== numUniqueKeys) {
                 console.error("Feature def keys are not unique")
                 return process.exit(1)
             }
