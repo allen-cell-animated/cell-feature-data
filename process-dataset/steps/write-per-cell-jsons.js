@@ -38,6 +38,11 @@ const formatAndWritePerCellJsons = async (readFolder, outFolder, featureDataFile
                 const groupBy = find(featureDefs, {
                     key: defaultGroupBy
                 }).options[categoryValue]
+                if (!groupBy) {
+                    console.log("NO GROUP BY FOR ", defaultGroupBy, categoryValue);
+                    process.exit(1);
+
+                }
 
                 fileInfoJson[index] = fileInfo;
 
