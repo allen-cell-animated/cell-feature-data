@@ -25,6 +25,10 @@ const datasetSchema = {
             "description": "Description of the dataset",
             "type": "string",
         },
+        "dateCreated": {
+            "description": "Date the dateset was created (not necessarily the most recent version",
+            "type": "string",
+        },
         "image": {
             "description": "Url to image src",
             "type": "string",
