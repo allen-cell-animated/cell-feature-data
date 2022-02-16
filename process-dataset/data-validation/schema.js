@@ -26,7 +26,7 @@ const datasetSchema = {
             "type": "string",
         },
         "dateCreated": {
-            "description": "Date the dateset was created (not necessarily the most recent version",
+            "description": "Date the dataset was created in 'm d, YYYY' (not necessarily the most recent version)",
             "type": "string",
         },
         "image": {
