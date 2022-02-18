@@ -452,16 +452,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#reference-input-dataset-info"><code>Dataset Info</code></a></p>
+<p><a href="#reference-input-dataset-info"><code>Dataset Info `dataset.json`</code></a></p>
 </li>
 <li>
-<p><a href="#reference-feature-def"><code>Feature Definitions</code></a></p>
-</li>
-<li>
-<p><a href="#reference-input-megaset"><code>Input Megaset dataset.json</code></a></p>
-</li>
-<li>
-<p><a href="#reference-input-measured-features"><code>Measured values</code></a></p>
+<p><a href="#reference-input-megaset"><code>Input Megaset `dataset.json`</code></a></p>
 </li>
 </ul>
 </div>
@@ -486,6 +480,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "$ref": "input-dataset-info.schema.json"
         },
         "feature-defs": {
+            "title": "Feature definitions `feature-defs.json`",
             "description": "File that describes the measured feature definitions. Is an array of feature definitions.",
             "type": "array",
             "items": {
@@ -493,6 +488,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             }
         },
         "measured-features": {
+            "title": "Measured Values `features.json`",
             "description": "File that contains the measured analysis values, which will drive the plot.",
             "type": "array",
             "items": {
@@ -545,14 +541,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-input-dataset-info">JSON Schema for Dataset Info</h2>
+<h2 id="schema-reference-input-dataset-info">JSON Schema for Dataset Info <code>dataset.json</code></h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "datasetInfoSchema",
-    "title": "Dataset Info",
+    "title": "Dataset Info `dataset.json`",
     "description": "Data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
     "type": "object",
     "additionalProperties": false,
@@ -734,14 +730,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-input-megaset">JSON Schema for Input Megaset dataset.json</h2>
+<h2 id="schema-reference-input-megaset">JSON Schema for Input Megaset <code>dataset.json</code></h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "inputMegaset",
-    "title": "Input Megaset dataset.json",
+    "title": "Input Megaset `dataset.json`",
     "description": "File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named `dataset.json`",
     "type": "object",
     "additionalProperties": false,
@@ -790,14 +786,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-input-measured-features">JSON Schema for Measured values</h2>
+<h2 id="schema-reference-input-measured-features">JSON Schema for One measured value</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "inputMeasuredFeaturesSchema",
-    "title": "Measured values",
+    "title": "One measured value",
     "description": "Per data point object. The measured features JSON is an array of these objects.",
     "additionalProperties": false,
     "type": "object",
@@ -831,7 +827,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="footer">
 <div id="footer-text">
 Version <br>
-Last updated 2022-02-18 13:37:46 -0800
+Last updated 2022-02-18 13:42:48 -0800
 </div>
 </div>
 </body>
