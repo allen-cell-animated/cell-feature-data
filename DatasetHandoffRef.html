@@ -452,13 +452,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#reference-input-megaset"><code>Dataset JSON</code></a></p>
+<p><a href="#reference-feature-def"><code>Feature Definitions</code></a></p>
 </li>
 <li>
-<p><a href="#reference-feature-def"><code>Feature Defs</code></a></p>
+<p><a href="#reference-input-megaset"><code>Input Megaset dataset.json</code></a></p>
 </li>
 <li>
-<p><a href="#reference-input-measured-features"><code>Measured features json</code></a></p>
+<p><a href="#reference-input-measured-features"><code>Measured values</code></a></p>
 </li>
 </ul>
 </div>
@@ -488,7 +488,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>megaset</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>input-megaset</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">File that describes a group of datasets. Should be at the highest level, and the datasets nested in their own folders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
@@ -500,12 +500,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>feature-defs</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>feature-def</code> <code>[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">File that describes the measured feature definitions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">File that describes the measured feature definitions. Is an array of feature definitions.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>measured-features</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>input-measured-features</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>input-measured-features</code> <code>[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">File that contains the measured analysis values, which will drive the plot.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
@@ -524,7 +524,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_cell_feature_dataset_specification_megaset">Cell Feature Dataset Specification.megaset</h3>
 <div class="paragraph">
-<p>File that describes a group of datasets. Should be at the highest level, and the datasets nested in their own folders</p>
+<p>File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -556,7 +556,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_cell_feature_dataset_specification_feature_defs">Cell Feature Dataset Specification.feature-defs</h3>
 <div class="paragraph">
-<p>File that describes the measured feature definitions</p>
+<p>File that describes the measured feature definitions. Is an array of feature definitions.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -577,7 +577,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>input-measured-features</code></p>
+<p><strong>Type</strong>: <code>input-measured-features</code> <code>[]</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1089,139 +1089,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-input-megaset">Dataset JSON</h2>
+<h2 id="reference-feature-def">Feature Definitions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>File that describes a group of datasets. Should be at the highest level, and the datasets nested in their own folders</p>
+<p>Definition of a measured features in the dataset</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. <code>Dataset JSON</code> Properties</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of the dataset or group</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the dataset (no version number)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>datasets</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>array[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">subfolder names that point to each dataset in the group</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>publications</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>array[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Publications associated with the group</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Additional properties are not allowed.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-input-megaset"><code>input-megaset.schema.json</code></a></p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_input_megaset_title">input-megaset.title</h3>
-<div class="paragraph">
-<p>Display name of the dataset or group</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_input_megaset_name">input-megaset.name</h3>
-<div class="paragraph">
-<p>Name of the dataset (no version number)</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_input_megaset_datasets">input-megaset.datasets</h3>
-<div class="paragraph">
-<p>subfolder names that point to each dataset in the group</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>array[]</code></p>
-</li>
-<li>
-<p><strong>Required</strong>: No</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_input_megaset_publications">input-megaset.publications</h3>
-<div class="paragraph">
-<p>Publications associated with the group</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>array[]</code></p>
-</li>
-<li>
-<p><strong>Required</strong>: No</p>
-</li>
-</ul>
-</div>
-<hr>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="reference-feature-def">Feature Defs</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Definition of the measured features in the dataset</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. <code>Feature Defs</code> Properties</caption>
+<caption class="title">Table 3. <code>Feature Definitions</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1407,10 +1281,209 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-input-measured-features">Measured features json</h2>
+<h2 id="reference-input-megaset">Input Megaset dataset.json</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>File that contains the measured analysis values, which will drive the plot.</p>
+<p>File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. <code>Input Megaset dataset.json</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of the dataset or group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the dataset (no version number)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>datasets</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>array[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subfolder names that point to each dataset in the group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>publications</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>array[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Publications associated with the group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-input-megaset"><code>input-megaset.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_input_megaset_title">input-megaset.title</h3>
+<div class="paragraph">
+<p>Display name of the dataset or group</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_input_megaset_name">input-megaset.name</h3>
+<div class="paragraph">
+<p>Name of the dataset (no version number)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_input_megaset_datasets">input-megaset.datasets</h3>
+<div class="paragraph">
+<p>subfolder names that point to each dataset in the group</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>array[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_input_megaset_publications">input-megaset.publications</h3>
+<div class="paragraph">
+<p>Publications associated with the group</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>array[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-input-measured-features">Measured values</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Per data point object.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. <code>Measured values</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>file_info</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>features</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>number</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of measured features. Needs to match the order of featuresDataOrder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-input-measured-features"><code>input-measured-features.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_input_measured_features_file_info">input-measured-features.file_info</h3>
+<div class="paragraph">
+<p>ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_input_measured_features_features">input-measured-features.features</h3>
+<div class="paragraph">
+<p>Ordered array of measured features. Needs to match the order of featuresDataOrder</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>number</code> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1418,7 +1491,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="footer">
 <div id="footer-text">
 Version <br>
-Last updated 2022-02-18 13:15:33 -0800
+Last updated 2022-02-18 13:27:20 -0800
 </div>
 </div>
 </body>
