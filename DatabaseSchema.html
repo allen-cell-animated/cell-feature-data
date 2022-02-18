@@ -5,7 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>JSON Schema for Cell Feature Database Specification</title>
+<meta name="author" content="* &lt;&lt;reference-cell-feature-database-specification,`Cell Feature Database Specification`&gt;&gt; (root object)">
+<title>Objects</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,123 +439,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
+<h1>Objects</h1>
+<div class="details">
+<span id="author" class="author">* &lt;&lt;reference-cell-feature-database-specification,`Cell Feature Database Specification`&gt;&gt; (root object)</span><br>
+<span id="revnumber">version ,</span>
+<span id="revdate">`Dataset JSON`&gt;&gt;</span>
+</div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#reference-feature-def"><code>Feature Defs</code></a></p>
+</li>
+<li>
+<p><a href="#reference-file-info"><code>File Info</code></a></p>
+</li>
+<li>
+<p><a href="#reference-measured-features"><code>Measured features</code></a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="schema-reference-cell-feature-database-specification">JSON Schema for Cell Feature Database Specification</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "title": "Cell Feature Database Specification",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "dataset-descriptions": {
-            "description": "Endpoint that gets called first to load all the available datasets",
-            "type": "object",
-            "properties": {
-                "$dataset": {
-                    "type": "object",
-                    "properties": {
-                        "datasets": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "dataset-card.schema.json"
-                            }
-                        },
-                        "dateCreated": {
-                            "description": "Month Day, Year",
-                            "type": "string"
-                        },
-                        "name": {
-                            "type": "string"
-                        },
-                        "production": {
-                            "type": "boolean"
-                        },
-                        "title": {
-                            "type": "string"
-                        },
-                        "publications": {
-                            "description": "Publications associated with the group",
-                            "type": "array",
-                            "items": {
-                                "properties": {
-                                    "title": {
-                                        "description": "Article title",
-                                        "type": "string"
-                                    },
-                                    "url": {
-                                        "description": "Article link",
-                                        "type": "string"
-                                    },
-                                    "citation": {
-                                        "description": "Article journal and date",
-                                        "type": "string"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "manifests": {
-            "type": "object",
-            "properties": {
-                "$manifest": {
-                    "$ref": "input-megaset.schema.json"
-                }
-            }
-        },
-        "dataset-data": {
-            "description": "Dataset level data",
-            "type": "object",
-            "properties": {
-                "feature-definitions": {
-                    "type": "object",
-                    "properties": {
-                        "$dataset-id": {
-                            "type": "object",
-                            "$feature-key": {
-                                "$ref": "feature-def.schema.json"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "cell-data": {
-            "description": "Per cell data",
-            "type": "object",
-            "properties": {
-                "$dataset-id": {
-                    "type": "object",
-                    "properties": {
-                        "cell-file-info": {
-                            "type": "object",
-                            "properties": {
-                                "$id": {
-                                    "$ref": "file-info.schema.json"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "measured-features": {
-            "$ref": "measured-features.schema.json"
-        }
-    },
-    "required": [
-        "dataset-descriptions",
-        "feature-defs",
-        "measured-features"
-    ]
-}</code></pre>
+<pre class="highlight"><code class="language-json" data-lang="json">Unresolved directive in DatabaseSchema.adoc - include::cell-feature-data/database.schema.json[]</code></pre>
 </div>
 </div>
 <div style="page-break-after: always;"></div>
@@ -565,55 +480,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "datasetCardSchema",
-    "title": "Dataset Card",
-    "description": "Data needed to render a dataset card",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "title": {
-            "description": "Display name of the dataset",
-            "type": "string"
-        },
-        "name": {
-            "description": "Name of the dataset (no version number)",
-            "type": "string"
-        },
-        "version": {
-            "description": "version year and number",
-            "type": "string"
-        },
-        "description": {
-            "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "description": "Url to image src",
-            "type": "string"
-        },
-        "link": {
-            "description": "Link to website displaying the dataset",
-            "type": "string"
-        },
-        "userData": {
-            "description": "Optional display data",
-            "type": "object"
-        },
-        "production": {
-            "description": "Whether this dataset should only be shown in production",
-            "type": "boolean"
-        }
-    },
-    "required": [
-        "title",
-        "version",
-        "name",
-        "image",
-        "description"
-    ]
-}</code></pre>
+<pre class="highlight"><code class="language-json" data-lang="json">Unresolved directive in DatabaseSchema.adoc - include::cell-feature-data/dataset-card.schema.json[]</code></pre>
 </div>
 </div>
 <div style="page-break-after: always;"></div>
@@ -624,52 +491,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "inputMegaset",
-    "title": "Dataset JSON",
-    "description": "File that describes a group of datasets. Should be at the highest level, and the datasets nested in their own folders",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "title": {
-            "description": "Display name of the dataset or group",
-            "type": "string"
-        },
-        "name": {
-            "description": "Name of the dataset (no version number)",
-            "type": "string"
-        },
-        "datasets": {
-            "description": "subfolder names that point to each dataset in the group",
-            "type": "array"
-        },
-        "publications": {
-            "description": "Publications associated with the group",
-            "type": "array",
-            "items": {
-                "properties": {
-                    "title": {
-                        "description": "Article title",
-                        "type": "string"
-                    },
-                    "url": {
-                        "description": "Article link",
-                        "type": "string"
-                    },
-                    "citation": {
-                        "description": "Article journal and date",
-                        "type": "string"
-                    }
-                }
-            }
-        }
-    },
-    "required": [
-        "title",
-        "name"
-    ]
-}</code></pre>
+<pre class="highlight"><code class="language-json" data-lang="json">Unresolved directive in DatabaseSchema.adoc - include::cell-feature-data/input-megaset.schema.json[]</code></pre>
 </div>
 </div>
 <div style="page-break-after: always;"></div>
@@ -680,52 +502,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "featureDefSchema",
-    "title": "Feature Defs",
-    "description": "Definition of the measured features in the dataset",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "displayName": {
-            "description": "Human readable name",
-            "type": "string"
-        },
-        "description": {
-            "description": "Description of how the data was collected/measured",
-            "type": "string"
-        },
-        "tooltip": {
-            "description": "Shorter version of description",
-            "type": "string"
-        },
-        "unit": {
-            "description": "unit of measurement",
-            "type": "string"
-        },
-        "key": {
-            "description": "Id of the feature",
-            "type": "string"
-        },
-        "discrete": {
-            "description": "Whether it's a continuous measurement or not",
-            "type": "boolean"
-        },
-        "options": {
-            "description": "For discrete features, display items for each value",
-            "type": "object"
-        }
-    },
-    "required": [
-        "displayName",
-        "description",
-        "tooltip",
-        "unit",
-        "key",
-        "discrete"
-    ]
-}</code></pre>
+<pre class="highlight"><code class="language-json" data-lang="json">Unresolved directive in DatabaseSchema.adoc - include::cell-feature-data/feature-def.schema.json[]</code></pre>
 </div>
 </div>
 <div style="page-break-after: always;"></div>
@@ -736,54 +513,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "fileInfoSchema",
-    "title": "File Info",
-    "description": "Metadata per cell",
-    "type": "array",
-    "items": {
-        "additionalProperties": false,
-        "type": "object",
-        "properties": {
-            "CellId": {
-                "description": "unique id for segmented cell",
-                "type": ["number", "string"]
-            },
-            "FOVId": {
-                "description": "Field of view cell came from",
-                "type": ["number", "string"]
-            },
-            "groupBy": {
-                "description": "Id of feature the data is grouped by by default",
-                "type": "string"
-            },
-            "thumbnailPath": {
-                "description": "Path to thumbnail image for cell",
-                "type": "string"
-            },
-            "volumeviewerPath": {
-                "description": "path to 3d data for cell",
-                "type": "string"
-            },
-            "fovThumbnailPath": {
-                "description": "Path to fov thumbnail",
-                "type": "string"
-            },
-            "fovVolumeviewerPath": {
-                "description": "Path to the fov 3d data",
-                "type": "string"
-            }
-
-        },
-        "required": [
-            "CellId",
-            "FOVId",
-            "groupBy",
-            "volumeviewerPath"
-        ]
-    }
-}</code></pre>
+<pre class="highlight"><code class="language-json" data-lang="json">Unresolved directive in DatabaseSchema.adoc - include::cell-feature-data/file-info.schema.json[]</code></pre>
 </div>
 </div>
 <div style="page-break-after: always;"></div>
@@ -794,42 +524,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "measuredFeaturesSchema",
-    "title": "Measured features",
-    "description": "Data per cell needed to create the CFE plot",
-    "type": "array",
-    "items": {
-        "additionalProperties": false,
-        "type": "object",
-        "properties": {
-            "f": {
-                "description": "ordered array of measured features",
-                "type": "array",
-                "items": {
-                    "type": "number"
-                }
-            },
-            "p": {
-                "description": "Protein name",
-                "type": "string"
-            },
-            "t": {
-                "description": "Thumbnail Path",
-                "type": "string"
-            }
-
-
-        },
-        "required": [
-            "f",
-            "p",
-            "t"
-        ]
-    }
-
-}</code></pre>
+<pre class="highlight"><code class="language-json" data-lang="json">Unresolved directive in DatabaseSchema.adoc - include::cell-feature-data/measured-features.schema.json[]</code></pre>
 </div>
 </div>
 <div style="page-break-after: always;"></div>
@@ -838,7 +533,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-16 12:27:00 -0800
+Version <br>
+Last updated 2022-02-18 13:15:35 -0800
 </div>
 </div>
 </body>
