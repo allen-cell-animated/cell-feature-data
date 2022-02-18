@@ -443,7 +443,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">* &lt;&lt;reference-cell-feature-database-specification,`Cell Feature Database Specification`&gt;&gt; (root object)</span><br>
 <span id="revnumber">version ,</span>
-<span id="revdate">`Feature Definitions`&gt;&gt;</span>
+<span id="revdate">`Data selection settings`&gt;&gt;</span>
 </div>
 </div>
 <div id="content">
@@ -452,10 +452,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
+<p><a href="#reference-feature-def"><code>Feature Definitions</code></a></p>
+</li>
+<li>
 <p><a href="#reference-file-info"><code>File Info</code></a></p>
 </li>
 <li>
-<p><a href="#reference-input-megaset"><code>Input Megaset `dataset.json`</code></a></p>
+<p><a href="#reference-manifest"><code>Manifest</code></a></p>
 </li>
 <li>
 <p><a href="#reference-measured-features"><code>Measured features</code></a></p>
@@ -540,7 +543,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "type": "object",
             "properties": {
                 "$manifest": {
-                    "$ref": "input-megaset.schema.json"
+                    "$ref": "manifest.schema.json"
                 }
             }
         },
@@ -633,6 +636,39 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "p",
         "t"
     ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-selection-setting">JSON Schema for Data selection settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "$id": "selection-setting",
+    "title": "Data selection settings",
+    "type": "object",
+    "properties": {
+        "default": {
+            "description": "Default feature key for the setting",
+            "type": "string"
+        },
+        "exclude": {
+            "description": "Optional list of feature keys to exclude",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": [
+        "default"
+    ],
+    "additionalProperties": false
 }</code></pre>
 </div>
 </div>
@@ -839,54 +875,99 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-input-megaset">JSON Schema for Input Megaset <code>dataset.json</code></h2>
+<h2 id="schema-reference-manifest">JSON Schema for Manifest</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "inputMegaset",
-    "title": "Input Megaset `dataset.json`",
-    "description": "File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named `dataset.json`",
+    "$id": "manifestSchema",
+    "title": "Manifest",
+    "description": "High level for each dataset",
     "type": "object",
     "additionalProperties": false,
     "properties": {
-        "title": {
-            "description": "Display name of the dataset or group",
+        "featuresDataPath": {
+            "description": "url to the per cell data json",
             "type": "string"
         },
-        "name": {
-            "description": "Name of the dataset (no version number)",
+        "cellLineDataPath": {
+            "description": "collection name of the cell line data",
             "type": "string"
         },
-        "datasets": {
-            "description": "subfolder names that point to each dataset in the group",
-            "type": "array"
+        "featureDefsPath": {
+            "description": "path to the feature def collection",
+            "type": "string"
         },
-        "publications": {
-            "description": "Publications associated with the group",
+        "viewerSettingsPath": {
+            "description": "path to image per-channel settings for the 3d viewer",
+            "type": "string"
+        },
+        "albumPath": {
+            "description": "collection name of the album data",
+            "type": "string"
+        },
+        "thumbnailRoot": {
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "xAxis": {
+            "description": "Settings for the x axis",
+            "type": "object",
+            "$ref": "selection-setting.schema.json"
+        },
+        "yAxis": {
+            "description": "Settings for the y axis",
+            "type": "object",
+            "$ref": "selection-setting.schema.json"
+        },
+        "colorBy": {
+            "description": "Settings for the color by menu",
+            "type": "object",
+            "$ref": "selection-setting.schema.json"
+        },
+        "groupBy": {
+            "description": "Settings for the grouping menu",
+            "type": "object",
+            "$ref": "selection-setting.schema.json"
+        },
+        "featuresDisplayOrder": {
+            "description": "Ordered array of feature keys for display on front end",
             "type": "array",
             "items": {
-                "properties": {
-                    "title": {
-                        "description": "Article title",
-                        "type": "string"
-                    },
-                    "url": {
-                        "description": "Article link",
-                        "type": "string"
-                    },
-                    "citation": {
-                        "description": "Article journal and date",
-                        "type": "string"
-                    }
-                }
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
             }
         }
     },
     "required": [
-        "title",
-        "name"
+        "featuresDataPath",
+        "cellLineDataPath",
+        "viewerSettingsPath",
+        "albumPath",
+        "thumbnailRoot",
+        "downloadRoot",
+        "volumeViewerDataRoot",
+        "xAxis",
+        "yAxis",
+        "groupBy",
+        "colorBy",
+        "featuresDisplayOrder",
+        "featuresDataOrder"
     ]
 }</code></pre>
 </div>
@@ -918,7 +999,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="footer">
 <div id="footer-text">
 Version <br>
-Last updated 2022-02-18 14:44:07 -0800
+Last updated 2022-02-18 14:48:24 -0800
 </div>
 </div>
 </body>
