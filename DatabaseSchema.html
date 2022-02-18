@@ -465,7 +465,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#reference-condensed-measured-features"><code>Condensed measured feature</code></a></p>
+<p><a href="#reference-condensed-measured-feature"><code>Condensed measured feature</code></a></p>
 </li>
 </ul>
 </div>
@@ -605,7 +605,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-condensed-measured-features">JSON Schema for Condensed measured feature</h2>
+<h2 id="schema-reference-condensed-measured-feature">JSON Schema for Condensed measured feature</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -989,8 +989,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "description": "Data per cell needed to create the CFE plot",
     "type": "array",
     "items": {
-        "$ref": "condensed-measured-features.schema.json"
-        }
+        "type": "object",
+        "$ref": "condensed-measured-feature.schema.json"
+    }
 }</code></pre>
 </div>
 </div>
@@ -1001,7 +1002,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="footer">
 <div id="footer-text">
 Version <br>
-Last updated 2022-02-18 14:51:13 -0800
+Last updated 2022-02-18 14:57:42 -0800
 </div>
 </div>
 </body>
