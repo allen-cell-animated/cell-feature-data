@@ -683,8 +683,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "type": "boolean"
         },
         "options": {
-            "description": "For discrete features, display items for each value",
-            "type": "object"
+            "description": "For discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
+            "type": "object",
+            "$id": "discrete-feature-option",
+            "properties": {
+                "$number": {
+                    "type": "object",
+                    "properties": {
+                        "color": {
+                            "description": "Hex string",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Display name for the option. Doesn't have to be unique, but if it's not unique, `key` is required.",
+                            "type": "string"
+                        },
+                        "key": {
+                            "description": "unique key for the option.",
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                        "name",
+                        "color"
+                    ]
+                }
+            }
         }
     },
     "required": [
@@ -865,7 +890,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="footer">
 <div id="footer-text">
 Version <br>
-Last updated 2022-02-18 13:46:03 -0800
+Last updated 2022-02-18 13:55:24 -0800
 </div>
 </div>
 </body>
