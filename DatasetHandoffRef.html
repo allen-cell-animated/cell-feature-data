@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<meta name="author" content="* &lt;&lt;reference-cell-feature-dataset-specification,`Cell Feature Dataset Specification`&gt;&gt; (root object)">
+<meta name="author" content="* &lt;&lt;reference-cell-feature-dataset-handoff-specification,`Cell Feature Dataset Handoff Specification`&gt;&gt; (root object)">
 <title>Objects</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -441,9 +441,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Objects</h1>
 <div class="details">
-<span id="author" class="author">* &lt;&lt;reference-cell-feature-dataset-specification,`Cell Feature Dataset Specification`&gt;&gt; (root object)</span><br>
+<span id="author" class="author">* &lt;&lt;reference-cell-feature-dataset-handoff-specification,`Cell Feature Dataset Handoff Specification`&gt;&gt; (root object)</span><br>
 <span id="revnumber">version ,</span>
-<span id="revdate">`Dataset Info`&gt;&gt;</span>
+<span id="revdate">`Data selection settings`&gt;&gt;</span>
 </div>
 </div>
 <div id="content">
@@ -451,6 +451,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="ulist">
 <ul>
+<li>
+<p><a href="#reference-input-dataset-info"><code>Dataset Info</code></a></p>
+</li>
 <li>
 <p><a href="#reference-feature-def"><code>Feature Definitions</code></a></p>
 </li>
@@ -466,10 +469,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-cell-feature-dataset-specification">Cell Feature Dataset Specification</h2>
+<h2 id="reference-cell-feature-dataset-handoff-specification">Cell Feature Dataset Handoff Specification</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. <code>Cell Feature Dataset Specification</code> Properties</caption>
+<caption class="title">Table 1. <code>Cell Feature Dataset Handoff Specification</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -488,25 +491,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>megaset</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>input-megaset</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fil<a href="#reference-[object-object]"><code>[object Object]</code></a> that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>dataset</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>input-dataset-info</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Data needed t<a href="#reference-[object-object]"><code>[object Object]</code></a> process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON <code>datasets</code> array. Should be named <code>dataset.json</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>feature-defs</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>feature-def</code> <code>[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">File that describes the measured feature definitions. Is an array of feature definitions.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fil<a href="#reference-[object-object]"><code>[object Object]</code></a> that describes the measured feature definitions. Is an array of feature definitions.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>measured-features</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>input-measured-features</code> <code>[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">File that contains the measured analysis values, which will drive the plot.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fil<a href="#reference-[object-object]"><code>[object Object]</code></a> that contains the measured analysis values, which will drive the plot.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 </tbody>
@@ -517,14 +520,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-cell-feature-dataset-specification"><code>input-dataset.schema.json</code></a></p>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-cell-feature-dataset-handoff-specification"><code>input-dataset.schema.json</code></a></p>
 </li>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_cell_feature_dataset_specification_megaset">Cell Feature Dataset Specification.megaset</h3>
+<h3 id="_cell_feature_dataset_handoff_specification_megaset">Cell Feature Dataset Handoff Specification.megaset</h3>
 <div class="paragraph">
-<p>File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p>
+<p>Fil<a href="#reference-[object-object]"><code>[object Object]</code></a> that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -538,9 +541,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cell_feature_dataset_specification_dataset">Cell Feature Dataset Specification.dataset</h3>
+<h3 id="_cell_feature_dataset_handoff_specification_dataset">Cell Feature Dataset Handoff Specification.dataset</h3>
 <div class="paragraph">
-<p>Data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON</p>
+<p>Data needed t<a href="#reference-[object-object]"><code>[object Object]</code></a> process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON <code>datasets</code> array. Should be named <code>dataset.json</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -554,9 +557,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cell_feature_dataset_specification_feature_defs">Cell Feature Dataset Specification.feature-defs</h3>
+<h3 id="_cell_feature_dataset_handoff_specification_feature_defs">Cell Feature Dataset Handoff Specification.feature-defs</h3>
 <div class="paragraph">
-<p>File that describes the measured feature definitions. Is an array of feature definitions.</p>
+<p>Fil<a href="#reference-[object-object]"><code>[object Object]</code></a> that describes the measured feature definitions. Is an array of feature definitions.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -570,9 +573,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cell_feature_dataset_specification_measured_features">Cell Feature Dataset Specification.measured-features</h3>
+<h3 id="_cell_feature_dataset_handoff_specification_measured_features">Cell Feature Dataset Handoff Specification.measured-features</h3>
 <div class="paragraph">
-<p>File that contains the measured analysis values, which will drive the plot.</p>
+<p>Fil<a href="#reference-[object-object]"><code>[object Object]</code></a> that contains the measured analysis values, which will drive the plot.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -589,13 +592,92 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-selection-setting">Data selection settings</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. <code>Data selection settings</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>default</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defaul<a href="#reference-[object-object]"><code>[object Object]</code></a> feature key for the setting</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exclude</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional lis<a href="#reference-[object-object]"><code>[object Object]</code></a> of feature keys to exclude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-selection-setting"><code>selection-setting.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_selection_setting_default">selection-setting.default</h3>
+<div class="paragraph">
+<p>Defaul<a href="#reference-[object-object]"><code>[object Object]</code></a> feature key for the setting</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_selection_setting_exclude">selection-setting.exclude</h3>
+<div class="paragraph">
+<p>Optional lis<a href="#reference-[object-object]"><code>[object Object]</code></a> of feature keys to exclude</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-input-dataset-info">Dataset Info</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON</p>
+<p>Data needed t<a href="#reference-[object-object]"><code>[object Object]</code></a> process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON <code>datasets</code> array. Should be named <code>dataset.json</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. <code>Dataset Info</code> Properties</caption>
+<caption class="title">Table 3. <code>Dataset Info</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -614,13 +696,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of the dataset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display nam<a href="#reference-[object-object]"><code>[object Object]</code></a> of the dataset</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the dataset (no version number)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nam<a href="#reference-[object-object]"><code>[object Object]</code></a> of the dataset (no version number)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -632,19 +714,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description of the dataset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description of th<a href="#reference-[object-object]"><code>[object Object]</code></a> dataset</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>image</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">relative path to the dataset card image file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">relativ<a href="#reference-[object-object]"><code>[object Object]</code></a> path to the dataset card image file</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>link</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Link to website displaying the dataset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Link t<a href="#reference-[object-object]"><code>[object Object]</code></a> website displaying the dataset</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
@@ -656,85 +738,85 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>production</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether this dataset should only be shown in production</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether this datase<a href="#reference-[object-object]"><code>[object Object]</code></a> should only be shown in production</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDataPath</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">url to the per cell data json</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url t<a href="#reference-[object-object]"><code>[object Object]</code></a> the per cell data json</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featureDefsPath</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">path to the feature def collection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path t<a href="#reference-[object-object]"><code>[object Object]</code></a> the feature def collection</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>viewerSettingsPath</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">path to image per-channel settings for the 3d viewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path t<a href="#reference-[object-object]"><code>[object Object]</code></a> image per-channel settings for the 3d viewer</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>albumPath</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">collection name of the album data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">collection nam<a href="#reference-[object-object]"><code>[object Object]</code></a> of the album data</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>thumbnailRoot</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Root url for thumbnail images</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Roo<a href="#reference-[object-object]"><code>[object Object]</code></a> url for thumbnail images</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>downloadRoot</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Root url for downloading cell data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Roo<a href="#reference-[object-object]"><code>[object Object]</code></a> url for downloading cell data</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>volumeViewerDataRoot</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Root url for 3d images</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Roo<a href="#reference-[object-object]"><code>[object Object]</code></a> url for 3d images</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>xAxis</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Settings for the x axis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>selection-setting</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>yAxis</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Settings for the y axis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>selection-setting</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>colorBy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Settings for the color by menu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>selection-setting</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>groupBy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Settings for the grouping menu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>selection-setting</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDisplayOrder</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>array[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of feature keys for display on front end</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of featur<a href="#reference-[object-object]"><code>[object Object]</code></a> keys for display on front end</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDataOrder</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>array[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of feature keys for packing and unpacking data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of featur<a href="#reference-[object-object]"><code>[object Object]</code></a> keys for packing and unpacking data</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 </tbody>
@@ -752,7 +834,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_title">input-dataset-info.title</h3>
 <div class="paragraph">
-<p>Display name of the dataset</p>
+<p>Display nam<a href="#reference-[object-object]"><code>[object Object]</code></a> of the dataset</p>
 </div>
 <div class="ulist">
 <ul>
@@ -768,7 +850,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_name">input-dataset-info.name</h3>
 <div class="paragraph">
-<p>Name of the dataset (no version number)</p>
+<p>Nam<a href="#reference-[object-object]"><code>[object Object]</code></a> of the dataset (no version number)</p>
 </div>
 <div class="ulist">
 <ul>
@@ -800,7 +882,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_description">input-dataset-info.description</h3>
 <div class="paragraph">
-<p>Description of the dataset</p>
+<p>Description of th<a href="#reference-[object-object]"><code>[object Object]</code></a> dataset</p>
 </div>
 <div class="ulist">
 <ul>
@@ -816,7 +898,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_image">input-dataset-info.image</h3>
 <div class="paragraph">
-<p>relative path to the dataset card image file</p>
+<p>relativ<a href="#reference-[object-object]"><code>[object Object]</code></a> path to the dataset card image file</p>
 </div>
 <div class="ulist">
 <ul>
@@ -832,7 +914,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_link">input-dataset-info.link</h3>
 <div class="paragraph">
-<p>Link to website displaying the dataset</p>
+<p>Link t<a href="#reference-[object-object]"><code>[object Object]</code></a> website displaying the dataset</p>
 </div>
 <div class="ulist">
 <ul>
@@ -864,7 +946,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_production">input-dataset-info.production</h3>
 <div class="paragraph">
-<p>Whether this dataset should only be shown in production</p>
+<p>Whether this datase<a href="#reference-[object-object]"><code>[object Object]</code></a> should only be shown in production</p>
 </div>
 <div class="ulist">
 <ul>
@@ -880,7 +962,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_featuresdatapath">input-dataset-info.featuresDataPath</h3>
 <div class="paragraph">
-<p>url to the per cell data json</p>
+<p>url t<a href="#reference-[object-object]"><code>[object Object]</code></a> the per cell data json</p>
 </div>
 <div class="ulist">
 <ul>
@@ -896,7 +978,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_featuredefspath">input-dataset-info.featureDefsPath</h3>
 <div class="paragraph">
-<p>path to the feature def collection</p>
+<p>path t<a href="#reference-[object-object]"><code>[object Object]</code></a> the feature def collection</p>
 </div>
 <div class="ulist">
 <ul>
@@ -912,7 +994,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_viewersettingspath">input-dataset-info.viewerSettingsPath</h3>
 <div class="paragraph">
-<p>path to image per-channel settings for the 3d viewer</p>
+<p>path t<a href="#reference-[object-object]"><code>[object Object]</code></a> image per-channel settings for the 3d viewer</p>
 </div>
 <div class="ulist">
 <ul>
@@ -928,7 +1010,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_albumpath">input-dataset-info.albumPath</h3>
 <div class="paragraph">
-<p>collection name of the album data</p>
+<p>collection nam<a href="#reference-[object-object]"><code>[object Object]</code></a> of the album data</p>
 </div>
 <div class="ulist">
 <ul>
@@ -944,7 +1026,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_thumbnailroot">input-dataset-info.thumbnailRoot</h3>
 <div class="paragraph">
-<p>Root url for thumbnail images</p>
+<p>Roo<a href="#reference-[object-object]"><code>[object Object]</code></a> url for thumbnail images</p>
 </div>
 <div class="ulist">
 <ul>
@@ -960,7 +1042,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_downloadroot">input-dataset-info.downloadRoot</h3>
 <div class="paragraph">
-<p>Root url for downloading cell data</p>
+<p>Roo<a href="#reference-[object-object]"><code>[object Object]</code></a> url for downloading cell data</p>
 </div>
 <div class="ulist">
 <ul>
@@ -976,7 +1058,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_volumeviewerdataroot">input-dataset-info.volumeViewerDataRoot</h3>
 <div class="paragraph">
-<p>Root url for 3d images</p>
+<p>Roo<a href="#reference-[object-object]"><code>[object Object]</code></a> url for 3d images</p>
 </div>
 <div class="ulist">
 <ul>
@@ -991,13 +1073,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="sect2">
 <h3 id="_input_dataset_info_xaxis">input-dataset-info.xAxis</h3>
-<div class="paragraph">
-<p>Settings for the x axis</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>object</code></p>
+<p><strong>Type</strong>: <code>selection-setting</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1007,13 +1086,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="sect2">
 <h3 id="_input_dataset_info_yaxis">input-dataset-info.yAxis</h3>
-<div class="paragraph">
-<p>Settings for the y axis</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>object</code></p>
+<p><strong>Type</strong>: <code>selection-setting</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1023,13 +1099,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="sect2">
 <h3 id="_input_dataset_info_colorby">input-dataset-info.colorBy</h3>
-<div class="paragraph">
-<p>Settings for the color by menu</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>object</code></p>
+<p><strong>Type</strong>: <code>selection-setting</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1039,13 +1112,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="sect2">
 <h3 id="_input_dataset_info_groupby">input-dataset-info.groupBy</h3>
-<div class="paragraph">
-<p>Settings for the grouping menu</p>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>object</code></p>
+<p><strong>Type</strong>: <code>selection-setting</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1056,12 +1126,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_featuresdisplayorder">input-dataset-info.featuresDisplayOrder</h3>
 <div class="paragraph">
-<p>Ordered array of feature keys for display on front end</p>
+<p>Ordered array of featur<a href="#reference-[object-object]"><code>[object Object]</code></a> keys for display on front end</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>array[]</code></p>
+<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1072,12 +1142,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_dataset_info_featuresdataorder">input-dataset-info.featuresDataOrder</h3>
 <div class="paragraph">
-<p>Ordered array of feature keys for packing and unpacking data</p>
+<p>Ordered array of featur<a href="#reference-[object-object]"><code>[object Object]</code></a> keys for packing and unpacking data</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>array[]</code></p>
+<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1092,10 +1162,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="reference-feature-def">Feature Definitions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Definition of a measured features in the dataset</p>
+<p>Definition of a measured features in th<a href="#reference-[object-object]"><code>[object Object]</code></a> dataset</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. <code>Feature Definitions</code> Properties</caption>
+<caption class="title">Table 4. <code>Feature Definitions</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1114,13 +1184,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>displayName</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Human readable name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Human readabl<a href="#reference-[object-object]"><code>[object Object]</code></a> name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description of how the data was collected/measured</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description of how th<a href="#reference-[object-object]"><code>[object Object]</code></a> data was collected/measured</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -1132,25 +1202,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>unit</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">unit of measurement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uni<a href="#reference-[object-object]"><code>[object Object]</code></a> of measurement</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>key</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Id of the feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Id of th<a href="#reference-[object-object]"><code>[object Object]</code></a> feature</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>discrete</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether it&#8217;s a continuous measurement or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether it&#8217;s a continuous measuremen<a href="#reference-[object-object]"><code>[object Object]</code></a> or not</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>options</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">For discrete features, display items for each value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For discret<a href="#reference-[object-object]"><code>[object Object]</code></a> features, display items for each value</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
@@ -1168,7 +1238,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_feature_def_displayname">feature-def.displayName</h3>
 <div class="paragraph">
-<p>Human readable name</p>
+<p>Human readabl<a href="#reference-[object-object]"><code>[object Object]</code></a> name</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1184,7 +1254,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_feature_def_description">feature-def.description</h3>
 <div class="paragraph">
-<p>Description of how the data was collected/measured</p>
+<p>Description of how th<a href="#reference-[object-object]"><code>[object Object]</code></a> data was collected/measured</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1216,7 +1286,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_feature_def_unit">feature-def.unit</h3>
 <div class="paragraph">
-<p>unit of measurement</p>
+<p>uni<a href="#reference-[object-object]"><code>[object Object]</code></a> of measurement</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1232,7 +1302,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_feature_def_key">feature-def.key</h3>
 <div class="paragraph">
-<p>Id of the feature</p>
+<p>Id of th<a href="#reference-[object-object]"><code>[object Object]</code></a> feature</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1248,7 +1318,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_feature_def_discrete">feature-def.discrete</h3>
 <div class="paragraph">
-<p>Whether it&#8217;s a continuous measurement or not</p>
+<p>Whether it&#8217;s a continuous measuremen<a href="#reference-[object-object]"><code>[object Object]</code></a> or not</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1264,7 +1334,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_feature_def_options">feature-def.options</h3>
 <div class="paragraph">
-<p>For discrete features, display items for each value</p>
+<p>For discret<a href="#reference-[object-object]"><code>[object Object]</code></a> features, display items for each value</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1284,10 +1354,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="reference-input-megaset">Input Megaset dataset.json</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p>
+<p>Fil<a href="#reference-[object-object]"><code>[object Object]</code></a> that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. <code>Input Megaset dataset.json</code> Properties</caption>
+<caption class="title">Table 5. <code>Input Megaset dataset.json</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1306,25 +1376,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of the dataset or group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display nam<a href="#reference-[object-object]"><code>[object Object]</code></a> of the dataset or group</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the dataset (no version number)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nam<a href="#reference-[object-object]"><code>[object Object]</code></a> of the dataset (no version number)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>datasets</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>array[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">subfolder names that point to each dataset in the group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subfolder names tha<a href="#reference-[object-object]"><code>[object Object]</code></a> point to each dataset in the group</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>publications</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>array[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Publications associated with the group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Publications associated with th<a href="#reference-[object-object]"><code>[object Object]</code></a> group</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
@@ -1342,7 +1412,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_megaset_title">input-megaset.title</h3>
 <div class="paragraph">
-<p>Display name of the dataset or group</p>
+<p>Display nam<a href="#reference-[object-object]"><code>[object Object]</code></a> of the dataset or group</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1358,7 +1428,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_megaset_name">input-megaset.name</h3>
 <div class="paragraph">
-<p>Name of the dataset (no version number)</p>
+<p>Nam<a href="#reference-[object-object]"><code>[object Object]</code></a> of the dataset (no version number)</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1374,7 +1444,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_megaset_datasets">input-megaset.datasets</h3>
 <div class="paragraph">
-<p>subfolder names that point to each dataset in the group</p>
+<p>subfolder names tha<a href="#reference-[object-object]"><code>[object Object]</code></a> point to each dataset in the group</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1390,7 +1460,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_megaset_publications">input-megaset.publications</h3>
 <div class="paragraph">
-<p>Publications associated with the group</p>
+<p>Publications associated with th<a href="#reference-[object-object]"><code>[object Object]</code></a> group</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1410,10 +1480,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="reference-input-measured-features">Measured values</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Per data point object.</p>
+<p>Per data poin<a href="#reference-[object-object]"><code>[object Object]</code></a> object. The measured features JSON is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. <code>Measured values</code> Properties</caption>
+<caption class="title">Table 6. <code>Measured values</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1432,13 +1502,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>file_info</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ordered array of fil<a href="#reference-[object-object]"><code>[object Object]</code></a> info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>features</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>number</code> <code>[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of measured features. Needs to match the order of featuresDataOrder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of measured features. Needs t<a href="#reference-[object-object]"><code>[object Object]</code></a> match the order of featuresDataOrder</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 </tbody>
@@ -1456,7 +1526,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_measured_features_file_info">input-measured-features.file_info</h3>
 <div class="paragraph">
-<p>ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p>
+<p>ordered array of fil<a href="#reference-[object-object]"><code>[object Object]</code></a> info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1472,7 +1542,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_input_measured_features_features">input-measured-features.features</h3>
 <div class="paragraph">
-<p>Ordered array of measured features. Needs to match the order of featuresDataOrder</p>
+<p>Ordered array of measured features. Needs t<a href="#reference-[object-object]"><code>[object Object]</code></a> match the order of featuresDataOrder</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1491,7 +1561,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="footer">
 <div id="footer-text">
 Version <br>
-Last updated 2022-02-18 13:27:20 -0800
+Last updated 2022-02-18 13:37:46 -0800
 </div>
 </div>
 </body>
