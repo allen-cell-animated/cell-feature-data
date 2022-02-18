@@ -459,6 +459,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li>
 <p><a href="#reference-measured-features"><code>Measured features</code></a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#reference-condensed-measured-features"><code>Condensed measured feature</code></a></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -471,7 +478,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-04/schema",
+    "$id": "database-schema",
     "title": "Cell Feature Database Specification",
+    "description": "Structure of the data stored in firebase and AWS",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -479,8 +488,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "description": "Endpoint that gets called first to load all the available datasets",
             "type": "object",
             "properties": {
-                "$dataset": {
+                "DATASET_ID": {
                     "type": "object",
+                    "title": "Dataset group information",
                     "properties": {
                         "datasets": {
                             "type": "array",
@@ -505,6 +515,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                             "description": "Publications associated with the group",
                             "type": "array",
                             "items": {
+                                "type": "object",
                                 "properties": {
                                     "title": {
                                         "description": "Article title",
@@ -570,6 +581,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             }
         },
         "measured-features": {
+            "title": "Condensed measured features JSON",
+            "description": "File stored on AWS that has the condensed measured data.",
             "$ref": "measured-features.schema.json"
         }
     },
@@ -579,6 +592,46 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "dataset-data",
         "cell-data",
         "measured-features"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-condensed-measured-features">JSON Schema for Condensed measured feature</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "measuredFeatureSchema",
+    "title": "Condensed measured feature",
+    "description": "Data per cell needed to create the CFE plot",
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+        "f": {
+            "description": "ordered array of measured features",
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        },
+        "p": {
+            "description": "Protein name",
+            "type": "string"
+        },
+        "t": {
+            "description": "Thumbnail Path",
+            "type": "string"
+        }
+    },
+    "required": [
+        "f",
+        "p",
+        "t"
     ]
 }</code></pre>
 </div>
@@ -853,34 +906,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "description": "Data per cell needed to create the CFE plot",
     "type": "array",
     "items": {
-        "additionalProperties": false,
-        "type": "object",
-        "properties": {
-            "f": {
-                "description": "ordered array of measured features",
-                "type": "array",
-                "items": {
-                    "type": "number"
-                }
-            },
-            "p": {
-                "description": "Protein name",
-                "type": "string"
-            },
-            "t": {
-                "description": "Thumbnail Path",
-                "type": "string"
-            }
-
-
-        },
-        "required": [
-            "f",
-            "p",
-            "t"
-        ]
-    }
-
+        "$ref": "condensed-measured-features.schema.json"
+        }
 }</code></pre>
 </div>
 </div>
@@ -891,7 +918,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="footer">
 <div id="footer-text">
 Version <br>
-Last updated 2022-02-18 14:22:02 -0800
+Last updated 2022-02-18 14:44:07 -0800
 </div>
 </div>
 </body>
