@@ -443,7 +443,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">* &lt;&lt;reference-cell-feature-database-specification,`Cell Feature Database Specification`&gt;&gt; (root object)</span><br>
 <span id="revnumber">version ,</span>
-<span id="revdate">`Data selection settings`&gt;&gt;</span>
+<span id="revdate">`Condensed measured features JSON`&gt;&gt;</span>
 </div>
 </div>
 <div id="content">
@@ -452,6 +452,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
+<p><a href="#reference-condensed-measured-feature"><code>Condensed measured feature</code></a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#reference-selection-setting"><code>Data selection settings</code></a></p>
+</li>
+<li>
 <p><a href="#reference-feature-def"><code>Feature Definitions</code></a></p>
 </li>
 <li>
@@ -459,13 +466,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li>
 <p><a href="#reference-manifest"><code>Manifest</code></a></p>
-</li>
-<li>
-<p><a href="#reference-measured-features"><code>Measured features</code></a></p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#reference-condensed-measured-feature"><code>Condensed measured feature</code></a></p>
 </li>
 </ul>
 </div>
@@ -586,8 +586,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             }
         },
         "measured-features": {
-            "title": "Condensed measured features JSON",
-            "description": "File stored on AWS that has the condensed measured data.",
             "$ref": "measured-features.schema.json"
         }
     },
@@ -638,6 +636,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "p",
         "t"
     ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-measured-features">JSON Schema for Condensed measured features JSON</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "measuredFeaturesSchema",
+    "title": "Condensed measured features JSON",
+    "description": "File stored on AWS that has the condensed measured data.",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "$ref": "condensed-measured-feature.schema.json"
+    }
 }</code></pre>
 </div>
 </div>
@@ -977,32 +996,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div style="page-break-after: always;"></div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="schema-reference-measured-features">JSON Schema for Measured features</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "measuredFeaturesSchema",
-    "title": "Measured features",
-    "description": "Data per cell needed to create the CFE plot",
-    "type": "array",
-    "items": {
-        "type": "object",
-        "$ref": "condensed-measured-feature.schema.json"
-    }
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version <br>
-Last updated 2022-02-18 14:57:42 -0800
+Last updated 2022-02-18 14:58:20 -0800
 </div>
 </div>
 </body>
