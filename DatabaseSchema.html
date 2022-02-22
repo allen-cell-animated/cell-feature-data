@@ -488,12 +488,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "additionalProperties": false,
     "properties": {
         "dataset-descriptions": {
+            "$schema": "http://json-schema.org/draft-04/schema",
+            "$id": "dataset-descriptions",
             "description": "Endpoint that gets called first to load all the available datasets",
             "type": "object",
             "properties": {
                 "DATASET_ID": {
+                    "$schema": "http://json-schema.org/draft-04/schema",
+                    "$id": "dataset-description",
                     "type": "object",
-                    "title": "Dataset group information",
+                    "title": "Dataset Description",
                     "properties": {
                         "datasets": {
                             "type": "array",
@@ -653,7 +657,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "measuredFeaturesSchema",
     "title": "Condensed measured features JSON",
-    "description": "File stored on AWS that has the condensed measured data.",
+    "description": "File stored on AWS that has the condensed measured data. Is an array of condensed measured features",
     "type": "array",
     "items": {
         "type": "object",
@@ -1002,7 +1006,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="footer">
 <div id="footer-text">
 Version <br>
-Last updated 2022-02-22 12:36:07 -0800
+Last updated 2022-02-22 12:42:39 -0800
 </div>
 </div>
 </body>
