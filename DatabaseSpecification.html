@@ -523,444 +523,89 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_2_make_a_pr_to_this_repo_with_your_dataset_folder">2. Make a PR to this repo with your dataset folder.</h3>
 <div class="paragraph">
-<p>property {
-  '$schema': 'http://json-schema.org/draft-07/schema#',
-  '$id': 'inputMegaset',
-  title: 'Input Megaset <code>dataset.json&#8217;,
-  description: "File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named `dataset.json`",
-  type: 'object',
-  additionalProperties: false,
-  properties: {
-    title: {
-      description: 'Display name of the dataset or group',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    name: {
-      description: 'Name of the dataset (no version number)',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    datasets: {
-      description: 'subfolder names that point to each dataset in the group',
-      type: 'array',
-      _normalizedRequired: true
-    },
-    publications: {
-      description: 'Publications associated with the group',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: undefined,
-  typeName: 'input-megaset',
-  _normalizedRequired: true
+<p>summary {
+  type: 'input-megaset',
+  formattedType: '<a href="#reference-input-megaset"><code>input-megaset</code></a>',
+  description: "File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json`",
+  required: 'No'
 }
-property {
-  '$schema': 'http://json-schema.org/draft-07/schema#',
-  '$id': 'datasetInfoSchema',
-  title: 'Dataset Info `dataset.json&#8217;,
-  description: 'File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets</code> array. Should be named <code>dataset.json&#8217;,
-  type: 'object',
-  additionalProperties: false,
-  properties: {
-    title: {
-      description: 'Display name of the dataset',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    name: {
-      description: 'Name of the dataset (no version number)',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    version: {
-      description: 'version year and number',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    description: {
-      description: 'Description of the dataset',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    image: {
-      description: 'relative path to the dataset card image file',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    link: {
-      description: 'Link to website displaying the dataset',
-      type: 'string',
-      _normalizedRequired: true
-    },
-    userData: {
-      description: 'Optional display data',
-      type: 'object',
-      _normalizedRequired: true
-    },
-    production: {
-      description: 'Whether this dataset should only be shown in production',
-      type: 'boolean',
-      _normalizedRequired: true
-    },
-    featuresDataPath: {
-      description: 'url to the per cell data json',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    featureDefsPath: {
-      description: 'path to the feature def collection',
-      type: 'string',
-      _normalizedRequired: true
-    },
-    viewerSettingsPath: {
-      description: 'path to image per-channel settings for the 3d viewer',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    albumPath: {
-      description: 'collection name of the album data',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    thumbnailRoot: {
-      description: 'Root url for thumbnail images',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    downloadRoot: {
-      description: 'Root url for downloading cell data',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    volumeViewerDataRoot: {
-      description: 'Root url for 3d images',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    xAxis: {
-      '$schema': 'http://json-schema.org/draft-04/schema',
-      '$id': 'selection-setting',
-      title: 'Data selection settings',
-      type: 'object',
-      properties: [Object],
-      required: true,
-      additionalProperties: false,
-      typeName: 'selection-setting',
-      _normalizedRequired: true
-    },
-    yAxis: {
-      '$schema': 'http://json-schema.org/draft-04/schema',
-      '$id': 'selection-setting',
-      title: 'Data selection settings',
-      type: 'object',
-      properties: [Object],
-      required: true,
-      additionalProperties: false,
-      typeName: 'selection-setting',
-      _normalizedRequired: true
-    },
-    colorBy: {
-      '$schema': 'http://json-schema.org/draft-04/schema',
-      '$id': 'selection-setting',
-      title: 'Data selection settings',
-      type: 'object',
-      properties: [Object],
-      required: true,
-      additionalProperties: false,
-      typeName: 'selection-setting',
-      _normalizedRequired: true
-    },
-    groupBy: {
-      '$schema': 'http://json-schema.org/draft-04/schema',
-      '$id': 'selection-setting',
-      title: 'Data selection settings',
-      type: 'object',
-      properties: [Object],
-      required: true,
-      additionalProperties: false,
-      typeName: 'selection-setting',
-      _normalizedRequired: true
-    },
-    featuresDisplayOrder: {
-      description: 'Ordered array of feature keys for display on front end',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true,
-      required: true
-    },
-    featuresDataOrder: {
-      description: 'Ordered array of feature keys for packing and unpacking data',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true,
-      required: true
-    }
-  },
-  required: true,
-  typeName: 'input-dataset-info',
-  _normalizedRequired: true
+summary {
+  type: 'input-dataset-info',
+  formattedType: '<a href="#reference-input-dataset-info">`input-dataset-info</code></a>',
+  description: 'File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON <code>datasets</code> array. Should be named <code>dataset.json&#8217;,
+  required: ' &#10003; Yes'
 }
-property {
+summary {
+  type: 'object',
+  formattedType: &#8216;object&#8217;,
   description: 'Optional display data',
-  type: 'object',
-  _normalizedRequired: true
+  required: 'No'
 }
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'selection-setting',
-  title: 'Data selection settings',
-  type: 'object',
-  properties: {
-    default: {
-      description: 'Default feature key for the setting',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    exclude: {
-      description: 'Optional list of feature keys to exclude',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: true,
-  additionalProperties: false,
-  typeName: 'selection-setting',
-  _normalizedRequired: true
+summary {
+  type: 'selection-setting',
+  formattedType: '<a href="#reference-selection-setting">`selection-setting</code></a>',
+  description: undefined,
+  required: ' &#10003; Yes'
 }
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'selection-setting',
-  title: 'Data selection settings',
-  type: 'object',
-  properties: {
-    default: {
-      description: 'Default feature key for the setting',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    exclude: {
-      description: 'Optional list of feature keys to exclude',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: true,
-  additionalProperties: false,
-  typeName: 'selection-setting',
-  _normalizedRequired: true
+summary {
+  type: 'selection-setting',
+  formattedType: '<a href="#reference-selection-setting"><code>selection-setting</code></a>',
+  description: undefined,
+  required: ' &#10003; Yes'
 }
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'selection-setting',
-  title: 'Data selection settings',
-  type: 'object',
-  properties: {
-    default: {
-      description: 'Default feature key for the setting',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    exclude: {
-      description: 'Optional list of feature keys to exclude',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: true,
-  additionalProperties: false,
-  typeName: 'selection-setting',
-  _normalizedRequired: true
+summary {
+  type: 'selection-setting',
+  formattedType: '<a href="#reference-selection-setting"><code>selection-setting</code></a>',
+  description: undefined,
+  required: ' &#10003; Yes'
 }
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'selection-setting',
-  title: 'Data selection settings',
-  type: 'object',
-  properties: {
-    default: {
-      description: 'Default feature key for the setting',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    exclude: {
-      description: 'Optional list of feature keys to exclude',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: true,
-  additionalProperties: false,
-  typeName: 'selection-setting',
-  _normalizedRequired: true
+summary {
+  type: 'selection-setting',
+  formattedType: '<a href="#reference-selection-setting"><code>selection-setting</code></a>',
+  description: undefined,
+  required: ' &#10003; Yes'
 }
-property {
+summary {
+  type: 'object',
+  formattedType: &#8216;object&#8217;,
   description: 'Optional display data',
-  type: 'object',
-  _normalizedRequired: true
+  required: 'No'
 }
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'selection-setting',
-  title: 'Data selection settings',
-  type: 'object',
-  properties: {
-    default: {
-      description: 'Default feature key for the setting',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    exclude: {
-      description: 'Optional list of feature keys to exclude',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: true,
-  additionalProperties: false,
-  typeName: 'selection-setting',
-  _normalizedRequired: true
+summary {
+  type: 'selection-setting',
+  formattedType: '<a href="#reference-selection-setting"><code>selection-setting</code></a>',
+  description: undefined,
+  required: ' &#10003; Yes'
 }
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'selection-setting',
-  title: 'Data selection settings',
-  type: 'object',
-  properties: {
-    default: {
-      description: 'Default feature key for the setting',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    exclude: {
-      description: 'Optional list of feature keys to exclude',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: true,
-  additionalProperties: false,
-  typeName: 'selection-setting',
-  _normalizedRequired: true
+summary {
+  type: 'selection-setting',
+  formattedType: '<a href="#reference-selection-setting"><code>selection-setting</code></a>',
+  description: undefined,
+  required: ' &#10003; Yes'
 }
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'selection-setting',
-  title: 'Data selection settings',
-  type: 'object',
-  properties: {
-    default: {
-      description: 'Default feature key for the setting',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    exclude: {
-      description: 'Optional list of feature keys to exclude',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: true,
-  additionalProperties: false,
-  typeName: 'selection-setting',
-  _normalizedRequired: true
+summary {
+  type: 'selection-setting',
+  formattedType: '<a href="#reference-selection-setting"><code>selection-setting</code></a>',
+  description: undefined,
+  required: ' &#10003; Yes'
 }
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'selection-setting',
-  title: 'Data selection settings',
-  type: 'object',
-  properties: {
-    default: {
-      description: 'Default feature key for the setting',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    exclude: {
-      description: 'Optional list of feature keys to exclude',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: true,
-  additionalProperties: false,
-  typeName: 'selection-setting',
-  _normalizedRequired: true
+summary {
+  type: 'selection-setting',
+  formattedType: '<a href="#reference-selection-setting"><code>selection-setting</code></a>',
+  description: undefined,
+  required: ' &#10003; Yes'
 }
-property {
+summary {
+  type: 'object',
+  formattedType: &#8216;object&#8217;,
   description: "For discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
-  type: 'object',
-  properties: {
-    FEATURE_NUMERAL_KEY: {
-      '$schema': 'http://json-schema.org/draft-04/schema',
-      '$id': 'discrete-feature-option',
-      type: 'object',
-      properties: [Object],
-      additionalProperties: false,
-      required: undefined,
-      _normalizedRequired: true
-    }
-  },
-  _normalizedRequired: true,
-  required: undefined
+  required: 'No'
 }
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'discrete-feature-option',
+summary {
   type: 'object',
-  properties: {
-    color: {
-      description: 'Hex string',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    name: {
-      description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, `key</code> is required.",
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    key: {
-      description: 'unique key for the option.',
-      type: 'string',
-      _normalizedRequired: true
-    }
-  },
-  additionalProperties: false,
-  required: undefined,
-  _normalizedRequired: true
+  formattedType: &#8216;object&#8217;,
+  description: undefined,
+  required: 'No'
 }</p>
 </div>
 <hr>
