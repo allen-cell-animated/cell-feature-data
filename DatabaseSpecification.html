@@ -524,7 +524,62 @@ Each folder should have the same 5 files listed above.</p>
 <h3 id="_2_make_a_pr_to_this_repo_with_your_dataset_folder">2. Make a PR to this repo with your dataset folder.</h3>
 <div class="paragraph">
 <p>ITEMS
-OBJECT
+OBJECT {
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'featureDefSchema',
+  title: 'Feature Definition',
+  description: 'Definition of a measured features in the dataset. Feature definitions file is an array of these objects.',
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    displayName: {
+      description: 'Human readable name',
+      type: 'string',
+      _normalizedRequired: true,
+      required: true
+    },
+    description: {
+      description: 'Description of how the data was collected/measured',
+      type: 'string',
+      _normalizedRequired: true,
+      required: true
+    },
+    tooltip: {
+      description: 'Shorter version of description',
+      type: 'string',
+      _normalizedRequired: true,
+      required: true
+    },
+    unit: {
+      description: 'unit of measurement',
+      type: 'string',
+      _normalizedRequired: true,
+      required: true
+    },
+    key: {
+      description: 'Id of the feature',
+      type: 'string',
+      _normalizedRequired: true,
+      required: true
+    },
+    discrete: {
+      description: "Whether it&#8217;s a continuous measurement or not",
+      type: 'boolean',
+      _normalizedRequired: true,
+      required: true
+    },
+    options: {
+      description: "For discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
+      type: 'object',
+      properties: [Object],
+      _normalizedRequired: true,
+      required: undefined
+    }
+  },
+  required: undefined,
+  typeName: 'feature-def',
+  _normalizedRequired: true
+}
 ITEMS
 ITEMS
 ITEMS
