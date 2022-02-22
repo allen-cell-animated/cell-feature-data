@@ -650,13 +650,92 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-selection-setting">Data selection settings</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. <code>Data selection settings</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>default</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default feature key for the setting</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exclude</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional list of feature keys to exclude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-selection-setting"><code>selection-setting.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_selection_setting_default">selection-setting.default</h3>
+<div class="paragraph">
+<p>Default feature key for the setting</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_selection_setting_exclude">selection-setting.exclude</h3>
+<div class="paragraph">
+<p>Optional list of feature keys to exclude</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-input-dataset-info">Dataset Info <code>dataset.json</code></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON <code>datasets</code> array. Should be named <code>dataset.json</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. <code>Dataset Info `dataset.json`</code> Properties</caption>
+<caption class="title">Table 3. <code>Dataset Info `dataset.json`</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -764,25 +843,25 @@ Each folder should have the same 5 files listed above.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>xAxis</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-setting"><code>selection-setting</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>yAxis</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-setting"><code>selection-setting</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>colorBy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-setting"><code>selection-setting</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>groupBy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-setting"><code>selection-setting</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
@@ -1055,7 +1134,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>object</code></p>
+<p><strong>Type</strong>: <a href="#reference-selection-setting"><code>selection-setting</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1068,7 +1147,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>object</code></p>
+<p><strong>Type</strong>: <a href="#reference-selection-setting"><code>selection-setting</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1081,7 +1160,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>object</code></p>
+<p><strong>Type</strong>: <a href="#reference-selection-setting"><code>selection-setting</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1094,7 +1173,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>object</code></p>
+<p><strong>Type</strong>: <a href="#reference-selection-setting"><code>selection-setting</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1141,10 +1220,10 @@ Each folder should have the same 5 files listed above.</p>
 <h2 id="reference-feature-def">Feature Definition</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Definition of a measured features in the dataset. Feature definition or collection is an array of these objects.</p>
+<p>Definition of a measured features in the dataset. Feature definitions file is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. <code>Feature Definition</code> Properties</caption>
+<caption class="title">Table 4. <code>Feature Definition</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1336,7 +1415,7 @@ Each folder should have the same 5 files listed above.</p>
 <p>File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. <code>Input Megaset `dataset.json`</code> Properties</caption>
+<caption class="title">Table 5. <code>Input Megaset `dataset.json`</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1462,7 +1541,7 @@ Each folder should have the same 5 files listed above.</p>
 <p>Per data point object. The measured features JSON is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. <code>One measured value</code> Properties</caption>
+<caption class="title">Table 6. <code>One measured value</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1480,7 +1559,7 @@ Each folder should have the same 5 files listed above.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>file_info</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[7]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
@@ -1510,7 +1589,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+<p><strong>Type</strong>: <code>string</code> <code>[7]</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1763,7 +1842,7 @@ Each folder should have the same 5 files listed above.</p>
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "featureDefSchema",
     "title": "Feature Definition",
-    "description": "Definition of a measured features in the dataset. Feature definition or collection is an array of these objects.",
+    "description": "Definition of a measured features in the dataset. Feature definitions file is an array of these objects.",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -1795,7 +1874,7 @@ Each folder should have the same 5 files listed above.</p>
             "description": "For discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
             "type": "object",
             "properties": {
-                "$number": {
+                "FEATURE_NUMERAL_KEY": {
                     "$schema": "http://json-schema.org/draft-04/schema",
                     "$id": "discrete-feature-option",
                     "type": "object",
@@ -1910,7 +1989,9 @@ Each folder should have the same 5 files listed above.</p>
             "type": "array",
             "items": {
                 "type": "string"
-            }
+            },
+            "minItems": 7,
+            "maxItems": 7
         },
         "features": {
             "description": "Ordered array of measured features. Needs to match the order of featuresDataOrder",
