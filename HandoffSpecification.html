@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>Cell Feature Dataset Handoff Specification</title>
+<title>How to hand off a dataset</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,9 +438,170 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
+<h1>How to hand off a dataset</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel2">
+<li><a href="#_1_create_the_files">1. Create the files</a></li>
+<li><a href="#_2_make_a_pr_to_this_repo_with_your_dataset_folder">2. Make a PR to this repo with your dataset folder.</a></li>
+<li><a href="#reference-cell-feature-dataset-handoff-specification">Cell Feature Dataset Handoff Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_cell_feature_dataset_handoff_specification_megaset">Cell Feature Dataset Handoff Specification.megaset</a></li>
+<li><a href="#_cell_feature_dataset_handoff_specification_dataset">Cell Feature Dataset Handoff Specification.dataset</a></li>
+<li><a href="#_cell_feature_dataset_handoff_specification_feature_defs">Cell Feature Dataset Handoff Specification.feature-defs</a></li>
+<li><a href="#_cell_feature_dataset_handoff_specification_measured_features">Cell Feature Dataset Handoff Specification.measured-features</a></li>
+</ul>
+</li>
+<li><a href="#reference-selection-setting">Data selection settings</a>
+<ul class="sectlevel2">
+<li><a href="#_selection_setting_default">selection-setting.default</a></li>
+<li><a href="#_selection_setting_exclude">selection-setting.exclude</a></li>
+</ul>
+</li>
+<li><a href="#reference-input-dataset-info">Dataset Info <code>dataset.json</code></a>
+<ul class="sectlevel2">
+<li><a href="#_input_dataset_info_title">input-dataset-info.title</a></li>
+<li><a href="#_input_dataset_info_name">input-dataset-info.name</a></li>
+<li><a href="#_input_dataset_info_version">input-dataset-info.version</a></li>
+<li><a href="#_input_dataset_info_description">input-dataset-info.description</a></li>
+<li><a href="#_input_dataset_info_image">input-dataset-info.image</a></li>
+<li><a href="#_input_dataset_info_link">input-dataset-info.link</a></li>
+<li><a href="#_input_dataset_info_userdata">input-dataset-info.userData</a></li>
+<li><a href="#_input_dataset_info_production">input-dataset-info.production</a></li>
+<li><a href="#_input_dataset_info_featuresdatapath">input-dataset-info.featuresDataPath</a></li>
+<li><a href="#_input_dataset_info_featuredefspath">input-dataset-info.featureDefsPath</a></li>
+<li><a href="#_input_dataset_info_viewersettingspath">input-dataset-info.viewerSettingsPath</a></li>
+<li><a href="#_input_dataset_info_albumpath">input-dataset-info.albumPath</a></li>
+<li><a href="#_input_dataset_info_thumbnailroot">input-dataset-info.thumbnailRoot</a></li>
+<li><a href="#_input_dataset_info_downloadroot">input-dataset-info.downloadRoot</a></li>
+<li><a href="#_input_dataset_info_volumeviewerdataroot">input-dataset-info.volumeViewerDataRoot</a></li>
+<li><a href="#_input_dataset_info_xaxis">input-dataset-info.xAxis</a></li>
+<li><a href="#_input_dataset_info_yaxis">input-dataset-info.yAxis</a></li>
+<li><a href="#_input_dataset_info_colorby">input-dataset-info.colorBy</a></li>
+<li><a href="#_input_dataset_info_groupby">input-dataset-info.groupBy</a></li>
+<li><a href="#_input_dataset_info_featuresdisplayorder">input-dataset-info.featuresDisplayOrder</a></li>
+<li><a href="#_input_dataset_info_featuresdataorder">input-dataset-info.featuresDataOrder</a></li>
+</ul>
+</li>
+<li><a href="#reference-feature-def">Feature Definition</a>
+<ul class="sectlevel2">
+<li><a href="#_feature_def_displayname">feature-def.displayName</a></li>
+<li><a href="#_feature_def_description">feature-def.description</a></li>
+<li><a href="#_feature_def_tooltip">feature-def.tooltip</a></li>
+<li><a href="#_feature_def_unit">feature-def.unit</a></li>
+<li><a href="#_feature_def_key">feature-def.key</a></li>
+<li><a href="#_feature_def_discrete">feature-def.discrete</a></li>
+<li><a href="#_feature_def_options">feature-def.options</a></li>
+</ul>
+</li>
+<li><a href="#reference-input-megaset">Input Megaset <code>dataset.json</code></a>
+<ul class="sectlevel2">
+<li><a href="#_input_megaset_title">input-megaset.title</a></li>
+<li><a href="#_input_megaset_name">input-megaset.name</a></li>
+<li><a href="#_input_megaset_datasets">input-megaset.datasets</a></li>
+<li><a href="#_input_megaset_publications">input-megaset.publications</a></li>
+</ul>
+</li>
+<li><a href="#reference-input-measured-features">One measured value</a>
+<ul class="sectlevel2">
+<li><a href="#_input_measured_features_file_info">input-measured-features.file_info</a></li>
+<li><a href="#_input_measured_features_features">input-measured-features.features</a></li>
+</ul>
+</li>
+<li><a href="#_appendix">Appendix</a></li>
+<li><a href="#schema-reference-cell-feature-dataset-handoff-specification">JSON Schema for Cell Feature Dataset Handoff Specification</a></li>
+<li><a href="#schema-reference-selection-setting">JSON Schema for Data selection settings</a></li>
+<li><a href="#schema-reference-input-dataset-info">JSON Schema for Dataset Info <code>dataset.json</code></a></li>
+<li><a href="#schema-reference-feature-def">JSON Schema for Feature Definition</a></li>
+<li><a href="#schema-reference-input-megaset">JSON Schema for Input Megaset <code>dataset.json</code></a></li>
+<li><a href="#schema-reference-input-measured-features">JSON Schema for One measured value</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
+<div class="sect2">
+<h3 id="_1_create_the_files">1. Create the files</h3>
+<div class="paragraph">
+<p>(the only file names that matters are <code>dataset.json</code>)</p>
+</div>
+<div class="sect4">
+<h5 id="_for_a_single_dataset">For a single dataset:</h5>
+<div class="paragraph">
+<p>Create a folder with 5 files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#reference-input-dataset-info">dataset.json</a></p>
+</li>
+<li>
+<p><a href="#reference-input-measured-features">feature_analysis.json or .zip depending on the size</a></p>
+</li>
+<li>
+<p><a href="#reference-feature-def">feature_defs.json</a></p>
+</li>
+<li>
+<p>images.json</p>
+</li>
+<li>
+<p>card-cover.png (for display on the homepage)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_for_a_group_of_datasets_ie_a_megaset">For a group of datasets, ie a Megaset</h5>
+<div class="paragraph">
+<p>Create a folder with 1 file and one folder per dataset.
+Each folder should have the same 5 files listed above.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Megaset Folder/</dt>
+<dd>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>dataset.json</code></dt>
+<dt class="hdlist1">dataset-1/</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>dataset.json</code></p>
+</li>
+<li>
+<p>&#8230;&#8203; the other 4 files listed above</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">dataset-2/</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><code>dataset.json</code></p>
+</li>
+<li>
+<p>&#8230;&#8203; the other 4 files listed above</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Refer to <a href="#reference-input-megaset">Megaset</a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_make_a_pr_to_this_repo_with_your_dataset_folder">2. Make a PR to this repo with your dataset folder.</h3>
 <hr>
+</div>
 <div class="sect1">
 <h2 id="reference-cell-feature-dataset-handoff-specification">Cell Feature Dataset Handoff Specification</h2>
 <div class="sectionbody">
@@ -1530,10 +1691,404 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_appendix">Appendix</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-cell-feature-dataset-handoff-specification">JSON Schema for Cell Feature Dataset Handoff Specification</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "$id": "handoff-datasete",
+    "title": "Cell Feature Dataset Handoff Specification",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "megaset": {
+            "$ref": "input-megaset.schema.json"
+        },
+        "dataset": {
+            "$ref": "input-dataset-info.schema.json"
+        },
+        "feature-defs": {
+            "title": "Feature definitions `feature-defs.json`",
+            "description": "File that describes the measured feature definitions. Is an array of feature definitions.",
+            "type": "array",
+            "items": {
+                "$ref": "feature-def.schema.json"
+            }
+        },
+        "measured-features": {
+            "title": "Measured Values `features.json`",
+            "description": "File that contains the measured analysis values, which will drive the plot. It is an array of measured features",
+            "type": "array",
+            "items": {
+                "$ref": "input-measured-features.schema.json"
+            }
+        }
+    },
+    "required": [
+        "dataset",
+        "feature-defs",
+        "measured-features"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-selection-setting">JSON Schema for Data selection settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "$id": "selection-setting",
+    "title": "Data selection settings",
+    "type": "object",
+    "properties": {
+        "default": {
+            "description": "Default feature key for the setting",
+            "type": "string"
+        },
+        "exclude": {
+            "description": "Optional list of feature keys to exclude",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": [
+        "default"
+    ],
+    "additionalProperties": false
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-input-dataset-info">JSON Schema for Dataset Info <code>dataset.json</code></h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "datasetInfoSchema",
+    "title": "Dataset Info `dataset.json`",
+    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "title": {
+            "description": "Display name of the dataset",
+            "type": "string"
+        },
+        "name": {
+            "description": "Name of the dataset (no version number)",
+            "type": "string"
+        },
+        "version": {
+            "description": "version year and number",
+            "type": "string"
+        },
+        "description": {
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "description": "Whether this dataset should only be shown in production",
+            "type": "boolean"
+        },
+        "featuresDataPath": {
+            "description": "url to the per cell data json",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "description": "path to the feature def collection",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "description": "path to image per-channel settings for the 3d viewer",
+            "type": "string"
+        },
+        "albumPath": {
+            "description": "collection name of the album data",
+            "type": "string"
+        },
+        "thumbnailRoot": {
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "xAxis": {
+            "description": "Settings for the x axis",
+            "type": "object",
+            "$ref": "selection-setting.schema.json"
+        },
+        "yAxis": {
+            "description": "Settings for the y axis",
+            "type": "object",
+            "$ref": "selection-setting.schema.json"
+        },
+        "colorBy": {
+            "description": "Settings for the color by menu",
+            "type": "object",
+            "$ref": "selection-setting.schema.json"
+        },
+        "groupBy": {
+            "description": "Settings for the grouping menu",
+            "type": "object",
+            "$ref": "selection-setting.schema.json"
+        },
+        "featuresDisplayOrder": {
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": [
+        "title",
+        "version",
+        "name",
+        "image",
+        "description",
+        "featuresDataPath",
+        "viewerSettingsPath",
+        "albumPath",
+        "thumbnailRoot",
+        "downloadRoot",
+        "volumeViewerDataRoot",
+        "xAxis",
+        "yAxis",
+        "groupBy",
+        "colorBy",
+        "featuresDisplayOrder",
+        "featuresDataOrder"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-feature-def">JSON Schema for Feature Definition</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "featureDefSchema",
+    "title": "Feature Definition",
+    "description": "Definition of a measured features in the dataset. Feature definition or collection is an array of these objects.",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "displayName": {
+            "description": "Human readable name",
+            "type": "string"
+        },
+        "description": {
+            "description": "Description of how the data was collected/measured",
+            "type": "string"
+        },
+        "tooltip": {
+            "description": "Shorter version of description",
+            "type": "string"
+        },
+        "unit": {
+            "description": "unit of measurement",
+            "type": "string"
+        },
+        "key": {
+            "description": "Id of the feature",
+            "type": "string"
+        },
+        "discrete": {
+            "description": "Whether it's a continuous measurement or not",
+            "type": "boolean"
+        },
+        "options": {
+            "description": "For discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
+            "type": "object",
+            "properties": {
+                "$number": {
+                    "$schema": "http://json-schema.org/draft-04/schema",
+                    "$id": "discrete-feature-option",
+                    "type": "object",
+                    "properties": {
+                        "color": {
+                            "description": "Hex string",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Display name for the option. Doesn't have to be unique, but if it's not unique, `key` is required.",
+                            "type": "string"
+                        },
+                        "key": {
+                            "description": "unique key for the option.",
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                        "name",
+                        "color"
+                    ]
+                }
+            }
+        }
+    },
+    "required": [
+        "displayName",
+        "description",
+        "tooltip",
+        "unit",
+        "key",
+        "discrete"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-input-megaset">JSON Schema for Input Megaset <code>dataset.json</code></h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "inputMegaset",
+    "title": "Input Megaset `dataset.json`",
+    "description": "File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named `dataset.json`",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "title": {
+            "description": "Display name of the dataset or group",
+            "type": "string"
+        },
+        "name": {
+            "description": "Name of the dataset (no version number)",
+            "type": "string"
+        },
+        "datasets": {
+            "description": "subfolder names that point to each dataset in the group",
+            "type": "array"
+        },
+        "publications": {
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "properties": {
+                    "title": {
+                        "description": "Article title",
+                        "type": "string"
+                    },
+                    "url": {
+                        "description": "Article link",
+                        "type": "string"
+                    },
+                    "citation": {
+                        "description": "Article journal and date",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "required": [
+        "title",
+        "name"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-input-measured-features">JSON Schema for One measured value</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "inputMeasuredFeaturesSchema",
+    "title": "One measured value",
+    "description": "Per data point object. The measured features JSON is an array of these objects.",
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+        "file_info": {
+            "description": "ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "features": {
+            "description": "Ordered array of measured features. Needs to match the order of featuresDataOrder",
+            "type": "array",
+            "items": {
+                "type": "number"
+            }
+        }
+    },
+    "required": [
+        "file_info",
+        "features"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-22 14:28:27 -0800
+Last updated 2022-02-22 14:49:27 -0800
 </div>
 </div>
 </body>
