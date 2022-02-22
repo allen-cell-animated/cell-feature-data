@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>Cell Feature Data Dataset Handoff and Database Specification</title>
+<title>How to hand off a dataset</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,94 +438,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>Cell Feature Data Dataset Handoff and Database Specification</h1>
-<div id="toc" class="toc">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel2">
-<li><a href="#for-handoffs">For people handing off datasets:</a></li>
-<li><a href="#reference-cell-feature-dataset-handoff-specification">Cell Feature Dataset Handoff Specification</a>
-<ul class="sectlevel2">
-<li><a href="#_cell_feature_dataset_handoff_specification_megaset">Cell Feature Dataset Handoff Specification.megaset</a></li>
-<li><a href="#_cell_feature_dataset_handoff_specification_dataset">Cell Feature Dataset Handoff Specification.dataset</a></li>
-<li><a href="#_cell_feature_dataset_handoff_specification_feature_defs">Cell Feature Dataset Handoff Specification.feature-defs</a></li>
-<li><a href="#_cell_feature_dataset_handoff_specification_measured_features">Cell Feature Dataset Handoff Specification.measured-features</a></li>
-</ul>
-</li>
-<li><a href="#reference-selection-setting">Data selection settings</a>
-<ul class="sectlevel2">
-<li><a href="#_selection_setting_default">selection-setting.default</a></li>
-<li><a href="#_selection_setting_exclude">selection-setting.exclude</a></li>
-</ul>
-</li>
-<li><a href="#reference-input-dataset-info">Dataset Info <code>dataset.json</code></a>
-<ul class="sectlevel2">
-<li><a href="#_input_dataset_info_title">input-dataset-info.title</a></li>
-<li><a href="#_input_dataset_info_name">input-dataset-info.name</a></li>
-<li><a href="#_input_dataset_info_version">input-dataset-info.version</a></li>
-<li><a href="#_input_dataset_info_description">input-dataset-info.description</a></li>
-<li><a href="#_input_dataset_info_image">input-dataset-info.image</a></li>
-<li><a href="#_input_dataset_info_link">input-dataset-info.link</a></li>
-<li><a href="#_input_dataset_info_userdata">input-dataset-info.userData</a></li>
-<li><a href="#_input_dataset_info_production">input-dataset-info.production</a></li>
-<li><a href="#_input_dataset_info_featuresdatapath">input-dataset-info.featuresDataPath</a></li>
-<li><a href="#_input_dataset_info_featuredefspath">input-dataset-info.featureDefsPath</a></li>
-<li><a href="#_input_dataset_info_viewersettingspath">input-dataset-info.viewerSettingsPath</a></li>
-<li><a href="#_input_dataset_info_albumpath">input-dataset-info.albumPath</a></li>
-<li><a href="#_input_dataset_info_thumbnailroot">input-dataset-info.thumbnailRoot</a></li>
-<li><a href="#_input_dataset_info_downloadroot">input-dataset-info.downloadRoot</a></li>
-<li><a href="#_input_dataset_info_volumeviewerdataroot">input-dataset-info.volumeViewerDataRoot</a></li>
-<li><a href="#_input_dataset_info_xaxis">input-dataset-info.xAxis</a></li>
-<li><a href="#_input_dataset_info_yaxis">input-dataset-info.yAxis</a></li>
-<li><a href="#_input_dataset_info_colorby">input-dataset-info.colorBy</a></li>
-<li><a href="#_input_dataset_info_groupby">input-dataset-info.groupBy</a></li>
-<li><a href="#_input_dataset_info_featuresdisplayorder">input-dataset-info.featuresDisplayOrder</a></li>
-<li><a href="#_input_dataset_info_featuresdataorder">input-dataset-info.featuresDataOrder</a></li>
-</ul>
-</li>
-<li><a href="#reference-feature-def">Feature Definition</a>
-<ul class="sectlevel2">
-<li><a href="#_feature_def_displayname">feature-def.displayName</a></li>
-<li><a href="#_feature_def_description">feature-def.description</a></li>
-<li><a href="#_feature_def_tooltip">feature-def.tooltip</a></li>
-<li><a href="#_feature_def_unit">feature-def.unit</a></li>
-<li><a href="#_feature_def_key">feature-def.key</a></li>
-<li><a href="#_feature_def_discrete">feature-def.discrete</a></li>
-<li><a href="#_feature_def_options">feature-def.options</a></li>
-</ul>
-</li>
-<li><a href="#reference-input-megaset">Input Megaset <code>dataset.json</code></a>
-<ul class="sectlevel2">
-<li><a href="#_input_megaset_title">input-megaset.title</a></li>
-<li><a href="#_input_megaset_name">input-megaset.name</a></li>
-<li><a href="#_input_megaset_datasets">input-megaset.datasets</a></li>
-<li><a href="#_input_megaset_publications">input-megaset.publications</a></li>
-</ul>
-</li>
-<li><a href="#reference-input-measured-features">One measured value</a>
-<ul class="sectlevel2">
-<li><a href="#_input_measured_features_file_info">input-measured-features.file_info</a></li>
-<li><a href="#_input_measured_features_features">input-measured-features.features</a></li>
-</ul>
-</li>
-<li><a href="#_appendix">Appendix</a></li>
-<li><a href="#schema-reference-cell-feature-dataset-handoff-specification">JSON Schema for Cell Feature Dataset Handoff Specification</a></li>
-<li><a href="#schema-reference-selection-setting">JSON Schema for Data selection settings</a></li>
-<li><a href="#schema-reference-input-dataset-info">JSON Schema for Dataset Info <code>dataset.json</code></a></li>
-<li><a href="#schema-reference-feature-def">JSON Schema for Feature Definition</a></li>
-<li><a href="#schema-reference-input-megaset">JSON Schema for Input Megaset <code>dataset.json</code></a></li>
-<li><a href="#schema-reference-input-measured-features">JSON Schema for One measured value</a></li>
-</ul>
-</div>
+<h1>How to hand off a dataset</h1>
 </div>
 <div id="content">
 <div class="sect2">
-<h3 id="for-handoffs">For people handing off datasets:</h3>
-<div class="sect3">
-<h4 id="_for_a_single_dataset_the_only_file_name_that_matters_is_dataset_json">For a single dataset (the only file name that matters is <code>dataset.json</code>):</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
+<h3 id="_1_create_the_files">1. Create the files</h3>
+<div class="paragraph">
+<p>(the only file names that matters are <code>dataset.json</code>):
+===== For a single dataset:</p>
+</div>
+<div class="paragraph">
 <p>Create a folder with 5 files:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -545,16 +469,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
-</li>
-</ol>
+<div class="sect4">
+<h5 id="_for_a_group_of_datasets_ie_a_megaset">For a group of datasets, ie a Megaset</h5>
+<div class="paragraph">
+<p>Create a folder with 1 file and one folder per dataset.
+Each folder should have the same 5 files listed above.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_for_a_group_of_datasets_ie_a_megaset_the_only_file_name_that_matters_is_dataset_json">For a group of datasets, ie a Megaset (the only file name that matters is <code>dataset.json</code>):</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Create a folder with 1 file and one folder per dataset:</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Megaset Folder/</dt>
@@ -592,9 +512,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </dd>
 </dl>
-</div>
-</li>
-</ol>
 </div>
 <div class="paragraph">
 <p>Refer to <a href="#reference-input-megaset">Megaset</a> for more information.</p>
@@ -2095,7 +2012,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-22 14:22:17 -0800
+Last updated 2022-02-22 14:26:21 -0800
 </div>
 </div>
 </body>
