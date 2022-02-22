@@ -5,7 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>Condensed measured features JSON</title>
+<meta name="author" content="* &lt;&lt;reference-cell-feature-database-specification,`Cell Feature Database Specification`&gt;&gt; (root object)">
+<title>Objects</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,20 +439,41 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
+<h1>Objects</h1>
+<div class="details">
+<span id="author" class="author">* &lt;&lt;reference-cell-feature-database-specification,`Cell Feature Database Specification`&gt;&gt; (root object)</span><br>
+<span id="revnumber">version ,</span>
+<span id="revdate">`Condensed measured features JSON`&gt;&gt;</span>
+</div>
 </div>
 <div id="content">
-<div class="paragraph">
-<p>FOUND ARRAY
-FOUND ARRAY
-= Objects
-* <a href="#reference-cell-feature-database-specification"><code>Cell Feature Database Specification</code></a> (root object)
-* <a href="#reference-measured-features"><code>Condensed measured features JSON</code></a>
-** <a href="#reference-condensed-measured-feature"><code>Condensed measured feature</code></a>
-* <a href="#reference-selection-setting"><code>Data selection settings</code></a>
-* <a href="#reference-dataset-descriptions"><code>Dataset Descriptions</code></a>
-* <a href="#reference-feature-def"><code>Feature Definition</code></a>
-* <a href="#reference-file-info"><code>File Info</code></a>
-* <a href="#reference-manifest"><code>Manifest</code></a></p>
+<div id="preamble">
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#reference-condensed-measured-feature"><code>Condensed measured feature</code></a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#reference-selection-setting"><code>Data selection settings</code></a></p>
+</li>
+<li>
+<p><a href="#reference-dataset-descriptions"><code>Dataset Descriptions</code></a></p>
+</li>
+<li>
+<p><a href="#reference-feature-def"><code>Feature Definition</code></a></p>
+</li>
+<li>
+<p><a href="#reference-file-info"><code>File Info</code></a></p>
+</li>
+<li>
+<p><a href="#reference-manifest"><code>Manifest</code></a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>undefined</p>
@@ -460,21 +482,17 @@ FOUND ARRAY
 <p>undefined</p>
 </div>
 <hr>
+</div>
+</div>
 <div class="sect1">
 <h2 id="reference-measured-features">Condensed measured features JSON</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>File stored on AWS that has the condensed measured data. Is an array of condensed measured features</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <a href="#reference-condensed-measured-feature"><code>condensed-measured-feature</code></a></p>
-</li>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-measured-features"><code>measured-features.schema.json</code></a></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>[object Object]* <strong>Type</strong>: <a href="#reference-condensed-measured-feature"><code>condensed-measured-feature</code></a>
+* <strong>JSON schema</strong>: <a href="#schema-reference-measured-features"><code>measured-features.schema.json</code></a></p>
 </div>
 <div class="paragraph">
 <p>undefined</p>
@@ -497,15 +515,9 @@ FOUND ARRAY
 <div class="paragraph">
 <p>Metadata per cell</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>object</code></p>
-</li>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-file-info"><code>file-info.schema.json</code></a></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>[object Object]* <strong>Type</strong>: <code>object</code>
+* <strong>JSON schema</strong>: <a href="#schema-reference-file-info"><code>file-info.schema.json</code></a></p>
 </div>
 <div class="paragraph">
 <p>undefined</p>
@@ -515,7 +527,8 @@ FOUND ARRAY
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-22 13:44:40 -0800
+Version <br>
+Last updated 2022-02-22 13:48:21 -0800
 </div>
 </div>
 </body>
