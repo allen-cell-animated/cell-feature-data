@@ -524,62 +524,7 @@ Each folder should have the same 5 files listed above.</p>
 <h3 id="_2_make_a_pr_to_this_repo_with_your_dataset_folder">2. Make a PR to this repo with your dataset folder.</h3>
 <div class="paragraph">
 <p>ITEMS
-OBJECT {
-  '$schema': 'http://json-schema.org/draft-07/schema#',
-  '$id': 'featureDefSchema',
-  title: 'Feature Definition',
-  description: 'Definition of a measured features in the dataset. Feature definitions file is an array of these objects.',
-  type: 'object',
-  additionalProperties: false,
-  properties: {
-    displayName: {
-      description: 'Human readable name',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    description: {
-      description: 'Description of how the data was collected/measured',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    tooltip: {
-      description: 'Shorter version of description',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    unit: {
-      description: 'unit of measurement',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    key: {
-      description: 'Id of the feature',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    discrete: {
-      description: "Whether it&#8217;s a continuous measurement or not",
-      type: 'boolean',
-      _normalizedRequired: true,
-      required: true
-    },
-    options: {
-      description: "For discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
-      type: 'object',
-      properties: [Object],
-      _normalizedRequired: true,
-      required: undefined
-    }
-  },
-  required: undefined,
-  typeName: 'feature-def',
-  _normalizedRequired: true
-}
+ITEMS
 ITEMS
 ITEMS
 ITEMS
@@ -642,136 +587,74 @@ ITEMS</p>
 <ul>
 <li>
 <p><strong>JSON schema</strong>: <a href="#schema-reference-cell-feature-dataset-handoff-specification"><code>input-dataset.schema.json</code></a></p>
-<div class="literalblock">
-<div class="content">
-<pre>feature-def.displayName</pre>
-</div>
-</div>
 </li>
 </ul>
 </div>
+<div class="sect2">
+<h3 id="_cell_feature_dataset_handoff_specification_megaset">Cell Feature Dataset Handoff Specification.megaset</h3>
 <div class="paragraph">
-<p>Human readable name</p>
+<p>File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-<div class="literalblock">
-<div class="content">
-<pre>feature-def.description</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Description of how the data was collected/measured</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-<div class="literalblock">
-<div class="content">
-<pre>feature-def.tooltip</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Shorter version of description</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-<div class="literalblock">
-<div class="content">
-<pre>feature-def.unit</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>unit of measurement</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-<div class="literalblock">
-<div class="content">
-<pre>feature-def.key</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Id of the feature</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-<div class="literalblock">
-<div class="content">
-<pre>feature-def.discrete</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Whether it&#8217;s a continuous measurement or not</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>boolean</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-<div class="literalblock">
-<div class="content">
-<pre>feature-def.options</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>For discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>object</code></p>
+<p><strong>Type</strong>: <a href="#reference-input-megaset"><code>input-megaset</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_cell_feature_dataset_handoff_specification_dataset">Cell Feature Dataset Handoff Specification.dataset</h3>
+<div class="paragraph">
+<p>File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON <code>datasets</code> array. Should be named <code>dataset.json</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-input-dataset-info"><code>input-dataset-info</code></a></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cell_feature_dataset_handoff_specification_feature_defs">Cell Feature Dataset Handoff Specification.feature-defs</h3>
+<div class="paragraph">
+<p>File that describes the measured feature definitions. Is an array of feature definitions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-feature-def"><code>feature-def</code></a> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cell_feature_dataset_handoff_specification_measured_features">Cell Feature Dataset Handoff Specification.measured-features</h3>
+<div class="paragraph">
+<p>File that contains the measured analysis values, which will drive the plot. It is an array of measured features</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-input-measured-features"><code>input-measured-features</code></a> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
 <hr>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1576,7 +1459,7 @@ ITEMS</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>publications</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>array[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-refs/publication"><code>refs/publication</code></a> <code>[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Publications associated with the group</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
@@ -1648,7 +1531,7 @@ ITEMS</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>array[]</code></p>
+<p><strong>Type</strong>: <a href="#reference-refs/publication"><code>refs/publication</code></a> <code>[]</code></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -1734,6 +1617,110 @@ ITEMS</p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-refs/publication">Publication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Publication data</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. <code>Publication</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Article title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>url</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Article link</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>citation</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Article journal and date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-refs/publication"><code>refs/publication.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_refspublication_title">refs/publication.title</h3>
+<div class="paragraph">
+<p>Article title</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_refspublication_url">refs/publication.url</h3>
+<div class="paragraph">
+<p>Article link</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_refspublication_citation">refs/publication.citation</h3>
+<div class="paragraph">
+<p>Article journal and date</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
 </li>
 </ul>
 </div>
@@ -2069,20 +2056,7 @@ ITEMS</p>
             "description": "Publications associated with the group",
             "type": "array",
             "items": {
-                "properties": {
-                    "title": {
-                        "description": "Article title",
-                        "type": "string"
-                    },
-                    "url": {
-                        "description": "Article link",
-                        "type": "string"
-                    },
-                    "citation": {
-                        "description": "Article journal and date",
-                        "type": "string"
-                    }
-                }
+                "$ref": "refs/publication.schema.json"
             }
         }
     },
@@ -2130,6 +2104,38 @@ ITEMS</p>
         "file_info",
         "features"
     ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-refs/publication">JSON Schema for Publication</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "publication",
+    "title": "Publication",
+    "description": "Publication data",
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+        "title": {
+            "description": "Article title",
+            "type": "string"
+        },
+        "url": {
+            "description": "Article link",
+            "type": "string"
+        },
+        "citation": {
+            "description": "Article journal and date",
+            "type": "string"
+        }
+    }
 }</code></pre>
 </div>
 </div>
