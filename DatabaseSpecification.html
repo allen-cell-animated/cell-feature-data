@@ -526,10 +526,6 @@ Each folder should have the same 5 files listed above.</p>
 <p>ITEMS
 OBJECT
 ITEMS
-OBJECT
-ITEMS
-ITEMS
-ITEMS
 ITEMS
 ITEMS
 ITEMS
@@ -591,74 +587,136 @@ ITEMS</p>
 <ul>
 <li>
 <p><strong>JSON schema</strong>: <a href="#schema-reference-cell-feature-dataset-handoff-specification"><code>input-dataset.schema.json</code></a></p>
+<div class="literalblock">
+<div class="content">
+<pre>feature-def.displayName</pre>
+</div>
+</div>
 </li>
 </ul>
 </div>
-<div class="sect2">
-<h3 id="_cell_feature_dataset_handoff_specification_megaset">Cell Feature Dataset Handoff Specification.megaset</h3>
 <div class="paragraph">
-<p>File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p>
+<p>Human readable name</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-input-megaset"><code>input-megaset</code></a></p>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+<div class="literalblock">
+<div class="content">
+<pre>feature-def.description</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Description of how the data was collected/measured</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+<div class="literalblock">
+<div class="content">
+<pre>feature-def.tooltip</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Shorter version of description</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+<div class="literalblock">
+<div class="content">
+<pre>feature-def.unit</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>unit of measurement</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+<div class="literalblock">
+<div class="content">
+<pre>feature-def.key</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Id of the feature</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+<div class="literalblock">
+<div class="content">
+<pre>feature-def.discrete</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Whether it&#8217;s a continuous measurement or not</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>boolean</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+<div class="literalblock">
+<div class="content">
+<pre>feature-def.options</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>object</code></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_cell_feature_dataset_handoff_specification_dataset">Cell Feature Dataset Handoff Specification.dataset</h3>
-<div class="paragraph">
-<p>File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON <code>datasets</code> array. Should be named <code>dataset.json</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <a href="#reference-input-dataset-info"><code>input-dataset-info</code></a></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_cell_feature_dataset_handoff_specification_feature_defs">Cell Feature Dataset Handoff Specification.feature-defs</h3>
-<div class="paragraph">
-<p>File that describes the measured feature definitions. Is an array of feature definitions.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <a href="#reference-feature-def"><code>feature-def</code></a> <code>[]</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_cell_feature_dataset_handoff_specification_measured_features">Cell Feature Dataset Handoff Specification.measured-features</h3>
-<div class="paragraph">
-<p>File that contains the measured analysis values, which will drive the plot. It is an array of measured features</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <a href="#reference-input-measured-features"><code>input-measured-features</code></a> <code>[]</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
 <hr>
-</div>
 </div>
 </div>
 <div class="sect1">
