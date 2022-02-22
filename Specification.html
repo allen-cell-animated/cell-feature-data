@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>For people handing off datasets:</title>
+<title>Cell Feature Data Dataset Handoff and Database Specification</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,27 +438,59 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
+<h1>Cell Feature Data Dataset Handoff and Database Specification</h1>
 </div>
 <div id="content">
-<div class="paragraph">
-<p>Cell Feature Data Dataset Handoff and Database Specification</p>
+<div class="sect2">
+<h3 id="for-handoffs">For people handing off datasets:</h3>
+
 </div>
 <div class="sect1">
-<h2 id="for-handoffs">For people handing off datasets:</h2>
+<h2 id="_for_a_single_dataset_the_only_file_name_that_matters_is_dataset_json">For a single dataset (the only file name that matters is <code>dataset.json</code>):</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>For a single dataset (the only file name that matters is <code>dataset.json</code>):
-1. Create a folder with 5 files:
-a. dataset.json
-b. feature_analysis.json or .zip depending on the size
-c. feature_defs.json
-d. images.json
-e. card-cover.png (for display on the homepage)</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a folder with 5 files:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>dataset.json</p>
+</li>
+<li>
+<p>feature_analysis.json or .zip depending on the size</p>
+</li>
+<li>
+<p>feature_defs.json</p>
+</li>
+<li>
+<p>images.json</p>
+</li>
+<li>
+<p>card-cover.png (for display on the homepage)</p>
+</li>
+</ul>
 </div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_for_a_group_of_datasets_ie_a_megaset_the_only_file_name_that_matters_is_dataset_json">For a group of datasets, ie a Megaset (the only file name that matters is <code>dataset.json</code>):</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a folder with 1 file and one folder per dataset:</p>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. megaset folder</div>
+<div class="content">
 <div class="paragraph">
-<p>For a group of datasets, ie a Megaset (the only file name that matters is <code>dataset.json</code>):
-1. Create a folder with 1 file and one folder per dataset:
-<code>dataset.json</code>
+<p><code>dataset.json</code>
 /dataset-1
     <code>dataset.json</code>
     &#8230;&#8203; the other 4 files listed above
@@ -469,9 +501,11 @@ e. card-cover.png (for display on the homepage)</p>
 </div>
 </div>
 </div>
+</div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-22 11:55:14 -0800
+Last updated 2022-02-22 12:07:37 -0800
 </div>
 </div>
 </body>
