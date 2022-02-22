@@ -563,31 +563,6 @@ Each folder should have the same 5 files listed above.</p>
   _normalizedRequired: true
 }
 property {
-  description: 'Display name of the dataset or group',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Name of the dataset (no version number)',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'subfolder names that point to each dataset in the group',
-  type: 'array',
-  _normalizedRequired: true
-}
-property {
-  description: 'Publications associated with the group',
-  type: 'array',
-  items: {
-    properties: { title: [Object], url: [Object], citation: [Object] }
-  },
-  _normalizedRequired: true
-}
-property {
   '$schema': 'http://json-schema.org/draft-07/schema#',
   '$id': 'datasetInfoSchema',
   title: 'Dataset Info `dataset.json&#8217;,
@@ -745,38 +720,104 @@ property {
   _normalizedRequired: true
 }
 property {
-  description: 'Display name of the dataset',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
+  description: 'Optional display data',
+  type: 'object',
+  _normalizedRequired: true
 }
 property {
-  description: 'Name of the dataset (no version number)',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
+  '$schema': 'http://json-schema.org/draft-04/schema',
+  '$id': 'selection-setting',
+  title: 'Data selection settings',
+  type: 'object',
+  properties: {
+    default: {
+      description: 'Default feature key for the setting',
+      type: 'string',
+      _normalizedRequired: true,
+      required: true
+    },
+    exclude: {
+      description: 'Optional list of feature keys to exclude',
+      type: 'array',
+      items: [Object],
+      _normalizedRequired: true
+    }
+  },
+  required: true,
+  additionalProperties: false,
+  typeName: 'selection-setting',
+  _normalizedRequired: true
 }
 property {
-  description: 'version year and number',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
+  '$schema': 'http://json-schema.org/draft-04/schema',
+  '$id': 'selection-setting',
+  title: 'Data selection settings',
+  type: 'object',
+  properties: {
+    default: {
+      description: 'Default feature key for the setting',
+      type: 'string',
+      _normalizedRequired: true,
+      required: true
+    },
+    exclude: {
+      description: 'Optional list of feature keys to exclude',
+      type: 'array',
+      items: [Object],
+      _normalizedRequired: true
+    }
+  },
+  required: true,
+  additionalProperties: false,
+  typeName: 'selection-setting',
+  _normalizedRequired: true
 }
 property {
-  description: 'Description of the dataset',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
+  '$schema': 'http://json-schema.org/draft-04/schema',
+  '$id': 'selection-setting',
+  title: 'Data selection settings',
+  type: 'object',
+  properties: {
+    default: {
+      description: 'Default feature key for the setting',
+      type: 'string',
+      _normalizedRequired: true,
+      required: true
+    },
+    exclude: {
+      description: 'Optional list of feature keys to exclude',
+      type: 'array',
+      items: [Object],
+      _normalizedRequired: true
+    }
+  },
+  required: true,
+  additionalProperties: false,
+  typeName: 'selection-setting',
+  _normalizedRequired: true
 }
 property {
-  description: 'relative path to the dataset card image file',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Link to website displaying the dataset',
-  type: 'string',
+  '$schema': 'http://json-schema.org/draft-04/schema',
+  '$id': 'selection-setting',
+  title: 'Data selection settings',
+  type: 'object',
+  properties: {
+    default: {
+      description: 'Default feature key for the setting',
+      type: 'string',
+      _normalizedRequired: true,
+      required: true
+    },
+    exclude: {
+      description: 'Optional list of feature keys to exclude',
+      type: 'array',
+      items: [Object],
+      _normalizedRequired: true
+    }
+  },
+  required: true,
+  additionalProperties: false,
+  typeName: 'selection-setting',
   _normalizedRequired: true
 }
 property {
@@ -785,52 +826,6 @@ property {
   _normalizedRequired: true
 }
 property {
-  description: 'Whether this dataset should only be shown in production',
-  type: 'boolean',
-  _normalizedRequired: true
-}
-property {
-  description: 'url to the per cell data json',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'path to the feature def collection',
-  type: 'string',
-  _normalizedRequired: true
-}
-property {
-  description: 'path to image per-channel settings for the 3d viewer',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'collection name of the album data',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Root url for thumbnail images',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Root url for downloading cell data',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Root url for 3d images',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
   '$schema': 'http://json-schema.org/draft-04/schema',
   '$id': 'selection-setting',
   title: 'Data selection settings',
@@ -852,18 +847,6 @@ property {
   required: true,
   additionalProperties: false,
   typeName: 'selection-setting',
-  _normalizedRequired: true
-}
-property {
-  description: 'Default feature key for the setting',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' },
   _normalizedRequired: true
 }
 property {
@@ -891,15 +874,27 @@ property {
   _normalizedRequired: true
 }
 property {
-  description: 'Default feature key for the setting',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' },
+  '$schema': 'http://json-schema.org/draft-04/schema',
+  '$id': 'selection-setting',
+  title: 'Data selection settings',
+  type: 'object',
+  properties: {
+    default: {
+      description: 'Default feature key for the setting',
+      type: 'string',
+      _normalizedRequired: true,
+      required: true
+    },
+    exclude: {
+      description: 'Optional list of feature keys to exclude',
+      type: 'array',
+      items: [Object],
+      _normalizedRequired: true
+    }
+  },
+  required: true,
+  additionalProperties: false,
+  typeName: 'selection-setting',
   _normalizedRequired: true
 }
 property {
@@ -925,406 +920,6 @@ property {
   additionalProperties: false,
   typeName: 'selection-setting',
   _normalizedRequired: true
-}
-property {
-  description: 'Default feature key for the setting',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' },
-  _normalizedRequired: true
-}
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'selection-setting',
-  title: 'Data selection settings',
-  type: 'object',
-  properties: {
-    default: {
-      description: 'Default feature key for the setting',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    exclude: {
-      description: 'Optional list of feature keys to exclude',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: true,
-  additionalProperties: false,
-  typeName: 'selection-setting',
-  _normalizedRequired: true
-}
-property {
-  description: 'Default feature key for the setting',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' },
-  _normalizedRequired: true
-}
-property {
-  description: 'Ordered array of feature keys for display on front end',
-  type: 'array',
-  items: { type: 'string' },
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Ordered array of feature keys for packing and unpacking data',
-  type: 'array',
-  items: { type: 'string' },
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  title: 'Feature definitions `feature-defs.json&#8217;,
-  description: 'File that describes the measured feature definitions. Is an array of feature definitions.',
-  type: 'array',
-  items: {
-    '$schema': 'http://json-schema.org/draft-07/schema#',
-    '$id': 'featureDefSchema',
-    title: 'Feature Definition',
-    description: 'Definition of a measured features in the dataset. Feature definitions file is an array of these objects.',
-    type: 'object',
-    additionalProperties: false,
-    properties: {
-      displayName: [Object],
-      description: [Object],
-      tooltip: [Object],
-      unit: [Object],
-      key: [Object],
-      discrete: [Object],
-      options: [Object]
-    },
-    required: undefined,
-    typeName: 'feature-def',
-    _normalizedRequired: true
-  },
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  title: 'Measured Values `features.json&#8217;,
-  description: 'File that contains the measured analysis values, which will drive the plot. It is an array of measured features',
-  type: 'array',
-  items: {
-    '$schema': 'http://json-schema.org/draft-07/schema#',
-    '$id': 'inputMeasuredFeaturesSchema',
-    title: 'One measured value',
-    description: 'Per data point object. The measured features JSON is an array of these objects.',
-    additionalProperties: false,
-    type: 'object',
-    properties: { file_info: [Object], features: [Object] },
-    required: undefined,
-    typeName: 'input-measured-features',
-    _normalizedRequired: true
-  },
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Default feature key for the setting',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' },
-  _normalizedRequired: true
-}
-property {
-  description: 'Display name of the dataset',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Name of the dataset (no version number)',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'version year and number',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Description of the dataset',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'relative path to the dataset card image file',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Link to website displaying the dataset',
-  type: 'string',
-  _normalizedRequired: true
-}
-property {
-  description: 'Optional display data',
-  type: 'object',
-  _normalizedRequired: true
-}
-property {
-  description: 'Whether this dataset should only be shown in production',
-  type: 'boolean',
-  _normalizedRequired: true
-}
-property {
-  description: 'url to the per cell data json',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'path to the feature def collection',
-  type: 'string',
-  _normalizedRequired: true
-}
-property {
-  description: 'path to image per-channel settings for the 3d viewer',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'collection name of the album data',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Root url for thumbnail images',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Root url for downloading cell data',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Root url for 3d images',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'selection-setting',
-  title: 'Data selection settings',
-  type: 'object',
-  properties: {
-    default: {
-      description: 'Default feature key for the setting',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    exclude: {
-      description: 'Optional list of feature keys to exclude',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: true,
-  additionalProperties: false,
-  typeName: 'selection-setting',
-  _normalizedRequired: true
-}
-property {
-  description: 'Default feature key for the setting',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' },
-  _normalizedRequired: true
-}
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'selection-setting',
-  title: 'Data selection settings',
-  type: 'object',
-  properties: {
-    default: {
-      description: 'Default feature key for the setting',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    exclude: {
-      description: 'Optional list of feature keys to exclude',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: true,
-  additionalProperties: false,
-  typeName: 'selection-setting',
-  _normalizedRequired: true
-}
-property {
-  description: 'Default feature key for the setting',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' },
-  _normalizedRequired: true
-}
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'selection-setting',
-  title: 'Data selection settings',
-  type: 'object',
-  properties: {
-    default: {
-      description: 'Default feature key for the setting',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    exclude: {
-      description: 'Optional list of feature keys to exclude',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: true,
-  additionalProperties: false,
-  typeName: 'selection-setting',
-  _normalizedRequired: true
-}
-property {
-  description: 'Default feature key for the setting',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' },
-  _normalizedRequired: true
-}
-property {
-  '$schema': 'http://json-schema.org/draft-04/schema',
-  '$id': 'selection-setting',
-  title: 'Data selection settings',
-  type: 'object',
-  properties: {
-    default: {
-      description: 'Default feature key for the setting',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    exclude: {
-      description: 'Optional list of feature keys to exclude',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true
-    }
-  },
-  required: true,
-  additionalProperties: false,
-  typeName: 'selection-setting',
-  _normalizedRequired: true
-}
-property {
-  description: 'Default feature key for the setting',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' },
-  _normalizedRequired: true
-}
-property {
-  description: 'Ordered array of feature keys for display on front end',
-  type: 'array',
-  items: { type: 'string' },
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Ordered array of feature keys for packing and unpacking data',
-  type: 'array',
-  items: { type: 'string' },
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Human readable name',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Description of how the data was collected/measured',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Shorter version of description',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'unit of measurement',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Id of the feature',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: "Whether it&#8217;s a continuous measurement or not",
-  type: 'boolean',
-  _normalizedRequired: true,
-  required: true
 }
 property {
   description: "For discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
@@ -1369,64 +964,6 @@ property {
   additionalProperties: false,
   required: undefined,
   _normalizedRequired: true
-}
-property {
-  description: 'Hex string',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.",
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'unique key for the option.',
-  type: 'string',
-  _normalizedRequired: true
-}
-property {
-  description: 'Display name of the dataset or group',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Name of the dataset (no version number)',
-  type: 'string',
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'subfolder names that point to each dataset in the group',
-  type: 'array',
-  _normalizedRequired: true
-}
-property {
-  description: 'Publications associated with the group',
-  type: 'array',
-  items: {
-    properties: { title: [Object], url: [Object], citation: [Object] }
-  },
-  _normalizedRequired: true
-}
-property {
-  description: 'ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]',
-  type: 'array',
-  items: { type: 'string' },
-  minItems: 7,
-  maxItems: 7,
-  _normalizedRequired: true,
-  required: true
-}
-property {
-  description: 'Ordered array of measured features. Needs to match the order of featuresDataOrder',
-  type: 'array',
-  items: { type: 'number' },
-  _normalizedRequired: true,
-  required: true
 }</p>
 </div>
 <hr>
