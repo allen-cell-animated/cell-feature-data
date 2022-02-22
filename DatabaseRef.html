@@ -459,6 +459,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#reference-selection-setting"><code>Data selection settings</code></a></p>
 </li>
 <li>
+<p><a href="#reference-dataset-descriptions"><code>Dataset Descriptions</code></a></p>
+</li>
+<li>
 <p><a href="#reference-feature-def"><code>Feature Definitions</code></a></p>
 </li>
 <li>
@@ -466,9 +469,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li>
 <p><a href="#reference-manifest"><code>Manifest</code></a></p>
-</li>
-<li>
-<p><a href="#reference-dataset-descriptions"><code>undefined</code></a></p>
 </li>
 </ul>
 </div>
@@ -1033,13 +1033,70 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-dataset-descriptions">Dataset Descriptions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Endpoint that gets called first to load all the available datasets</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. <code>Dataset Descriptions</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DATASET_ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-dataset-descriptions"><code>dataset-descriptions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_dataset_descriptions_dataset_id">dataset-descriptions.DATASET_ID</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>object</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-feature-def">Feature Definitions</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Definition of a measured features in the dataset</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. <code>Feature Definitions</code> Properties</caption>
+<caption class="title">Table 6. <code>Feature Definitions</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1240,7 +1297,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>High level for each dataset</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. <code>Manifest</code> Properties</caption>
+<caption class="title">Table 7. <code>Manifest</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1563,69 +1620,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
-<hr>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="reference-dataset-descriptions">WETZEL_WARNING: title not defined</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Endpoint that gets called first to load all the available datasets</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Properties</p>
-</li>
-</ol>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DATASET_ID</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Additional properties are allowed.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-dataset-descriptions"><code>dataset-descriptions.schema.json</code></a></p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_dataset_descriptions_dataset_id">dataset-descriptions.DATASET_ID</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>object</code></p>
-</li>
-<li>
-<p><strong>Required</strong>: No</p>
-</li>
-</ul>
-</div>
 </div>
 </div>
 </div>
@@ -1633,7 +1627,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="footer">
 <div id="footer-text">
 Version <br>
-Last updated 2022-02-22 12:46:48 -0800
+Last updated 2022-02-22 12:49:12 -0800
 </div>
 </div>
 </body>

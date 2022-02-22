@@ -459,6 +459,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#reference-selection-setting"><code>Data selection settings</code></a></p>
 </li>
 <li>
+<p><a href="#reference-dataset-descriptions"><code>Dataset Descriptions</code></a></p>
+</li>
+<li>
 <p><a href="#reference-feature-def"><code>Feature Definitions</code></a></p>
 </li>
 <li>
@@ -466,9 +469,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li>
 <p><a href="#reference-manifest"><code>Manifest</code></a></p>
-</li>
-<li>
-<p><a href="#reference-dataset-descriptions"><code>undefined</code></a></p>
 </li>
 </ul>
 </div>
@@ -705,6 +705,71 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "image",
         "description"
     ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-dataset-descriptions">JSON Schema for Dataset Descriptions</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "$id": "dataset-descriptions",
+    "title": "Dataset Descriptions",
+    "description": "Endpoint that gets called first to load all the available datasets",
+    "type": "object",
+    "properties": {
+        "DATASET_ID": {
+            "type": "object",
+            "title": "Dataset Description",
+            "properties": {
+                "datasets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "dataset-card.schema.json"
+                    }
+                },
+                "dateCreated": {
+                    "description": "Month Day, Year",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "production": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "publications": {
+                    "description": "Publications associated with the group",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "description": "Article title",
+                                "type": "string"
+                            },
+                            "url": {
+                                "description": "Article link",
+                                "type": "string"
+                            },
+                            "citation": {
+                                "description": "Article journal and date",
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }</code></pre>
 </div>
 </div>
@@ -952,77 +1017,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div style="page-break-after: always;"></div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="schema-reference-dataset-descriptions">JSON Schema for WETZEL_WARNING: title not defined</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "$id": "dataset-descriptions",
-    "description": "Endpoint that gets called first to load all the available datasets",
-    "type": "object",
-    "properties": {
-        "DATASET_ID": {
-            "$schema": "http://json-schema.org/draft-04/schema",
-            "$id": "dataset-description",
-            "type": "object",
-            "title": "Dataset Description",
-            "properties": {
-                "datasets": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "dataset-card.schema.json"
-                    }
-                },
-                "dateCreated": {
-                    "description": "Month Day, Year",
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "production": {
-                    "type": "boolean"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "publications": {
-                    "description": "Publications associated with the group",
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "title": {
-                                "description": "Article title",
-                                "type": "string"
-                            },
-                            "url": {
-                                "description": "Article link",
-                                "type": "string"
-                            },
-                            "citation": {
-                                "description": "Article journal and date",
-                                "type": "string"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version <br>
-Last updated 2022-02-22 12:46:48 -0800
+Last updated 2022-02-22 12:49:12 -0800
 </div>
 </div>
 </body>
