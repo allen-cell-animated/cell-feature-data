@@ -1328,13 +1328,67 @@ ITEMS</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-refs/discrete-feature-options">Discrete feature options</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. <code>Discrete feature options</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NUMERAL_KEY</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-refs/discrete-feature-option"><code>refs/discrete-feature-option</code></a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-refs/discrete-feature-options"><code>refs/discrete-feature-options.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_refsdiscrete_feature_options_numeral_key">refs/discrete-feature-options.NUMERAL_KEY</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-refs/discrete-feature-option"><code>refs/discrete-feature-option</code></a></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-feature-def">Feature Definition</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Definition of a measured features in the dataset. Feature definitions file is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. <code>Feature Definition</code> Properties</caption>
+<caption class="title">Table 6. <code>Feature Definition</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1388,7 +1442,7 @@ ITEMS</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>options</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-refs/discrete-feature-option"><code>refs/discrete-feature-option</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-refs/discrete-feature-options"><code>refs/discrete-feature-options</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
@@ -1505,7 +1559,7 @@ ITEMS</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-refs/discrete-feature-option"><code>refs/discrete-feature-option</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-refs/discrete-feature-options"><code>refs/discrete-feature-options</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -1523,7 +1577,7 @@ ITEMS</p>
 <p>File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. <code>Input Megaset `dataset.json`</code> Properties</caption>
+<caption class="title">Table 7. <code>Input Megaset `dataset.json`</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1649,7 +1703,7 @@ ITEMS</p>
 <p>Per data point object. The measured features JSON is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. <code>One measured value</code> Properties</caption>
+<caption class="title">Table 8. <code>One measured value</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1731,7 +1785,7 @@ ITEMS</p>
 <p>Publication data</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. <code>Publication</code> Properties</caption>
+<caption class="title">Table 9. <code>Publication</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2081,6 +2135,27 @@ ITEMS</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="schema-reference-refs/discrete-feature-options">JSON Schema for Discrete feature options</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "$id": "discrete-feature-options",
+    "title": "Discrete feature options",
+    "type": "object",
+    "properties": {
+        "NUMERAL_KEY": {
+            "$ref": "refs/discrete-feature-option.schema.json"
+    }
+}
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="schema-reference-feature-def">JSON Schema for Feature Definition</h2>
 <div class="sectionbody">
 <div class="listingblock">
@@ -2120,7 +2195,7 @@ ITEMS</p>
         "options": {
             "description": "Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
             "type": "object",
-            "$ref": "refs/discrete-feature-option.schema.json"
+            "$ref": "refs/discrete-feature-options.schema.json"
         }
     },
     "required": [
