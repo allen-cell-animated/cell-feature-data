@@ -526,32 +526,632 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 <h1 id="_full_documentation" class="sect0">Full Documentation</h1>
 <div class="paragraph">
-<p>[] input-megaset.schema.json true
-[] sub-schema/publication.schema.json true
-[] input-dataset-info.schema.json true
-[] definitions.schema.json true
-[] definitions.schema.json true
-[] definitions.schema.json true
-[] sub-schema/selection-setting.schema.json true
-[] sub-schema/selection-setting.schema.json true
-[] sub-schema/selection-setting.schema.json true
-[] feature-def.schema.json true
-[] discrete-feature-options.schema.json true
-[] sub-schema/discrete-feature-option.schema.json true
-[] input-measured-features.schema.json true
-[] input-megaset.schema.json true
-[] sub-schema/publication.schema.json true
-[] input-dataset-info.schema.json true
-[] definitions.schema.json true
-[] definitions.schema.json true
-[] definitions.schema.json true
-[] sub-schema/selection-setting.schema.json true
-[] sub-schema/selection-setting.schema.json true
-[] sub-schema/selection-setting.schema.json true
-[] feature-def.schema.json true
-[] discrete-feature-options.schema.json true
-[] sub-schema/discrete-feature-option.schema.json true
-[] input-measured-features.schema.json true</p>
+<p>{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'input-megaset.schema.json',
+  title: 'Selection settings',
+  description: "File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json`",
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { description: 'Display name of dataset group', type: 'string' },
+    name: {
+      description: 'Name of the group (no version number). Lowercase with underscores.',
+      type: 'string'
+    },
+    datasets: {
+      description: 'Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json&#8217;,
+      type: 'array',
+      items: [Object]
+    },
+    dateCreated: {
+      title: 'Date Created',
+      description: "Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date. ",
+      type: 'string'
+    },
+    publications: {
+      description: 'Publications associated with the group',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [ 'title', 'name', 'datasets' ],
+  typeName: 'input-megaset'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'sub-schema/publication.schema.json',
+  title: 'Selection settings',
+  description: 'Publication data',
+  additionalProperties: false,
+  type: 'object',
+  properties: {
+    title: { description: 'Article title', type: 'string' },
+    url: { description: 'Article link', type: 'string' },
+    citation: { description: 'Article journal and date', type: 'string' }
+  },
+  typeName: 'sub-schema/publication'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'input-dataset-info.schema.json',
+  title: 'Selection settings',
+  description: 'File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets</code> array. Should be named <code>dataset.json&#8217;,
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { '$ref': 'definitions.schema.json#/definitions/dataset-title' },
+    name: { '$ref': 'definitions.schema.json#/definitions/name' },
+    version: { description: 'version year and number', type: 'string' },
+    description: { description: 'Description of the dataset', type: 'string' },
+    image: {
+      description: 'relative path to the dataset card image file',
+      type: 'string'
+    },
+    link: {
+      description: 'Link to website displaying the dataset',
+      type: 'string'
+    },
+    userData: { description: 'Optional display data', type: 'object' },
+    production: {
+      description: 'Whether this dataset should only be shown in production',
+      type: 'boolean'
+    },
+    featuresDataPath: { description: 'url to the per cell data json', type: 'string' },
+    featureDefsPath: {
+      description: 'path to the feature def collection',
+      type: 'string'
+    },
+    viewerSettingsPath: {
+      description: 'path to image per-channel settings for the 3d viewer',
+      type: 'string'
+    },
+    albumPath: {
+      description: 'collection name of the album data',
+      type: 'string'
+    },
+    thumbnailRoot: { description: 'Root url for thumbnail images', type: 'string' },
+    downloadRoot: {
+      description: 'Root url for downloading cell data',
+      type: 'string'
+    },
+    volumeViewerDataRoot: { description: 'Root url for 3d images', type: 'string' },
+    xAxis: {
+      description: 'Settings for the x axis',
+      type: 'object',
+      '$ref': 'definitions.schema.json#/definitions/selection-settings'
+    },
+    yAxis: {
+      description: 'Settings for the y axis',
+      type: 'object',
+      '$ref': 'sub-schema/selection-setting.schema.json'
+    },
+    colorBy: {
+      description: 'Settings for the color by menu',
+      type: 'object',
+      '$ref': 'sub-schema/selection-setting.schema.json'
+    },
+    groupBy: {
+      description: 'Settings for the grouping menu',
+      type: 'object',
+      '$ref': 'sub-schema/selection-setting.schema.json'
+    },
+    featuresDisplayOrder: {
+      description: 'Ordered array of feature keys for display on front end',
+      type: 'array',
+      items: [Object]
+    },
+    featuresDataOrder: {
+      description: 'Ordered array of feature keys for packing and unpacking data',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [
+    'title',                'version',
+    'name',                 'image',
+    'description',          'featuresDataPath',
+    'viewerSettingsPath',   'albumPath',
+    'thumbnailRoot',        'downloadRoot',
+    'volumeViewerDataRoot', 'xAxis',
+    'yAxis',                'groupBy',
+    'colorBy',              'featuresDisplayOrder',
+    'featuresDataOrder'
+  ],
+  typeName: 'input-dataset-info'
+}
+{
+  title: 'Selection settings',
+  description: 'Display name of dataset.',
+  type: 'string',
+  typeName: 'string'
+}
+{
+  title: 'Selection settings',
+  description: 'Name of the group (no version number). Lowercase with underscores.',
+  type: 'string',
+  typeName: 'string'
+}
+{
+  title: 'Selection settings',
+  type: 'object',
+  properties: {
+    default: {
+      description: 'Default feature key for the setting',
+      type: 'string'
+    },
+    exclude: {
+      description: 'Optional list of feature keys to exclude',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [ 'default' ],
+  additionalProperties: false,
+  typeName: 'selection-settings'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'sub-schema/selection-setting.schema.json',
+  title: 'Selection settings',
+  type: 'object',
+  properties: {
+    default: {
+      description: 'Default feature key for the setting',
+      type: 'string'
+    },
+    exclude: {
+      description: 'Optional list of feature keys to exclude',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [ 'default' ],
+  additionalProperties: false,
+  typeName: 'sub-schema/selection-setting'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'sub-schema/selection-setting.schema.json',
+  title: 'Selection settings',
+  type: 'object',
+  properties: {
+    default: {
+      description: 'Default feature key for the setting',
+      type: 'string'
+    },
+    exclude: {
+      description: 'Optional list of feature keys to exclude',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [ 'default' ],
+  additionalProperties: false,
+  typeName: 'sub-schema/selection-setting'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'sub-schema/selection-setting.schema.json',
+  title: 'Selection settings',
+  type: 'object',
+  properties: {
+    default: {
+      description: 'Default feature key for the setting',
+      type: 'string'
+    },
+    exclude: {
+      description: 'Optional list of feature keys to exclude',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [ 'default' ],
+  additionalProperties: false,
+  typeName: 'sub-schema/selection-setting'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'feature-def.schema.json',
+  title: 'Selection settings',
+  description: 'Definition of a measured features in the dataset. Feature definitions file is an array of these objects.',
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    displayName: { description: 'Human readable name', type: 'string' },
+    description: {
+      description: 'Description of how the data was collected/measured',
+      type: 'string'
+    },
+    tooltip: { description: 'Shorter version of description', type: 'string' },
+    unit: { description: 'unit of measurement', type: 'string' },
+    key: { description: 'Id of the feature', type: 'string' },
+    discrete: {
+      description: "Whether it&#8217;s a continuous measurement or not",
+      type: 'boolean'
+    },
+    options: {
+      description: "Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
+      type: 'object',
+      '$ref': 'discrete-feature-options.schema.json'
+    }
+  },
+  required: [
+    'displayName',
+    'description',
+    'tooltip',
+    'unit',
+    'key',
+    'discrete'
+  ],
+  typeName: 'feature-def'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'discrete-feature-options.schema.json',
+  title: 'Selection settings',
+  description: 'Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0</code> or <code>1</code>, there should be two option mappings.',
+  type: 'object',
+  properties: {
+    NUMERAL_KEY: { '$ref': 'sub-schema/discrete-feature-option.schema.json' }
+  },
+  typeName: 'discrete-feature-options'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'sub-schema/discrete-feature-option.schema.json',
+  title: 'Selection settings',
+  description: 'Schema for each category in a discrete feature',
+  type: 'object',
+  properties: {
+    color: { description: 'Hex string', type: 'string' },
+    name: {
+      description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.",
+      type: 'string'
+    },
+    key: { description: 'unique key for the option.', type: 'string' }
+  },
+  additionalProperties: false,
+  required: [ 'name', 'color' ],
+  typeName: 'sub-schema/discrete-feature-option'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'inputMeasuredFeaturesSchema',
+  title: 'Selection settings',
+  description: 'Per data point object. The measured features JSON is an array of these objects.',
+  additionalProperties: false,
+  type: 'object',
+  properties: {
+    file_info: {
+      description: 'Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]',
+      type: 'array',
+      items: [Object],
+      minItems: 7,
+      maxItems: 7
+    },
+    features: {
+      description: 'Ordered array of measured features. Needs to match the order of featuresDataOrder',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [ 'file_info', 'features' ],
+  typeName: 'input-measured-features'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'input-megaset.schema.json',
+  title: 'Selection settings',
+  description: "File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json`",
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { description: 'Display name of dataset group', type: 'string' },
+    name: {
+      description: 'Name of the group (no version number). Lowercase with underscores.',
+      type: 'string'
+    },
+    datasets: {
+      description: 'Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json&#8217;,
+      type: 'array',
+      items: [Object]
+    },
+    dateCreated: {
+      title: 'Date Created',
+      description: "Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date. ",
+      type: 'string'
+    },
+    publications: {
+      description: 'Publications associated with the group',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [ 'title', 'name', 'datasets' ],
+  typeName: 'input-megaset'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'sub-schema/publication.schema.json',
+  title: 'Selection settings',
+  description: 'Publication data',
+  additionalProperties: false,
+  type: 'object',
+  properties: {
+    title: { description: 'Article title', type: 'string' },
+    url: { description: 'Article link', type: 'string' },
+    citation: { description: 'Article journal and date', type: 'string' }
+  },
+  typeName: 'sub-schema/publication'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'input-dataset-info.schema.json',
+  title: 'Selection settings',
+  description: 'File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets</code> array. Should be named <code>dataset.json&#8217;,
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: { '$ref': 'definitions.schema.json#/definitions/dataset-title' },
+    name: { '$ref': 'definitions.schema.json#/definitions/name' },
+    version: { description: 'version year and number', type: 'string' },
+    description: { description: 'Description of the dataset', type: 'string' },
+    image: {
+      description: 'relative path to the dataset card image file',
+      type: 'string'
+    },
+    link: {
+      description: 'Link to website displaying the dataset',
+      type: 'string'
+    },
+    userData: { description: 'Optional display data', type: 'object' },
+    production: {
+      description: 'Whether this dataset should only be shown in production',
+      type: 'boolean'
+    },
+    featuresDataPath: { description: 'url to the per cell data json', type: 'string' },
+    featureDefsPath: {
+      description: 'path to the feature def collection',
+      type: 'string'
+    },
+    viewerSettingsPath: {
+      description: 'path to image per-channel settings for the 3d viewer',
+      type: 'string'
+    },
+    albumPath: {
+      description: 'collection name of the album data',
+      type: 'string'
+    },
+    thumbnailRoot: { description: 'Root url for thumbnail images', type: 'string' },
+    downloadRoot: {
+      description: 'Root url for downloading cell data',
+      type: 'string'
+    },
+    volumeViewerDataRoot: { description: 'Root url for 3d images', type: 'string' },
+    xAxis: {
+      description: 'Settings for the x axis',
+      type: 'object',
+      '$ref': 'definitions.schema.json#/definitions/selection-settings'
+    },
+    yAxis: {
+      description: 'Settings for the y axis',
+      type: 'object',
+      '$ref': 'sub-schema/selection-setting.schema.json'
+    },
+    colorBy: {
+      description: 'Settings for the color by menu',
+      type: 'object',
+      '$ref': 'sub-schema/selection-setting.schema.json'
+    },
+    groupBy: {
+      description: 'Settings for the grouping menu',
+      type: 'object',
+      '$ref': 'sub-schema/selection-setting.schema.json'
+    },
+    featuresDisplayOrder: {
+      description: 'Ordered array of feature keys for display on front end',
+      type: 'array',
+      items: [Object]
+    },
+    featuresDataOrder: {
+      description: 'Ordered array of feature keys for packing and unpacking data',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [
+    'title',                'version',
+    'name',                 'image',
+    'description',          'featuresDataPath',
+    'viewerSettingsPath',   'albumPath',
+    'thumbnailRoot',        'downloadRoot',
+    'volumeViewerDataRoot', 'xAxis',
+    'yAxis',                'groupBy',
+    'colorBy',              'featuresDisplayOrder',
+    'featuresDataOrder'
+  ],
+  typeName: 'input-dataset-info'
+}
+{
+  title: 'Selection settings',
+  description: 'Display name of dataset.',
+  type: 'string',
+  typeName: 'string'
+}
+{
+  title: 'Selection settings',
+  description: 'Name of the group (no version number). Lowercase with underscores.',
+  type: 'string',
+  typeName: 'string'
+}
+{
+  title: 'Selection settings',
+  type: 'object',
+  properties: {
+    default: {
+      description: 'Default feature key for the setting',
+      type: 'string'
+    },
+    exclude: {
+      description: 'Optional list of feature keys to exclude',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [ 'default' ],
+  additionalProperties: false,
+  typeName: 'selection-settings'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'sub-schema/selection-setting.schema.json',
+  title: 'Selection settings',
+  type: 'object',
+  properties: {
+    default: {
+      description: 'Default feature key for the setting',
+      type: 'string'
+    },
+    exclude: {
+      description: 'Optional list of feature keys to exclude',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [ 'default' ],
+  additionalProperties: false,
+  typeName: 'sub-schema/selection-setting'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'sub-schema/selection-setting.schema.json',
+  title: 'Selection settings',
+  type: 'object',
+  properties: {
+    default: {
+      description: 'Default feature key for the setting',
+      type: 'string'
+    },
+    exclude: {
+      description: 'Optional list of feature keys to exclude',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [ 'default' ],
+  additionalProperties: false,
+  typeName: 'sub-schema/selection-setting'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'sub-schema/selection-setting.schema.json',
+  title: 'Selection settings',
+  type: 'object',
+  properties: {
+    default: {
+      description: 'Default feature key for the setting',
+      type: 'string'
+    },
+    exclude: {
+      description: 'Optional list of feature keys to exclude',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [ 'default' ],
+  additionalProperties: false,
+  typeName: 'sub-schema/selection-setting'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'feature-def.schema.json',
+  title: 'Selection settings',
+  description: 'Definition of a measured features in the dataset. Feature definitions file is an array of these objects.',
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    displayName: { description: 'Human readable name', type: 'string' },
+    description: {
+      description: 'Description of how the data was collected/measured',
+      type: 'string'
+    },
+    tooltip: { description: 'Shorter version of description', type: 'string' },
+    unit: { description: 'unit of measurement', type: 'string' },
+    key: { description: 'Id of the feature', type: 'string' },
+    discrete: {
+      description: "Whether it&#8217;s a continuous measurement or not",
+      type: 'boolean'
+    },
+    options: {
+      description: "Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
+      type: 'object',
+      '$ref': 'discrete-feature-options.schema.json'
+    }
+  },
+  required: [
+    'displayName',
+    'description',
+    'tooltip',
+    'unit',
+    'key',
+    'discrete'
+  ],
+  typeName: 'feature-def'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'discrete-feature-options.schema.json',
+  title: 'Selection settings',
+  description: 'Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0</code> or <code>1</code>, there should be two option mappings.',
+  type: 'object',
+  properties: {
+    NUMERAL_KEY: { '$ref': 'sub-schema/discrete-feature-option.schema.json' }
+  },
+  typeName: 'discrete-feature-options'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'sub-schema/discrete-feature-option.schema.json',
+  title: 'Selection settings',
+  description: 'Schema for each category in a discrete feature',
+  type: 'object',
+  properties: {
+    color: { description: 'Hex string', type: 'string' },
+    name: {
+      description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.",
+      type: 'string'
+    },
+    key: { description: 'unique key for the option.', type: 'string' }
+  },
+  additionalProperties: false,
+  required: [ 'name', 'color' ],
+  typeName: 'sub-schema/discrete-feature-option'
+}
+{
+  '$schema': 'http://json-schema.org/draft-07/schema#',
+  '$id': 'inputMeasuredFeaturesSchema',
+  title: 'Selection settings',
+  description: 'Per data point object. The measured features JSON is an array of these objects.',
+  additionalProperties: false,
+  type: 'object',
+  properties: {
+    file_info: {
+      description: 'Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]',
+      type: 'array',
+      items: [Object],
+      minItems: 7,
+      maxItems: 7
+    },
+    features: {
+      description: 'Ordered array of measured features. Needs to match the order of featuresDataOrder',
+      type: 'array',
+      items: [Object]
+    }
+  },
+  required: [ 'file_info', 'features' ],
+  typeName: 'input-measured-features'
+}</p>
 </div>
 <hr>
 <div class="sect1">
@@ -678,10 +1278,10 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-sub-schema/selection-setting">Data selection settings</h2>
+<h2 id="reference-sub-schema/selection-setting">Selection settings</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. <code>Data selection settings</code> Properties</caption>
+<caption class="title">Table 2. <code>Selection settings</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -757,7 +1357,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-name">Dataset name</h2>
+<h2 id="reference-string">Selection settings</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Name of the group (no version number). Lowercase with underscores.</p>
@@ -766,7 +1366,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-dataset-title">Dataset title</h2>
+<h2 id="reference-string">Selection settings</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Display name of dataset.</p>
@@ -775,13 +1375,13 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-sub-schema/discrete-feature-option">Discrete feature option</h2>
+<h2 id="reference-sub-schema/discrete-feature-option">Selection settings</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Schema for each category in a discrete feature</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. <code>Discrete feature option</code> Properties</caption>
+<caption class="title">Table 3. <code>Selection settings</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -879,13 +1479,13 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-discrete-feature-options">Discrete feature options</h2>
+<h2 id="reference-discrete-feature-options">Selection settings</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. <code>Discrete feature options</code> Properties</caption>
+<caption class="title">Table 4. <code>Selection settings</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -939,13 +1539,13 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-feature-def">Feature Definition</h2>
+<h2 id="reference-feature-def">Selection settings</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Definition of a measured features in the dataset. Feature definitions file is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. <code>Feature Definition</code> Properties</caption>
+<caption class="title">Table 5. <code>Selection settings</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1131,13 +1731,13 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-input-dataset-info">Input dataset info <code>dataset.json</code></h2>
+<h2 id="reference-input-dataset-info">Selection settings</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON <code>datasets</code> array. Should be named <code>dataset.json</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. <code>Input dataset info `dataset.json`</code> Properties</caption>
+<caption class="title">Table 6. <code>Selection settings</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1155,13 +1755,13 @@ Each folder should have the same 5 files listed above.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-dataset-title"><code>dataset-title</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Display name of dataset.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-name"><code>name</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name of the group (no version number). Lowercase with underscores.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
@@ -1299,7 +1899,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-dataset-title"><code>dataset-title</code></a></p>
+<p><strong>Type</strong>: <code>string</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1315,7 +1915,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-name"><code>name</code></a></p>
+<p><strong>Type</strong>: <code>string</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1619,13 +2219,13 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-input-megaset">Input Megaset <code>dataset.json</code></h2>
+<h2 id="reference-input-megaset">Selection settings</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. <code>Input Megaset `dataset.json`</code> Properties</caption>
+<caption class="title">Table 7. <code>Selection settings</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1767,13 +2367,13 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-input-measured-features">One measured value</h2>
+<h2 id="reference-input-measured-features">Selection settings</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Per data point object. The measured features JSON is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. <code>One measured value</code> Properties</caption>
+<caption class="title">Table 8. <code>Selection settings</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1849,13 +2449,13 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-sub-schema/publication">Publication</h2>
+<h2 id="reference-sub-schema/publication">Selection settings</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Publication data</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. <code>Publication</code> Properties</caption>
+<caption class="title">Table 9. <code>Selection settings</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1948,6 +2548,85 @@ Each folder should have the same 5 files listed above.</p>
 </li>
 </ul>
 </div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-selection-settings">Selection settings</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. <code>Selection settings</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>default</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default feature key for the setting</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exclude</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional list of feature keys to exclude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-selection-settings"><code>definitions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_selection_settings_default">selection-settings.default</h3>
+<div class="paragraph">
+<p>Default feature key for the setting</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_selection_settings_exclude">selection-settings.exclude</h3>
+<div class="paragraph">
+<p>Optional list of feature keys to exclude</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -2004,7 +2683,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-sub-schema/selection-setting">JSON Schema for Data selection settings</h2>
+<h2 id="schema-reference-sub-schema/selection-setting">JSON Schema for Selection settings</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2037,7 +2716,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-name">JSON Schema for Dataset name</h2>
+<h2 id="schema-reference-string">JSON Schema for Selection settings</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2137,7 +2816,7 @@ Each folder should have the same 5 files listed above.</p>
             "type": "string"
         },
         "selection-settings": {
-            "title": "Data selection settings",
+            "title": "Selection settings",
             "type": "object",
             "properties": {
                 "default": {
@@ -2199,7 +2878,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-dataset-title">JSON Schema for Dataset title</h2>
+<h2 id="schema-reference-string">JSON Schema for Selection settings</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2299,7 +2978,7 @@ Each folder should have the same 5 files listed above.</p>
             "type": "string"
         },
         "selection-settings": {
-            "title": "Data selection settings",
+            "title": "Selection settings",
             "type": "object",
             "properties": {
                 "default": {
@@ -2361,7 +3040,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-sub-schema/discrete-feature-option">JSON Schema for Discrete feature option</h2>
+<h2 id="schema-reference-sub-schema/discrete-feature-option">JSON Schema for Selection settings</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2397,7 +3076,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-discrete-feature-options">JSON Schema for Discrete feature options</h2>
+<h2 id="schema-reference-discrete-feature-options">JSON Schema for Selection settings</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2419,7 +3098,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-feature-def">JSON Schema for Feature Definition</h2>
+<h2 id="schema-reference-feature-def">JSON Schema for Selection settings</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2476,7 +3155,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-input-dataset-info">JSON Schema for Input dataset info <code>dataset.json</code></h2>
+<h2 id="schema-reference-input-dataset-info">JSON Schema for Selection settings</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2607,7 +3286,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-input-megaset">JSON Schema for Input Megaset <code>dataset.json</code></h2>
+<h2 id="schema-reference-input-megaset">JSON Schema for Selection settings</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2659,7 +3338,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-input-measured-features">JSON Schema for One measured value</h2>
+<h2 id="schema-reference-input-measured-features">JSON Schema for Selection settings</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2699,7 +3378,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-sub-schema/publication">JSON Schema for Publication</h2>
+<h2 id="schema-reference-sub-schema/publication">JSON Schema for Selection settings</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2722,6 +3401,168 @@ Each folder should have the same 5 files listed above.</p>
         "citation": {
             "description": "Article journal and date",
             "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-selection-settings">JSON Schema for Selection settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "input-definitions.schema.json",
+    "title": "Definitions of input properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "description": "version year and number",
+            "type": "string"
+        },
+        "description": {
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "description": "Whether this dataset should only be shown in production",
+            "type": "boolean"
+        },
+        "featuresDataPath": {
+            "description": "url to the per cell data json",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "description": "path to the feature def collection",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "description": "path to image per-channel settings for the 3d viewer",
+            "type": "string"
+        },
+        "albumPath": {
+            "description": "collection name of the album data",
+            "type": "string"
+        },
+        "thumbnailRoot": {
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "xAxis": {
+            "description": "Settings for the x axis",
+            "type": "object",
+            "$ref": "sub-schema/selection-setting.schema.json"
+        },
+        "yAxis": {
+            "description": "Settings for the y axis",
+            "type": "object",
+            "$ref": "sub-schema/selection-setting.schema.json"
+        },
+        "colorBy": {
+            "description": "Settings for the color by menu",
+            "type": "object",
+            "$ref": "sub-schema/selection-setting.schema.json"
+        },
+        "groupBy": {
+            "description": "Settings for the grouping menu",
+            "type": "object",
+            "$ref": "sub-schema/selection-setting.schema.json"
+        },
+        "featuresDisplayOrder": {
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     }
 }</code></pre>
