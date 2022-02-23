@@ -444,102 +444,38 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>before {
-  'dataset-descriptions': { '$ref': 'dataset-descriptions.schema.json' },
-  manifests: {
-    description: 'Collection of manifests for each published dataset.',
-    type: 'object',
-    properties: { DATASET_ID: [Object] }
-  },
-  'dataset-data': {
-    '$id': 'dataset-data',
-    description: 'High level data for a dataset, ie not per cell data',
-    type: 'object',
-    properties: { 'feature-definitions': [Object] }
-  },
-  'cell-data': {
-    description: 'Per cell data',
-    '$id': 'cell-data',
-    type: 'object',
-    properties: { DATASET_ID: [Object] }
-  },
-  'measured-features': { '$ref': 'measured-features.schema.json' }
-}
-before { '$ref': 'dataset-descriptions.schema.json' }
+<p>before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Dataset Descriptions type undefined
-before { DATASET_ID: { '$ref': 'megaset-card.schema.json' } }
-before { '$ref': 'megaset-card.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Megaset Card type undefined
-before {
-  datasets: {
-    type: 'array',
-    items: { '$ref': 'sub-schema/dataset-card.schema.json' }
-  },
-  dateCreated: { '$ref': 'input-megaset.schema.json#/properties/dateCreated' },
-  name: { type: 'string' },
-  production: { type: 'boolean' },
-  title: { type: 'string' },
-  publications: {
-    description: 'Publications associated with the group',
-    type: 'array',
-    items: { '$ref': 'sub-schema/publication.schema.json' }
-  }
-}
-before {
-  type: 'array',
-  items: { '$ref': 'sub-schema/dataset-card.schema.json' }
-}
-before { '$ref': 'sub-schema/dataset-card.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Dataset Card type undefined
-before {
-  title: { description: 'Display name of the dataset', type: 'string' },
-  name: {
-    description: 'Name of the dataset (no version number)',
-    type: 'string'
-  },
-  version: { description: 'version year and number', type: 'string' },
-  description: { description: 'Description of the dataset', type: 'string' },
-  image: { description: 'Url to image src', type: 'string' },
-  link: {
-    description: 'Link to website displaying the dataset',
-    type: 'string'
-  },
-  userData: { description: 'Optional display data', type: 'object' },
-  production: {
-    description: 'Whether this dataset ready to be shown in production',
-    type: 'boolean'
-  }
-}
-before { description: 'Display name of the dataset', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Display name of the dataset', type: 'string' }
-before {
-  description: 'Name of the dataset (no version number)',
-  type: 'string'
-}
+before [object Object]&lt;br&gt;
 after {
   description: 'Name of the dataset (no version number)',
   type: 'string'
 }
-before { description: 'version year and number', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'version year and number', type: 'string' }
-before { description: 'Description of the dataset', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Description of the dataset', type: 'string' }
-before { description: 'Url to image src', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Url to image src', type: 'string' }
-before {
-  description: 'Link to website displaying the dataset',
-  type: 'string'
-}
+before [object Object]&lt;br&gt;
 after {
   description: 'Link to website displaying the dataset',
   type: 'string'
 }
-before { description: 'Optional display data', type: 'object' }
+before [object Object]&lt;br&gt;
 after { description: 'Optional display data', type: 'object' }
-before {
-  description: 'Whether this dataset ready to be shown in production',
-  type: 'boolean'
-}
+before [object Object]&lt;br&gt;
 after {
   description: 'Whether this dataset ready to be shown in production',
   type: 'boolean'
@@ -563,7 +499,7 @@ after {
     type: 'boolean'
   }
 }
-before [ 'title', 'version', 'name', 'image', 'description' ]
+before title,version,name,image,description&lt;br&gt;
 after [ 'title', 'version', 'name', 'image', 'description' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -617,7 +553,7 @@ after {
     typeName: 'sub-schema/dataset-card'
   }
 }
-before { '$ref': 'input-megaset.schema.json#/properties/dateCreated' }
+before [object Object]&lt;br&gt;
 title: Date Created type dateCreated
 after {
   title: 'Date Created',
@@ -625,29 +561,21 @@ after {
   type: 'string',
   typeName: 'dateCreated'
 }
-before { type: 'string' }
+before [object Object]&lt;br&gt;
 after { type: 'string' }
-before { type: 'boolean' }
+before [object Object]&lt;br&gt;
 after { type: 'boolean' }
-before { type: 'string' }
+before [object Object]&lt;br&gt;
 after { type: 'string' }
-before {
-  description: 'Publications associated with the group',
-  type: 'array',
-  items: { '$ref': 'sub-schema/publication.schema.json' }
-}
-before { '$ref': 'sub-schema/publication.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Publication type undefined
-before {
-  title: { description: 'Article title', type: 'string' },
-  url: { description: 'Article link', type: 'string' },
-  citation: { description: 'Article journal and date', type: 'string' }
-}
-before { description: 'Article title', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Article title', type: 'string' }
-before { description: 'Article link', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Article link', type: 'string' }
-before { description: 'Article journal and date', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Article journal and date', type: 'string' }
 after {
   title: { description: 'Article title', type: 'string' },
@@ -721,7 +649,7 @@ after {
     }
   }
 }
-before [ 'datasets', 'dateCreated', 'name', 'production', 'title' ]
+before datasets,dateCreated,name,production,title&lt;br&gt;
 after [ 'datasets', 'dateCreated', 'name', 'production', 'title' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -791,101 +719,35 @@ after {
   },
   typeName: 'dataset-descriptions'
 }
-before {
-  description: 'Collection of manifests for each published dataset.',
-  type: 'object',
-  properties: { DATASET_ID: { type: 'object', '$ref': 'manifest.schema.json' } }
-}
-before { DATASET_ID: { type: 'object', '$ref': 'manifest.schema.json' } }
-before { type: 'object', '$ref': 'manifest.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Manifest type undefined
-before {
-  featuresDataPath: { description: 'url to the per cell data json', type: 'string' },
-  featureDefsPath: { description: 'path to the feature def collection', type: 'string' },
-  viewerSettingsPath: {
-    description: 'path to image per-channel settings for the 3d viewer',
-    type: 'string'
-  },
-  albumPath: { description: 'collection name of the album data', type: 'string' },
-  thumbnailRoot: { description: 'Root url for thumbnail images', type: 'string' },
-  downloadRoot: { description: 'Root url for downloading cell data', type: 'string' },
-  volumeViewerDataRoot: { description: 'Root url for 3d images', type: 'string' },
-  xAxis: {
-    description: 'Settings for the x axis',
-    type: 'object',
-    '$ref': 'sub-schema/selection-setting.schema.json'
-  },
-  yAxis: {
-    description: 'Settings for the y axis',
-    type: 'object',
-    '$ref': 'sub-schema/selection-setting.schema.json'
-  },
-  colorBy: {
-    description: 'Settings for the color by menu',
-    type: 'object',
-    '$ref': 'sub-schema/selection-setting.schema.json'
-  },
-  groupBy: {
-    description: 'Settings for the grouping menu',
-    type: 'object',
-    '$ref': 'sub-schema/selection-setting.schema.json'
-  },
-  featuresDisplayOrder: {
-    description: 'Ordered array of feature keys for display on front end',
-    type: 'array',
-    items: { type: 'string' }
-  },
-  featuresDataOrder: {
-    description: 'Ordered array of feature keys for packing and unpacking data',
-    type: 'array',
-    items: { type: 'string' }
-  }
-}
-before { description: 'url to the per cell data json', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'url to the per cell data json', type: 'string' }
-before { description: 'path to the feature def collection', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'path to the feature def collection', type: 'string' }
-before {
-  description: 'path to image per-channel settings for the 3d viewer',
-  type: 'string'
-}
+before [object Object]&lt;br&gt;
 after {
   description: 'path to image per-channel settings for the 3d viewer',
   type: 'string'
 }
-before { description: 'collection name of the album data', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'collection name of the album data', type: 'string' }
-before { description: 'Root url for thumbnail images', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Root url for thumbnail images', type: 'string' }
-before { description: 'Root url for downloading cell data', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Root url for downloading cell data', type: 'string' }
-before { description: 'Root url for 3d images', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Root url for 3d images', type: 'string' }
-before {
-  description: 'Settings for the x axis',
-  type: 'object',
-  '$ref': 'sub-schema/selection-setting.schema.json'
-}
+before [object Object]&lt;br&gt;
 title: Data selection settings type undefined
-before {
-  default: {
-    description: 'Default feature key for the setting',
-    type: 'string'
-  },
-  exclude: {
-    description: 'Optional list of feature keys to exclude',
-    type: 'array',
-    items: { type: 'string' }
-  }
-}
-before { description: 'Default feature key for the setting', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' }
-}
-before { type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -903,7 +765,7 @@ after {
     items: { type: 'string' }
   }
 }
-before [ 'default' ]
+before default&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -925,31 +787,13 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before {
-  description: 'Settings for the y axis',
-  type: 'object',
-  '$ref': 'sub-schema/selection-setting.schema.json'
-}
+before [object Object]&lt;br&gt;
 title: Data selection settings type undefined
-before {
-  default: {
-    description: 'Default feature key for the setting',
-    type: 'string'
-  },
-  exclude: {
-    description: 'Optional list of feature keys to exclude',
-    type: 'array',
-    items: { type: 'string' }
-  }
-}
-before { description: 'Default feature key for the setting', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' }
-}
-before { type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -967,7 +811,7 @@ after {
     items: { type: 'string' }
   }
 }
-before [ 'default' ]
+before default&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -989,31 +833,13 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before {
-  description: 'Settings for the color by menu',
-  type: 'object',
-  '$ref': 'sub-schema/selection-setting.schema.json'
-}
+before [object Object]&lt;br&gt;
 title: Data selection settings type undefined
-before {
-  default: {
-    description: 'Default feature key for the setting',
-    type: 'string'
-  },
-  exclude: {
-    description: 'Optional list of feature keys to exclude',
-    type: 'array',
-    items: { type: 'string' }
-  }
-}
-before { description: 'Default feature key for the setting', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' }
-}
-before { type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -1031,7 +857,7 @@ after {
     items: { type: 'string' }
   }
 }
-before [ 'default' ]
+before default&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1053,31 +879,13 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before {
-  description: 'Settings for the grouping menu',
-  type: 'object',
-  '$ref': 'sub-schema/selection-setting.schema.json'
-}
+before [object Object]&lt;br&gt;
 title: Data selection settings type undefined
-before {
-  default: {
-    description: 'Default feature key for the setting',
-    type: 'string'
-  },
-  exclude: {
-    description: 'Optional list of feature keys to exclude',
-    type: 'array',
-    items: { type: 'string' }
-  }
-}
-before { description: 'Default feature key for the setting', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' }
-}
-before { type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -1095,7 +903,7 @@ after {
     items: { type: 'string' }
   }
 }
-before [ 'default' ]
+before default&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1117,24 +925,16 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before {
-  description: 'Ordered array of feature keys for display on front end',
-  type: 'array',
-  items: { type: 'string' }
-}
-before { type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Ordered array of feature keys for display on front end',
   type: 'array',
   items: { type: 'string' }
 }
-before {
-  description: 'Ordered array of feature keys for packing and unpacking data',
-  type: 'array',
-  items: { type: 'string' }
-}
-before { type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Ordered array of feature keys for packing and unpacking data',
@@ -1203,20 +1003,7 @@ after {
     items: { type: 'string' }
   }
 }
-before [
-  'featuresDataPath',
-  'viewerSettingsPath',
-  'albumPath',
-  'thumbnailRoot',
-  'downloadRoot',
-  'volumeViewerDataRoot',
-  'xAxis',
-  'yAxis',
-  'groupBy',
-  'colorBy',
-  'featuresDisplayOrder',
-  'featuresDataOrder'
-]
+before featuresDataPath,viewerSettingsPath,albumPath,thumbnailRoot,downloadRoot,volumeViewerDataRoot,xAxis,yAxis,groupBy,colorBy,featuresDisplayOrder,featuresDataOrder&lt;br&gt;
 after [
   'featuresDataPath',
   'viewerSettingsPath',
@@ -1382,104 +1169,46 @@ after {
     }
   }
 }
-before {
-  '$id': 'dataset-data',
-  description: 'High level data for a dataset, ie not per cell data',
-  type: 'object',
-  properties: { 'feature-definitions': { type: 'object', properties: [Object] } }
-}
-before {
-  'feature-definitions': { type: 'object', properties: { '$dataset-id': [Object] } }
-}
-before {
-  type: 'object',
-  properties: { '$dataset-id': { type: 'object', '$feature-key': [Object] } }
-}
-before {
-  '$dataset-id': {
-    type: 'object',
-    '$feature-key': { '$ref': 'feature-def.schema.json' }
-  }
-}
-before {
-  type: 'object',
-  '$feature-key': { '$ref': 'feature-def.schema.json' }
-}
-before { '$ref': 'feature-def.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Feature Definition type undefined
-before {
-  displayName: { description: 'Human readable name', type: 'string' },
-  description: {
-    description: 'Description of how the data was collected/measured',
-    type: 'string'
-  },
-  tooltip: { description: 'Shorter version of description', type: 'string' },
-  unit: { description: 'unit of measurement', type: 'string' },
-  key: { description: 'Id of the feature', type: 'string' },
-  discrete: {
-    description: "Whether it&#8217;s a continuous measurement or not",
-    type: 'boolean'
-  },
-  options: {
-    description: "Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
-    type: 'object',
-    '$ref': 'discrete-feature-options.schema.json'
-  }
-}
-before { description: 'Human readable name', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Human readable name', type: 'string' }
-before {
-  description: 'Description of how the data was collected/measured',
-  type: 'string'
-}
+before [object Object]&lt;br&gt;
 after {
   description: 'Description of how the data was collected/measured',
   type: 'string'
 }
-before { description: 'Shorter version of description', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Shorter version of description', type: 'string' }
-before { description: 'unit of measurement', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'unit of measurement', type: 'string' }
-before { description: 'Id of the feature', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Id of the feature', type: 'string' }
-before {
-  description: "Whether it&#8217;s a continuous measurement or not",
-  type: 'boolean'
-}
+before [object Object]&lt;br&gt;
 after {
   description: "Whether it&#8217;s a continuous measurement or not",
   type: 'boolean'
 }
-before {
-  description: "Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
-  type: 'object',
-  '$ref': 'discrete-feature-options.schema.json'
-}
+before [object Object]&lt;br&gt;
 title: Discrete feature options type undefined
-before {
-  NUMERAL_KEY: { '$ref': 'sub-schema/discrete-feature-option.schema.json' }
-}
-before { '$ref': 'sub-schema/discrete-feature-option.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Discrete feature option type undefined
-before {
-  color: { description: 'Hex string', type: 'string' },
-  name: {
-    description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.",
-    type: 'string'
-  },
-  key: { description: 'unique key for the option.', type: 'string' }
-}
-before { description: 'Hex string', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Hex string', type: 'string' }
-before {
-  description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.",
-  type: 'string'
-}
+before [object Object]&lt;br&gt;
 after {
   description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.",
   type: 'string'
 }
-before { description: 'unique key for the option.', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'unique key for the option.', type: 'string' }
 after {
   color: { description: 'Hex string', type: 'string' },
@@ -1489,7 +1218,7 @@ after {
   },
   key: { description: 'unique key for the option.', type: 'string' }
 }
-before [ 'name', 'color' ]
+before name,color&lt;br&gt;
 after [ 'name', 'color' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1566,7 +1295,7 @@ after {
     typeName: 'discrete-feature-options'
   }
 }
-before [ 'displayName', 'description', 'tooltip', 'unit', 'key', 'discrete' ]
+before displayName,description,tooltip,unit,key,discrete&lt;br&gt;
 after [ 'displayName', 'description', 'tooltip', 'unit', 'key', 'discrete' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1666,71 +1395,31 @@ after {
   type: 'object',
   properties: { 'feature-definitions': { type: 'object', properties: [Object] } }
 }
-before {
-  description: 'Per cell data',
-  '$id': 'cell-data',
-  type: 'object',
-  properties: { DATASET_ID: { type: 'object', properties: [Object] } }
-}
-before {
-  DATASET_ID: { type: 'object', properties: { 'cell-file-info': [Object] } }
-}
-before {
-  type: 'object',
-  properties: {
-    'cell-file-info': {
-      type: 'object',
-      description: 'Per cell mapping of file info',
-      properties: [Object]
-    }
-  }
-}
-before {
-  'cell-file-info': {
-    type: 'object',
-    description: 'Per cell mapping of file info',
-    properties: { CELL_ID: [Object] }
-  }
-}
-before {
-  type: 'object',
-  description: 'Per cell mapping of file info',
-  properties: { CELL_ID: { '$ref': 'sub-schema/file-info.schema.json' } }
-}
-before { CELL_ID: { '$ref': 'sub-schema/file-info.schema.json' } }
-before { '$ref': 'sub-schema/file-info.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: File info type undefined
-before {
-  CellId: { description: 'unique id for segmented cell', type: 'string' },
-  FOVId: { description: 'Field of view cell came from', type: 'string' },
-  groupBy: {
-    description: 'Id of feature the data is grouped by by default',
-    type: 'string'
-  },
-  thumbnailPath: { description: 'Path to thumbnail image for cell', type: 'string' },
-  volumeviewerPath: { description: 'path to 3d data for cell', type: 'string' },
-  fovThumbnailPath: { description: 'Path to fov thumbnail', type: 'string' },
-  fovVolumeviewerPath: { description: 'Path to the fov 3d data', type: 'string' }
-}
-before { description: 'unique id for segmented cell', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'unique id for segmented cell', type: 'string' }
-before { description: 'Field of view cell came from', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Field of view cell came from', type: 'string' }
-before {
-  description: 'Id of feature the data is grouped by by default',
-  type: 'string'
-}
+before [object Object]&lt;br&gt;
 after {
   description: 'Id of feature the data is grouped by by default',
   type: 'string'
 }
-before { description: 'Path to thumbnail image for cell', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Path to thumbnail image for cell', type: 'string' }
-before { description: 'path to 3d data for cell', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'path to 3d data for cell', type: 'string' }
-before { description: 'Path to fov thumbnail', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Path to fov thumbnail', type: 'string' }
-before { description: 'Path to the fov 3d data', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Path to the fov 3d data', type: 'string' }
 after {
   CellId: { description: 'unique id for segmented cell', type: 'string' },
@@ -1744,7 +1433,7 @@ after {
   fovThumbnailPath: { description: 'Path to fov thumbnail', type: 'string' },
   fovVolumeviewerPath: { description: 'Path to the fov 3d data', type: 'string' }
 }
-before [ 'CellId', 'FOVId', 'groupBy', 'volumeviewerPath' ]
+before CellId,FOVId,groupBy,volumeviewerPath&lt;br&gt;
 after [ 'CellId', 'FOVId', 'groupBy', 'volumeviewerPath' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1832,30 +1521,17 @@ after {
   type: 'object',
   properties: { DATASET_ID: { type: 'object', properties: [Object] } }
 }
-before { '$ref': 'measured-features.schema.json' }
+before [object Object]&lt;br&gt;
 title: Condensed measured features JSON type undefined
-before { '$ref': 'sub-schema/condensed-measured-feature.schema.json' }
+before [object Object]&lt;br&gt;
 title: Condensed measured feature type undefined
-before {
-  f: {
-    description: 'ordered array of measured features',
-    type: 'array',
-    items: { anyOf: [Array] }
-  },
-  p: { description: 'Protein name', type: 'string' },
-  t: { description: 'Thumbnail Path', type: 'string' },
-  i: { description: 'Cell id', type: 'string' }
-}
-before {
-  description: 'ordered array of measured features',
-  type: 'array',
-  items: { anyOf: [ [Object], [Object] ] }
-}
-before { anyOf: [ { type: 'number' }, { type: 'string', pattern: '[NaN]' } ] }
-before [ { type: 'number' }, { type: 'string', pattern: '[NaN]' } ]
-before { type: 'number' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object],[object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'number' }
-before { type: 'string', pattern: '[NaN]' }
+before [object Object]&lt;br&gt;
 after { type: 'string', pattern: '[NaN]' }
 after [ { type: 'number' }, { type: 'string', pattern: '[NaN]' } ]
 after { anyOf: [ { type: 'number' }, { type: 'string', pattern: '[NaN]' } ] }
@@ -1864,11 +1540,11 @@ after {
   type: 'array',
   items: { anyOf: [ [Object], [Object] ] }
 }
-before { description: 'Protein name', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Protein name', type: 'string' }
-before { description: 'Thumbnail Path', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Thumbnail Path', type: 'string' }
-before { description: 'Cell id', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Cell id', type: 'string' }
 after {
   f: {
@@ -1880,7 +1556,7 @@ after {
   t: { description: 'Thumbnail Path', type: 'string' },
   i: { description: 'Cell id', type: 'string' }
 }
-before [ 'f', 'p', 't', 'i' ]
+before f,p,t,i&lt;br&gt;
 after [ 'f', 'p', 't', 'i' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1968,13 +1644,7 @@ after {
     typeName: 'measured-features'
   }
 }
-before [
-  'dataset-descriptions',
-  'manifests',
-  'dataset-data',
-  'cell-data',
-  'measured-features'
-]
+before dataset-descriptions,manifests,dataset-data,cell-data,measured-features&lt;br&gt;
 after [
   'dataset-descriptions',
   'manifests',
@@ -1982,102 +1652,38 @@ after [
   'cell-data',
   'measured-features'
 ]
-before {
-  'dataset-descriptions': { '$ref': 'dataset-descriptions.schema.json' },
-  manifests: {
-    description: 'Collection of manifests for each published dataset.',
-    type: 'object',
-    properties: { DATASET_ID: [Object] }
-  },
-  'dataset-data': {
-    '$id': 'dataset-data',
-    description: 'High level data for a dataset, ie not per cell data',
-    type: 'object',
-    properties: { 'feature-definitions': [Object] }
-  },
-  'cell-data': {
-    description: 'Per cell data',
-    '$id': 'cell-data',
-    type: 'object',
-    properties: { DATASET_ID: [Object] }
-  },
-  'measured-features': { '$ref': 'measured-features.schema.json' }
-}
-before { '$ref': 'dataset-descriptions.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Dataset Descriptions type undefined
-before { DATASET_ID: { '$ref': 'megaset-card.schema.json' } }
-before { '$ref': 'megaset-card.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Megaset Card type undefined
-before {
-  datasets: {
-    type: 'array',
-    items: { '$ref': 'sub-schema/dataset-card.schema.json' }
-  },
-  dateCreated: { '$ref': 'input-megaset.schema.json#/properties/dateCreated' },
-  name: { type: 'string' },
-  production: { type: 'boolean' },
-  title: { type: 'string' },
-  publications: {
-    description: 'Publications associated with the group',
-    type: 'array',
-    items: { '$ref': 'sub-schema/publication.schema.json' }
-  }
-}
-before {
-  type: 'array',
-  items: { '$ref': 'sub-schema/dataset-card.schema.json' }
-}
-before { '$ref': 'sub-schema/dataset-card.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Dataset Card type undefined
-before {
-  title: { description: 'Display name of the dataset', type: 'string' },
-  name: {
-    description: 'Name of the dataset (no version number)',
-    type: 'string'
-  },
-  version: { description: 'version year and number', type: 'string' },
-  description: { description: 'Description of the dataset', type: 'string' },
-  image: { description: 'Url to image src', type: 'string' },
-  link: {
-    description: 'Link to website displaying the dataset',
-    type: 'string'
-  },
-  userData: { description: 'Optional display data', type: 'object' },
-  production: {
-    description: 'Whether this dataset ready to be shown in production',
-    type: 'boolean'
-  }
-}
-before { description: 'Display name of the dataset', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Display name of the dataset', type: 'string' }
-before {
-  description: 'Name of the dataset (no version number)',
-  type: 'string'
-}
+before [object Object]&lt;br&gt;
 after {
   description: 'Name of the dataset (no version number)',
   type: 'string'
 }
-before { description: 'version year and number', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'version year and number', type: 'string' }
-before { description: 'Description of the dataset', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Description of the dataset', type: 'string' }
-before { description: 'Url to image src', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Url to image src', type: 'string' }
-before {
-  description: 'Link to website displaying the dataset',
-  type: 'string'
-}
+before [object Object]&lt;br&gt;
 after {
   description: 'Link to website displaying the dataset',
   type: 'string'
 }
-before { description: 'Optional display data', type: 'object' }
+before [object Object]&lt;br&gt;
 after { description: 'Optional display data', type: 'object' }
-before {
-  description: 'Whether this dataset ready to be shown in production',
-  type: 'boolean'
-}
+before [object Object]&lt;br&gt;
 after {
   description: 'Whether this dataset ready to be shown in production',
   type: 'boolean'
@@ -2101,7 +1707,7 @@ after {
     type: 'boolean'
   }
 }
-before [ 'title', 'version', 'name', 'image', 'description' ]
+before title,version,name,image,description&lt;br&gt;
 after [ 'title', 'version', 'name', 'image', 'description' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -2155,7 +1761,7 @@ after {
     typeName: 'sub-schema/dataset-card'
   }
 }
-before { '$ref': 'input-megaset.schema.json#/properties/dateCreated' }
+before [object Object]&lt;br&gt;
 title: Date Created type dateCreated
 after {
   title: 'Date Created',
@@ -2163,29 +1769,21 @@ after {
   type: 'string',
   typeName: 'dateCreated'
 }
-before { type: 'string' }
+before [object Object]&lt;br&gt;
 after { type: 'string' }
-before { type: 'boolean' }
+before [object Object]&lt;br&gt;
 after { type: 'boolean' }
-before { type: 'string' }
+before [object Object]&lt;br&gt;
 after { type: 'string' }
-before {
-  description: 'Publications associated with the group',
-  type: 'array',
-  items: { '$ref': 'sub-schema/publication.schema.json' }
-}
-before { '$ref': 'sub-schema/publication.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Publication type undefined
-before {
-  title: { description: 'Article title', type: 'string' },
-  url: { description: 'Article link', type: 'string' },
-  citation: { description: 'Article journal and date', type: 'string' }
-}
-before { description: 'Article title', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Article title', type: 'string' }
-before { description: 'Article link', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Article link', type: 'string' }
-before { description: 'Article journal and date', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Article journal and date', type: 'string' }
 after {
   title: { description: 'Article title', type: 'string' },
@@ -2259,7 +1857,7 @@ after {
     }
   }
 }
-before [ 'datasets', 'dateCreated', 'name', 'production', 'title' ]
+before datasets,dateCreated,name,production,title&lt;br&gt;
 after [ 'datasets', 'dateCreated', 'name', 'production', 'title' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -2329,101 +1927,35 @@ after {
   },
   typeName: 'dataset-descriptions'
 }
-before {
-  description: 'Collection of manifests for each published dataset.',
-  type: 'object',
-  properties: { DATASET_ID: { type: 'object', '$ref': 'manifest.schema.json' } }
-}
-before { DATASET_ID: { type: 'object', '$ref': 'manifest.schema.json' } }
-before { type: 'object', '$ref': 'manifest.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Manifest type undefined
-before {
-  featuresDataPath: { description: 'url to the per cell data json', type: 'string' },
-  featureDefsPath: { description: 'path to the feature def collection', type: 'string' },
-  viewerSettingsPath: {
-    description: 'path to image per-channel settings for the 3d viewer',
-    type: 'string'
-  },
-  albumPath: { description: 'collection name of the album data', type: 'string' },
-  thumbnailRoot: { description: 'Root url for thumbnail images', type: 'string' },
-  downloadRoot: { description: 'Root url for downloading cell data', type: 'string' },
-  volumeViewerDataRoot: { description: 'Root url for 3d images', type: 'string' },
-  xAxis: {
-    description: 'Settings for the x axis',
-    type: 'object',
-    '$ref': 'sub-schema/selection-setting.schema.json'
-  },
-  yAxis: {
-    description: 'Settings for the y axis',
-    type: 'object',
-    '$ref': 'sub-schema/selection-setting.schema.json'
-  },
-  colorBy: {
-    description: 'Settings for the color by menu',
-    type: 'object',
-    '$ref': 'sub-schema/selection-setting.schema.json'
-  },
-  groupBy: {
-    description: 'Settings for the grouping menu',
-    type: 'object',
-    '$ref': 'sub-schema/selection-setting.schema.json'
-  },
-  featuresDisplayOrder: {
-    description: 'Ordered array of feature keys for display on front end',
-    type: 'array',
-    items: { type: 'string' }
-  },
-  featuresDataOrder: {
-    description: 'Ordered array of feature keys for packing and unpacking data',
-    type: 'array',
-    items: { type: 'string' }
-  }
-}
-before { description: 'url to the per cell data json', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'url to the per cell data json', type: 'string' }
-before { description: 'path to the feature def collection', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'path to the feature def collection', type: 'string' }
-before {
-  description: 'path to image per-channel settings for the 3d viewer',
-  type: 'string'
-}
+before [object Object]&lt;br&gt;
 after {
   description: 'path to image per-channel settings for the 3d viewer',
   type: 'string'
 }
-before { description: 'collection name of the album data', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'collection name of the album data', type: 'string' }
-before { description: 'Root url for thumbnail images', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Root url for thumbnail images', type: 'string' }
-before { description: 'Root url for downloading cell data', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Root url for downloading cell data', type: 'string' }
-before { description: 'Root url for 3d images', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Root url for 3d images', type: 'string' }
-before {
-  description: 'Settings for the x axis',
-  type: 'object',
-  '$ref': 'sub-schema/selection-setting.schema.json'
-}
+before [object Object]&lt;br&gt;
 title: Data selection settings type undefined
-before {
-  default: {
-    description: 'Default feature key for the setting',
-    type: 'string'
-  },
-  exclude: {
-    description: 'Optional list of feature keys to exclude',
-    type: 'array',
-    items: { type: 'string' }
-  }
-}
-before { description: 'Default feature key for the setting', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' }
-}
-before { type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -2441,7 +1973,7 @@ after {
     items: { type: 'string' }
   }
 }
-before [ 'default' ]
+before default&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -2463,31 +1995,13 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before {
-  description: 'Settings for the y axis',
-  type: 'object',
-  '$ref': 'sub-schema/selection-setting.schema.json'
-}
+before [object Object]&lt;br&gt;
 title: Data selection settings type undefined
-before {
-  default: {
-    description: 'Default feature key for the setting',
-    type: 'string'
-  },
-  exclude: {
-    description: 'Optional list of feature keys to exclude',
-    type: 'array',
-    items: { type: 'string' }
-  }
-}
-before { description: 'Default feature key for the setting', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' }
-}
-before { type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -2505,7 +2019,7 @@ after {
     items: { type: 'string' }
   }
 }
-before [ 'default' ]
+before default&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -2527,31 +2041,13 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before {
-  description: 'Settings for the color by menu',
-  type: 'object',
-  '$ref': 'sub-schema/selection-setting.schema.json'
-}
+before [object Object]&lt;br&gt;
 title: Data selection settings type undefined
-before {
-  default: {
-    description: 'Default feature key for the setting',
-    type: 'string'
-  },
-  exclude: {
-    description: 'Optional list of feature keys to exclude',
-    type: 'array',
-    items: { type: 'string' }
-  }
-}
-before { description: 'Default feature key for the setting', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' }
-}
-before { type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -2569,7 +2065,7 @@ after {
     items: { type: 'string' }
   }
 }
-before [ 'default' ]
+before default&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -2591,31 +2087,13 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before {
-  description: 'Settings for the grouping menu',
-  type: 'object',
-  '$ref': 'sub-schema/selection-setting.schema.json'
-}
+before [object Object]&lt;br&gt;
 title: Data selection settings type undefined
-before {
-  default: {
-    description: 'Default feature key for the setting',
-    type: 'string'
-  },
-  exclude: {
-    description: 'Optional list of feature keys to exclude',
-    type: 'array',
-    items: { type: 'string' }
-  }
-}
-before { description: 'Default feature key for the setting', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before {
-  description: 'Optional list of feature keys to exclude',
-  type: 'array',
-  items: { type: 'string' }
-}
-before { type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -2633,7 +2111,7 @@ after {
     items: { type: 'string' }
   }
 }
-before [ 'default' ]
+before default&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -2655,24 +2133,16 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before {
-  description: 'Ordered array of feature keys for display on front end',
-  type: 'array',
-  items: { type: 'string' }
-}
-before { type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Ordered array of feature keys for display on front end',
   type: 'array',
   items: { type: 'string' }
 }
-before {
-  description: 'Ordered array of feature keys for packing and unpacking data',
-  type: 'array',
-  items: { type: 'string' }
-}
-before { type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Ordered array of feature keys for packing and unpacking data',
@@ -2741,20 +2211,7 @@ after {
     items: { type: 'string' }
   }
 }
-before [
-  'featuresDataPath',
-  'viewerSettingsPath',
-  'albumPath',
-  'thumbnailRoot',
-  'downloadRoot',
-  'volumeViewerDataRoot',
-  'xAxis',
-  'yAxis',
-  'groupBy',
-  'colorBy',
-  'featuresDisplayOrder',
-  'featuresDataOrder'
-]
+before featuresDataPath,viewerSettingsPath,albumPath,thumbnailRoot,downloadRoot,volumeViewerDataRoot,xAxis,yAxis,groupBy,colorBy,featuresDisplayOrder,featuresDataOrder&lt;br&gt;
 after [
   'featuresDataPath',
   'viewerSettingsPath',
@@ -2920,104 +2377,46 @@ after {
     }
   }
 }
-before {
-  '$id': 'dataset-data',
-  description: 'High level data for a dataset, ie not per cell data',
-  type: 'object',
-  properties: { 'feature-definitions': { type: 'object', properties: [Object] } }
-}
-before {
-  'feature-definitions': { type: 'object', properties: { '$dataset-id': [Object] } }
-}
-before {
-  type: 'object',
-  properties: { '$dataset-id': { type: 'object', '$feature-key': [Object] } }
-}
-before {
-  '$dataset-id': {
-    type: 'object',
-    '$feature-key': { '$ref': 'feature-def.schema.json' }
-  }
-}
-before {
-  type: 'object',
-  '$feature-key': { '$ref': 'feature-def.schema.json' }
-}
-before { '$ref': 'feature-def.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Feature Definition type undefined
-before {
-  displayName: { description: 'Human readable name', type: 'string' },
-  description: {
-    description: 'Description of how the data was collected/measured',
-    type: 'string'
-  },
-  tooltip: { description: 'Shorter version of description', type: 'string' },
-  unit: { description: 'unit of measurement', type: 'string' },
-  key: { description: 'Id of the feature', type: 'string' },
-  discrete: {
-    description: "Whether it&#8217;s a continuous measurement or not",
-    type: 'boolean'
-  },
-  options: {
-    description: "Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
-    type: 'object',
-    '$ref': 'discrete-feature-options.schema.json'
-  }
-}
-before { description: 'Human readable name', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Human readable name', type: 'string' }
-before {
-  description: 'Description of how the data was collected/measured',
-  type: 'string'
-}
+before [object Object]&lt;br&gt;
 after {
   description: 'Description of how the data was collected/measured',
   type: 'string'
 }
-before { description: 'Shorter version of description', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Shorter version of description', type: 'string' }
-before { description: 'unit of measurement', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'unit of measurement', type: 'string' }
-before { description: 'Id of the feature', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Id of the feature', type: 'string' }
-before {
-  description: "Whether it&#8217;s a continuous measurement or not",
-  type: 'boolean'
-}
+before [object Object]&lt;br&gt;
 after {
   description: "Whether it&#8217;s a continuous measurement or not",
   type: 'boolean'
 }
-before {
-  description: "Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
-  type: 'object',
-  '$ref': 'discrete-feature-options.schema.json'
-}
+before [object Object]&lt;br&gt;
 title: Discrete feature options type undefined
-before {
-  NUMERAL_KEY: { '$ref': 'sub-schema/discrete-feature-option.schema.json' }
-}
-before { '$ref': 'sub-schema/discrete-feature-option.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: Discrete feature option type undefined
-before {
-  color: { description: 'Hex string', type: 'string' },
-  name: {
-    description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.",
-    type: 'string'
-  },
-  key: { description: 'unique key for the option.', type: 'string' }
-}
-before { description: 'Hex string', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'Hex string', type: 'string' }
-before {
-  description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.",
-  type: 'string'
-}
+before [object Object]&lt;br&gt;
 after {
   description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.",
   type: 'string'
 }
-before { description: 'unique key for the option.', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'unique key for the option.', type: 'string' }
 after {
   color: { description: 'Hex string', type: 'string' },
@@ -3027,7 +2426,7 @@ after {
   },
   key: { description: 'unique key for the option.', type: 'string' }
 }
-before [ 'name', 'color' ]
+before name,color&lt;br&gt;
 after [ 'name', 'color' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -3104,7 +2503,7 @@ after {
     typeName: 'discrete-feature-options'
   }
 }
-before [ 'displayName', 'description', 'tooltip', 'unit', 'key', 'discrete' ]
+before displayName,description,tooltip,unit,key,discrete&lt;br&gt;
 after [ 'displayName', 'description', 'tooltip', 'unit', 'key', 'discrete' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -3204,71 +2603,31 @@ after {
   type: 'object',
   properties: { 'feature-definitions': { type: 'object', properties: [Object] } }
 }
-before {
-  description: 'Per cell data',
-  '$id': 'cell-data',
-  type: 'object',
-  properties: { DATASET_ID: { type: 'object', properties: [Object] } }
-}
-before {
-  DATASET_ID: { type: 'object', properties: { 'cell-file-info': [Object] } }
-}
-before {
-  type: 'object',
-  properties: {
-    'cell-file-info': {
-      type: 'object',
-      description: 'Per cell mapping of file info',
-      properties: [Object]
-    }
-  }
-}
-before {
-  'cell-file-info': {
-    type: 'object',
-    description: 'Per cell mapping of file info',
-    properties: { CELL_ID: [Object] }
-  }
-}
-before {
-  type: 'object',
-  description: 'Per cell mapping of file info',
-  properties: { CELL_ID: { '$ref': 'sub-schema/file-info.schema.json' } }
-}
-before { CELL_ID: { '$ref': 'sub-schema/file-info.schema.json' } }
-before { '$ref': 'sub-schema/file-info.schema.json' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 title: File info type undefined
-before {
-  CellId: { description: 'unique id for segmented cell', type: 'string' },
-  FOVId: { description: 'Field of view cell came from', type: 'string' },
-  groupBy: {
-    description: 'Id of feature the data is grouped by by default',
-    type: 'string'
-  },
-  thumbnailPath: { description: 'Path to thumbnail image for cell', type: 'string' },
-  volumeviewerPath: { description: 'path to 3d data for cell', type: 'string' },
-  fovThumbnailPath: { description: 'Path to fov thumbnail', type: 'string' },
-  fovVolumeviewerPath: { description: 'Path to the fov 3d data', type: 'string' }
-}
-before { description: 'unique id for segmented cell', type: 'string' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { description: 'unique id for segmented cell', type: 'string' }
-before { description: 'Field of view cell came from', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Field of view cell came from', type: 'string' }
-before {
-  description: 'Id of feature the data is grouped by by default',
-  type: 'string'
-}
+before [object Object]&lt;br&gt;
 after {
   description: 'Id of feature the data is grouped by by default',
   type: 'string'
 }
-before { description: 'Path to thumbnail image for cell', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Path to thumbnail image for cell', type: 'string' }
-before { description: 'path to 3d data for cell', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'path to 3d data for cell', type: 'string' }
-before { description: 'Path to fov thumbnail', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Path to fov thumbnail', type: 'string' }
-before { description: 'Path to the fov 3d data', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Path to the fov 3d data', type: 'string' }
 after {
   CellId: { description: 'unique id for segmented cell', type: 'string' },
@@ -3282,7 +2641,7 @@ after {
   fovThumbnailPath: { description: 'Path to fov thumbnail', type: 'string' },
   fovVolumeviewerPath: { description: 'Path to the fov 3d data', type: 'string' }
 }
-before [ 'CellId', 'FOVId', 'groupBy', 'volumeviewerPath' ]
+before CellId,FOVId,groupBy,volumeviewerPath&lt;br&gt;
 after [ 'CellId', 'FOVId', 'groupBy', 'volumeviewerPath' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -3370,30 +2729,17 @@ after {
   type: 'object',
   properties: { DATASET_ID: { type: 'object', properties: [Object] } }
 }
-before { '$ref': 'measured-features.schema.json' }
+before [object Object]&lt;br&gt;
 title: Condensed measured features JSON type undefined
-before { '$ref': 'sub-schema/condensed-measured-feature.schema.json' }
+before [object Object]&lt;br&gt;
 title: Condensed measured feature type undefined
-before {
-  f: {
-    description: 'ordered array of measured features',
-    type: 'array',
-    items: { anyOf: [Array] }
-  },
-  p: { description: 'Protein name', type: 'string' },
-  t: { description: 'Thumbnail Path', type: 'string' },
-  i: { description: 'Cell id', type: 'string' }
-}
-before {
-  description: 'ordered array of measured features',
-  type: 'array',
-  items: { anyOf: [ [Object], [Object] ] }
-}
-before { anyOf: [ { type: 'number' }, { type: 'string', pattern: '[NaN]' } ] }
-before [ { type: 'number' }, { type: 'string', pattern: '[NaN]' } ]
-before { type: 'number' }
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
+before [object Object],[object Object]&lt;br&gt;
+before [object Object]&lt;br&gt;
 after { type: 'number' }
-before { type: 'string', pattern: '[NaN]' }
+before [object Object]&lt;br&gt;
 after { type: 'string', pattern: '[NaN]' }
 after [ { type: 'number' }, { type: 'string', pattern: '[NaN]' } ]
 after { anyOf: [ { type: 'number' }, { type: 'string', pattern: '[NaN]' } ] }
@@ -3402,11 +2748,11 @@ after {
   type: 'array',
   items: { anyOf: [ [Object], [Object] ] }
 }
-before { description: 'Protein name', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Protein name', type: 'string' }
-before { description: 'Thumbnail Path', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Thumbnail Path', type: 'string' }
-before { description: 'Cell id', type: 'string' }
+before [object Object]&lt;br&gt;
 after { description: 'Cell id', type: 'string' }
 after {
   f: {
@@ -3418,7 +2764,7 @@ after {
   t: { description: 'Thumbnail Path', type: 'string' },
   i: { description: 'Cell id', type: 'string' }
 }
-before [ 'f', 'p', 't', 'i' ]
+before f,p,t,i&lt;br&gt;
 after [ 'f', 'p', 't', 'i' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -3506,13 +2852,7 @@ after {
     typeName: 'measured-features'
   }
 }
-before [
-  'dataset-descriptions',
-  'manifests',
-  'dataset-data',
-  'cell-data',
-  'measured-features'
-]
+before dataset-descriptions,manifests,dataset-data,cell-data,measured-features&lt;br&gt;
 after [
   'dataset-descriptions',
   'manifests',
