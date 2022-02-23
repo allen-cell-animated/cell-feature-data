@@ -1134,6 +1134,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-string">Date Created</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-sub-schema/discrete-feature-option">Discrete feature option</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -2523,6 +2532,58 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "$ref": "megaset-card.schema.json"
         }
     }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for Date Created</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "input-megaset.schema.json",
+    "title": "Input Megaset `dataset.json`",
+    "description": "File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named `dataset.json`",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "title": {
+            "description": "Display name of dataset group",
+            "type": "string"
+        },
+        "name": {
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "datasets": {
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date Created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        }
+    },
+    "required": [
+        "title",
+        "name",
+        "datasets"
+    ]
 }</code></pre>
 </div>
 </div>
