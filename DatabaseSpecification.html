@@ -443,6 +443,463 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
+<div class="paragraph">
+<p>PROPERTIES {
+  'dataset-descriptions': {
+    '$schema': 'http://json-schema.org/draft-07/schema#',
+    '$id': 'dataset-descriptions',
+    title: 'Dataset Descriptions',
+    description: 'Endpoint that gets called first to load all the available datasets. Each DATASET_ID maps to a megaset card',
+    type: 'object',
+    properties: { DATASET_ID: [Object] },
+    typeName: 'dataset-descriptions',
+    _normalizedRequired: true,
+    required: true
+  },
+  manifests: {
+    description: 'Collection of manifests for each published dataset.',
+    type: 'object',
+    properties: { DATASET_ID: [Object] },
+    _normalizedRequired: true,
+    required: true
+  },
+  'dataset-data': {
+    '$id': 'dataset-data',
+    description: 'High level data for a dataset, ie not per cell data',
+    type: 'object',
+    properties: { 'feature-definitions': [Object] },
+    _normalizedRequired: true,
+    required: true
+  },
+  'cell-data': {
+    description: 'Per cell data',
+    '$id': 'cell-data',
+    type: 'object',
+    properties: { DATASET_ID: [Object] },
+    _normalizedRequired: true,
+    required: true
+  },
+  'measured-features': {
+    '$schema': 'http://json-schema.org/draft-07/schema#',
+    '$id': 'measured-features.schema.json',
+    title: 'Condensed measured features JSON',
+    description: 'File stored on AWS that has the condensed measured data. Is an array of condensed measured features.',
+    type: 'array',
+    items: {
+      '$schema': 'http://json-schema.org/draft-07/schema#',
+      '$id': 'sub-schema/condensed-measured-feature.schema.json',
+      title: 'Condensed measured feature',
+      description: 'Data per cell needed to create the CFE plot',
+      additionalProperties: false,
+      type: 'object',
+      properties: [Object],
+      required: undefined,
+      typeName: 'sub-schema/condensed-measured-feature',
+      _normalizedRequired: true
+    },
+    typeName: 'measured-features',
+    _normalizedRequired: true,
+    required: true
+  }
+}
+PROPERTIES {
+  f: {
+    description: 'ordered array of measured features',
+    type: 'array',
+    items: { anyOf: [Array] },
+    _normalizedRequired: true,
+    required: true
+  },
+  p: {
+    description: 'Protein name',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  t: {
+    description: 'Thumbnail Path',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  i: {
+    description: 'Cell id',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  }
+}
+PROPERTIES {
+  default: {
+    description: 'Default feature key for the setting',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  exclude: {
+    description: 'Optional list of feature keys to exclude',
+    type: 'array',
+    items: { type: 'string' },
+    _normalizedRequired: true
+  }
+}
+PROPERTIES {
+  title: {
+    description: 'Display name of the dataset',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  name: {
+    description: 'Name of the dataset (no version number)',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  version: {
+    description: 'version year and number',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  description: {
+    description: 'Description of the dataset',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  image: {
+    description: 'Url to image src',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  link: {
+    description: 'Link to website displaying the dataset',
+    type: 'string',
+    _normalizedRequired: true
+  },
+  userData: {
+    description: 'Optional display data',
+    type: 'object',
+    _normalizedRequired: true
+  },
+  production: {
+    description: 'Whether this dataset ready to be shown in production',
+    type: 'boolean',
+    _normalizedRequired: true
+  }
+}
+PROPERTIES {
+  DATASET_ID: {
+    '$schema': 'http://json-schema.org/draft-07/schema#',
+    '$id': 'megaset-card.schema.json',
+    title: 'Megaset Card',
+    description: 'Data needed to render a megaset card',
+    type: 'object',
+    additionalProperties: false,
+    properties: {
+      datasets: [Object],
+      dateCreated: [Object],
+      name: [Object],
+      production: [Object],
+      title: [Object],
+      publications: [Object]
+    },
+    required: undefined,
+    typeName: 'megaset-card',
+    _normalizedRequired: true
+  }
+}
+PROPERTIES {
+  color: {
+    description: 'Hex string',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  name: {
+    description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.",
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  key: {
+    description: 'unique key for the option.',
+    type: 'string',
+    _normalizedRequired: true
+  }
+}
+PROPERTIES {
+  NUMERAL_KEY: {
+    '$schema': 'http://json-schema.org/draft-07/schema#',
+    '$id': 'sub-schema/discrete-feature-option.schema.json',
+    title: 'Discrete feature option',
+    description: 'Schema for each category in a discrete feature',
+    type: 'object',
+    properties: { color: [Object], name: [Object], key: [Object] },
+    additionalProperties: false,
+    required: undefined,
+    typeName: 'sub-schema/discrete-feature-option',
+    _normalizedRequired: true
+  }
+}
+PROPERTIES {
+  displayName: {
+    description: 'Human readable name',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  description: {
+    description: 'Description of how the data was collected/measured',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  tooltip: {
+    description: 'Shorter version of description',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  unit: {
+    description: 'unit of measurement',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  key: {
+    description: 'Id of the feature',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  discrete: {
+    description: "Whether it&#8217;s a continuous measurement or not",
+    type: 'boolean',
+    _normalizedRequired: true,
+    required: true
+  },
+  options: {
+    '$schema': 'http://json-schema.org/draft-07/schema#',
+    '$id': 'discrete-feature-options.schema.json',
+    title: 'Discrete feature options',
+    description: 'Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.',
+    type: 'object',
+    properties: { NUMERAL_KEY: [Object] },
+    typeName: 'discrete-feature-options',
+    _normalizedRequired: true,
+    required: undefined
+  }
+}
+PROPERTIES {
+  CellId: {
+    description: 'unique id for segmented cell',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  FOVId: {
+    description: 'Field of view cell came from',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  groupBy: {
+    description: 'Id of feature the data is grouped by by default',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  thumbnailPath: {
+    description: 'Path to thumbnail image for cell',
+    type: 'string',
+    _normalizedRequired: true
+  },
+  volumeviewerPath: {
+    description: 'path to 3d data for cell',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  fovThumbnailPath: {
+    description: 'Path to fov thumbnail',
+    type: 'string',
+    _normalizedRequired: true
+  },
+  fovVolumeviewerPath: {
+    description: 'Path to the fov 3d data',
+    type: 'string',
+    _normalizedRequired: true
+  }
+}
+PROPERTIES {
+  featuresDataPath: {
+    description: 'url to the per cell data json',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  featureDefsPath: {
+    description: 'path to the feature def collection',
+    type: 'string',
+    _normalizedRequired: true
+  },
+  viewerSettingsPath: {
+    description: 'path to image per-channel settings for the 3d viewer',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  albumPath: {
+    description: 'collection name of the album data',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  thumbnailRoot: {
+    description: 'Root url for thumbnail images',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  downloadRoot: {
+    description: 'Root url for downloading cell data',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  volumeViewerDataRoot: {
+    description: 'Root url for 3d images',
+    type: 'string',
+    _normalizedRequired: true,
+    required: true
+  },
+  xAxis: {
+    '$schema': 'http://json-schema.org/draft-07/schema#',
+    '$id': 'sub-schema/selection-setting.schema.json',
+    title: 'Data selection settings',
+    type: 'object',
+    properties: { default: [Object], exclude: [Object] },
+    required: true,
+    additionalProperties: false,
+    typeName: 'sub-schema/selection-setting',
+    _normalizedRequired: true
+  },
+  yAxis: {
+    '$schema': 'http://json-schema.org/draft-07/schema#',
+    '$id': 'sub-schema/selection-setting.schema.json',
+    title: 'Data selection settings',
+    type: 'object',
+    properties: { default: [Object], exclude: [Object] },
+    required: true,
+    additionalProperties: false,
+    typeName: 'sub-schema/selection-setting',
+    _normalizedRequired: true
+  },
+  colorBy: {
+    '$schema': 'http://json-schema.org/draft-07/schema#',
+    '$id': 'sub-schema/selection-setting.schema.json',
+    title: 'Data selection settings',
+    type: 'object',
+    properties: { default: [Object], exclude: [Object] },
+    required: true,
+    additionalProperties: false,
+    typeName: 'sub-schema/selection-setting',
+    _normalizedRequired: true
+  },
+  groupBy: {
+    '$schema': 'http://json-schema.org/draft-07/schema#',
+    '$id': 'sub-schema/selection-setting.schema.json',
+    title: 'Data selection settings',
+    type: 'object',
+    properties: { default: [Object], exclude: [Object] },
+    required: true,
+    additionalProperties: false,
+    typeName: 'sub-schema/selection-setting',
+    _normalizedRequired: true
+  },
+  featuresDisplayOrder: {
+    description: 'Ordered array of feature keys for display on front end',
+    type: 'array',
+    items: { type: 'string' },
+    _normalizedRequired: true,
+    required: true
+  },
+  featuresDataOrder: {
+    description: 'Ordered array of feature keys for packing and unpacking data',
+    type: 'array',
+    items: { type: 'string' },
+    _normalizedRequired: true,
+    required: true
+  }
+}
+PROPERTIES {
+  datasets: {
+    type: 'array',
+    items: {
+      '$schema': 'http://json-schema.org/draft-07/schema#',
+      '$id': 'sub-schema/dataset-card.schema.json',
+      title: 'Dataset Card',
+      description: 'Data needed to render a dataset card',
+      type: 'object',
+      additionalProperties: false,
+      properties: [Object],
+      required: undefined,
+      typeName: 'sub-schema/dataset-card',
+      _normalizedRequired: true
+    },
+    _normalizedRequired: true,
+    required: true
+  },
+  dateCreated: {
+    title: 'Date Created',
+    description: "Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date. ",
+    type: 'string',
+    typeName: 'dateCreated',
+    _normalizedRequired: true,
+    required: true
+  },
+  name: { type: 'string', _normalizedRequired: true, required: true },
+  production: { type: 'boolean', _normalizedRequired: true, required: true },
+  title: { type: 'string', _normalizedRequired: true, required: true },
+  publications: {
+    description: 'Publications associated with the group',
+    type: 'array',
+    items: {
+      '$schema': 'http://json-schema.org/draft-07/schema#',
+      '$id': 'sub-schema/publication.schema.json',
+      title: 'Publication',
+      description: 'Publication data',
+      additionalProperties: false,
+      type: 'object',
+      properties: [Object],
+      typeName: 'sub-schema/publication',
+      _normalizedRequired: true,
+      required: undefined
+    },
+    _normalizedRequired: true
+  }
+}
+PROPERTIES {
+  title: {
+    description: 'Article title',
+    type: 'string',
+    _normalizedRequired: true
+  },
+  url: {
+    description: 'Article link',
+    type: 'string',
+    _normalizedRequired: true
+  },
+  citation: {
+    description: 'Article journal and date',
+    type: 'string',
+    _normalizedRequired: true
+  }
+}</p>
+</div>
 <hr>
 </div>
 </div>
