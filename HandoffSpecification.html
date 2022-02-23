@@ -677,6 +677,15 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-string">Date the dataset was created</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-string">Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1107,10 +1116,19 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-string">Group title</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Display name of dataset group.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-string">Image file</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>relative path to the dataset card image file</p>
+<p>Relative path to the dataset card image file, including filename.</p>
 </div>
 <hr>
 </div>
@@ -1165,7 +1183,7 @@ Each folder should have the same 5 files listed above.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>image</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">relative path to the dataset card image file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relative path to the dataset card image file, including filename.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -1343,7 +1361,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_dataset_info_image">input-dataset-info.image</h3>
 <div class="paragraph">
-<p>relative path to the dataset card image file</p>
+<p>Relative path to the dataset card image file, including filename.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1604,6 +1622,25 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-datasets">Input datasets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own <code>dataset.json</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-datasets"><code>definitions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-input-megaset">Input Megaset <code>dataset.json</code></h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1629,7 +1666,7 @@ Each folder should have the same 5 files listed above.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of dataset group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of dataset group.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -1640,8 +1677,8 @@ Each folder should have the same 5 files listed above.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>datasets</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own <code>dataset.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-datasets"><code>datasets</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own <code>dataset.json</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -1652,7 +1689,7 @@ Each folder should have the same 5 files listed above.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>publications</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-publications"><code>publications</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Publications associated with the group</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
@@ -1671,7 +1708,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_megaset_title">input-megaset.title</h3>
 <div class="paragraph">
-<p>Display name of dataset group</p>
+<p>Display name of dataset group.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1703,12 +1740,12 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_megaset_datasets">input-megaset.datasets</h3>
 <div class="paragraph">
-<p>Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own <code>dataset.json</code></p>
+<p>Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own <code>dataset.json</code>.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+<p><strong>Type</strong>: <a href="#reference-datasets"><code>datasets</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1740,7 +1777,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a> <code>[]</code></p>
+<p><strong>Type</strong>: <a href="#reference-publications"><code>publications</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -1956,6 +1993,25 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-publications">Publications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Publications associated with the group</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a></p>
+</li>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-publications"><code>definitions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-selection-settings">Selection settings</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
@@ -2121,19 +2177,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -2150,11 +2193,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -2226,6 +2264,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -2326,19 +2382,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -2355,11 +2398,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -2431,6 +2469,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -2485,19 +2541,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -2514,11 +2557,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -2590,6 +2628,183 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for Date the dataset was created</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -2644,19 +2859,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -2673,11 +2875,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -2749,6 +2946,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -2861,19 +3076,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -2890,11 +3092,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -2966,6 +3163,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -3020,19 +3235,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -3049,11 +3251,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -3125,6 +3322,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -3179,19 +3394,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -3208,11 +3410,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -3284,6 +3481,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -3395,19 +3610,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -3424,11 +3626,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -3500,6 +3697,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -3554,19 +3769,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -3583,11 +3785,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -3659,6 +3856,183 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for Group title</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -3713,19 +4087,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -3742,11 +4103,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -3818,6 +4174,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -3871,7 +4245,7 @@ Each folder should have the same 5 files listed above.</p>
             "$ref": "definitions.schema.json#/definitions/description"
         },
         "image": {
-            "$ref": "definitions.schema.json#/definitions/image"
+            "$ref": "definitions.schema.json#/input-data/image"
         },
         "link": {
             "$ref": "definitions.schema.json#/definitions/link"
@@ -3956,59 +4330,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-input-megaset">JSON Schema for Input Megaset <code>dataset.json</code></h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "input-megaset.schema.json",
-    "title": "Input Megaset `dataset.json`",
-    "description": "File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named `dataset.json`",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "title": {
-            "description": "Display name of dataset group",
-            "type": "string"
-        },
-        "name": {
-            "description": "Name of the group (no version number). Lowercase with underscores.",
-            "type": "string"
-        },
-        "datasets": {
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date Created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
-        "publications": {
-            "description": "Publications associated with the group",
-            "type": "array",
-            "items": {
-                "$ref": "sub-schema/publication.schema.json"
-            }
-        }
-    },
-    "required": [
-        "title",
-        "name",
-        "datasets"
-    ]
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="schema-reference-boolean">JSON Schema for Is production</h2>
+<h2 id="schema-reference-datasets">JSON Schema for Input datasets</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -4034,19 +4356,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -4063,11 +4372,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -4139,6 +4443,224 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-input-megaset">JSON Schema for Input Megaset <code>dataset.json</code></h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "input-megaset.schema.json",
+    "title": "Input Megaset `dataset.json`",
+    "description": "File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named `dataset.json`",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "title": {
+            "$ref": "definitions.schema.json#/definitions/group-title"
+        },
+        "name": {
+            "$ref": "definitions.schema.json#/definitions/name"
+        },
+        "datasets": {
+            "$ref": "definitions.schema.json#/input-data/datasets"
+        },
+        "dateCreated": {
+            "title": "Date created",
+            "$ref": "definitions.schema.json#/input-data/dateCreated"
+        },
+        "publications": {
+            "$ref": "definitions.schema.json#/definitions/publications"
+        }
+    },
+    "required": [
+        "title",
+        "name",
+        "datasets"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-boolean">JSON Schema for Is production</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -4193,19 +4715,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -4222,11 +4731,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -4298,6 +4802,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -4398,7 +4920,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-selection-settings">JSON Schema for Selection settings</h2>
+<h2 id="schema-reference-publications">JSON Schema for Publications</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -4424,19 +4946,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -4453,11 +4962,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -4529,6 +5033,183 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-selection-settings">JSON Schema for Selection settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -4583,19 +5264,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -4612,11 +5280,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -4688,6 +5351,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -4742,19 +5423,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -4771,11 +5439,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -4847,6 +5510,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -4901,19 +5582,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -4930,11 +5598,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -5006,6 +5669,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -5060,19 +5741,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -5089,11 +5757,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -5165,6 +5828,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
@@ -5219,19 +5900,6 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "dataset-pointers": {
-            "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
-        "dateCreated": {
-            "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
-            "type": "string"
-        },
         "publications": {
             "title": "Publications",
             "description": "Publications associated with the group",
@@ -5248,11 +5916,6 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
-            "type": "string"
-        },
-        "image": {
-            "title": "Image file",
-            "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
@@ -5324,6 +5987,24 @@ Each folder should have the same 5 files listed above.</p>
         }
     },
     "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
         "featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
