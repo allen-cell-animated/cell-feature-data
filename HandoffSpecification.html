@@ -529,8 +529,8 @@ Each folder should have the same 5 files listed above.</p>
 <p>[] input-megaset.schema.json true
 [] sub-schema/publication.schema.json true
 [] input-dataset-info.schema.json true
-[] definitions.schema.json false
-[] definitions.schema.json false
+[] definitions.schema.json true
+[] definitions.schema.json true
 [] definitions.schema.json true
 [] sub-schema/selection-setting.schema.json true
 [] sub-schema/selection-setting.schema.json true
@@ -542,8 +542,8 @@ Each folder should have the same 5 files listed above.</p>
 [] input-megaset.schema.json true
 [] sub-schema/publication.schema.json true
 [] input-dataset-info.schema.json true
-[] definitions.schema.json false
-[] definitions.schema.json false
+[] definitions.schema.json true
+[] definitions.schema.json true
 [] definitions.schema.json true
 [] sub-schema/selection-setting.schema.json true
 [] sub-schema/selection-setting.schema.json true
@@ -757,7 +757,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-string">Dataset name</h2>
+<h2 id="reference-name">Dataset name</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Name of the group (no version number). Lowercase with underscores.</p>
@@ -766,7 +766,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-string">Dataset title</h2>
+<h2 id="reference-dataset-title">Dataset title</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Display name of dataset.</p>
@@ -1155,13 +1155,13 @@ Each folder should have the same 5 files listed above.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-dataset-title"><code>dataset-title</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Display name of dataset.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-name"><code>name</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name of the group (no version number). Lowercase with underscores.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
@@ -1299,7 +1299,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>string</code></p>
+<p><strong>Type</strong>: <a href="#reference-dataset-title"><code>dataset-title</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1315,7 +1315,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>string</code></p>
+<p><strong>Type</strong>: <a href="#reference-name"><code>name</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -2037,7 +2037,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-string">JSON Schema for Dataset name</h2>
+<h2 id="schema-reference-name">JSON Schema for Dataset name</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2199,7 +2199,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-string">JSON Schema for Dataset title</h2>
+<h2 id="schema-reference-dataset-title">JSON Schema for Dataset title</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
