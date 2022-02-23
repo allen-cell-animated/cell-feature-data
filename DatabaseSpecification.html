@@ -1245,15 +1245,27 @@ ITEMS</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NUMERAL_KEY</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>color</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hex string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>key</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique key for the option.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Additional properties are allowed.</p>
+<p>Additional properties are not allowed.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1263,11 +1275,46 @@ ITEMS</p>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_refsdiscrete_feature_option_numeral_key">refs/discrete-feature-option.NUMERAL_KEY</h3>
+<h3 id="_refsdiscrete_feature_option_color">refs/discrete-feature-option.color</h3>
+<div class="paragraph">
+<p>Hex string</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>object</code></p>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_refsdiscrete_feature_option_name">refs/discrete-feature-option.name</h3>
+<div class="paragraph">
+<p>Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_refsdiscrete_feature_option_key">refs/discrete-feature-option.key</h3>
+<div class="paragraph">
+<p>unique key for the option.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -2007,29 +2054,24 @@ ITEMS</p>
     "title": "Discrete feature option",
     "type": "object",
     "properties": {
-        "NUMERAL_KEY": {
-            "type": "object",
-            "properties": {
-                "color": {
-                    "description": "Hex string",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "Display name for the option. Doesn't have to be unique, but if it's not unique, `key` is required.",
-                    "type": "string"
-                },
-                "key": {
-                    "description": "unique key for the option.",
-                    "type": "string"
-                }
-            },
-            "additionalProperties": false,
-            "required": [
-                "name",
-                "color"
-            ]
+        "color": {
+            "description": "Hex string",
+            "type": "string"
+        },
+        "name": {
+            "description": "Display name for the option. Doesn't have to be unique, but if it's not unique, `key` is required.",
+            "type": "string"
+        },
+        "key": {
+            "description": "unique key for the option.",
+            "type": "string"
         }
-    }
+    },
+    "additionalProperties": false,
+    "required": [
+        "name",
+        "color"
+    ]
 }</code></pre>
 </div>
 </div>
