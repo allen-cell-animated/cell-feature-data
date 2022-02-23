@@ -471,7 +471,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>dataset-descriptions</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/dataset-descriptions"><code>sub-schema/dataset-descriptions</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-dataset-descriptions"><code>dataset-descriptions</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Endpoint that gets called first to load all the available datasets. Each DATASET_ID maps to a megaset card</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
@@ -519,7 +519,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/dataset-descriptions"><code>sub-schema/dataset-descriptions</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-dataset-descriptions"><code>dataset-descriptions</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1011,7 +1011,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-sub-schema/dataset-descriptions">Dataset Descriptions</h2>
+<h2 id="reference-dataset-descriptions">Dataset Descriptions</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Endpoint that gets called first to load all the available datasets. Each DATASET_ID maps to a megaset card</p>
@@ -1035,7 +1035,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DATASET_ID</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/megaset-card"><code>sub-schema/megaset-card</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-megaset-card"><code>megaset-card</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Data needed to render a megaset card</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
@@ -1047,19 +1047,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/dataset-descriptions"><code>sub-schema/dataset-descriptions.schema.json</code></a></p>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-dataset-descriptions"><code>dataset-descriptions.schema.json</code></a></p>
 </li>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemadataset_descriptions_dataset_id">sub-schema/dataset-descriptions.DATASET_ID</h3>
+<h3 id="_dataset_descriptions_dataset_id">dataset-descriptions.DATASET_ID</h3>
 <div class="paragraph">
 <p>Data needed to render a megaset card</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/megaset-card"><code>sub-schema/megaset-card</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-megaset-card"><code>megaset-card</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -1953,7 +1953,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-sub-schema/megaset-card">Megaset Card</h2>
+<h2 id="reference-megaset-card">Megaset Card</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Data needed to render a megaset card</p>
@@ -2019,12 +2019,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/megaset-card"><code>sub-schema/megaset-card.schema.json</code></a></p>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-megaset-card"><code>megaset-card.schema.json</code></a></p>
 </li>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemamegaset_card_datasets">sub-schema/megaset-card.datasets</h3>
+<h3 id="_megaset_card_datasets">megaset-card.datasets</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2037,7 +2037,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemamegaset_card_datecreated">sub-schema/megaset-card.dateCreated</h3>
+<h3 id="_megaset_card_datecreated">megaset-card.dateCreated</h3>
 <div class="paragraph">
 <p>Month Day, Year</p>
 </div>
@@ -2053,7 +2053,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemamegaset_card_name">sub-schema/megaset-card.name</h3>
+<h3 id="_megaset_card_name">megaset-card.name</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2066,7 +2066,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemamegaset_card_production">sub-schema/megaset-card.production</h3>
+<h3 id="_megaset_card_production">megaset-card.production</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2079,7 +2079,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemamegaset_card_title">sub-schema/megaset-card.title</h3>
+<h3 id="_megaset_card_title">megaset-card.title</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2092,7 +2092,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemamegaset_card_publications">sub-schema/megaset-card.publications</h3>
+<h3 id="_megaset_card_publications">megaset-card.publications</h3>
 <div class="paragraph">
 <p>Publications associated with the group</p>
 </div>
@@ -2233,7 +2233,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "additionalProperties": false,
     "properties": {
         "dataset-descriptions": {
-            "$ref": "sub-schema/dataset-descriptions.schema.json"
+            "$ref": "dataset-descriptions.schema.json"
         },
         "manifests": {
             "description": "Collection of manifests for each published dataset.",
@@ -2455,7 +2455,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-sub-schema/dataset-descriptions">JSON Schema for Dataset Descriptions</h2>
+<h2 id="schema-reference-dataset-descriptions">JSON Schema for Dataset Descriptions</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2467,7 +2467,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "type": "object",
     "properties": {
         "DATASET_ID": {
-            "$ref": "sub-schema/megaset-card.schema.json"
+            "$ref": "megaset-card.schema.json"
         }
     }
 }</code></pre>
@@ -2747,7 +2747,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-sub-schema/megaset-card">JSON Schema for Megaset Card</h2>
+<h2 id="schema-reference-megaset-card">JSON Schema for Megaset Card</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
