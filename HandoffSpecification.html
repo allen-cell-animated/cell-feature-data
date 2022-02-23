@@ -525,6 +525,13 @@ Each folder should have the same 5 files listed above.</p>
 
 </div>
 <h1 id="_full_documentation" class="sect0">Full Documentation</h1>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>WETZEL_WARNING: Unrecognized JSON Schema.</p>
+</div>
+</blockquote>
+</div>
 <hr>
 <div class="sect1">
 <h2 id="reference-cell-feature-dataset-handoff-specification">Cell Feature Dataset Handoff Specification</h2>
@@ -833,7 +840,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-sub-schema/discrete-feature-options">Discrete feature options</h2>
+<h2 id="reference-discrete-feature-options">Discrete feature options</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
@@ -869,12 +876,12 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/discrete-feature-options"><code>sub-schema/discrete-feature-options.schema.json</code></a></p>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-discrete-feature-options"><code>discrete-feature-options.schema.json</code></a></p>
 </li>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemadiscrete_feature_options_numeral_key">sub-schema/discrete-feature-options.NUMERAL_KEY</h3>
+<h3 id="_discrete_feature_options_numeral_key">discrete-feature-options.NUMERAL_KEY</h3>
 <div class="paragraph">
 <p>Schema for each category in a discrete feature</p>
 </div>
@@ -953,7 +960,7 @@ Each folder should have the same 5 files listed above.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>options</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/discrete-feature-options"><code>sub-schema/discrete-feature-options</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-discrete-feature-options"><code>discrete-feature-options</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
@@ -1073,7 +1080,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/discrete-feature-options"><code>sub-schema/discrete-feature-options</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-discrete-feature-options"><code>discrete-feature-options</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -1886,7 +1893,13 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect1">
 <h2 id="_appendix">Appendix</h2>
 <div class="sectionbody">
-
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>WETZEL_WARNING: Unrecognized JSON Schema.</p>
+</div>
+</blockquote>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1895,8 +1908,8 @@ Each folder should have the same 5 files listed above.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "$id": "handoff-datasete",
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "$id": "input-dataset.schema.json",
     "title": "Cell Feature Dataset Handoff Specification",
     "type": "object",
     "additionalProperties": false,
@@ -1941,8 +1954,8 @@ Each folder should have the same 5 files listed above.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "$id": "selection-setting",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "sub-schema/selection-setting.schema.json",
     "title": "Data selection settings",
     "type": "object",
     "properties": {
@@ -1974,8 +1987,8 @@ Each folder should have the same 5 files listed above.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "$id": "discrete-feature-option",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "sub-schema/discrete-feature-option.schema.json",
     "title": "Discrete feature option",
     "description": "Schema for each category in a discrete feature",
     "type": "object",
@@ -2005,21 +2018,21 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-sub-schema/discrete-feature-options">JSON Schema for Discrete feature options</h2>
+<h2 id="schema-reference-discrete-feature-options">JSON Schema for Discrete feature options</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "$id": "discrete-feature-options",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "discrete-feature-options.schema.json",
     "title": "Discrete feature options",
     "description": "Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0` or `1`, there should be two option mappings.",
     "type": "object",
     "properties": {
         "NUMERAL_KEY": {
             "$ref": "sub-schema/discrete-feature-option.schema.json"
+        }
     }
-}
 }</code></pre>
 </div>
 </div>
@@ -2033,7 +2046,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "featureDefSchema",
+    "$id": "feature-def.schema.json",
     "title": "Feature Definition",
     "description": "Definition of a measured features in the dataset. Feature definitions file is an array of these objects.",
     "type": "object",
@@ -2066,7 +2079,7 @@ Each folder should have the same 5 files listed above.</p>
         "options": {
             "description": "Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
             "type": "object",
-            "$ref": "sub-schema/discrete-feature-options.schema.json"
+            "$ref": "discrete-feature-options.schema.json"
         }
     },
     "required": [
@@ -2090,7 +2103,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "datasetInfoSchema",
+    "$id": "input-dataset-info.schema.json",
     "title": "Input dataset info `dataset.json`",
     "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
     "type": "object",
@@ -2223,7 +2236,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "inputMegaset",
+    "$id": "input-megaset.schema.json",
     "title": "Input Megaset `dataset.json`",
     "description": "File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named `dataset.json`",
     "type": "object",
@@ -2306,7 +2319,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "publication",
+    "$id": "sub-schema/publication.schema.json",
     "title": "Publication",
     "description": "Publication data",
     "additionalProperties": false,

@@ -443,6 +443,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>WETZEL_WARNING: Unrecognized JSON Schema.</p>
+</div>
+</blockquote>
+</div>
 <hr>
 </div>
 </div>
@@ -619,7 +626,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>f</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>number</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>array[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ordered array of measured features</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
@@ -633,6 +640,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>t</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Thumbnail Path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>i</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell id</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 </tbody>
@@ -655,7 +668,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>number</code> <code>[]</code></p>
+<p><strong>Type</strong>: <code>array[]</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Each element in the array must be one of the following values:</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -683,6 +703,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h3 id="_sub_schemacondensed_measured_feature_t">sub-schema/condensed-measured-feature.t</h3>
 <div class="paragraph">
 <p>Thumbnail Path</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemacondensed_measured_feature_i">sub-schema/condensed-measured-feature.i</h3>
+<div class="paragraph">
+<p>Cell id</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1175,7 +1211,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-sub-schema/discrete-feature-options">Discrete feature options</h2>
+<h2 id="reference-discrete-feature-options">Discrete feature options</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
@@ -1211,12 +1247,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/discrete-feature-options"><code>sub-schema/discrete-feature-options.schema.json</code></a></p>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-discrete-feature-options"><code>discrete-feature-options.schema.json</code></a></p>
 </li>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemadiscrete_feature_options_numeral_key">sub-schema/discrete-feature-options.NUMERAL_KEY</h3>
+<h3 id="_discrete_feature_options_numeral_key">discrete-feature-options.NUMERAL_KEY</h3>
 <div class="paragraph">
 <p>Schema for each category in a discrete feature</p>
 </div>
@@ -1295,7 +1331,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>options</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/discrete-feature-options"><code>sub-schema/discrete-feature-options</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-discrete-feature-options"><code>discrete-feature-options</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
@@ -1415,7 +1451,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/discrete-feature-options"><code>sub-schema/discrete-feature-options</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-discrete-feature-options"><code>discrete-feature-options</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -2216,7 +2252,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_appendix">Appendix</h2>
 <div class="sectionbody">
-
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>WETZEL_WARNING: Unrecognized JSON Schema.</p>
+</div>
+</blockquote>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2225,7 +2267,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "database-schema",
     "title": "Cell Feature Database Specification",
     "description": "Structure of the data stored in firebase and AWS",
@@ -2308,7 +2350,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "measuredFeatureSchema",
+    "$id": "sub-schema/condensed-measured-feature.schema.json",
     "title": "Condensed measured feature",
     "description": "Data per cell needed to create the CFE plot",
     "additionalProperties": false,
@@ -2318,7 +2360,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "description": "ordered array of measured features",
             "type": "array",
             "items": {
-                "type": "number"
+                "anyOf": [
+                    {
+                        "type": "number"
+                    },
+                    {
+                        "type": "string",
+                        "pattern": "[NaN]"
+                    }
+                ]
             }
         },
         "p": {
@@ -2328,12 +2378,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "t": {
             "description": "Thumbnail Path",
             "type": "string"
+        },
+        "i": {
+            "description": "Cell id",
+            "type": "string"
         }
     },
     "required": [
         "f",
         "p",
-        "t"
+        "t",
+        "i"
     ]
 }</code></pre>
 </div>
@@ -2348,12 +2403,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "measuredFeaturesSchema",
+    "$id": "measured-features.schema.json",
     "title": "Condensed measured features JSON",
     "description": "File stored on AWS that has the condensed measured data. Is an array of condensed measured features.",
     "type": "array",
     "items": {
-        "type": "object",
         "$ref": "sub-schema/condensed-measured-feature.schema.json"
     }
 }</code></pre>
@@ -2368,8 +2422,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "$id": "selection-setting",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "sub-schema/selection-setting.schema.json",
     "title": "Data selection settings",
     "type": "object",
     "properties": {
@@ -2402,7 +2456,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "datasetCardSchema",
+    "$id": "sub-schema/dataset-card.schema.json",
     "title": "Dataset Card",
     "description": "Data needed to render a dataset card",
     "type": "object",
@@ -2460,7 +2514,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "dataset-descriptions",
     "title": "Dataset Descriptions",
     "description": "Endpoint that gets called first to load all the available datasets. Each DATASET_ID maps to a megaset card",
@@ -2482,8 +2536,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "$id": "discrete-feature-option",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "sub-schema/discrete-feature-option.schema.json",
     "title": "Discrete feature option",
     "description": "Schema for each category in a discrete feature",
     "type": "object",
@@ -2513,21 +2567,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-sub-schema/discrete-feature-options">JSON Schema for Discrete feature options</h2>
+<h2 id="schema-reference-discrete-feature-options">JSON Schema for Discrete feature options</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "$id": "discrete-feature-options",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "discrete-feature-options.schema.json",
     "title": "Discrete feature options",
     "description": "Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0` or `1`, there should be two option mappings.",
     "type": "object",
     "properties": {
         "NUMERAL_KEY": {
             "$ref": "sub-schema/discrete-feature-option.schema.json"
+        }
     }
-}
 }</code></pre>
 </div>
 </div>
@@ -2541,7 +2595,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "featureDefSchema",
+    "$id": "feature-def.schema.json",
     "title": "Feature Definition",
     "description": "Definition of a measured features in the dataset. Feature definitions file is an array of these objects.",
     "type": "object",
@@ -2574,7 +2628,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "options": {
             "description": "Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
             "type": "object",
-            "$ref": "sub-schema/discrete-feature-options.schema.json"
+            "$ref": "discrete-feature-options.schema.json"
         }
     },
     "required": [
@@ -2597,8 +2651,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "$id": "file-info",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "sub-schema/file-info.schema.json",
     "title": "File info",
     "description": "File info for one cell, this is the data needed to access images for the cell.",
     "type": "object",
@@ -2652,7 +2706,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "manifestSchema",
+    "$id": "manifest.schema.json",
     "title": "Manifest",
     "description": "High level data for each dataset that points to where all the data is stored for this dataset.",
     "type": "object",
@@ -2753,7 +2807,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "megasetCardSchema",
+    "$id": "megaset-card.schema.json",
     "title": "Megaset Card",
     "description": "Data needed to render a megaset card",
     "type": "object",
@@ -2799,7 +2853,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "publication",
+    "$id": "sub-schema/publication.schema.json",
     "title": "Publication",
     "description": "Publication data",
     "additionalProperties": false,
