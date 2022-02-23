@@ -985,31 +985,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Endpoint that gets called first to load all the available datasets. Each DATASET_ID maps to a megaset card</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. <code>Dataset Descriptions</code> Properties</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>DATASET_ID</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-megaset-card"><code>megaset-card</code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Data needed to render a megaset card</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-</tr>
-</tbody>
-</table>
 <div class="paragraph">
 <p>Additional properties are allowed.</p>
 </div>
@@ -1020,23 +995,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
-<div class="sect2">
-<h3 id="_dataset_descriptions_dataset_id">dataset-descriptions.DATASET_ID</h3>
-<div class="paragraph">
-<p>Data needed to render a megaset card</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <a href="#reference-megaset-card"><code>megaset-card</code></a></p>
-</li>
-<li>
-<p><strong>Required</strong>: No</p>
-</li>
-</ul>
-</div>
 <hr>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1061,7 +1020,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Schema for each category in a discrete feature</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. <code>Discrete feature option</code> Properties</caption>
+<caption class="title">Table 4. <code>Discrete feature option</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1165,7 +1124,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. <code>Discrete feature options</code> Properties</caption>
+<caption class="title">Table 5. <code>Discrete feature options</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1244,7 +1203,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Definition of a measured features in the dataset. Feature definitions file is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. <code>Feature Definition</code> Properties</caption>
+<caption class="title">Table 6. <code>Feature Definition</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1455,7 +1414,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>File info for one cell, this is the data needed to access images for the cell.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. <code>File info</code> Properties</caption>
+<caption class="title">Table 7. <code>File info</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1666,7 +1625,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>High level data for each dataset that points to where all the data is stored for this dataset.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. <code>Manifest</code> Properties</caption>
+<caption class="title">Table 8. <code>Manifest</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1978,7 +1937,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Data needed to render a megaset card</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. <code>Megaset Card</code> Properties</caption>
+<caption class="title">Table 9. <code>Megaset Card</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2136,7 +2095,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Publication data</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. <code>Publication</code> Properties</caption>
+<caption class="title">Table 10. <code>Publication</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2237,7 +2196,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="reference-selection-settings">Selection settings</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. <code>Selection settings</code> Properties</caption>
+<caption class="title">Table 11. <code>Selection settings</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2694,8 +2653,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "title": "Dataset Descriptions",
     "description": "Endpoint that gets called first to load all the available datasets. Each DATASET_ID maps to a megaset card",
     "type": "object",
-    "properties": {
-        "DATASET_ID": {
+    "patternProperties": {
+        "^(\\w{1,})_(v\\d{4}.\\d{1,}|\\w{1,})$": {
             "$ref": "megaset-card.schema.json"
         }
     }
