@@ -660,7 +660,7 @@ ITEMS</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-refs/selection-setting">Data selection settings</h2>
+<h2 id="reference-sub-schema/selection-setting">Data selection settings</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 2. <code>Data selection settings</code> Properties</caption>
@@ -699,12 +699,12 @@ ITEMS</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-refs/selection-setting"><code>refs/selection-setting.schema.json</code></a></p>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/selection-setting"><code>sub-schema/selection-setting.schema.json</code></a></p>
 </li>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_refsselection_setting_default">refs/selection-setting.default</h3>
+<h3 id="_sub_schemaselection_setting_default">sub-schema/selection-setting.default</h3>
 <div class="paragraph">
 <p>Default feature key for the setting</p>
 </div>
@@ -720,7 +720,7 @@ ITEMS</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_refsselection_setting_exclude">refs/selection-setting.exclude</h3>
+<h3 id="_sub_schemaselection_setting_exclude">sub-schema/selection-setting.exclude</h3>
 <div class="paragraph">
 <p>Optional list of feature keys to exclude</p>
 </div>
@@ -739,13 +739,369 @@ ITEMS</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-input-dataset-info">Dataset Info <code>dataset.json</code></h2>
+<h2 id="reference-sub-schema/discrete-feature-option">Discrete feature option</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Schema for each category in a discrete feature</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. <code>Discrete feature option</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>color</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hex string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>key</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique key for the option.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/discrete-feature-option"><code>sub-schema/discrete-feature-option.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemadiscrete_feature_option_color">sub-schema/discrete-feature-option.color</h3>
+<div class="paragraph">
+<p>Hex string</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemadiscrete_feature_option_name">sub-schema/discrete-feature-option.name</h3>
+<div class="paragraph">
+<p>Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemadiscrete_feature_option_key">sub-schema/discrete-feature-option.key</h3>
+<div class="paragraph">
+<p>unique key for the option.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-sub-schema/discrete-feature-options">Discrete feature options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. <code>Discrete feature options</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NUMERAL_KEY</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/discrete-feature-option"><code>sub-schema/discrete-feature-option</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Schema for each category in a discrete feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/discrete-feature-options"><code>sub-schema/discrete-feature-options.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemadiscrete_feature_options_numeral_key">sub-schema/discrete-feature-options.NUMERAL_KEY</h3>
+<div class="paragraph">
+<p>Schema for each category in a discrete feature</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-sub-schema/discrete-feature-option"><code>sub-schema/discrete-feature-option</code></a></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-feature-def">Feature Definition</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Definition of a measured features in the dataset. Feature definitions file is an array of these objects.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. <code>Feature Definition</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>displayName</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Human readable name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description of how the data was collected/measured</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>tooltip</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shorter version of description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>unit</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unit of measurement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>key</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Id of the feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>discrete</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether it&#8217;s a continuous measurement or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>options</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/discrete-feature-options"><code>sub-schema/discrete-feature-options</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-feature-def"><code>feature-def.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_feature_def_displayname">feature-def.displayName</h3>
+<div class="paragraph">
+<p>Human readable name</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_def_description">feature-def.description</h3>
+<div class="paragraph">
+<p>Description of how the data was collected/measured</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_def_tooltip">feature-def.tooltip</h3>
+<div class="paragraph">
+<p>Shorter version of description</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_def_unit">feature-def.unit</h3>
+<div class="paragraph">
+<p>unit of measurement</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_def_key">feature-def.key</h3>
+<div class="paragraph">
+<p>Id of the feature</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_def_discrete">feature-def.discrete</h3>
+<div class="paragraph">
+<p>Whether it&#8217;s a continuous measurement or not</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>boolean</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_def_options">feature-def.options</h3>
+<div class="paragraph">
+<p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-sub-schema/discrete-feature-options"><code>sub-schema/discrete-feature-options</code></a></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-input-dataset-info">Input dataset info <code>dataset.json</code></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON <code>datasets</code> array. Should be named <code>dataset.json</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. <code>Dataset Info `dataset.json`</code> Properties</caption>
+<caption class="title">Table 6. <code>Input dataset info `dataset.json`</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -853,25 +1209,25 @@ ITEMS</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>xAxis</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-refs/selection-setting"><code>refs/selection-setting</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>yAxis</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-refs/selection-setting"><code>refs/selection-setting</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>colorBy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-refs/selection-setting"><code>refs/selection-setting</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>groupBy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-refs/selection-setting"><code>refs/selection-setting</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
@@ -1144,7 +1500,7 @@ ITEMS</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-refs/selection-setting"><code>refs/selection-setting</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1157,7 +1513,7 @@ ITEMS</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-refs/selection-setting"><code>refs/selection-setting</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1170,7 +1526,7 @@ ITEMS</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-refs/selection-setting"><code>refs/selection-setting</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1183,7 +1539,7 @@ ITEMS</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-refs/selection-setting"><code>refs/selection-setting</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1219,362 +1575,6 @@ ITEMS</p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-<hr>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="reference-refs/discrete-feature-option">Discrete feature option</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Schema for each category in a discrete feature</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. <code>Discrete feature option</code> Properties</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>color</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Hex string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>key</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">unique key for the option.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Additional properties are not allowed.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-refs/discrete-feature-option"><code>refs/discrete-feature-option.schema.json</code></a></p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_refsdiscrete_feature_option_color">refs/discrete-feature-option.color</h3>
-<div class="paragraph">
-<p>Hex string</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_refsdiscrete_feature_option_name">refs/discrete-feature-option.name</h3>
-<div class="paragraph">
-<p>Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_refsdiscrete_feature_option_key">refs/discrete-feature-option.key</h3>
-<div class="paragraph">
-<p>unique key for the option.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>: No</p>
-</li>
-</ul>
-</div>
-<hr>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="reference-refs/discrete-feature-options">Discrete feature options</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. <code>Discrete feature options</code> Properties</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NUMERAL_KEY</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-refs/discrete-feature-option"><code>refs/discrete-feature-option</code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Schema for each category in a discrete feature</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Additional properties are allowed.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-refs/discrete-feature-options"><code>refs/discrete-feature-options.schema.json</code></a></p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_refsdiscrete_feature_options_numeral_key">refs/discrete-feature-options.NUMERAL_KEY</h3>
-<div class="paragraph">
-<p>Schema for each category in a discrete feature</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <a href="#reference-refs/discrete-feature-option"><code>refs/discrete-feature-option</code></a></p>
-</li>
-<li>
-<p><strong>Required</strong>: No</p>
-</li>
-</ul>
-</div>
-<hr>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="reference-feature-def">Feature Definition</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Definition of a measured features in the dataset. Feature definitions file is an array of these objects.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. <code>Feature Definition</code> Properties</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>displayName</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Human readable name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description of how the data was collected/measured</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>tooltip</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Shorter version of description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>unit</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">unit of measurement</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>key</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Id of the feature</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>discrete</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether it&#8217;s a continuous measurement or not</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>options</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-refs/discrete-feature-options"><code>refs/discrete-feature-options</code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Additional properties are not allowed.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-feature-def"><code>feature-def.schema.json</code></a></p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_feature_def_displayname">feature-def.displayName</h3>
-<div class="paragraph">
-<p>Human readable name</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_feature_def_description">feature-def.description</h3>
-<div class="paragraph">
-<p>Description of how the data was collected/measured</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_feature_def_tooltip">feature-def.tooltip</h3>
-<div class="paragraph">
-<p>Shorter version of description</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_feature_def_unit">feature-def.unit</h3>
-<div class="paragraph">
-<p>unit of measurement</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_feature_def_key">feature-def.key</h3>
-<div class="paragraph">
-<p>Id of the feature</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_feature_def_discrete">feature-def.discrete</h3>
-<div class="paragraph">
-<p>Whether it&#8217;s a continuous measurement or not</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>boolean</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_feature_def_options">feature-def.options</h3>
-<div class="paragraph">
-<p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <a href="#reference-refs/discrete-feature-options"><code>refs/discrete-feature-options</code></a></p>
-</li>
-<li>
-<p><strong>Required</strong>: No</p>
 </li>
 </ul>
 </div>
@@ -1625,7 +1625,7 @@ ITEMS</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>publications</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-refs/publication"><code>refs/publication</code></a> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a> <code>[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Publications associated with the group</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
@@ -1697,7 +1697,7 @@ ITEMS</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-refs/publication"><code>refs/publication</code></a> <code>[]</code></p>
+<p><strong>Type</strong>: <a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a> <code>[]</code></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -1791,7 +1791,7 @@ ITEMS</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-refs/publication">Publication</h2>
+<h2 id="reference-sub-schema/publication">Publication</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Publication data</p>
@@ -1839,12 +1839,12 @@ ITEMS</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-refs/publication"><code>refs/publication.schema.json</code></a></p>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/publication"><code>sub-schema/publication.schema.json</code></a></p>
 </li>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_refspublication_title">refs/publication.title</h3>
+<h3 id="_sub_schemapublication_title">sub-schema/publication.title</h3>
 <div class="paragraph">
 <p>Article title</p>
 </div>
@@ -1860,7 +1860,7 @@ ITEMS</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_refspublication_url">refs/publication.url</h3>
+<h3 id="_sub_schemapublication_url">sub-schema/publication.url</h3>
 <div class="paragraph">
 <p>Article link</p>
 </div>
@@ -1876,7 +1876,7 @@ ITEMS</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_refspublication_citation">refs/publication.citation</h3>
+<h3 id="_sub_schemapublication_citation">sub-schema/publication.citation</h3>
 <div class="paragraph">
 <p>Article journal and date</p>
 </div>
@@ -1946,7 +1946,7 @@ ITEMS</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-refs/selection-setting">JSON Schema for Data selection settings</h2>
+<h2 id="schema-reference-sub-schema/selection-setting">JSON Schema for Data selection settings</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -1979,14 +1979,129 @@ ITEMS</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-input-dataset-info">JSON Schema for Dataset Info <code>dataset.json</code></h2>
+<h2 id="schema-reference-sub-schema/discrete-feature-option">JSON Schema for Discrete feature option</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "$id": "discrete-feature-option",
+    "title": "Discrete feature option",
+    "description": "Schema for each category in a discrete feature",
+    "type": "object",
+    "properties": {
+        "color": {
+            "description": "Hex string",
+            "type": "string"
+        },
+        "name": {
+            "description": "Display name for the option. Doesn't have to be unique, but if it's not unique, `key` is required.",
+            "type": "string"
+        },
+        "key": {
+            "description": "unique key for the option.",
+            "type": "string"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "name",
+        "color"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-sub-schema/discrete-feature-options">JSON Schema for Discrete feature options</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "$id": "discrete-feature-options",
+    "title": "Discrete feature options",
+    "description": "Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0` or `1`, there should be two option mappings.",
+    "type": "object",
+    "properties": {
+        "NUMERAL_KEY": {
+            "$ref": "sub-schema/discrete-feature-option.schema.json"
+    }
+}
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-feature-def">JSON Schema for Feature Definition</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "featureDefSchema",
+    "title": "Feature Definition",
+    "description": "Definition of a measured features in the dataset. Feature definitions file is an array of these objects.",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "displayName": {
+            "description": "Human readable name",
+            "type": "string"
+        },
+        "description": {
+            "description": "Description of how the data was collected/measured",
+            "type": "string"
+        },
+        "tooltip": {
+            "description": "Shorter version of description",
+            "type": "string"
+        },
+        "unit": {
+            "description": "unit of measurement",
+            "type": "string"
+        },
+        "key": {
+            "description": "Id of the feature",
+            "type": "string"
+        },
+        "discrete": {
+            "description": "Whether it's a continuous measurement or not",
+            "type": "boolean"
+        },
+        "options": {
+            "description": "Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
+            "type": "object",
+            "$ref": "sub-schema/discrete-feature-options.schema.json"
+        }
+    },
+    "required": [
+        "displayName",
+        "description",
+        "tooltip",
+        "unit",
+        "key",
+        "discrete"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-input-dataset-info">JSON Schema for Input dataset info <code>dataset.json</code></h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "datasetInfoSchema",
-    "title": "Dataset Info `dataset.json`",
+    "title": "Input dataset info `dataset.json`",
     "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
     "type": "object",
     "additionalProperties": false,
@@ -2054,22 +2169,22 @@ ITEMS</p>
         "xAxis": {
             "description": "Settings for the x axis",
             "type": "object",
-            "$ref": "refs/selection-setting.schema.json"
+            "$ref": "sub-schema/selection-setting.schema.json"
         },
         "yAxis": {
             "description": "Settings for the y axis",
             "type": "object",
-            "$ref": "refs/selection-setting.schema.json"
+            "$ref": "sub-schema/selection-setting.schema.json"
         },
         "colorBy": {
             "description": "Settings for the color by menu",
             "type": "object",
-            "$ref": "refs/selection-setting.schema.json"
+            "$ref": "sub-schema/selection-setting.schema.json"
         },
         "groupBy": {
             "description": "Settings for the grouping menu",
             "type": "object",
-            "$ref": "refs/selection-setting.schema.json"
+            "$ref": "sub-schema/selection-setting.schema.json"
         },
         "featuresDisplayOrder": {
             "description": "Ordered array of feature keys for display on front end",
@@ -2112,121 +2227,6 @@ ITEMS</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-refs/discrete-feature-option">JSON Schema for Discrete feature option</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "$id": "discrete-feature-option",
-    "title": "Discrete feature option",
-    "description": "Schema for each category in a discrete feature",
-    "type": "object",
-    "properties": {
-        "color": {
-            "description": "Hex string",
-            "type": "string"
-        },
-        "name": {
-            "description": "Display name for the option. Doesn't have to be unique, but if it's not unique, `key` is required.",
-            "type": "string"
-        },
-        "key": {
-            "description": "unique key for the option.",
-            "type": "string"
-        }
-    },
-    "additionalProperties": false,
-    "required": [
-        "name",
-        "color"
-    ]
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="schema-reference-refs/discrete-feature-options">JSON Schema for Discrete feature options</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "$id": "discrete-feature-options",
-    "title": "Discrete feature options",
-    "description": "Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0` or `1`, there should be two option mappings.",
-    "type": "object",
-    "properties": {
-        "NUMERAL_KEY": {
-            "$ref": "refs/discrete-feature-option.schema.json"
-    }
-}
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="schema-reference-feature-def">JSON Schema for Feature Definition</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "featureDefSchema",
-    "title": "Feature Definition",
-    "description": "Definition of a measured features in the dataset. Feature definitions file is an array of these objects.",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "displayName": {
-            "description": "Human readable name",
-            "type": "string"
-        },
-        "description": {
-            "description": "Description of how the data was collected/measured",
-            "type": "string"
-        },
-        "tooltip": {
-            "description": "Shorter version of description",
-            "type": "string"
-        },
-        "unit": {
-            "description": "unit of measurement",
-            "type": "string"
-        },
-        "key": {
-            "description": "Id of the feature",
-            "type": "string"
-        },
-        "discrete": {
-            "description": "Whether it's a continuous measurement or not",
-            "type": "boolean"
-        },
-        "options": {
-            "description": "Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.",
-            "type": "object",
-            "$ref": "refs/discrete-feature-options.schema.json"
-        }
-    },
-    "required": [
-        "displayName",
-        "description",
-        "tooltip",
-        "unit",
-        "key",
-        "discrete"
-    ]
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="schema-reference-input-megaset">JSON Schema for Input Megaset <code>dataset.json</code></h2>
 <div class="sectionbody">
 <div class="listingblock">
@@ -2255,7 +2255,7 @@ ITEMS</p>
             "description": "Publications associated with the group",
             "type": "array",
             "items": {
-                "$ref": "refs/publication.schema.json"
+                "$ref": "sub-schema/publication.schema.json"
             }
         }
     },
@@ -2310,7 +2310,7 @@ ITEMS</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-refs/publication">JSON Schema for Publication</h2>
+<h2 id="schema-reference-sub-schema/publication">JSON Schema for Publication</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
