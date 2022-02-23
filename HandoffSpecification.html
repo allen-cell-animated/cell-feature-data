@@ -2010,7 +2010,8 @@ Each folder should have the same 5 files listed above.</p>
     "title": "Definitions of input properties",
     "type": "object",
     "additionalProperties": false,
-    "definitions": {
+
+    "properties": {
         "group-title": {
             "title": "Group title",
             "description": "Display name of dataset group.",
@@ -2265,7 +2266,7 @@ Each folder should have the same 5 files listed above.</p>
     "additionalProperties": false,
     "properties": {
         "title": {
-            "$ref": "input-definitions.schema.json#/definitions/dataset-title"
+            "$ref": "input-definitions.schema.json#/properties/dataset-title"
         },
         "name": {
             "description": "Name of the dataset (no version number)",
