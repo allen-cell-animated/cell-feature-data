@@ -595,6 +595,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-colorby">Color settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Settings for the color by menu</p>
+</div>
+<div class="paragraph">
+<p>Additional properties are allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-colorby"><code>input-dataset-info.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-sub-schema/condensed-measured-feature">Condensed measured feature</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -747,92 +766,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-sub-schema/selection-setting">Data selection settings</h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. <code>Data selection settings</code> Properties</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>default</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Default feature key for the setting</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exclude</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional list of feature keys to exclude</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Additional properties are not allowed.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/selection-setting"><code>sub-schema/selection-setting.schema.json</code></a></p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_sub_schemaselection_setting_default">sub-schema/selection-setting.default</h3>
-<div class="paragraph">
-<p>Default feature key for the setting</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_sub_schemaselection_setting_exclude">sub-schema/selection-setting.exclude</h3>
-<div class="paragraph">
-<p>Optional list of feature keys to exclude</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
-</li>
-<li>
-<p><strong>Required</strong>: No</p>
-</li>
-</ul>
-</div>
-<hr>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="reference-sub-schema/dataset-card">Dataset Card</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Data needed to render a dataset card</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. <code>Dataset Card</code> Properties</caption>
+<caption class="title">Table 3. <code>Dataset Card</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1046,7 +986,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Endpoint that gets called first to load all the available datasets. Each DATASET_ID maps to a megaset card</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. <code>Dataset Descriptions</code> Properties</caption>
+<caption class="title">Table 4. <code>Dataset Descriptions</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1121,7 +1061,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Schema for each category in a discrete feature</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. <code>Discrete feature option</code> Properties</caption>
+<caption class="title">Table 5. <code>Discrete feature option</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1225,7 +1165,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. <code>Discrete feature options</code> Properties</caption>
+<caption class="title">Table 6. <code>Discrete feature options</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1279,13 +1219,32 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-featuresdataorder">Feature data order</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ordered array of feature keys for packing and unpacking data</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-featuresdataorder"><code>definitions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-feature-def">Feature Definition</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Definition of a measured features in the dataset. Feature definitions file is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. <code>Feature Definition</code> Properties</caption>
+<caption class="title">Table 7. <code>Feature Definition</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1471,13 +1430,32 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-featuresdisplayorder">Feature display order</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ordered array of feature keys for display on front end</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-featuresdisplayorder"><code>definitions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-sub-schema/file-info">File info</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>File info for one cell, this is the data needed to access images for the cell.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. <code>File info</code> Properties</caption>
+<caption class="title">Table 8. <code>File info</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1663,13 +1641,32 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-groupby">Grouping settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Settings for the grouping menu</p>
+</div>
+<div class="paragraph">
+<p>Additional properties are allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-groupby"><code>input-dataset-info.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-manifest">Manifest</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>High level data for each dataset that points to where all the data is stored for this dataset.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. <code>Manifest</code> Properties</caption>
+<caption class="title">Table 9. <code>Manifest</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1729,37 +1726,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>xAxis</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-settings"><code>selection-settings</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>yAxis</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-settings"><code>selection-settings</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>colorBy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-settings"><code>selection-settings</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>groupBy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-settings"><code>selection-settings</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDisplayOrder</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-featuresdisplayorder"><code>featuresDisplayOrder</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of feature keys for display on front end</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDataOrder</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-featuresdataorder"><code>featuresDataOrder</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of feature keys for packing and unpacking data</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
@@ -1892,7 +1889,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1905,7 +1902,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1918,7 +1915,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1931,7 +1928,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1947,7 +1944,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+<p><strong>Type</strong>: <a href="#reference-featuresdisplayorder"><code>featuresDisplayOrder</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1963,7 +1960,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+<p><strong>Type</strong>: <a href="#reference-featuresdataorder"><code>featuresDataOrder</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1981,7 +1978,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Data needed to render a megaset card</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. <code>Megaset Card</code> Properties</caption>
+<caption class="title">Table 10. <code>Megaset Card</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2139,7 +2136,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Publication data</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. <code>Publication</code> Properties</caption>
+<caption class="title">Table 11. <code>Publication</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2232,6 +2229,123 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-selection-settings">Selection settings</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 12. <code>Selection settings</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>default</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default feature key for the setting</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exclude</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional list of feature keys to exclude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-selection-settings"><code>definitions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_selection_settings_default">selection-settings.default</h3>
+<div class="paragraph">
+<p>Default feature key for the setting</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_selection_settings_exclude">selection-settings.exclude</h3>
+<div class="paragraph">
+<p>Optional list of feature keys to exclude</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-xaxis">xAxis settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Settings for the x axis</p>
+</div>
+<div class="paragraph">
+<p>Additional properties are allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-xaxis"><code>input-dataset-info.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-yaxis">yAxis settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Settings for the y axis</p>
+</div>
+<div class="paragraph">
+<p>Additional properties are allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-yaxis"><code>input-dataset-info.schema.json</code></a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2324,6 +2438,120 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
+<h2 id="schema-reference-colorby">JSON Schema for Color settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "input-dataset-info.schema.json",
+    "title": "Input dataset info `dataset.json`",
+    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "title": {
+            "$ref": "definitions.schema.json#/definitions/dataset-title"
+        },
+        "name": {
+            "$ref": "definitions.schema.json#/definitions/name"
+        },
+        "version": {
+            "$ref": "definitions.schema.json#/definitions/version"
+        },
+        "description": {
+            "$ref": "definitions.schema.json#/definitions/description"
+        },
+        "image": {
+            "$ref": "definitions.schema.json#/input-data/image"
+        },
+        "link": {
+            "$ref": "definitions.schema.json#/definitions/link"
+        },
+        "userData": {
+            "$ref": "definitions.schema.json#/definitions/userData"
+        },
+        "production": {
+            "$ref": "definitions.schema.json#/definitions/production"
+        },
+        "featuresDataPath": {
+            "$ref": "definitions.schema.json#/input-data/featuresDataPath"
+        },
+        "featureDefsPath": {
+            "$ref": "definitions.schema.json#/input-data/featureDefsPath"
+        },
+        "viewerSettingsPath": {
+            "$ref": "definitions.schema.json#/input-data/viewerSettingsPath"
+        },
+        "albumPath": {
+            "$ref": "definitions.schema.json#/input-data/albumPath"
+        },
+        "thumbnailRoot": {
+            "$ref": "definitions.schema.json#/definitions/thumbnailRoot"
+        },
+        "downloadRoot": {
+            "$ref": "definitions.schema.json#/definitions/downloadRoot"
+        },
+        "volumeViewerDataRoot": {
+            "$ref": "definitions.schema.json#/definitions/volumeViewerDataRoot"
+        },
+        "xAxis": {
+            "title": "xAxis settings",
+            "description": "Settings for the x axis",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "yAxis": {
+            "title": "yAxis settings",
+            "description": "Settings for the y axis",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "colorBy": {
+            "title": "Color settings",
+            "description": "Settings for the color by menu",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "groupBy": {
+            "title": "Grouping settings",
+            "description": "Settings for the grouping menu",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "featuresDisplayOrder": {
+            "$ref": "definitions.schema.json#/definitions/featuresDisplayOrder"
+        },
+        "featuresDataOrder": {
+            "$ref": "definitions.schema.json#/definitions/featuresDataOrder"
+        }
+    },
+    "required": [
+        "title",
+        "version",
+        "name",
+        "image",
+        "description",
+        "featuresDataPath",
+        "viewerSettingsPath",
+        "albumPath",
+        "thumbnailRoot",
+        "downloadRoot",
+        "volumeViewerDataRoot",
+        "xAxis",
+        "yAxis",
+        "groupBy",
+        "colorBy",
+        "featuresDisplayOrder",
+        "featuresDataOrder"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="schema-reference-sub-schema/condensed-measured-feature">JSON Schema for Condensed measured feature</h2>
 <div class="sectionbody">
 <div class="listingblock">
@@ -2390,39 +2618,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "items": {
         "$ref": "sub-schema/condensed-measured-feature.schema.json"
     }
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="schema-reference-sub-schema/selection-setting">JSON Schema for Data selection settings</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "sub-schema/selection-setting.schema.json",
-    "title": "Data selection settings",
-    "type": "object",
-    "properties": {
-        "default": {
-            "description": "Default feature key for the setting",
-            "type": "string"
-        },
-        "exclude": {
-            "description": "Optional list of feature keys to exclude",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        }
-    },
-    "required": [
-        "default"
-    ],
-    "additionalProperties": false
 }</code></pre>
 </div>
 </div>
@@ -2769,6 +2964,165 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
+<h2 id="schema-reference-featuresdataorder">JSON Schema for Feature data order</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="schema-reference-feature-def">JSON Schema for Feature Definition</h2>
 <div class="sectionbody">
 <div class="listingblock">
@@ -2819,6 +3173,165 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "key",
         "discrete"
     ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-featuresdisplayorder">JSON Schema for Feature display order</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
 }</code></pre>
 </div>
 </div>
@@ -2880,6 +3393,120 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
+<h2 id="schema-reference-groupby">JSON Schema for Grouping settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "input-dataset-info.schema.json",
+    "title": "Input dataset info `dataset.json`",
+    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "title": {
+            "$ref": "definitions.schema.json#/definitions/dataset-title"
+        },
+        "name": {
+            "$ref": "definitions.schema.json#/definitions/name"
+        },
+        "version": {
+            "$ref": "definitions.schema.json#/definitions/version"
+        },
+        "description": {
+            "$ref": "definitions.schema.json#/definitions/description"
+        },
+        "image": {
+            "$ref": "definitions.schema.json#/input-data/image"
+        },
+        "link": {
+            "$ref": "definitions.schema.json#/definitions/link"
+        },
+        "userData": {
+            "$ref": "definitions.schema.json#/definitions/userData"
+        },
+        "production": {
+            "$ref": "definitions.schema.json#/definitions/production"
+        },
+        "featuresDataPath": {
+            "$ref": "definitions.schema.json#/input-data/featuresDataPath"
+        },
+        "featureDefsPath": {
+            "$ref": "definitions.schema.json#/input-data/featureDefsPath"
+        },
+        "viewerSettingsPath": {
+            "$ref": "definitions.schema.json#/input-data/viewerSettingsPath"
+        },
+        "albumPath": {
+            "$ref": "definitions.schema.json#/input-data/albumPath"
+        },
+        "thumbnailRoot": {
+            "$ref": "definitions.schema.json#/definitions/thumbnailRoot"
+        },
+        "downloadRoot": {
+            "$ref": "definitions.schema.json#/definitions/downloadRoot"
+        },
+        "volumeViewerDataRoot": {
+            "$ref": "definitions.schema.json#/definitions/volumeViewerDataRoot"
+        },
+        "xAxis": {
+            "title": "xAxis settings",
+            "description": "Settings for the x axis",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "yAxis": {
+            "title": "yAxis settings",
+            "description": "Settings for the y axis",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "colorBy": {
+            "title": "Color settings",
+            "description": "Settings for the color by menu",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "groupBy": {
+            "title": "Grouping settings",
+            "description": "Settings for the grouping menu",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "featuresDisplayOrder": {
+            "$ref": "definitions.schema.json#/definitions/featuresDisplayOrder"
+        },
+        "featuresDataOrder": {
+            "$ref": "definitions.schema.json#/definitions/featuresDataOrder"
+        }
+    },
+    "required": [
+        "title",
+        "version",
+        "name",
+        "image",
+        "description",
+        "featuresDataPath",
+        "viewerSettingsPath",
+        "albumPath",
+        "thumbnailRoot",
+        "downloadRoot",
+        "volumeViewerDataRoot",
+        "xAxis",
+        "yAxis",
+        "groupBy",
+        "colorBy",
+        "featuresDisplayOrder",
+        "featuresDataOrder"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="schema-reference-manifest">JSON Schema for Manifest</h2>
 <div class="sectionbody">
 <div class="listingblock">
@@ -2921,38 +3548,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "type": "string"
         },
         "xAxis": {
-            "description": "Settings for the x axis",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
+            "$ref": "input-dataset-info.schema.json#/properties/xAxis"
         },
         "yAxis": {
-            "description": "Settings for the y axis",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
+            "$ref": "input-dataset-info.schema.json#/properties/yAxis"
         },
         "colorBy": {
-            "description": "Settings for the color by menu",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
+            "$ref": "input-dataset-info.schema.json#/properties/colorBy"
         },
         "groupBy": {
-            "description": "Settings for the grouping menu",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
+            "$ref": "input-dataset-info.schema.json#/properties/groupBy"
         },
         "featuresDisplayOrder": {
-            "description": "Ordered array of feature keys for display on front end",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
+            "$ref": "definitions.schema.json#/definitions/featuresDisplayOrder"
         },
         "featuresDataOrder": {
-            "description": "Ordered array of feature keys for packing and unpacking data",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
+            "$ref": "definitions.schema.json#/definitions/featuresDataOrder"
         }
     },
     "required": [
@@ -3053,6 +3664,393 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "type": "string"
         }
     }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-selection-settings">JSON Schema for Selection settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-xaxis">JSON Schema for xAxis settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "input-dataset-info.schema.json",
+    "title": "Input dataset info `dataset.json`",
+    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "title": {
+            "$ref": "definitions.schema.json#/definitions/dataset-title"
+        },
+        "name": {
+            "$ref": "definitions.schema.json#/definitions/name"
+        },
+        "version": {
+            "$ref": "definitions.schema.json#/definitions/version"
+        },
+        "description": {
+            "$ref": "definitions.schema.json#/definitions/description"
+        },
+        "image": {
+            "$ref": "definitions.schema.json#/input-data/image"
+        },
+        "link": {
+            "$ref": "definitions.schema.json#/definitions/link"
+        },
+        "userData": {
+            "$ref": "definitions.schema.json#/definitions/userData"
+        },
+        "production": {
+            "$ref": "definitions.schema.json#/definitions/production"
+        },
+        "featuresDataPath": {
+            "$ref": "definitions.schema.json#/input-data/featuresDataPath"
+        },
+        "featureDefsPath": {
+            "$ref": "definitions.schema.json#/input-data/featureDefsPath"
+        },
+        "viewerSettingsPath": {
+            "$ref": "definitions.schema.json#/input-data/viewerSettingsPath"
+        },
+        "albumPath": {
+            "$ref": "definitions.schema.json#/input-data/albumPath"
+        },
+        "thumbnailRoot": {
+            "$ref": "definitions.schema.json#/definitions/thumbnailRoot"
+        },
+        "downloadRoot": {
+            "$ref": "definitions.schema.json#/definitions/downloadRoot"
+        },
+        "volumeViewerDataRoot": {
+            "$ref": "definitions.schema.json#/definitions/volumeViewerDataRoot"
+        },
+        "xAxis": {
+            "title": "xAxis settings",
+            "description": "Settings for the x axis",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "yAxis": {
+            "title": "yAxis settings",
+            "description": "Settings for the y axis",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "colorBy": {
+            "title": "Color settings",
+            "description": "Settings for the color by menu",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "groupBy": {
+            "title": "Grouping settings",
+            "description": "Settings for the grouping menu",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "featuresDisplayOrder": {
+            "$ref": "definitions.schema.json#/definitions/featuresDisplayOrder"
+        },
+        "featuresDataOrder": {
+            "$ref": "definitions.schema.json#/definitions/featuresDataOrder"
+        }
+    },
+    "required": [
+        "title",
+        "version",
+        "name",
+        "image",
+        "description",
+        "featuresDataPath",
+        "viewerSettingsPath",
+        "albumPath",
+        "thumbnailRoot",
+        "downloadRoot",
+        "volumeViewerDataRoot",
+        "xAxis",
+        "yAxis",
+        "groupBy",
+        "colorBy",
+        "featuresDisplayOrder",
+        "featuresDataOrder"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-yaxis">JSON Schema for yAxis settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "input-dataset-info.schema.json",
+    "title": "Input dataset info `dataset.json`",
+    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "title": {
+            "$ref": "definitions.schema.json#/definitions/dataset-title"
+        },
+        "name": {
+            "$ref": "definitions.schema.json#/definitions/name"
+        },
+        "version": {
+            "$ref": "definitions.schema.json#/definitions/version"
+        },
+        "description": {
+            "$ref": "definitions.schema.json#/definitions/description"
+        },
+        "image": {
+            "$ref": "definitions.schema.json#/input-data/image"
+        },
+        "link": {
+            "$ref": "definitions.schema.json#/definitions/link"
+        },
+        "userData": {
+            "$ref": "definitions.schema.json#/definitions/userData"
+        },
+        "production": {
+            "$ref": "definitions.schema.json#/definitions/production"
+        },
+        "featuresDataPath": {
+            "$ref": "definitions.schema.json#/input-data/featuresDataPath"
+        },
+        "featureDefsPath": {
+            "$ref": "definitions.schema.json#/input-data/featureDefsPath"
+        },
+        "viewerSettingsPath": {
+            "$ref": "definitions.schema.json#/input-data/viewerSettingsPath"
+        },
+        "albumPath": {
+            "$ref": "definitions.schema.json#/input-data/albumPath"
+        },
+        "thumbnailRoot": {
+            "$ref": "definitions.schema.json#/definitions/thumbnailRoot"
+        },
+        "downloadRoot": {
+            "$ref": "definitions.schema.json#/definitions/downloadRoot"
+        },
+        "volumeViewerDataRoot": {
+            "$ref": "definitions.schema.json#/definitions/volumeViewerDataRoot"
+        },
+        "xAxis": {
+            "title": "xAxis settings",
+            "description": "Settings for the x axis",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "yAxis": {
+            "title": "yAxis settings",
+            "description": "Settings for the y axis",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "colorBy": {
+            "title": "Color settings",
+            "description": "Settings for the color by menu",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "groupBy": {
+            "title": "Grouping settings",
+            "description": "Settings for the grouping menu",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "featuresDisplayOrder": {
+            "$ref": "definitions.schema.json#/definitions/featuresDisplayOrder"
+        },
+        "featuresDataOrder": {
+            "$ref": "definitions.schema.json#/definitions/featuresDataOrder"
+        }
+    },
+    "required": [
+        "title",
+        "version",
+        "name",
+        "image",
+        "description",
+        "featuresDataPath",
+        "viewerSettingsPath",
+        "albumPath",
+        "thumbnailRoot",
+        "downloadRoot",
+        "volumeViewerDataRoot",
+        "xAxis",
+        "yAxis",
+        "groupBy",
+        "colorBy",
+        "featuresDisplayOrder",
+        "featuresDataOrder"
+    ]
 }</code></pre>
 </div>
 </div>
