@@ -527,6 +527,15 @@ Each folder should have the same 5 files listed above.</p>
 <h1 id="_full_documentation" class="sect0">Full Documentation</h1>
 <hr>
 <div class="sect1">
+<h2 id="reference-string">Album path</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Relative path to the album file.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-cell-feature-dataset-handoff-specification">Cell Feature Dataset Handoff Specification</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
@@ -650,85 +659,6 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-sub-schema/selection-setting">Data selection settings</h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. <code>Data selection settings</code> Properties</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>default</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Default feature key for the setting</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exclude</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional list of feature keys to exclude</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Additional properties are not allowed.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/selection-setting"><code>sub-schema/selection-setting.schema.json</code></a></p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_sub_schemaselection_setting_default">sub-schema/selection-setting.default</h3>
-<div class="paragraph">
-<p>Default feature key for the setting</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_sub_schemaselection_setting_exclude">sub-schema/selection-setting.exclude</h3>
-<div class="paragraph">
-<p>Optional list of feature keys to exclude</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
-</li>
-<li>
-<p><strong>Required</strong>: No</p>
-</li>
-</ul>
-</div>
-<hr>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="reference-string">Dataset name</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -747,13 +677,22 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-string">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Description of the dataset</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-sub-schema/discrete-feature-option">Discrete feature option</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Schema for each category in a discrete feature</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. <code>Discrete feature option</code> Properties</caption>
+<caption class="title">Table 2. <code>Discrete feature option</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -857,7 +796,7 @@ Each folder should have the same 5 files listed above.</p>
 <p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. <code>Discrete feature options</code> Properties</caption>
+<caption class="title">Table 3. <code>Discrete feature options</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -911,13 +850,50 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-string">Download root</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Root url for downloading cell data</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-featuresdataorder">Feature data order</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ordered array of feature keys for packing and unpacking data</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-featuresdataorder"><code>definitions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-string">Feature data path</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Relative path to the per cell data json, including filename.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-feature-def">Feature Definition</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Definition of a measured features in the dataset. Feature definitions file is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. <code>Feature Definition</code> Properties</caption>
+<caption class="title">Table 4. <code>Feature Definition</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1103,13 +1079,50 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-string">Feature defs path</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Relative path to the feature definition file, including filename.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-featuresdisplayorder">Feature display order</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ordered array of feature keys for display on front end</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-featuresdisplayorder"><code>definitions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-string">Image file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>relative path to the dataset card image file</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-input-dataset-info">Input dataset info <code>dataset.json</code></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON <code>datasets</code> array. Should be named <code>dataset.json</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. <code>Input dataset info `dataset.json`</code> Properties</caption>
+<caption class="title">Table 5. <code>Input dataset info `dataset.json`</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1140,7 +1153,7 @@ Each folder should have the same 5 files listed above.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">version year and number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version year and number</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -1163,38 +1176,38 @@ Each folder should have the same 5 files listed above.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>userData</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-userdata"><code>userData</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional display data</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>production</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether this dataset should only be shown in production</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether this dataset should be shown in production</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDataPath</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">url to the per cell data json</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relative path to the per cell data json, including filename.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featureDefsPath</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">path to the feature def collection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relative path to the feature definition file, including filename.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>viewerSettingsPath</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">path to image per-channel settings for the 3d viewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relative path to image per-channel settings file for the 3d viewer, including filename.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>albumPath</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">collection name of the album data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relative path to the album file.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -1223,31 +1236,31 @@ Each folder should have the same 5 files listed above.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>yAxis</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-settings"><code>selection-settings</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>colorBy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-settings"><code>selection-settings</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>groupBy</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-settings"><code>selection-settings</code></a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDisplayOrder</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-featuresdisplayorder"><code>featuresDisplayOrder</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of feature keys for display on front end</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDataOrder</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-featuresdataorder"><code>featuresDataOrder</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of feature keys for packing and unpacking data</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
@@ -1298,7 +1311,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_dataset_info_version">input-dataset-info.version</h3>
 <div class="paragraph">
-<p>version year and number</p>
+<p>Version year and number</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1367,7 +1380,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>object</code></p>
+<p><strong>Type</strong>: <a href="#reference-userdata"><code>userData</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -1378,7 +1391,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_dataset_info_production">input-dataset-info.production</h3>
 <div class="paragraph">
-<p>Whether this dataset should only be shown in production</p>
+<p>Whether this dataset should be shown in production</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1394,7 +1407,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_dataset_info_featuresdatapath">input-dataset-info.featuresDataPath</h3>
 <div class="paragraph">
-<p>url to the per cell data json</p>
+<p>Relative path to the per cell data json, including filename.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1410,7 +1423,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_dataset_info_featuredefspath">input-dataset-info.featureDefsPath</h3>
 <div class="paragraph">
-<p>path to the feature def collection</p>
+<p>Relative path to the feature definition file, including filename.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1426,7 +1439,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_dataset_info_viewersettingspath">input-dataset-info.viewerSettingsPath</h3>
 <div class="paragraph">
-<p>path to image per-channel settings for the 3d viewer</p>
+<p>Relative path to image per-channel settings file for the 3d viewer, including filename.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1442,7 +1455,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_dataset_info_albumpath">input-dataset-info.albumPath</h3>
 <div class="paragraph">
-<p>collection name of the album data</p>
+<p>Relative path to the album file.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1521,7 +1534,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1534,7 +1547,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1547,7 +1560,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/selection-setting"><code>sub-schema/selection-setting</code></a></p>
+<p><strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1563,7 +1576,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+<p><strong>Type</strong>: <a href="#reference-featuresdisplayorder"><code>featuresDisplayOrder</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1579,7 +1592,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+<p><strong>Type</strong>: <a href="#reference-featuresdataorder"><code>featuresDataOrder</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1597,7 +1610,7 @@ Each folder should have the same 5 files listed above.</p>
 <p>File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. <code>Input Megaset `dataset.json`</code> Properties</caption>
+<caption class="title">Table 6. <code>Input Megaset `dataset.json`</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1739,13 +1752,31 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-boolean">Is production</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Whether this dataset should be shown in production</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-string">Link (deprecated)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Link to website displaying the dataset</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-input-measured-features">One measured value</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Per data point object. The measured features JSON is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. <code>One measured value</code> Properties</caption>
+<caption class="title">Table 7. <code>One measured value</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1827,7 +1858,7 @@ Each folder should have the same 5 files listed above.</p>
 <p>Publication data</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. <code>Publication</code> Properties</caption>
+<caption class="title">Table 8. <code>Publication</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1928,7 +1959,7 @@ Each folder should have the same 5 files listed above.</p>
 <h2 id="reference-selection-settings">Selection settings</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. <code>Selection settings</code> Properties</caption>
+<caption class="title">Table 9. <code>Selection settings</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1999,6 +2030,61 @@ Each folder should have the same 5 files listed above.</p>
 </li>
 </ul>
 </div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-string">Thumbnail root</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Root url for thumbnail images</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-userdata">User data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Optional display data</p>
+</div>
+<div class="paragraph">
+<p>Additional properties are allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-userdata"><code>definitions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-string">Version</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Version year and number</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-string">Viewer settings path</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Relative path to image per-channel settings file for the 3d viewer, including filename.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-string">VolumeViewer data root</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Root url for 3d images</p>
 </div>
 </div>
 </div>
@@ -2006,6 +2092,165 @@ Each folder should have the same 5 files listed above.</p>
 <h2 id="_appendix">Appendix</h2>
 <div class="sectionbody">
 
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for Album path</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect1">
@@ -2055,47 +2300,14 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-sub-schema/selection-setting">JSON Schema for Data selection settings</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "sub-schema/selection-setting.schema.json",
-    "title": "Data selection settings",
-    "type": "object",
-    "properties": {
-        "default": {
-            "description": "Default feature key for the setting",
-            "type": "string"
-        },
-        "exclude": {
-            "description": "Optional list of feature keys to exclude",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        }
-    },
-    "required": [
-        "default"
-    ],
-    "additionalProperties": false
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="schema-reference-string">JSON Schema for Dataset name</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "input-definitions.schema.json",
-    "title": "Definitions of input properties",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
     "type": "object",
     "additionalProperties": false,
     "definitions": {
@@ -2136,54 +2348,47 @@ Each folder should have the same 5 files listed above.</p>
             }
         },
         "version": {
-            "description": "version year and number",
+            "title": "Version",
+            "description": "Version year and number",
             "type": "string"
         },
         "description": {
+            "title": "Description",
             "description": "Description of the dataset",
             "type": "string"
         },
         "image": {
+            "title": "Image file",
             "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
+            "title": "Link (deprecated)",
             "description": "Link to website displaying the dataset",
             "type": "string"
         },
         "userData": {
+            "title": "User data",
             "description": "Optional display data",
             "type": "object"
         },
         "production": {
-            "description": "Whether this dataset should only be shown in production",
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
             "type": "boolean"
         },
-        "featuresDataPath": {
-            "description": "url to the per cell data json",
-            "type": "string"
-        },
-        "featureDefsPath": {
-            "description": "path to the feature def collection",
-            "type": "string"
-        },
-        "viewerSettingsPath": {
-            "description": "path to image per-channel settings for the 3d viewer",
-            "type": "string"
-        },
-        "albumPath": {
-            "description": "collection name of the album data",
-            "type": "string"
-        },
         "thumbnailRoot": {
+            "title": "Thumbnail root",
             "description": "Root url for thumbnail images",
             "type": "string"
         },
         "downloadRoot": {
+            "title": "Download root",
             "description": "Root url for downloading cell data",
             "type": "string"
         },
         "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
             "description": "Root url for 3d images",
             "type": "string"
         },
@@ -2208,27 +2413,8 @@ Each folder should have the same 5 files listed above.</p>
             ],
             "additionalProperties": false
         },
-        "xAxis": {
-            "description": "Settings for the x axis",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
-        },
-        "yAxis": {
-            "description": "Settings for the y axis",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
-        },
-        "colorBy": {
-            "description": "Settings for the color by menu",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
-        },
-        "groupBy": {
-            "description": "Settings for the grouping menu",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
-        },
         "featuresDisplayOrder": {
+            "title": "Feature display order",
             "description": "Ordered array of feature keys for display on front end",
             "type": "array",
             "items": {
@@ -2236,11 +2422,34 @@ Each folder should have the same 5 files listed above.</p>
             }
         },
         "featuresDataOrder": {
+            "title": "Feature data order",
             "description": "Ordered array of feature keys for packing and unpacking data",
             "type": "array",
             "items": {
                 "type": "string"
             }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
         }
     }
 }</code></pre>
@@ -2256,8 +2465,8 @@ Each folder should have the same 5 files listed above.</p>
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "input-definitions.schema.json",
-    "title": "Definitions of input properties",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
     "type": "object",
     "additionalProperties": false,
     "definitions": {
@@ -2298,54 +2507,47 @@ Each folder should have the same 5 files listed above.</p>
             }
         },
         "version": {
-            "description": "version year and number",
+            "title": "Version",
+            "description": "Version year and number",
             "type": "string"
         },
         "description": {
+            "title": "Description",
             "description": "Description of the dataset",
             "type": "string"
         },
         "image": {
+            "title": "Image file",
             "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
+            "title": "Link (deprecated)",
             "description": "Link to website displaying the dataset",
             "type": "string"
         },
         "userData": {
+            "title": "User data",
             "description": "Optional display data",
             "type": "object"
         },
         "production": {
-            "description": "Whether this dataset should only be shown in production",
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
             "type": "boolean"
         },
-        "featuresDataPath": {
-            "description": "url to the per cell data json",
-            "type": "string"
-        },
-        "featureDefsPath": {
-            "description": "path to the feature def collection",
-            "type": "string"
-        },
-        "viewerSettingsPath": {
-            "description": "path to image per-channel settings for the 3d viewer",
-            "type": "string"
-        },
-        "albumPath": {
-            "description": "collection name of the album data",
-            "type": "string"
-        },
         "thumbnailRoot": {
+            "title": "Thumbnail root",
             "description": "Root url for thumbnail images",
             "type": "string"
         },
         "downloadRoot": {
+            "title": "Download root",
             "description": "Root url for downloading cell data",
             "type": "string"
         },
         "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
             "description": "Root url for 3d images",
             "type": "string"
         },
@@ -2370,27 +2572,8 @@ Each folder should have the same 5 files listed above.</p>
             ],
             "additionalProperties": false
         },
-        "xAxis": {
-            "description": "Settings for the x axis",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
-        },
-        "yAxis": {
-            "description": "Settings for the y axis",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
-        },
-        "colorBy": {
-            "description": "Settings for the color by menu",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
-        },
-        "groupBy": {
-            "description": "Settings for the grouping menu",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
-        },
         "featuresDisplayOrder": {
+            "title": "Feature display order",
             "description": "Ordered array of feature keys for display on front end",
             "type": "array",
             "items": {
@@ -2398,11 +2581,193 @@ Each folder should have the same 5 files listed above.</p>
             }
         },
         "featuresDataOrder": {
+            "title": "Feature data order",
             "description": "Ordered array of feature keys for packing and unpacking data",
             "type": "array",
             "items": {
                 "type": "string"
             }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for Description</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
         }
     }
 }</code></pre>
@@ -2470,6 +2835,483 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for Download root</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-featuresdataorder">JSON Schema for Feature data order</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for Feature data path</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="schema-reference-feature-def">JSON Schema for Feature Definition</h2>
 <div class="sectionbody">
 <div class="listingblock">
@@ -2527,6 +3369,483 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for Feature defs path</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-featuresdisplayorder">JSON Schema for Feature display order</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for Image file</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="schema-reference-input-dataset-info">JSON Schema for Input dataset info <code>dataset.json</code></h2>
 <div class="sectionbody">
 <div class="listingblock">
@@ -2546,56 +3865,43 @@ Each folder should have the same 5 files listed above.</p>
             "$ref": "definitions.schema.json#/definitions/name"
         },
         "version": {
-            "description": "version year and number",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/version"
         },
         "description": {
-            "description": "Description of the dataset",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/description"
         },
         "image": {
-            "description": "relative path to the dataset card image file",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/image"
         },
         "link": {
-            "description": "Link to website displaying the dataset",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/link"
         },
         "userData": {
-            "description": "Optional display data",
-            "type": "object"
+            "$ref": "definitions.schema.json#/definitions/userData"
         },
         "production": {
-            "description": "Whether this dataset should only be shown in production",
-            "type": "boolean"
+            "$ref": "definitions.schema.json#/definitions/production"
         },
         "featuresDataPath": {
-            "description": "url to the per cell data json",
-            "type": "string"
+            "$ref": "definitions.schema.json#/input-data/featuresDataPath"
         },
         "featureDefsPath": {
-            "description": "path to the feature def collection",
-            "type": "string"
+            "$ref": "definitions.schema.json#/input-data/featureDefsPath"
         },
         "viewerSettingsPath": {
-            "description": "path to image per-channel settings for the 3d viewer",
-            "type": "string"
+            "$ref": "definitions.schema.json#/input-data/viewerSettingsPath"
         },
         "albumPath": {
-            "description": "collection name of the album data",
-            "type": "string"
+            "$ref": "definitions.schema.json#/input-data/albumPath"
         },
         "thumbnailRoot": {
-            "description": "Root url for thumbnail images",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/thumbnailRoot"
         },
         "downloadRoot": {
-            "description": "Root url for downloading cell data",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/downloadRoot"
         },
         "volumeViewerDataRoot": {
-            "description": "Root url for 3d images",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/volumeViewerDataRoot"
         },
         "xAxis": {
             "description": "Settings for the x axis",
@@ -2605,31 +3911,23 @@ Each folder should have the same 5 files listed above.</p>
         "yAxis": {
             "description": "Settings for the y axis",
             "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
         },
         "colorBy": {
             "description": "Settings for the color by menu",
             "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
         },
         "groupBy": {
             "description": "Settings for the grouping menu",
             "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
         },
         "featuresDisplayOrder": {
-            "description": "Ordered array of feature keys for display on front end",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
+            "$ref": "definitions.schema.json#/definitions/featuresDisplayOrder"
         },
         "featuresDataOrder": {
-            "description": "Ordered array of feature keys for packing and unpacking data",
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
+            "$ref": "definitions.schema.json#/definitions/featuresDataOrder"
         }
     },
     "required": [
@@ -2703,6 +4001,324 @@ Each folder should have the same 5 files listed above.</p>
         "name",
         "datasets"
     ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-boolean">JSON Schema for Is production</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for Link (deprecated)</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
 }</code></pre>
 </div>
 </div>
@@ -2788,8 +4404,8 @@ Each folder should have the same 5 files listed above.</p>
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "input-definitions.schema.json",
-    "title": "Definitions of input properties",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
     "type": "object",
     "additionalProperties": false,
     "definitions": {
@@ -2830,54 +4446,47 @@ Each folder should have the same 5 files listed above.</p>
             }
         },
         "version": {
-            "description": "version year and number",
+            "title": "Version",
+            "description": "Version year and number",
             "type": "string"
         },
         "description": {
+            "title": "Description",
             "description": "Description of the dataset",
             "type": "string"
         },
         "image": {
+            "title": "Image file",
             "description": "relative path to the dataset card image file",
             "type": "string"
         },
         "link": {
+            "title": "Link (deprecated)",
             "description": "Link to website displaying the dataset",
             "type": "string"
         },
         "userData": {
+            "title": "User data",
             "description": "Optional display data",
             "type": "object"
         },
         "production": {
-            "description": "Whether this dataset should only be shown in production",
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
             "type": "boolean"
         },
-        "featuresDataPath": {
-            "description": "url to the per cell data json",
-            "type": "string"
-        },
-        "featureDefsPath": {
-            "description": "path to the feature def collection",
-            "type": "string"
-        },
-        "viewerSettingsPath": {
-            "description": "path to image per-channel settings for the 3d viewer",
-            "type": "string"
-        },
-        "albumPath": {
-            "description": "collection name of the album data",
-            "type": "string"
-        },
         "thumbnailRoot": {
+            "title": "Thumbnail root",
             "description": "Root url for thumbnail images",
             "type": "string"
         },
         "downloadRoot": {
+            "title": "Download root",
             "description": "Root url for downloading cell data",
             "type": "string"
         },
         "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
             "description": "Root url for 3d images",
             "type": "string"
         },
@@ -2902,27 +4511,8 @@ Each folder should have the same 5 files listed above.</p>
             ],
             "additionalProperties": false
         },
-        "xAxis": {
-            "description": "Settings for the x axis",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
-        },
-        "yAxis": {
-            "description": "Settings for the y axis",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
-        },
-        "colorBy": {
-            "description": "Settings for the color by menu",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
-        },
-        "groupBy": {
-            "description": "Settings for the grouping menu",
-            "type": "object",
-            "$ref": "sub-schema/selection-setting.schema.json"
-        },
         "featuresDisplayOrder": {
+            "title": "Feature display order",
             "description": "Ordered array of feature keys for display on front end",
             "type": "array",
             "items": {
@@ -2930,11 +4520,829 @@ Each folder should have the same 5 files listed above.</p>
             }
         },
         "featuresDataOrder": {
+            "title": "Feature data order",
             "description": "Ordered array of feature keys for packing and unpacking data",
             "type": "array",
             "items": {
                 "type": "string"
             }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for Thumbnail root</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-userdata">JSON Schema for User data</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for Version</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for Viewer settings path</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-string">JSON Schema for VolumeViewer data root</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "dataset-pointers": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "title": "Image file",
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
         }
     }
 }</code></pre>
