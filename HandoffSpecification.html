@@ -526,40 +526,40 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 <h1 id="_full_documentation" class="sect0">Full Documentation</h1>
 <div class="paragraph">
-<p>before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
-title: Input Megaset <code>dataset.json</code> type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+<p>before {"megaset":{"$ref":"input-megaset.schema.json"},"dataset":{"$ref":"input-dataset-info.schema.json"},"feature-defs":{"title":"Feature definitions <code>feature-defs.json`","description":"File that describes the measured feature definitions. Is an array of feature definitions.","type":"array","items":{"$ref":"feature-def.schema.json"}},"measured-features":{"title":"Measured values `features.json`","description":"File that contains the measured analysis values, which will drive the plot. It is an array of measured features","type":"array","items":{"$ref":"input-measured-features.schema.json"}}}&lt;br&gt;
+before {"$ref":"input-megaset.schema.json"}&lt;br&gt;
+title: Input Megaset `dataset.json</code> type undefined
+before {"title":{"description":"Display name of dataset group","type":"string"},"name":{"description":"Name of the group (no version number). Lowercase with underscores.","type":"string"},"datasets":{"description":"Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own <code>dataset.json`","type":"array","items":{"type":"string"}},"dateCreated":{"title":"Date Created","description":"Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date. ","type":"string"},"publications":{"description":"Publications associated with the group","type":"array","items":{"$ref":"sub-schema/publication.schema.json"}}}&lt;br&gt;
+before {"description":"Display name of dataset group","type":"string"}&lt;br&gt;
 after { description: 'Display name of dataset group', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Name of the group (no version number). Lowercase with underscores.","type":"string"}&lt;br&gt;
 after {
   description: 'Name of the group (no version number). Lowercase with underscores.',
   type: 'string'
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
-  description: 'Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own <code>dataset.json&#8217;,
+  description: 'Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json&#8217;,
   type: 'array',
   items: { type: 'string' }
 }
-before [object Object]&lt;br&gt;
+before {"title":"Date Created","description":"Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date. ","type":"string"}&lt;br&gt;
 after {
   title: 'Date Created',
   description: "Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date. ",
   type: 'string'
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Publications associated with the group","type":"array","items":{"$ref":"sub-schema/publication.schema.json"}}&lt;br&gt;
+before {"$ref":"sub-schema/publication.schema.json"}&lt;br&gt;
 title: Publication type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"title":{"description":"Article title","type":"string"},"url":{"description":"Article link","type":"string"},"citation":{"description":"Article journal and date","type":"string"}}&lt;br&gt;
+before {"description":"Article title","type":"string"}&lt;br&gt;
 after { description: 'Article title', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Article link","type":"string"}&lt;br&gt;
 after { description: 'Article link', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Article journal and date","type":"string"}&lt;br&gt;
 after { description: 'Article journal and date', type: 'string' }
 after {
   title: { description: 'Article title', type: 'string' },
@@ -625,7 +625,7 @@ after {
     }
   }
 }
-before title,name,datasets&lt;br&gt;
+before ["title","name","datasets"]&lt;br&gt;
 after [ 'title', 'name', 'datasets' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -659,10 +659,10 @@ after {
   required: [ 'title', 'name', 'datasets' ],
   typeName: 'input-megaset'
 }
-before [object Object]&lt;br&gt;
+before {"$ref":"input-dataset-info.schema.json"}&lt;br&gt;
 title: Input dataset info `dataset.json</code> type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"title":{"$ref":"input-definitions.schema.json#/definitions/dataset-title"},"name":{"description":"Name of the dataset (no version number)","type":"string"},"version":{"description":"version year and number","type":"string"},"description":{"description":"Description of the dataset","type":"string"},"image":{"description":"relative path to the dataset card image file","type":"string"},"link":{"description":"Link to website displaying the dataset","type":"string"},"userData":{"description":"Optional display data","type":"object"},"production":{"description":"Whether this dataset should only be shown in production","type":"boolean"},"featuresDataPath":{"description":"url to the per cell data json","type":"string"},"featureDefsPath":{"description":"path to the feature def collection","type":"string"},"viewerSettingsPath":{"description":"path to image per-channel settings for the 3d viewer","type":"string"},"albumPath":{"description":"collection name of the album data","type":"string"},"thumbnailRoot":{"description":"Root url for thumbnail images","type":"string"},"downloadRoot":{"description":"Root url for downloading cell data","type":"string"},"volumeViewerDataRoot":{"description":"Root url for 3d images","type":"string"},"xAxis":{"description":"Settings for the x axis","type":"object","$ref":"sub-schema/selection-setting.schema.json"},"yAxis":{"description":"Settings for the y axis","type":"object","$ref":"sub-schema/selection-setting.schema.json"},"colorBy":{"description":"Settings for the color by menu","type":"object","$ref":"sub-schema/selection-setting.schema.json"},"groupBy":{"description":"Settings for the grouping menu","type":"object","$ref":"sub-schema/selection-setting.schema.json"},"featuresDisplayOrder":{"description":"Ordered array of feature keys for display on front end","type":"array","items":{"type":"string"}},"featuresDataOrder":{"description":"Ordered array of feature keys for packing and unpacking data","type":"array","items":{"type":"string"}}}&lt;br&gt;
+before {"$ref":"input-definitions.schema.json#/definitions/dataset-title"}&lt;br&gt;
 title: Dataset title type dataset-title
 after {
   title: 'Dataset title',
@@ -670,56 +670,56 @@ after {
   type: 'string',
   typeName: 'dataset-title'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Name of the dataset (no version number)","type":"string"}&lt;br&gt;
 after {
   description: 'Name of the dataset (no version number)',
   type: 'string'
 }
-before [object Object]&lt;br&gt;
+before {"description":"version year and number","type":"string"}&lt;br&gt;
 after { description: 'version year and number', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Description of the dataset","type":"string"}&lt;br&gt;
 after { description: 'Description of the dataset', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"relative path to the dataset card image file","type":"string"}&lt;br&gt;
 after {
   description: 'relative path to the dataset card image file',
   type: 'string'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Link to website displaying the dataset","type":"string"}&lt;br&gt;
 after {
   description: 'Link to website displaying the dataset',
   type: 'string'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Optional display data","type":"object"}&lt;br&gt;
 after { description: 'Optional display data', type: 'object' }
-before [object Object]&lt;br&gt;
+before {"description":"Whether this dataset should only be shown in production","type":"boolean"}&lt;br&gt;
 after {
   description: 'Whether this dataset should only be shown in production',
   type: 'boolean'
 }
-before [object Object]&lt;br&gt;
+before {"description":"url to the per cell data json","type":"string"}&lt;br&gt;
 after { description: 'url to the per cell data json', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"path to the feature def collection","type":"string"}&lt;br&gt;
 after { description: 'path to the feature def collection', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"path to image per-channel settings for the 3d viewer","type":"string"}&lt;br&gt;
 after {
   description: 'path to image per-channel settings for the 3d viewer',
   type: 'string'
 }
-before [object Object]&lt;br&gt;
+before {"description":"collection name of the album data","type":"string"}&lt;br&gt;
 after { description: 'collection name of the album data', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Root url for thumbnail images","type":"string"}&lt;br&gt;
 after { description: 'Root url for thumbnail images', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Root url for downloading cell data","type":"string"}&lt;br&gt;
 after { description: 'Root url for downloading cell data', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Root url for 3d images","type":"string"}&lt;br&gt;
 after { description: 'Root url for 3d images', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Settings for the x axis","type":"object","$ref":"sub-schema/selection-setting.schema.json"}&lt;br&gt;
 title: Data selection settings type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"default":{"description":"Default feature key for the setting","type":"string"},"exclude":{"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}}&lt;br&gt;
+before {"description":"Default feature key for the setting","type":"string"}&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -737,7 +737,7 @@ after {
     items: { type: 'string' }
   }
 }
-before default&lt;br&gt;
+before ["default"]&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -759,13 +759,13 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Settings for the y axis","type":"object","$ref":"sub-schema/selection-setting.schema.json"}&lt;br&gt;
 title: Data selection settings type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"default":{"description":"Default feature key for the setting","type":"string"},"exclude":{"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}}&lt;br&gt;
+before {"description":"Default feature key for the setting","type":"string"}&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -783,7 +783,7 @@ after {
     items: { type: 'string' }
   }
 }
-before default&lt;br&gt;
+before ["default"]&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -805,13 +805,13 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Settings for the color by menu","type":"object","$ref":"sub-schema/selection-setting.schema.json"}&lt;br&gt;
 title: Data selection settings type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"default":{"description":"Default feature key for the setting","type":"string"},"exclude":{"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}}&lt;br&gt;
+before {"description":"Default feature key for the setting","type":"string"}&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -829,7 +829,7 @@ after {
     items: { type: 'string' }
   }
 }
-before default&lt;br&gt;
+before ["default"]&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -851,13 +851,13 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Settings for the grouping menu","type":"object","$ref":"sub-schema/selection-setting.schema.json"}&lt;br&gt;
 title: Data selection settings type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"default":{"description":"Default feature key for the setting","type":"string"},"exclude":{"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}}&lt;br&gt;
+before {"description":"Default feature key for the setting","type":"string"}&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -875,7 +875,7 @@ after {
     items: { type: 'string' }
   }
 }
-before default&lt;br&gt;
+before ["default"]&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -897,16 +897,16 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Ordered array of feature keys for display on front end","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Ordered array of feature keys for display on front end',
   type: 'array',
   items: { type: 'string' }
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Ordered array of feature keys for packing and unpacking data","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Ordered array of feature keys for packing and unpacking data',
@@ -1000,7 +1000,7 @@ after {
     items: { type: 'string' }
   }
 }
-before title,version,name,image,description,featuresDataPath,viewerSettingsPath,albumPath,thumbnailRoot,downloadRoot,volumeViewerDataRoot,xAxis,yAxis,groupBy,colorBy,featuresDisplayOrder,featuresDataOrder&lt;br&gt;
+before ["title","version","name","image","description","featuresDataPath","viewerSettingsPath","albumPath","thumbnailRoot","downloadRoot","volumeViewerDataRoot","xAxis","yAxis","groupBy","colorBy","featuresDisplayOrder","featuresDataOrder"]&lt;br&gt;
 after [
   'title',                'version',
   'name',                 'image',
@@ -1128,42 +1128,42 @@ after {
   ],
   typeName: 'input-dataset-info'
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"title":"Feature definitions `feature-defs.json`","description":"File that describes the measured feature definitions. Is an array of feature definitions.","type":"array","items":{"$ref":"feature-def.schema.json"}}&lt;br&gt;
+before {"$ref":"feature-def.schema.json"}&lt;br&gt;
 title: Feature Definition type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"displayName":{"description":"Human readable name","type":"string"},"description":{"description":"Description of how the data was collected/measured","type":"string"},"tooltip":{"description":"Shorter version of description","type":"string"},"unit":{"description":"unit of measurement","type":"string"},"key":{"description":"Id of the feature","type":"string"},"discrete":{"description":"Whether it&#8217;s a continuous measurement or not","type":"boolean"},"options":{"description":"Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.","type":"object","$ref":"discrete-feature-options.schema.json"}}&lt;br&gt;
+before {"description":"Human readable name","type":"string"}&lt;br&gt;
 after { description: 'Human readable name', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Description of how the data was collected/measured","type":"string"}&lt;br&gt;
 after {
   description: 'Description of how the data was collected/measured',
   type: 'string'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Shorter version of description","type":"string"}&lt;br&gt;
 after { description: 'Shorter version of description', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"unit of measurement","type":"string"}&lt;br&gt;
 after { description: 'unit of measurement', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Id of the feature","type":"string"}&lt;br&gt;
 after { description: 'Id of the feature', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Whether it&#8217;s a continuous measurement or not","type":"boolean"}&lt;br&gt;
 after {
   description: "Whether it&#8217;s a continuous measurement or not",
   type: 'boolean'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.","type":"object","$ref":"discrete-feature-options.schema.json"}&lt;br&gt;
 title: Discrete feature options type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"NUMERAL_KEY":{"$ref":"sub-schema/discrete-feature-option.schema.json"}}&lt;br&gt;
+before {"$ref":"sub-schema/discrete-feature-option.schema.json"}&lt;br&gt;
 title: Discrete feature option type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"color":{"description":"Hex string","type":"string"},"name":{"description":"Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, `key</code> is required.","type":"string"},"key":{"description":"unique key for the option.","type":"string"}}&lt;br&gt;
+before {"description":"Hex string","type":"string"}&lt;br&gt;
 after { description: 'Hex string', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.","type":"string"}&lt;br&gt;
 after {
-  description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, `key</code> is required.",
+  description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.",
   type: 'string'
 }
-before [object Object]&lt;br&gt;
+before {"description":"unique key for the option.","type":"string"}&lt;br&gt;
 after { description: 'unique key for the option.', type: 'string' }
 after {
   color: { description: 'Hex string', type: 'string' },
@@ -1173,7 +1173,7 @@ after {
   },
   key: { description: 'unique key for the option.', type: 'string' }
 }
-before name,color&lt;br&gt;
+before ["name","color"]&lt;br&gt;
 after [ 'name', 'color' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1250,7 +1250,7 @@ after {
     typeName: 'discrete-feature-options'
   }
 }
-before displayName,description,tooltip,unit,key,discrete&lt;br&gt;
+before ["displayName","description","tooltip","unit","key","discrete"]&lt;br&gt;
 after [ 'displayName', 'description', 'tooltip', 'unit', 'key', 'discrete' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1323,12 +1323,12 @@ after {
     typeName: 'feature-def'
   }
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"title":"Measured values `features.json`","description":"File that contains the measured analysis values, which will drive the plot. It is an array of measured features","type":"array","items":{"$ref":"input-measured-features.schema.json"}}&lt;br&gt;
+before {"$ref":"input-measured-features.schema.json"}&lt;br&gt;
 title: One measured value type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"file_info":{"description":"Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]","type":"array","items":{"type":"string"},"minItems":7,"maxItems":7},"features":{"description":"Ordered array of measured features. Needs to match the order of featuresDataOrder","type":"array","items":{"type":"number"}}}&lt;br&gt;
+before {"description":"Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]","type":"array","items":{"type":"string"},"minItems":7,"maxItems":7}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]',
@@ -1337,8 +1337,8 @@ after {
   minItems: 7,
   maxItems: 7
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Ordered array of measured features. Needs to match the order of featuresDataOrder","type":"array","items":{"type":"number"}}&lt;br&gt;
+before {"type":"number"}&lt;br&gt;
 after { type: 'number' }
 after {
   description: 'Ordered array of measured features. Needs to match the order of featuresDataOrder',
@@ -1359,7 +1359,7 @@ after {
     items: { type: 'number' }
   }
 }
-before file_info,features&lt;br&gt;
+before ["file_info","features"]&lt;br&gt;
 after [ 'file_info', 'features' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1495,42 +1495,42 @@ after {
     }
   }
 }
-before dataset,feature-defs,measured-features&lt;br&gt;
+before ["dataset","feature-defs","measured-features"]&lt;br&gt;
 after [ 'dataset', 'feature-defs', 'measured-features' ]
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"megaset":{"$ref":"input-megaset.schema.json"},"dataset":{"$ref":"input-dataset-info.schema.json"},"feature-defs":{"title":"Feature definitions `feature-defs.json`","description":"File that describes the measured feature definitions. Is an array of feature definitions.","type":"array","items":{"$ref":"feature-def.schema.json"}},"measured-features":{"title":"Measured values `features.json`","description":"File that contains the measured analysis values, which will drive the plot. It is an array of measured features","type":"array","items":{"$ref":"input-measured-features.schema.json"}}}&lt;br&gt;
+before {"$ref":"input-megaset.schema.json"}&lt;br&gt;
 title: Input Megaset `dataset.json</code> type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"title":{"description":"Display name of dataset group","type":"string"},"name":{"description":"Name of the group (no version number). Lowercase with underscores.","type":"string"},"datasets":{"description":"Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own <code>dataset.json`","type":"array","items":{"type":"string"}},"dateCreated":{"title":"Date Created","description":"Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date. ","type":"string"},"publications":{"description":"Publications associated with the group","type":"array","items":{"$ref":"sub-schema/publication.schema.json"}}}&lt;br&gt;
+before {"description":"Display name of dataset group","type":"string"}&lt;br&gt;
 after { description: 'Display name of dataset group', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Name of the group (no version number). Lowercase with underscores.","type":"string"}&lt;br&gt;
 after {
   description: 'Name of the group (no version number). Lowercase with underscores.',
   type: 'string'
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
-  description: 'Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own <code>dataset.json&#8217;,
+  description: 'Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json&#8217;,
   type: 'array',
   items: { type: 'string' }
 }
-before [object Object]&lt;br&gt;
+before {"title":"Date Created","description":"Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date. ","type":"string"}&lt;br&gt;
 after {
   title: 'Date Created',
   description: "Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date. ",
   type: 'string'
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Publications associated with the group","type":"array","items":{"$ref":"sub-schema/publication.schema.json"}}&lt;br&gt;
+before {"$ref":"sub-schema/publication.schema.json"}&lt;br&gt;
 title: Publication type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"title":{"description":"Article title","type":"string"},"url":{"description":"Article link","type":"string"},"citation":{"description":"Article journal and date","type":"string"}}&lt;br&gt;
+before {"description":"Article title","type":"string"}&lt;br&gt;
 after { description: 'Article title', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Article link","type":"string"}&lt;br&gt;
 after { description: 'Article link', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Article journal and date","type":"string"}&lt;br&gt;
 after { description: 'Article journal and date', type: 'string' }
 after {
   title: { description: 'Article title', type: 'string' },
@@ -1596,7 +1596,7 @@ after {
     }
   }
 }
-before title,name,datasets&lt;br&gt;
+before ["title","name","datasets"]&lt;br&gt;
 after [ 'title', 'name', 'datasets' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1630,10 +1630,10 @@ after {
   required: [ 'title', 'name', 'datasets' ],
   typeName: 'input-megaset'
 }
-before [object Object]&lt;br&gt;
+before {"$ref":"input-dataset-info.schema.json"}&lt;br&gt;
 title: Input dataset info `dataset.json</code> type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"title":{"$ref":"input-definitions.schema.json#/definitions/dataset-title"},"name":{"description":"Name of the dataset (no version number)","type":"string"},"version":{"description":"version year and number","type":"string"},"description":{"description":"Description of the dataset","type":"string"},"image":{"description":"relative path to the dataset card image file","type":"string"},"link":{"description":"Link to website displaying the dataset","type":"string"},"userData":{"description":"Optional display data","type":"object"},"production":{"description":"Whether this dataset should only be shown in production","type":"boolean"},"featuresDataPath":{"description":"url to the per cell data json","type":"string"},"featureDefsPath":{"description":"path to the feature def collection","type":"string"},"viewerSettingsPath":{"description":"path to image per-channel settings for the 3d viewer","type":"string"},"albumPath":{"description":"collection name of the album data","type":"string"},"thumbnailRoot":{"description":"Root url for thumbnail images","type":"string"},"downloadRoot":{"description":"Root url for downloading cell data","type":"string"},"volumeViewerDataRoot":{"description":"Root url for 3d images","type":"string"},"xAxis":{"description":"Settings for the x axis","type":"object","$ref":"sub-schema/selection-setting.schema.json"},"yAxis":{"description":"Settings for the y axis","type":"object","$ref":"sub-schema/selection-setting.schema.json"},"colorBy":{"description":"Settings for the color by menu","type":"object","$ref":"sub-schema/selection-setting.schema.json"},"groupBy":{"description":"Settings for the grouping menu","type":"object","$ref":"sub-schema/selection-setting.schema.json"},"featuresDisplayOrder":{"description":"Ordered array of feature keys for display on front end","type":"array","items":{"type":"string"}},"featuresDataOrder":{"description":"Ordered array of feature keys for packing and unpacking data","type":"array","items":{"type":"string"}}}&lt;br&gt;
+before {"$ref":"input-definitions.schema.json#/definitions/dataset-title"}&lt;br&gt;
 title: Dataset title type dataset-title
 after {
   title: 'Dataset title',
@@ -1641,56 +1641,56 @@ after {
   type: 'string',
   typeName: 'dataset-title'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Name of the dataset (no version number)","type":"string"}&lt;br&gt;
 after {
   description: 'Name of the dataset (no version number)',
   type: 'string'
 }
-before [object Object]&lt;br&gt;
+before {"description":"version year and number","type":"string"}&lt;br&gt;
 after { description: 'version year and number', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Description of the dataset","type":"string"}&lt;br&gt;
 after { description: 'Description of the dataset', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"relative path to the dataset card image file","type":"string"}&lt;br&gt;
 after {
   description: 'relative path to the dataset card image file',
   type: 'string'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Link to website displaying the dataset","type":"string"}&lt;br&gt;
 after {
   description: 'Link to website displaying the dataset',
   type: 'string'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Optional display data","type":"object"}&lt;br&gt;
 after { description: 'Optional display data', type: 'object' }
-before [object Object]&lt;br&gt;
+before {"description":"Whether this dataset should only be shown in production","type":"boolean"}&lt;br&gt;
 after {
   description: 'Whether this dataset should only be shown in production',
   type: 'boolean'
 }
-before [object Object]&lt;br&gt;
+before {"description":"url to the per cell data json","type":"string"}&lt;br&gt;
 after { description: 'url to the per cell data json', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"path to the feature def collection","type":"string"}&lt;br&gt;
 after { description: 'path to the feature def collection', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"path to image per-channel settings for the 3d viewer","type":"string"}&lt;br&gt;
 after {
   description: 'path to image per-channel settings for the 3d viewer',
   type: 'string'
 }
-before [object Object]&lt;br&gt;
+before {"description":"collection name of the album data","type":"string"}&lt;br&gt;
 after { description: 'collection name of the album data', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Root url for thumbnail images","type":"string"}&lt;br&gt;
 after { description: 'Root url for thumbnail images', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Root url for downloading cell data","type":"string"}&lt;br&gt;
 after { description: 'Root url for downloading cell data', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Root url for 3d images","type":"string"}&lt;br&gt;
 after { description: 'Root url for 3d images', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Settings for the x axis","type":"object","$ref":"sub-schema/selection-setting.schema.json"}&lt;br&gt;
 title: Data selection settings type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"default":{"description":"Default feature key for the setting","type":"string"},"exclude":{"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}}&lt;br&gt;
+before {"description":"Default feature key for the setting","type":"string"}&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -1708,7 +1708,7 @@ after {
     items: { type: 'string' }
   }
 }
-before default&lt;br&gt;
+before ["default"]&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1730,13 +1730,13 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Settings for the y axis","type":"object","$ref":"sub-schema/selection-setting.schema.json"}&lt;br&gt;
 title: Data selection settings type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"default":{"description":"Default feature key for the setting","type":"string"},"exclude":{"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}}&lt;br&gt;
+before {"description":"Default feature key for the setting","type":"string"}&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -1754,7 +1754,7 @@ after {
     items: { type: 'string' }
   }
 }
-before default&lt;br&gt;
+before ["default"]&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1776,13 +1776,13 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Settings for the color by menu","type":"object","$ref":"sub-schema/selection-setting.schema.json"}&lt;br&gt;
 title: Data selection settings type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"default":{"description":"Default feature key for the setting","type":"string"},"exclude":{"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}}&lt;br&gt;
+before {"description":"Default feature key for the setting","type":"string"}&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -1800,7 +1800,7 @@ after {
     items: { type: 'string' }
   }
 }
-before default&lt;br&gt;
+before ["default"]&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1822,13 +1822,13 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Settings for the grouping menu","type":"object","$ref":"sub-schema/selection-setting.schema.json"}&lt;br&gt;
 title: Data selection settings type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"default":{"description":"Default feature key for the setting","type":"string"},"exclude":{"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}}&lt;br&gt;
+before {"description":"Default feature key for the setting","type":"string"}&lt;br&gt;
 after { description: 'Default feature key for the setting', type: 'string' }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Optional list of feature keys to exclude","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Optional list of feature keys to exclude',
@@ -1846,7 +1846,7 @@ after {
     items: { type: 'string' }
   }
 }
-before default&lt;br&gt;
+before ["default"]&lt;br&gt;
 after [ 'default' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -1868,16 +1868,16 @@ after {
   additionalProperties: false,
   typeName: 'sub-schema/selection-setting'
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Ordered array of feature keys for display on front end","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Ordered array of feature keys for display on front end',
   type: 'array',
   items: { type: 'string' }
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Ordered array of feature keys for packing and unpacking data","type":"array","items":{"type":"string"}}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Ordered array of feature keys for packing and unpacking data',
@@ -1971,7 +1971,7 @@ after {
     items: { type: 'string' }
   }
 }
-before title,version,name,image,description,featuresDataPath,viewerSettingsPath,albumPath,thumbnailRoot,downloadRoot,volumeViewerDataRoot,xAxis,yAxis,groupBy,colorBy,featuresDisplayOrder,featuresDataOrder&lt;br&gt;
+before ["title","version","name","image","description","featuresDataPath","viewerSettingsPath","albumPath","thumbnailRoot","downloadRoot","volumeViewerDataRoot","xAxis","yAxis","groupBy","colorBy","featuresDisplayOrder","featuresDataOrder"]&lt;br&gt;
 after [
   'title',                'version',
   'name',                 'image',
@@ -2099,42 +2099,42 @@ after {
   ],
   typeName: 'input-dataset-info'
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"title":"Feature definitions `feature-defs.json`","description":"File that describes the measured feature definitions. Is an array of feature definitions.","type":"array","items":{"$ref":"feature-def.schema.json"}}&lt;br&gt;
+before {"$ref":"feature-def.schema.json"}&lt;br&gt;
 title: Feature Definition type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"displayName":{"description":"Human readable name","type":"string"},"description":{"description":"Description of how the data was collected/measured","type":"string"},"tooltip":{"description":"Shorter version of description","type":"string"},"unit":{"description":"unit of measurement","type":"string"},"key":{"description":"Id of the feature","type":"string"},"discrete":{"description":"Whether it&#8217;s a continuous measurement or not","type":"boolean"},"options":{"description":"Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.","type":"object","$ref":"discrete-feature-options.schema.json"}}&lt;br&gt;
+before {"description":"Human readable name","type":"string"}&lt;br&gt;
 after { description: 'Human readable name', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Description of how the data was collected/measured","type":"string"}&lt;br&gt;
 after {
   description: 'Description of how the data was collected/measured',
   type: 'string'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Shorter version of description","type":"string"}&lt;br&gt;
 after { description: 'Shorter version of description', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"unit of measurement","type":"string"}&lt;br&gt;
 after { description: 'unit of measurement', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Id of the feature","type":"string"}&lt;br&gt;
 after { description: 'Id of the feature', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Whether it&#8217;s a continuous measurement or not","type":"boolean"}&lt;br&gt;
 after {
   description: "Whether it&#8217;s a continuous measurement or not",
   type: 'boolean'
 }
-before [object Object]&lt;br&gt;
+before {"description":"Required for discrete features, options is a mapping of the numeral value in the 'measured' feature to the name and color for that category.","type":"object","$ref":"discrete-feature-options.schema.json"}&lt;br&gt;
 title: Discrete feature options type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"NUMERAL_KEY":{"$ref":"sub-schema/discrete-feature-option.schema.json"}}&lt;br&gt;
+before {"$ref":"sub-schema/discrete-feature-option.schema.json"}&lt;br&gt;
 title: Discrete feature option type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"color":{"description":"Hex string","type":"string"},"name":{"description":"Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, `key</code> is required.","type":"string"},"key":{"description":"unique key for the option.","type":"string"}}&lt;br&gt;
+before {"description":"Hex string","type":"string"}&lt;br&gt;
 after { description: 'Hex string', type: 'string' }
-before [object Object]&lt;br&gt;
+before {"description":"Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.","type":"string"}&lt;br&gt;
 after {
-  description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, `key</code> is required.",
+  description: "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.",
   type: 'string'
 }
-before [object Object]&lt;br&gt;
+before {"description":"unique key for the option.","type":"string"}&lt;br&gt;
 after { description: 'unique key for the option.', type: 'string' }
 after {
   color: { description: 'Hex string', type: 'string' },
@@ -2144,7 +2144,7 @@ after {
   },
   key: { description: 'unique key for the option.', type: 'string' }
 }
-before name,color&lt;br&gt;
+before ["name","color"]&lt;br&gt;
 after [ 'name', 'color' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -2221,7 +2221,7 @@ after {
     typeName: 'discrete-feature-options'
   }
 }
-before displayName,description,tooltip,unit,key,discrete&lt;br&gt;
+before ["displayName","description","tooltip","unit","key","discrete"]&lt;br&gt;
 after [ 'displayName', 'description', 'tooltip', 'unit', 'key', 'discrete' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -2294,12 +2294,12 @@ after {
     typeName: 'feature-def'
   }
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"title":"Measured values `features.json`","description":"File that contains the measured analysis values, which will drive the plot. It is an array of measured features","type":"array","items":{"$ref":"input-measured-features.schema.json"}}&lt;br&gt;
+before {"$ref":"input-measured-features.schema.json"}&lt;br&gt;
 title: One measured value type undefined
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"file_info":{"description":"Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]","type":"array","items":{"type":"string"},"minItems":7,"maxItems":7},"features":{"description":"Ordered array of measured features. Needs to match the order of featuresDataOrder","type":"array","items":{"type":"number"}}}&lt;br&gt;
+before {"description":"Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]","type":"array","items":{"type":"string"},"minItems":7,"maxItems":7}&lt;br&gt;
+before {"type":"string"}&lt;br&gt;
 after { type: 'string' }
 after {
   description: 'Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]',
@@ -2308,8 +2308,8 @@ after {
   minItems: 7,
   maxItems: 7
 }
-before [object Object]&lt;br&gt;
-before [object Object]&lt;br&gt;
+before {"description":"Ordered array of measured features. Needs to match the order of featuresDataOrder","type":"array","items":{"type":"number"}}&lt;br&gt;
+before {"type":"number"}&lt;br&gt;
 after { type: 'number' }
 after {
   description: 'Ordered array of measured features. Needs to match the order of featuresDataOrder',
@@ -2330,7 +2330,7 @@ after {
     items: { type: 'number' }
   }
 }
-before file_info,features&lt;br&gt;
+before ["file_info","features"]&lt;br&gt;
 after [ 'file_info', 'features' ]
 after {
   '$schema': 'http://json-schema.org/draft-07/schema#',
@@ -2466,7 +2466,7 @@ after {
     }
   }
 }
-before dataset,feature-defs,measured-features&lt;br&gt;
+before ["dataset","feature-defs","measured-features"]&lt;br&gt;
 after [ 'dataset', 'feature-defs', 'measured-features' ]</p>
 </div>
 <hr>
