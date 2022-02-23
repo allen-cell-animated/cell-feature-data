@@ -2374,8 +2374,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "manifests": {
             "description": "Collection of manifests for each published dataset.",
             "type": "object",
-            "properties": {
-                "DATASET_ID": {
+            "patternProperties": {
+                "string": {
                     "type": "object",
                     "$ref": "manifest.schema.json"
                 }
