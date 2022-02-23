@@ -1616,8 +1616,14 @@ Each folder should have the same 5 files listed above.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>datasets</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>array[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">subfolder names that point to each dataset in the group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own <code>dataset.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>dateCreated</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Month Day, Year</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
@@ -1673,12 +1679,28 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_megaset_datasets">input-megaset.datasets</h3>
 <div class="paragraph">
-<p>subfolder names that point to each dataset in the group</p>
+<p>Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own <code>dataset.json</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>array[]</code></p>
+<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_input_megaset_datecreated">input-megaset.dateCreated</h3>
+<div class="paragraph">
+<p>Month Day, Year</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -2251,8 +2273,15 @@ Each folder should have the same 5 files listed above.</p>
             "type": "string"
         },
         "datasets": {
-            "description": "subfolder names that point to each dataset in the group",
-            "type": "array"
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "description": "Month Day, Year",
+            "type": "string"
         },
         "publications": {
             "description": "Publications associated with the group",
@@ -2264,7 +2293,8 @@ Each folder should have the same 5 files listed above.</p>
     },
     "required": [
         "title",
-        "name"
+        "name",
+        "datasets"
     ]
 }</code></pre>
 </div>
