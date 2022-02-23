@@ -525,6 +525,56 @@ Each folder should have the same 5 files listed above.</p>
 
 </div>
 <h1 id="_full_documentation" class="sect0">Full Documentation</h1>
+<div class="paragraph">
+<p>input-megaset.schema.json undefined
+input-megaset.schema.json undefined
+sub-schema/publication.schema.json undefined
+sub-schema/publication.schema.json undefined
+input-dataset-info.schema.json undefined
+input-dataset-info.schema.json undefined
+input-definitions.schema.json /definitions/dataset-title
+input-definitions.schema.json /definitions/dataset-title
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+feature-def.schema.json undefined
+feature-def.schema.json undefined
+discrete-feature-options.schema.json undefined
+discrete-feature-options.schema.json undefined
+sub-schema/discrete-feature-option.schema.json undefined
+sub-schema/discrete-feature-option.schema.json undefined
+input-measured-features.schema.json undefined
+input-measured-features.schema.json undefined
+input-megaset.schema.json undefined
+input-megaset.schema.json undefined
+sub-schema/publication.schema.json undefined
+sub-schema/publication.schema.json undefined
+input-dataset-info.schema.json undefined
+input-dataset-info.schema.json undefined
+input-definitions.schema.json /definitions/dataset-title
+input-definitions.schema.json /definitions/dataset-title
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+sub-schema/selection-setting.schema.json undefined
+feature-def.schema.json undefined
+feature-def.schema.json undefined
+discrete-feature-options.schema.json undefined
+discrete-feature-options.schema.json undefined
+sub-schema/discrete-feature-option.schema.json undefined
+sub-schema/discrete-feature-option.schema.json undefined
+input-measured-features.schema.json undefined
+input-measured-features.schema.json undefined</p>
+</div>
 <hr>
 <div class="sect1">
 <h2 id="reference-cell-feature-dataset-handoff-specification">Cell Feature Dataset Handoff Specification</h2>
@@ -726,6 +776,15 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 <hr>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-dataset-title">Dataset title</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Display name of dataset.</p>
+</div>
+<hr>
 </div>
 </div>
 <div class="sect1">
@@ -1109,8 +1168,8 @@ Each folder should have the same 5 files listed above.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of the dataset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-dataset-title"><code>dataset-title</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of dataset.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -1248,12 +1307,12 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_dataset_info_title">input-dataset-info.title</h3>
 <div class="paragraph">
-<p>Display name of the dataset</p>
+<p>Display name of dataset.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>string</code></p>
+<p><strong>Type</strong>: <a href="#reference-dataset-title"><code>dataset-title</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1598,13 +1657,13 @@ Each folder should have the same 5 files listed above.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of the dataset or group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of dataset group</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the dataset (no version number)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the group (no version number). Lowercase with underscores.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -1616,7 +1675,7 @@ Each folder should have the same 5 files listed above.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>dateCreated</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Month Day, Year</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
@@ -1640,7 +1699,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_megaset_title">input-megaset.title</h3>
 <div class="paragraph">
-<p>Display name of the dataset or group</p>
+<p>Display name of dataset group</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1656,7 +1715,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_megaset_name">input-megaset.name</h3>
 <div class="paragraph">
-<p>Name of the dataset (no version number)</p>
+<p>Name of the group (no version number). Lowercase with underscores.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1688,7 +1747,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_megaset_datecreated">input-megaset.dateCreated</h3>
 <div class="paragraph">
-<p>Month Day, Year</p>
+<p>Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1746,7 +1805,7 @@ Each folder should have the same 5 files listed above.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>file_info</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[7]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -1770,7 +1829,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_input_measured_features_file_info">input-measured-features.file_info</h3>
 <div class="paragraph">
-<p>ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p>
+<p>Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1991,6 +2050,143 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="schema-reference-dataset-title">JSON Schema for Dataset title</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "input-definitions.schema.json",
+    "title": "Definitions of input properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "datasets": {
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dateCreated": {
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "publications": {
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "description": "version year and number",
+            "type": "string"
+        },
+        "description": {
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "image": {
+            "description": "relative path to the dataset card image file",
+            "type": "string"
+        },
+        "link": {
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "description": "Whether this dataset should only be shown in production",
+            "type": "boolean"
+        },
+        "featuresDataPath": {
+            "description": "url to the per cell data json",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "description": "path to the feature def collection",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "description": "path to image per-channel settings for the 3d viewer",
+            "type": "string"
+        },
+        "albumPath": {
+            "description": "collection name of the album data",
+            "type": "string"
+        },
+        "thumbnailRoot": {
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "xAxis": {
+            "description": "Settings for the x axis",
+            "type": "object",
+            "$ref": "sub-schema/selection-setting.schema.json"
+        },
+        "yAxis": {
+            "description": "Settings for the y axis",
+            "type": "object",
+            "$ref": "sub-schema/selection-setting.schema.json"
+        },
+        "colorBy": {
+            "description": "Settings for the color by menu",
+            "type": "object",
+            "$ref": "sub-schema/selection-setting.schema.json"
+        },
+        "groupBy": {
+            "description": "Settings for the grouping menu",
+            "type": "object",
+            "$ref": "sub-schema/selection-setting.schema.json"
+        },
+        "featuresDisplayOrder": {
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="schema-reference-sub-schema/discrete-feature-option">JSON Schema for Discrete feature option</h2>
 <div class="sectionbody">
 <div class="listingblock">
@@ -2119,8 +2315,7 @@ Each folder should have the same 5 files listed above.</p>
     "additionalProperties": false,
     "properties": {
         "title": {
-            "description": "Display name of the dataset",
-            "type": "string"
+            "$ref": "input-definitions.schema.json#/definitions/dataset-title"
         },
         "name": {
             "description": "Name of the dataset (no version number)",
@@ -2252,11 +2447,11 @@ Each folder should have the same 5 files listed above.</p>
     "additionalProperties": false,
     "properties": {
         "title": {
-            "description": "Display name of the dataset or group",
+            "description": "Display name of dataset group",
             "type": "string"
         },
         "name": {
-            "description": "Name of the dataset (no version number)",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
         "datasets": {
@@ -2267,7 +2462,7 @@ Each folder should have the same 5 files listed above.</p>
             }
         },
         "dateCreated": {
-            "description": "Month Day, Year",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
         "publications": {
@@ -2303,7 +2498,7 @@ Each folder should have the same 5 files listed above.</p>
     "type": "object",
     "properties": {
         "file_info": {
-            "description": "ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]",
+            "description": "Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]",
             "type": "array",
             "items": {
                 "type": "string"
