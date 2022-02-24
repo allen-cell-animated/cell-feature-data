@@ -526,36 +526,29 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 <h1 id="_full_documentation" class="sect0">Full Documentation</h1>
 <div class="paragraph">
-<p>items { type: 'string' }
-items { type: 'string' }
-items { type: 'string' }
+<p>items {
+  type: 'string',
+  formattedType: &#8216;string&#8217;,
+  description: undefined,
+  required: 'No'
+}
 items {
-  '$schema': 'http://json-schema.org/draft-07/schema#',
-  '$id': 'sub-schema/publication.schema.json',
-  title: 'Publication',
+  type: 'string',
+  formattedType: &#8216;string&#8217;,
+  description: undefined,
+  required: 'No'
+}
+items {
+  type: 'string',
+  formattedType: &#8216;string&#8217;,
+  description: undefined,
+  required: 'No'
+}
+items {
+  type: 'sub-schema/publication',
+  formattedType: '<a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a>',
   description: 'Publication data',
-  additionalProperties: false,
-  type: 'object',
-  properties: {
-    title: {
-      description: 'Article title',
-      type: 'string',
-      _normalizedRequired: true
-    },
-    url: {
-      description: 'Article link',
-      type: 'string',
-      _normalizedRequired: true
-    },
-    citation: {
-      description: 'Article journal and date',
-      type: 'string',
-      _normalizedRequired: true
-    }
-  },
-  typeName: 'sub-schema/publication',
-  _normalizedRequired: true,
-  required: undefined
+  required: 'No'
 }</p>
 </div>
 <hr>

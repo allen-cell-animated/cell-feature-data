@@ -445,45 +445,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="paragraph">
 <p>items {
-  '$schema': 'http://json-schema.org/draft-07/schema#',
-  '$id': 'sub-schema/condensed-measured-feature.schema.json',
-  title: 'Condensed measured feature',
+  type: 'sub-schema/condensed-measured-feature',
+  formattedType: '<a href="#reference-sub-schema/condensed-measured-feature"><code>sub-schema/condensed-measured-feature</code></a>',
   description: 'Data per cell needed to create the CFE plot',
-  additionalProperties: false,
-  type: 'object',
-  properties: {
-    f: {
-      description: 'ordered array of measured features',
-      type: 'array',
-      items: [Object],
-      _normalizedRequired: true,
-      required: true
-    },
-    p: {
-      description: 'Protein name',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    t: {
-      description: 'Thumbnail Path',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    },
-    i: {
-      description: 'Cell id',
-      type: 'string',
-      _normalizedRequired: true,
-      required: true
-    }
-  },
-  required: undefined,
-  typeName: 'sub-schema/condensed-measured-feature',
-  _normalizedRequired: true
+  required: 'No'
 }
-items { type: 'string' }
-items { type: 'string' }</p>
+items {
+  type: 'string',
+  formattedType: &#8216;string&#8217;,
+  description: undefined,
+  required: 'No'
+}
+items {
+  type: 'string',
+  formattedType: &#8216;string&#8217;,
+  description: undefined,
+  required: 'No'
+}</p>
 </div>
 <hr>
 </div>
