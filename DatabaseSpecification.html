@@ -1024,8 +1024,44 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Endpoint that gets called first to load all the available datasets. Each DATASET_ID maps to a megaset card</p>
 </div>
 <div class="paragraph">
-<p>`Dataset Description Collection`mapping
-style.typeValue(schema.title) key(s): ^(\w{1,})_(v\d{4}.\d{1,}|\w{1,})$Additional properties are allowed.</p>
+<p><code>Dataset Description Collection`mapping
+style.typeValue(schema.title) key(s): ^(\w{1,})_(v\d{4}.\d{1,}|\w{1,})$|<strong>datasets</strong>
+|<a href="#reference-sub-schema/dataset-card">`sub-schema/dataset-card</code></a> <code>[]</code>
+|
+| &#10003; Yes</p>
+</div>
+<div class="paragraph">
+<p>|<strong>dateCreated</strong>
+|<code>string</code>
+|Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date.
+| &#10003; Yes</p>
+</div>
+<div class="paragraph">
+<p>|<strong>name</strong>
+|<code>string</code>
+|
+| &#10003; Yes</p>
+</div>
+<div class="paragraph">
+<p>|<strong>production</strong>
+|<code>boolean</code>
+|
+| &#10003; Yes</p>
+</div>
+<div class="paragraph">
+<p>|<strong>title</strong>
+|<code>string</code>
+|
+| &#10003; Yes</p>
+</div>
+<div class="paragraph">
+<p>|<strong>publications</strong>
+|<a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a> <code>[]</code>
+|Publications associated with the group
+|No</p>
+</div>
+<div class="paragraph">
+<p>Additional properties are allowed.</p>
 </div>
 <div class="ulist">
 <ul>
