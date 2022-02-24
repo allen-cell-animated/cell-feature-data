@@ -999,7 +999,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-datecreated">Date created</h2>
+<h2 id="reference-input-megaset">Date created</h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -1169,7 +1169,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-featuresdataorder">Feature data order</h2>
+<h2 id="reference-array">Feature data order</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Ordered array of feature keys for packing and unpacking data</p>
@@ -1180,7 +1180,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>Type</strong>: <code>string</code></p>
 </li>
 <li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-featuresdataorder"><code>definitions.schema.json</code></a></p>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-array"><code>definitions.schema.json</code></a></p>
 </li>
 </ul>
 </div>
@@ -1380,7 +1380,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-featuresdisplayorder">Feature display order</h2>
+<h2 id="reference-array">Feature display order</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Ordered array of feature keys for display on front end</p>
@@ -1391,7 +1391,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>Type</strong>: <code>string</code></p>
 </li>
 <li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-featuresdisplayorder"><code>definitions.schema.json</code></a></p>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-array"><code>definitions.schema.json</code></a></p>
 </li>
 </ul>
 </div>
@@ -1700,13 +1700,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDisplayOrder</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-featuresdisplayorder"><code>featuresDisplayOrder</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of feature keys for display on front end</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDataOrder</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-featuresdataorder"><code>featuresDataOrder</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of feature keys for packing and unpacking data</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
@@ -1894,7 +1894,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-featuresdisplayorder"><code>featuresDisplayOrder</code></a></p>
+<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -1910,7 +1910,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-featuresdataorder"><code>featuresDataOrder</code></a></p>
+<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -2656,7 +2656,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-datecreated">JSON Schema for Date created</h2>
+<h2 id="schema-reference-input-megaset">JSON Schema for Date created</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2755,7 +2755,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-featuresdataorder">JSON Schema for Feature data order</h2>
+<h2 id="schema-reference-array">JSON Schema for Feature data order</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -2971,7 +2971,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-featuresdisplayorder">JSON Schema for Feature display order</h2>
+<h2 id="schema-reference-array">JSON Schema for Feature display order</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
