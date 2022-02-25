@@ -525,6 +525,22 @@ Each folder should have the same 5 files listed above.</p>
 
 </div>
 <h1 id="_full_documentation" class="sect0">Full Documentation</h1>
+<div class="paragraph">
+<p>{
+  '^\\d{1,}$': {
+    '$schema': 'http://json-schema.org/draft-07/schema#',
+    '$id': 'array-items/discrete-feature-option.schema.json',
+    title: 'Discrete feature option',
+    description: 'Schema for each category in a discrete feature',
+    type: 'object',
+    properties: { color: [Object], name: [Object], key: [Object] },
+    additionalProperties: false,
+    required: undefined,
+    typeName: 'array-items/discrete-feature-option',
+    _normalizedRequired: true
+  }
+} discrete-feature-options.schema.json</p>
+</div>
 <hr>
 <div class="sect1">
 <h2 id="reference-cell-feature-dataset-handoff-specification">Cell Feature Dataset Handoff Specification</h2>
@@ -759,8 +775,11 @@ Each folder should have the same 5 files listed above.</p>
 <div class="paragraph">
 <p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
 </div>
+<div class="paragraph">
+<p>Mapping interface: <code>{[key:<strong>^\d{1,}$</strong>]:array-items/discrete-feature-option.schema.json}</code></p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. <code>Discrete feature options</code> Properties</caption>
+<caption class="title">Table 3. <code>array-items/discrete-feature-option.schema.json</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -777,9 +796,21 @@ Each folder should have the same 5 files listed above.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NUMERAL_KEY</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-array-items/discrete-feature-option"><code>array-items/discrete-feature-option</code></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Schema for each category in a discrete feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>color</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hex string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>key</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique key for the option.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
@@ -794,23 +825,7 @@ Each folder should have the same 5 files listed above.</p>
 </li>
 </ul>
 </div>
-<div class="sect2">
-<h3 id="_discrete_feature_options_numeral_key">discrete-feature-options.NUMERAL_KEY</h3>
-<div class="paragraph">
-<p>Schema for each category in a discrete feature</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <a href="#reference-array-items/discrete-feature-option"><code>array-items/discrete-feature-option</code></a></p>
-</li>
-<li>
-<p><strong>Required</strong>: No</p>
-</li>
-</ul>
-</div>
 <hr>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -2080,8 +2095,8 @@ Each folder should have the same 5 files listed above.</p>
     "title": "Discrete feature options",
     "description": "Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0` or `1`, there should be two option mappings.",
     "type": "object",
-    "properties": {
-        "NUMERAL_KEY": {
+    "patternProperties": {
+        "^\\d{1,}$": {
             "$ref": "array-items/discrete-feature-option.schema.json"
         }
     }
