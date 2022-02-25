@@ -1599,7 +1599,7 @@ Each folder should have the same 5 files listed above.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>publications</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-publication"><code>publication</code></a> <code>[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Publications associated with the group</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
@@ -1687,7 +1687,7 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a> <code>[]</code></p>
+<p><strong>Type</strong>: <a href="#reference-publication"><code>publication</code></a> <code>[]</code></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -1781,7 +1781,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-sub-schema/publication">Publication</h2>
+<h2 id="reference-publication">Publication</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Publication data</p>
@@ -1829,12 +1829,12 @@ Each folder should have the same 5 files listed above.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/publication"><code>sub-schema/publication.schema.json</code></a></p>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-publication"><code>definitions.schema.json</code></a></p>
 </li>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemapublication_title">sub-schema/publication.title</h3>
+<h3 id="_publication_title">publication.title</h3>
 <div class="paragraph">
 <p>Article title</p>
 </div>
@@ -1850,7 +1850,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemapublication_url">sub-schema/publication.url</h3>
+<h3 id="_publication_url">publication.url</h3>
 <div class="paragraph">
 <p>Article link</p>
 </div>
@@ -1866,7 +1866,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemapublication_citation">sub-schema/publication.citation</h3>
+<h3 id="_publication_citation">publication.citation</h3>
 <div class="paragraph">
 <p>Article journal and date</p>
 </div>
@@ -1882,25 +1882,6 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 <hr>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="reference-array">Publications</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Publications associated with the group</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a></p>
-</li>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-array"><code>definitions.schema.json</code></a></p>
-</li>
-</ul>
-</div>
-<hr>
 </div>
 </div>
 <div class="sect1">
@@ -2137,12 +2118,24 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "publications": {
-            "title": "Publications",
-            "description": "Publications associated with the group",
-            "type": "array",
-            "items": {
-                "$ref": "sub-schema/publication.schema.json"
+        "publication": {
+            "title": "Publication",
+            "description": "Publication data",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "title": {
+                    "description": "Article title",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "Article link",
+                    "type": "string"
+                },
+                "citation": {
+                    "description": "Article journal and date",
+                    "type": "string"
+                }
             }
         },
         "version": {
@@ -2394,12 +2387,24 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "publications": {
-            "title": "Publications",
-            "description": "Publications associated with the group",
-            "type": "array",
-            "items": {
-                "$ref": "sub-schema/publication.schema.json"
+        "publication": {
+            "title": "Publication",
+            "description": "Publication data",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "title": {
+                    "description": "Article title",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "Article link",
+                    "type": "string"
+                },
+                "citation": {
+                    "description": "Article journal and date",
+                    "type": "string"
+                }
             }
         },
         "version": {
@@ -2708,12 +2713,24 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "publications": {
-            "title": "Publications",
-            "description": "Publications associated with the group",
-            "type": "array",
-            "items": {
-                "$ref": "sub-schema/publication.schema.json"
+        "publication": {
+            "title": "Publication",
+            "description": "Publication data",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "title": {
+                    "description": "Article title",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "Article link",
+                    "type": "string"
+                },
+                "citation": {
+                    "description": "Article journal and date",
+                    "type": "string"
+                }
             }
         },
         "version": {
@@ -2907,7 +2924,12 @@ Each folder should have the same 5 files listed above.</p>
             "$ref": "definitions.schema.json#/input-data/dateCreated"
         },
         "publications": {
-            "$ref": "definitions.schema.json#/definitions/publications"
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "definitions.schema.json#/definitions/publication"
+            }
         }
     },
     "required": [
@@ -2962,39 +2984,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-sub-schema/publication">JSON Schema for Publication</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "sub-schema/publication.schema.json",
-    "title": "Publication",
-    "description": "Publication data",
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-        "title": {
-            "description": "Article title",
-            "type": "string"
-        },
-        "url": {
-            "description": "Article link",
-            "type": "string"
-        },
-        "citation": {
-            "description": "Article journal and date",
-            "type": "string"
-        }
-    }
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="schema-reference-array">JSON Schema for Publications</h2>
+<h2 id="schema-reference-publication">JSON Schema for Publication</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -3020,12 +3010,24 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "publications": {
-            "title": "Publications",
-            "description": "Publications associated with the group",
-            "type": "array",
-            "items": {
-                "$ref": "sub-schema/publication.schema.json"
+        "publication": {
+            "title": "Publication",
+            "description": "Publication data",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "title": {
+                    "description": "Article title",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "Article link",
+                    "type": "string"
+                },
+                "citation": {
+                    "description": "Article journal and date",
+                    "type": "string"
+                }
             }
         },
         "version": {
@@ -3220,12 +3222,24 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "publications": {
-            "title": "Publications",
-            "description": "Publications associated with the group",
-            "type": "array",
-            "items": {
-                "$ref": "sub-schema/publication.schema.json"
+        "publication": {
+            "title": "Publication",
+            "description": "Publication data",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "title": {
+                    "description": "Article title",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "Article link",
+                    "type": "string"
+                },
+                "citation": {
+                    "description": "Article journal and date",
+                    "type": "string"
+                }
             }
         },
         "version": {
@@ -3420,12 +3434,24 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
-        "publications": {
-            "title": "Publications",
-            "description": "Publications associated with the group",
-            "type": "array",
-            "items": {
-                "$ref": "sub-schema/publication.schema.json"
+        "publication": {
+            "title": "Publication",
+            "description": "Publication data",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "title": {
+                    "description": "Article title",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "Article link",
+                    "type": "string"
+                },
+                "citation": {
+                    "description": "Article journal and date",
+                    "type": "string"
+                }
             }
         },
         "version": {
