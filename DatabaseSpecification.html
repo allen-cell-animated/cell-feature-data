@@ -444,7 +444,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>undefined undefined</p>
+<p>{
+  '^(\\w{1,})_(v\\d{4}.\\d{1,}|\\w{1,})$': {
+    '$schema': 'http://json-schema.org/draft-07/schema#',
+    '$id': 'megaset-card.schema.json',
+    title: 'Megaset Card',
+    description: 'Data needed to render a megaset card',
+    type: 'object',
+    additionalProperties: false,
+    properties: {
+      datasets: [Object],
+      dateCreated: [Object],
+      name: [Object],
+      production: [Object],
+      title: [Object],
+      publications: [Object]
+    },
+    required: undefined,
+    typeName: 'megaset-card',
+    _normalizedRequired: true
+  }
+} dataset-descriptions</p>
 </div>
 <hr>
 </div>
