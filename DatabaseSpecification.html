@@ -2450,7 +2450,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "description": "Collection of manifests for each published dataset.",
             "type": "object",
             "patternProperties": {
-                "^[a-z]": {
+                "^(\\w{1,})_(v\\d{4}.\\d{1,}|\\w{1,})$": {
                     "type": "object",
                     "$ref": "manifest.schema.json"
                 }
@@ -2463,8 +2463,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "properties": {
                 "feature-definitions": {
                     "type": "object",
-                    "properties": {
-                        "$dataset-id": {
+                    "patternProperties": {
+                        "^(\\w{1,})_(v\\d{4}.\\d{1,}|\\w{1,})$": {
                             "type": "object",
                             "$feature-key": {
                                 "$ref": "feature-def.schema.json"
