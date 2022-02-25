@@ -1077,615 +1077,1337 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>publications</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a> <code>[]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Publications associated with the group</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No</p>
-<p class="tableblock">Additional properties are allowed.</p>
-<p class="tableblock">* <strong>JSON schema</strong>: <a href="#schema-reference-dataset-descriptions"><code>dataset-descriptions.schema.json</code></a></p>
-<p class="tableblock">'''
-[#reference-input-megaset]
-== Date created</p>
-<p class="tableblock">'''
-[#reference-sub-schema/discrete-feature-option]
-== Discrete feature option</p>
-<p class="tableblock">Schema for each category in a discrete feature</p>
-<p class="tableblock">.<code>Discrete feature option</code> Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>|   |Type|Description|Required</p>
+<p>Additional properties are allowed.</p>
 </div>
-<div class="paragraph">
-<p>|<strong>color</strong>
-|<code>string</code>
-|Hex string
-| &#10003; Yes</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-dataset-descriptions"><code>dataset-descriptions.schema.json</code></a></p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>|<strong>name</strong>
-|<code>string</code>
-|Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.
-| &#10003; Yes</p>
+<hr>
 </div>
+</div>
+<div class="sect1">
+<h2 id="reference-input-megaset">Date created</h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-sub-schema/discrete-feature-option">Discrete feature option</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>|<strong>key</strong>
-|<code>string</code>
-|unique key for the option.
-|No</p>
+<p>Schema for each category in a discrete feature</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. <code>Discrete feature option</code> Properties</caption>
 <colgroup>
-<col style="width: 100%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Additional properties are not allowed.</p>
-<p class="tableblock">* <strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/discrete-feature-option"><code>sub-schema/discrete-feature-option.schema.json</code></a></p>
-<p class="tableblock">=== sub-schema/discrete-feature-option.color</p>
-<p class="tableblock">Hex string</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== sub-schema/discrete-feature-option.name</p>
-<p class="tableblock">Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== sub-schema/discrete-feature-option.key</p>
-<p class="tableblock">unique key for the option.</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>: No</p>
-<p class="tableblock">'''
-[#reference-discrete-feature-options]
-== Discrete feature options</p>
-<p class="tableblock">Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
-<p class="tableblock">.<code>Discrete feature options</code> Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>color</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hex string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>key</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique key for the option.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>|   |Type|Description|Required</p>
+<p>Additional properties are not allowed.</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/discrete-feature-option"><code>sub-schema/discrete-feature-option.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemadiscrete_feature_option_color">sub-schema/discrete-feature-option.color</h3>
 <div class="paragraph">
-<p>|<strong>NUMERAL_KEY</strong>
-|<a href="#reference-sub-schema/discrete-feature-option"><code>sub-schema/discrete-feature-option</code></a>
-|Schema for each category in a discrete feature
-|No</p>
+<p>Hex string</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemadiscrete_feature_option_name">sub-schema/discrete-feature-option.name</h3>
+<div class="paragraph">
+<p>Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, <code>key</code> is required.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemadiscrete_feature_option_key">sub-schema/discrete-feature-option.key</h3>
+<div class="paragraph">
+<p>unique key for the option.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-discrete-feature-options">Discrete feature options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. <code>Discrete feature options</code> Properties</caption>
 <colgroup>
-<col style="width: 100%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Additional properties are allowed.</p>
-<p class="tableblock">* <strong>JSON schema</strong>: <a href="#schema-reference-discrete-feature-options"><code>discrete-feature-options.schema.json</code></a></p>
-<p class="tableblock">=== discrete-feature-options.NUMERAL_KEY</p>
-<p class="tableblock">Schema for each category in a discrete feature</p>
-<p class="tableblock">* <strong>Type</strong>: <a href="#reference-sub-schema/discrete-feature-option"><code>sub-schema/discrete-feature-option</code></a>
-* <strong>Required</strong>: No</p>
-<p class="tableblock">'''
-[#reference-array]
-== Feature data order</p>
-<p class="tableblock">Ordered array of feature keys for packing and unpacking data</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>JSON schema</strong>: <a href="#schema-reference-array"><code>definitions.schema.json</code></a></p>
-<p class="tableblock">'''
-[#reference-feature-def]
-== Feature Definition</p>
-<p class="tableblock">Definition of a measured features in the dataset. Feature definitions file is an array of these objects.</p>
-<p class="tableblock">.<code>Feature Definition</code> Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>NUMERAL_KEY</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/discrete-feature-option"><code>sub-schema/discrete-feature-option</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Schema for each category in a discrete feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>|   |Type|Description|Required</p>
+<p>Additional properties are allowed.</p>
 </div>
-<div class="paragraph">
-<p>|<strong>displayName</strong>
-|<code>string</code>
-|Human readable name
-| &#10003; Yes</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-discrete-feature-options"><code>discrete-feature-options.schema.json</code></a></p>
+</li>
+</ul>
 </div>
+<div class="sect2">
+<h3 id="_discrete_feature_options_numeral_key">discrete-feature-options.NUMERAL_KEY</h3>
 <div class="paragraph">
-<p>|<strong>description</strong>
-|<code>string</code>
-|Description of how the data was collected/measured
-| &#10003; Yes</p>
+<p>Schema for each category in a discrete feature</p>
 </div>
-<div class="paragraph">
-<p>|<strong>tooltip</strong>
-|<code>string</code>
-|Shorter version of description
-| &#10003; Yes</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-sub-schema/discrete-feature-option"><code>sub-schema/discrete-feature-option</code></a></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>|<strong>unit</strong>
-|<code>string</code>
-|unit of measurement
-| &#10003; Yes</p>
+<hr>
 </div>
-<div class="paragraph">
-<p>|<strong>key</strong>
-|<code>string</code>
-|Id of the feature
-| &#10003; Yes</p>
 </div>
-<div class="paragraph">
-<p>|<strong>discrete</strong>
-|<code>boolean</code>
-|Whether it&#8217;s a continuous measurement or not
-| &#10003; Yes</p>
 </div>
+<div class="sect1">
+<h2 id="reference-array">Feature data order</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>|<strong>options</strong>
-|<a href="#reference-discrete-feature-options"><code>discrete-feature-options</code></a>
-|Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.
-|No</p>
+<p>Ordered array of feature keys for packing and unpacking data</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-array"><code>definitions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-feature-def">Feature Definition</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Definition of a measured features in the dataset. Feature definitions file is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. <code>Feature Definition</code> Properties</caption>
 <colgroup>
-<col style="width: 100%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Additional properties are not allowed.</p>
-<p class="tableblock">* <strong>JSON schema</strong>: <a href="#schema-reference-feature-def"><code>feature-def.schema.json</code></a></p>
-<p class="tableblock">=== feature-def.displayName</p>
-<p class="tableblock">Human readable name</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== feature-def.description</p>
-<p class="tableblock">Description of how the data was collected/measured</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== feature-def.tooltip</p>
-<p class="tableblock">Shorter version of description</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== feature-def.unit</p>
-<p class="tableblock">unit of measurement</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== feature-def.key</p>
-<p class="tableblock">Id of the feature</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== feature-def.discrete</p>
-<p class="tableblock">Whether it&#8217;s a continuous measurement or not</p>
-<p class="tableblock">* <strong>Type</strong>: <code>boolean</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== feature-def.options</p>
-<p class="tableblock">Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
-<p class="tableblock">* <strong>Type</strong>: <a href="#reference-discrete-feature-options"><code>discrete-feature-options</code></a>
-* <strong>Required</strong>: No</p>
-<p class="tableblock">'''
-[#reference-array]
-== Feature display order</p>
-<p class="tableblock">Ordered array of feature keys for display on front end</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>JSON schema</strong>: <a href="#schema-reference-array"><code>definitions.schema.json</code></a></p>
-<p class="tableblock">'''
-[#reference-sub-schema/file-info]
-== File info</p>
-<p class="tableblock">File info for one cell, this is the data needed to access images for the cell.</p>
-<p class="tableblock">.<code>File info</code> Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>displayName</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Human readable name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description of how the data was collected/measured</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>tooltip</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shorter version of description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>unit</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unit of measurement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>key</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Id of the feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>discrete</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether it&#8217;s a continuous measurement or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>options</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-discrete-feature-options"><code>discrete-feature-options</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>|   |Type|Description|Required</p>
+<p>Additional properties are not allowed.</p>
 </div>
-<div class="paragraph">
-<p>|<strong>CellId</strong>
-|<code>string</code>
-|unique id for segmented cell
-| &#10003; Yes</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-feature-def"><code>feature-def.schema.json</code></a></p>
+</li>
+</ul>
 </div>
+<div class="sect2">
+<h3 id="_feature_def_displayname">feature-def.displayName</h3>
 <div class="paragraph">
-<p>|<strong>FOVId</strong>
-|<code>string</code>
-|Field of view cell came from
-| &#10003; Yes</p>
+<p>Human readable name</p>
 </div>
-<div class="paragraph">
-<p>|<strong>groupBy</strong>
-|<code>string</code>
-|Id of feature the data is grouped by by default
-| &#10003; Yes</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>|<strong>thumbnailPath</strong>
-|<code>string</code>
-|Path to thumbnail image for cell
-|No</p>
 </div>
+<div class="sect2">
+<h3 id="_feature_def_description">feature-def.description</h3>
 <div class="paragraph">
-<p>|<strong>volumeviewerPath</strong>
-|<code>string</code>
-|path to 3d data for cell
-| &#10003; Yes</p>
+<p>Description of how the data was collected/measured</p>
 </div>
-<div class="paragraph">
-<p>|<strong>fovThumbnailPath</strong>
-|<code>string</code>
-|Path to fov thumbnail
-|No</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_feature_def_tooltip">feature-def.tooltip</h3>
 <div class="paragraph">
-<p>|<strong>fovVolumeviewerPath</strong>
-|<code>string</code>
-|Path to the fov 3d data
-|No</p>
+<p>Shorter version of description</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_def_unit">feature-def.unit</h3>
+<div class="paragraph">
+<p>unit of measurement</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_def_key">feature-def.key</h3>
+<div class="paragraph">
+<p>Id of the feature</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_def_discrete">feature-def.discrete</h3>
+<div class="paragraph">
+<p>Whether it&#8217;s a continuous measurement or not</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>boolean</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feature_def_options">feature-def.options</h3>
+<div class="paragraph">
+<p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-discrete-feature-options"><code>discrete-feature-options</code></a></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-array">Feature display order</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ordered array of feature keys for display on front end</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-array"><code>definitions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-sub-schema/file-info">File info</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>File info for one cell, this is the data needed to access images for the cell.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. <code>File info</code> Properties</caption>
 <colgroup>
-<col style="width: 100%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Additional properties are not allowed.</p>
-<p class="tableblock">* <strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/file-info"><code>sub-schema/file-info.schema.json</code></a></p>
-<p class="tableblock">=== sub-schema/file-info.CellId</p>
-<p class="tableblock">unique id for segmented cell</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== sub-schema/file-info.FOVId</p>
-<p class="tableblock">Field of view cell came from</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== sub-schema/file-info.groupBy</p>
-<p class="tableblock">Id of feature the data is grouped by by default</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== sub-schema/file-info.thumbnailPath</p>
-<p class="tableblock">Path to thumbnail image for cell</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>: No</p>
-<p class="tableblock">=== sub-schema/file-info.volumeviewerPath</p>
-<p class="tableblock">path to 3d data for cell</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== sub-schema/file-info.fovThumbnailPath</p>
-<p class="tableblock">Path to fov thumbnail</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>: No</p>
-<p class="tableblock">=== sub-schema/file-info.fovVolumeviewerPath</p>
-<p class="tableblock">Path to the fov 3d data</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>: No</p>
-<p class="tableblock">'''
-[#reference-groupby]
-== Grouping settings</p>
-<p class="tableblock">Settings for the grouping menu</p>
-<p class="tableblock">Additional properties are allowed.</p>
-<p class="tableblock">* <strong>JSON schema</strong>: <a href="#schema-reference-groupby"><code>input-dataset-info.schema.json</code></a></p>
-<p class="tableblock">'''
-[#reference-manifest]
-== Manifest</p>
-<p class="tableblock">High level data for each dataset that points to where all the data is stored for this dataset.</p>
-<p class="tableblock">.<code>Manifest</code> Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CellId</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unique id for segmented cell</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FOVId</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Field of view cell came from</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>groupBy</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Id of feature the data is grouped by by default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>thumbnailPath</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to thumbnail image for cell</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>volumeviewerPath</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path to 3d data for cell</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fovThumbnailPath</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to fov thumbnail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fovVolumeviewerPath</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the fov 3d data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>|   |Type|Description|Required</p>
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/file-info"><code>sub-schema/file-info.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemafile_info_cellid">sub-schema/file-info.CellId</h3>
+<div class="paragraph">
+<p>unique id for segmented cell</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemafile_info_fovid">sub-schema/file-info.FOVId</h3>
+<div class="paragraph">
+<p>Field of view cell came from</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemafile_info_groupby">sub-schema/file-info.groupBy</h3>
+<div class="paragraph">
+<p>Id of feature the data is grouped by by default</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemafile_info_thumbnailpath">sub-schema/file-info.thumbnailPath</h3>
+<div class="paragraph">
+<p>Path to thumbnail image for cell</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemafile_info_volumeviewerpath">sub-schema/file-info.volumeviewerPath</h3>
+<div class="paragraph">
+<p>path to 3d data for cell</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemafile_info_fovthumbnailpath">sub-schema/file-info.fovThumbnailPath</h3>
+<div class="paragraph">
+<p>Path to fov thumbnail</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemafile_info_fovvolumeviewerpath">sub-schema/file-info.fovVolumeviewerPath</h3>
+<div class="paragraph">
+<p>Path to the fov 3d data</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-groupby">Grouping settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Settings for the grouping menu</p>
 </div>
 <div class="paragraph">
-<p>|<strong>featuresDataPath</strong>
-|<code>string</code>
-|url to the per cell data json
-| &#10003; Yes</p>
+<p>Additional properties are allowed.</p>
 </div>
-<div class="paragraph">
-<p>|<strong>featureDefsPath</strong>
-|<code>string</code>
-|path to the feature def collection
-|No</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-groupby"><code>input-dataset-info.schema.json</code></a></p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>|<strong>viewerSettingsPath</strong>
-|<code>string</code>
-|path to image per-channel settings for the 3d viewer
-| &#10003; Yes</p>
+<hr>
 </div>
-<div class="paragraph">
-<p>|<strong>albumPath</strong>
-|<code>string</code>
-|collection name of the album data
-| &#10003; Yes</p>
 </div>
+<div class="sect1">
+<h2 id="reference-manifest">Manifest</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>|<strong>thumbnailRoot</strong>
-|<code>string</code>
-|Root url for thumbnail images
-| &#10003; Yes</p>
-</div>
-<div class="paragraph">
-<p>|<strong>downloadRoot</strong>
-|<code>string</code>
-|Root url for downloading cell data
-| &#10003; Yes</p>
-</div>
-<div class="paragraph">
-<p>|<strong>volumeViewerDataRoot</strong>
-|<code>string</code>
-|Root url for 3d images
-| &#10003; Yes</p>
-</div>
-<div class="paragraph">
-<p>|<strong>xAxis</strong>
-|<a href="#reference-selection-settings"><code>selection-settings</code></a>
-|
-| &#10003; Yes</p>
-</div>
-<div class="paragraph">
-<p>|<strong>yAxis</strong>
-|<a href="#reference-selection-settings"><code>selection-settings</code></a>
-|
-| &#10003; Yes</p>
-</div>
-<div class="paragraph">
-<p>|<strong>colorBy</strong>
-|<a href="#reference-selection-settings"><code>selection-settings</code></a>
-|
-| &#10003; Yes</p>
-</div>
-<div class="paragraph">
-<p>|<strong>groupBy</strong>
-|<a href="#reference-selection-settings"><code>selection-settings</code></a>
-|
-| &#10003; Yes</p>
-</div>
-<div class="paragraph">
-<p>|<strong>featuresDisplayOrder</strong>
-|<code>string</code> <code>[]</code>
-|Ordered array of feature keys for display on front end
-| &#10003; Yes</p>
-</div>
-<div class="paragraph">
-<p>|<strong>featuresDataOrder</strong>
-|<code>string</code> <code>[]</code>
-|Ordered array of feature keys for packing and unpacking data
-| &#10003; Yes</p>
+<p>High level data for each dataset that points to where all the data is stored for this dataset.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. <code>Manifest</code> Properties</caption>
 <colgroup>
-<col style="width: 100%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Additional properties are not allowed.</p>
-<p class="tableblock">* <strong>JSON schema</strong>: <a href="#schema-reference-manifest"><code>manifest.schema.json</code></a></p>
-<p class="tableblock">=== manifest.featuresDataPath</p>
-<p class="tableblock">url to the per cell data json</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== manifest.featureDefsPath</p>
-<p class="tableblock">path to the feature def collection</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>: No</p>
-<p class="tableblock">=== manifest.viewerSettingsPath</p>
-<p class="tableblock">path to image per-channel settings for the 3d viewer</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== manifest.albumPath</p>
-<p class="tableblock">collection name of the album data</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== manifest.thumbnailRoot</p>
-<p class="tableblock">Root url for thumbnail images</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== manifest.downloadRoot</p>
-<p class="tableblock">Root url for downloading cell data</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== manifest.volumeViewerDataRoot</p>
-<p class="tableblock">Root url for 3d images</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== manifest.xAxis</p>
-<p class="tableblock">* <strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== manifest.yAxis</p>
-<p class="tableblock">* <strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== manifest.colorBy</p>
-<p class="tableblock">* <strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== manifest.groupBy</p>
-<p class="tableblock">* <strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== manifest.featuresDisplayOrder</p>
-<p class="tableblock">Ordered array of feature keys for display on front end</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code> <code>[]</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== manifest.featuresDataOrder</p>
-<p class="tableblock">Ordered array of feature keys for packing and unpacking data</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code> <code>[]</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">'''
-[#reference-megaset-card]
-== Megaset Card</p>
-<p class="tableblock">Data needed to render a megaset card</p>
-<p class="tableblock">.<code>Megaset Card</code> Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDataPath</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">url to the per cell data json</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featureDefsPath</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path to the feature def collection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>viewerSettingsPath</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">path to image per-channel settings for the 3d viewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>albumPath</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">collection name of the album data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>thumbnailRoot</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root url for thumbnail images</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>downloadRoot</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root url for downloading cell data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>volumeViewerDataRoot</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root url for 3d images</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>xAxis</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-settings"><code>selection-settings</code></a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>yAxis</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-settings"><code>selection-settings</code></a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>colorBy</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-settings"><code>selection-settings</code></a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>groupBy</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-selection-settings"><code>selection-settings</code></a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDisplayOrder</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of feature keys for display on front end</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDataOrder</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of feature keys for packing and unpacking data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>|   |Type|Description|Required</p>
+<p>Additional properties are not allowed.</p>
 </div>
-<div class="paragraph">
-<p>|<strong>datasets</strong>
-|<a href="#reference-sub-schema/dataset-card"><code>sub-schema/dataset-card</code></a> <code>[]</code>
-|
-| &#10003; Yes</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-manifest"><code>manifest.schema.json</code></a></p>
+</li>
+</ul>
 </div>
+<div class="sect2">
+<h3 id="_manifest_featuresdatapath">manifest.featuresDataPath</h3>
 <div class="paragraph">
-<p>|<strong>dateCreated</strong>
-|<code>string</code>
-|Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date.
-| &#10003; Yes</p>
+<p>url to the per cell data json</p>
 </div>
-<div class="paragraph">
-<p>|<strong>name</strong>
-|<code>string</code>
-|
-| &#10003; Yes</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>|<strong>production</strong>
-|<code>boolean</code>
-|
-| &#10003; Yes</p>
 </div>
+<div class="sect2">
+<h3 id="_manifest_featuredefspath">manifest.featureDefsPath</h3>
 <div class="paragraph">
-<p>|<strong>title</strong>
-|<code>string</code>
-|
-| &#10003; Yes</p>
+<p>path to the feature def collection</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manifest_viewersettingspath">manifest.viewerSettingsPath</h3>
 <div class="paragraph">
-<p>|<strong>publications</strong>
-|<a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a> <code>[]</code>
-|Publications associated with the group
-|No</p>
+<p>path to image per-channel settings for the 3d viewer</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manifest_albumpath">manifest.albumPath</h3>
+<div class="paragraph">
+<p>collection name of the album data</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manifest_thumbnailroot">manifest.thumbnailRoot</h3>
+<div class="paragraph">
+<p>Root url for thumbnail images</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manifest_downloadroot">manifest.downloadRoot</h3>
+<div class="paragraph">
+<p>Root url for downloading cell data</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manifest_volumeviewerdataroot">manifest.volumeViewerDataRoot</h3>
+<div class="paragraph">
+<p>Root url for 3d images</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manifest_xaxis">manifest.xAxis</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manifest_yaxis">manifest.yAxis</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manifest_colorby">manifest.colorBy</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manifest_groupby">manifest.groupBy</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-selection-settings"><code>selection-settings</code></a></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manifest_featuresdisplayorder">manifest.featuresDisplayOrder</h3>
+<div class="paragraph">
+<p>Ordered array of feature keys for display on front end</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manifest_featuresdataorder">manifest.featuresDataOrder</h3>
+<div class="paragraph">
+<p>Ordered array of feature keys for packing and unpacking data</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-megaset-card">Megaset Card</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Data needed to render a megaset card</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. <code>Megaset Card</code> Properties</caption>
 <colgroup>
-<col style="width: 100%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Additional properties are not allowed.</p>
-<p class="tableblock">* <strong>JSON schema</strong>: <a href="#schema-reference-megaset-card"><code>megaset-card.schema.json</code></a></p>
-<p class="tableblock">=== megaset-card.datasets</p>
-<p class="tableblock">* <strong>Type</strong>: <a href="#reference-sub-schema/dataset-card"><code>sub-schema/dataset-card</code></a> <code>[]</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== megaset-card.dateCreated</p>
-<p class="tableblock">Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date.</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== megaset-card.name</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== megaset-card.production</p>
-<p class="tableblock">* <strong>Type</strong>: <code>boolean</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== megaset-card.title</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== megaset-card.publications</p>
-<p class="tableblock">Publications associated with the group</p>
-<p class="tableblock">* <strong>Type</strong>: <a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a> <code>[]</code>
-* <strong>Required</strong>: No</p>
-<p class="tableblock">'''
-[#reference-sub-schema/publication]
-== Publication</p>
-<p class="tableblock">Publication data</p>
-<p class="tableblock">.<code>Publication</code> Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>datasets</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/dataset-card"><code>sub-schema/dataset-card</code></a> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>dateCreated</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>production</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>publications</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Publications associated with the group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>|   |Type|Description|Required</p>
+<p>Additional properties are not allowed.</p>
 </div>
-<div class="paragraph">
-<p>|<strong>title</strong>
-|<code>string</code>
-|Article title
-|No</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-megaset-card"><code>megaset-card.schema.json</code></a></p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>|<strong>url</strong>
-|<code>string</code>
-|Article link
-|No</p>
+<div class="sect2">
+<h3 id="_megaset_card_datasets">megaset-card.datasets</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-sub-schema/dataset-card"><code>sub-schema/dataset-card</code></a> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_megaset_card_datecreated">megaset-card.dateCreated</h3>
 <div class="paragraph">
-<p>|<strong>citation</strong>
-|<code>string</code>
-|Article journal and date
-|No</p>
+<p>Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_megaset_card_name">megaset-card.name</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_megaset_card_production">megaset-card.production</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>boolean</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_megaset_card_title">megaset-card.title</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_megaset_card_publications">megaset-card.publications</h3>
+<div class="paragraph">
+<p>Publications associated with the group</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-sub-schema/publication"><code>sub-schema/publication</code></a> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-sub-schema/publication">Publication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Publication data</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 11. <code>Publication</code> Properties</caption>
 <colgroup>
-<col style="width: 100%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Additional properties are not allowed.</p>
-<p class="tableblock">* <strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/publication"><code>sub-schema/publication.schema.json</code></a></p>
-<p class="tableblock">=== sub-schema/publication.title</p>
-<p class="tableblock">Article title</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>: No</p>
-<p class="tableblock">=== sub-schema/publication.url</p>
-<p class="tableblock">Article link</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>: No</p>
-<p class="tableblock">=== sub-schema/publication.citation</p>
-<p class="tableblock">Article journal and date</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>: No</p>
-<p class="tableblock">'''
-[#reference-selection-settings]
-== Selection settings</p>
-<p class="tableblock">.<code>Selection settings</code> Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Article title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>url</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Article link</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>citation</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Article journal and date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>|   |Type|Description|Required</p>
+<p>Additional properties are not allowed.</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/publication"><code>sub-schema/publication.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemapublication_title">sub-schema/publication.title</h3>
 <div class="paragraph">
-<p>|<strong>default</strong>
-|<code>string</code>
-|Default feature key for the setting
-| &#10003; Yes</p>
+<p>Article title</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemapublication_url">sub-schema/publication.url</h3>
 <div class="paragraph">
-<p>|<strong>exclude</strong>
-|<code>string</code> <code>[]</code>
-|Optional list of feature keys to exclude
-|No</p>
+<p>Article link</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sub_schemapublication_citation">sub-schema/publication.citation</h3>
+<div class="paragraph">
+<p>Article journal and date</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-selection-settings">Selection settings</h2>
+<div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 12. <code>Selection settings</code> Properties</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Additional properties are not allowed.</p>
-<p class="tableblock">* <strong>JSON schema</strong>: <a href="#schema-reference-selection-settings"><code>definitions.schema.json</code></a></p>
-<p class="tableblock">=== selection-settings.default</p>
-<p class="tableblock">Default feature key for the setting</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code>
-* <strong>Required</strong>:  &#10003; Yes</p>
-<p class="tableblock">=== selection-settings.exclude</p>
-<p class="tableblock">Optional list of feature keys to exclude</p>
-<p class="tableblock">* <strong>Type</strong>: <code>string</code> <code>[]</code>
-* <strong>Required</strong>: No</p>
-<p class="tableblock">'''
-[<mark>reference-xaxis]
-== xAxis settings</p>
-<p class="tableblock">Settings for the x axis</p>
-<p class="tableblock">Additional properties are allowed.</p>
-<p class="tableblock">* <strong>JSON schema</strong>: <a href="#schema-reference-xaxis"><code>input-dataset-info.schema.json</code></a></p>
-<p class="tableblock">'''
-[#reference-yaxis]
-== yAxis settings</p>
-<p class="tableblock">Settings for the y axis</p>
-<p class="tableblock">Additional properties are allowed.</p>
-<p class="tableblock">* <strong>JSON schema</strong>: <a href="#schema-reference-yaxis"><code>input-dataset-info.schema.json</code></a></p>
-<p class="tableblock">:toc:</p>
-<p class="tableblock">== Appendix
-:toc:</p>
-<p class="tableblock">[#schema-reference-cell-feature-database-specification]
-== JSON Schema for Cell Feature Database Specification</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>default</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default feature key for the setting</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>exclude</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional list of feature keys to exclude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-selection-settings"><code>definitions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_selection_settings_default">selection-settings.default</h3>
+<div class="paragraph">
+<p>Default feature key for the setting</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_selection_settings_exclude">selection-settings.exclude</h3>
+<div class="paragraph">
+<p>Optional list of feature keys to exclude</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-xaxis">xAxis settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Settings for the x axis</p>
+</div>
+<div class="paragraph">
+<p>Additional properties are allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-xaxis"><code>input-dataset-info.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-yaxis">yAxis settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Settings for the y axis</p>
+</div>
+<div class="paragraph">
+<p>Additional properties are allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-yaxis"><code>input-dataset-info.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendix">Appendix</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-cell-feature-database-specification">JSON Schema for Cell Feature Database Specification</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "database-schema",
     "title": "Cell Feature Database Specification",
     "description": "Structure of the data stored in firebase and AWS",
@@ -1755,18 +2477,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "cell-data",
         "measured-features"
     ]
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-colorby]
-== JSON Schema for Color settings</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-colorby">JSON Schema for Color settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "input-dataset-info.schema.json",
-    "title": "Input dataset info <code>dataset.json`",
-    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets</code> array. Should be named `dataset.json`",
+    "title": "Input dataset info `dataset.json`",
+    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -1865,15 +2591,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "featuresDisplayOrder",
         "featuresDataOrder"
     ]
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-sub-schema/condensed-measured-feature]
-== JSON Schema for Condensed measured feature</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-sub-schema/condensed-measured-feature">JSON Schema for Condensed measured feature</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "sub-schema/condensed-measured-feature.schema.json",
     "title": "Condensed measured feature",
     "description": "Data per cell needed to create the CFE plot",
@@ -1914,15 +2644,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "t",
         "i"
     ]
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-measured-features]
-== JSON Schema for Condensed measured features JSON</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-measured-features">JSON Schema for Condensed measured features JSON</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "measured-features.schema.json",
     "title": "Condensed measured features JSON",
     "description": "File stored on AWS that has the condensed measured data. Is an array of condensed measured features.",
@@ -1930,15 +2664,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "items": {
         "$ref": "sub-schema/condensed-measured-feature.schema.json"
     }
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-sub-schema/dataset-card]
-== JSON Schema for Dataset Card</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-sub-schema/dataset-card">JSON Schema for Dataset Card</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "sub-schema/dataset-card.schema.json",
     "title": "Dataset Card",
     "description": "Data needed to render a dataset card",
@@ -1985,36 +2723,43 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "image",
         "description"
     ]
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-dataset-descriptions]
-== JSON Schema for Dataset Description Collection</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-dataset-descriptions">JSON Schema for Dataset Description Collection</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "dataset-descriptions",
     "title": "Dataset Description Collection",
     "description": "Endpoint that gets called first to load all the available datasets. Each DATASET_ID maps to a megaset card",
     "type": "object",
     "patternProperties": {
-        "^(\\w{1,})_(v\\d{4}.\\d{1,}</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\\w{1,})$": {
+        "^(\\w{1,})_(v\\d{4}.\\d{1,}|\\w{1,})$": {
             "$ref": "megaset-card.schema.json"
         }
     }
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-input-megaset]
-== JSON Schema for Date created</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-input-megaset">JSON Schema for Date created</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "input-megaset.schema.json",
-    "title": "Input Megaset <code>dataset.json`",
+    "title": "Input Megaset `dataset.json`",
     "description": "File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named `dataset.json`",
     "type": "object",
     "additionalProperties": false,
@@ -2041,15 +2786,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "name",
         "datasets"
     ]
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-sub-schema/discrete-feature-option]
-== JSON Schema for Discrete feature option</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-sub-schema/discrete-feature-option">JSON Schema for Discrete feature option</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "sub-schema/discrete-feature-option.schema.json",
     "title": "Discrete feature option",
     "description": "Schema for each category in a discrete feature",
@@ -2060,7 +2809,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "type": "string"
         },
         "name": {
-            "description": "Display name for the option. Doesn&#8217;t have to be unique, but if it&#8217;s not unique, `key</code> is required.",
+            "description": "Display name for the option. Doesn't have to be unique, but if it's not unique, `key` is required.",
             "type": "string"
         },
         "key": {
@@ -2073,33 +2822,41 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "name",
         "color"
     ]
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-discrete-feature-options]
-== JSON Schema for Discrete feature options</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-discrete-feature-options">JSON Schema for Discrete feature options</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "discrete-feature-options.schema.json",
     "title": "Discrete feature options",
-    "description": "Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.",
+    "description": "Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0` or `1`, there should be two option mappings.",
     "type": "object",
     "properties": {
         "NUMERAL_KEY": {
             "$ref": "sub-schema/discrete-feature-option.schema.json"
         }
     }
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-array]
-== JSON Schema for Feature data order</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-array">JSON Schema for Feature data order</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "definitions.schema.json",
     "title": "Definitions of dataset properties",
     "type": "object",
@@ -2209,12 +2966,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "input-data": {
         "dateCreated": {
             "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date. ",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
         "datasets": {
             "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own <code>dataset.json</code>.",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
             "items": {
                 "type": "string"
@@ -2246,15 +3003,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "type": "string"
         }
     }
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-feature-def]
-== JSON Schema for Feature Definition</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-feature-def">JSON Schema for Feature Definition</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "feature-def.schema.json",
     "title": "Feature Definition",
     "description": "Definition of a measured features in the dataset. Feature definitions file is an array of these objects.",
@@ -2282,7 +3043,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "type": "string"
         },
         "discrete": {
-            "description": "Whether it&#8217;s a continuous measurement or not",
+            "description": "Whether it's a continuous measurement or not",
             "type": "boolean"
         },
         "options": {
@@ -2299,15 +3060,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "key",
         "discrete"
     ]
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-array]
-== JSON Schema for Feature display order</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-array">JSON Schema for Feature display order</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "definitions.schema.json",
     "title": "Definitions of dataset properties",
     "type": "object",
@@ -2417,12 +3182,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "input-data": {
         "dateCreated": {
             "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date. ",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
         "datasets": {
             "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own <code>dataset.json</code>.",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
             "items": {
                 "type": "string"
@@ -2454,15 +3219,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "type": "string"
         }
     }
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-sub-schema/file-info]
-== JSON Schema for File info</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-sub-schema/file-info">JSON Schema for File info</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "sub-schema/file-info.schema.json",
     "title": "File info",
     "description": "File info for one cell, this is the data needed to access images for the cell.",
@@ -2504,18 +3273,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "groupBy",
         "volumeviewerPath"
     ]
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-groupby]
-== JSON Schema for Grouping settings</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-groupby">JSON Schema for Grouping settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "input-dataset-info.schema.json",
-    "title": "Input dataset info <code>dataset.json`",
-    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets</code> array. Should be named <code>dataset.json`",
+    "title": "Input dataset info `dataset.json`",
+    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -2614,15 +3387,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "featuresDisplayOrder",
         "featuresDataOrder"
     ]
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-manifest]
-== JSON Schema for Manifest</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-manifest">JSON Schema for Manifest</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "manifest.schema.json",
     "title": "Manifest",
     "description": "High level data for each dataset that points to where all the data is stored for this dataset.",
@@ -2690,15 +3467,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "featuresDisplayOrder",
         "featuresDataOrder"
     ]
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-megaset-card]
-== JSON Schema for Megaset Card</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-megaset-card">JSON Schema for Megaset Card</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "megaset-card.schema.json",
     "title": "Megaset Card",
     "description": "Data needed to render a megaset card",
@@ -2738,15 +3519,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "production",
         "title"
     ]
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-sub-schema/publication]
-== JSON Schema for Publication</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-sub-schema/publication">JSON Schema for Publication</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "sub-schema/publication.schema.json",
     "title": "Publication",
     "description": "Publication data",
@@ -2766,15 +3551,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "type": "string"
         }
     }
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-selection-settings]
-== JSON Schema for Selection settings</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-selection-settings">JSON Schema for Selection settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "definitions.schema.json",
     "title": "Definitions of dataset properties",
     "type": "object",
@@ -2884,12 +3673,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "input-data": {
         "dateCreated": {
             "title": "Date the dataset was created",
-            "description": "Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date. ",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
         "datasets": {
             "title": "Input datasets",
-            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json</code>.",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
             "items": {
                 "type": "string"
@@ -2921,128 +3710,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "type": "string"
         }
     }
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-xaxis]
-== JSON Schema for xAxis settings</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
-    "$id": "input-dataset-info.schema.json",
-    "title": "Input dataset info <code>dataset.json`",
-    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets</code> array. Should be named <code>dataset.json`",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "title": {
-            "$ref": "definitions.schema.json#/definitions/dataset-title"
-        },
-        "name": {
-            "$ref": "definitions.schema.json#/definitions/name"
-        },
-        "version": {
-            "$ref": "definitions.schema.json#/definitions/version"
-        },
-        "description": {
-            "$ref": "definitions.schema.json#/definitions/description"
-        },
-        "image": {
-            "$ref": "definitions.schema.json#/input-data/image"
-        },
-        "link": {
-            "$ref": "definitions.schema.json#/definitions/link"
-        },
-        "userData": {
-            "$ref": "definitions.schema.json#/definitions/userData"
-        },
-        "production": {
-            "$ref": "definitions.schema.json#/definitions/production"
-        },
-        "featuresDataPath": {
-            "$ref": "definitions.schema.json#/input-data/featuresDataPath"
-        },
-        "featureDefsPath": {
-            "$ref": "definitions.schema.json#/input-data/featureDefsPath"
-        },
-        "viewerSettingsPath": {
-            "$ref": "definitions.schema.json#/input-data/viewerSettingsPath"
-        },
-        "albumPath": {
-            "$ref": "definitions.schema.json#/input-data/albumPath"
-        },
-        "thumbnailRoot": {
-            "$ref": "definitions.schema.json#/definitions/thumbnailRoot"
-        },
-        "downloadRoot": {
-            "$ref": "definitions.schema.json#/definitions/downloadRoot"
-        },
-        "volumeViewerDataRoot": {
-            "$ref": "definitions.schema.json#/definitions/volumeViewerDataRoot"
-        },
-        "xAxis": {
-            "title": "xAxis settings",
-            "description": "Settings for the x axis",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "yAxis": {
-            "title": "yAxis settings",
-            "description": "Settings for the y axis",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "colorBy": {
-            "title": "Color settings",
-            "description": "Settings for the color by menu",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "groupBy": {
-            "title": "Grouping settings",
-            "description": "Settings for the grouping menu",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "featuresDisplayOrder": {
-            "$ref": "definitions.schema.json#/definitions/featuresDisplayOrder"
-        },
-        "featuresDataOrder": {
-            "$ref": "definitions.schema.json#/definitions/featuresDataOrder"
-        }
-    },
-    "required": [
-        "title",
-        "version",
-        "name",
-        "image",
-        "description",
-        "featuresDataPath",
-        "viewerSettingsPath",
-        "albumPath",
-        "thumbnailRoot",
-        "downloadRoot",
-        "volumeViewerDataRoot",
-        "xAxis",
-        "yAxis",
-        "groupBy",
-        "colorBy",
-        "featuresDisplayOrder",
-        "featuresDataOrder"
-    ]
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p>
-<p class="tableblock">[<mark>schema-reference-yaxis]
-== JSON Schema for yAxis settings</p>
-<p class="tableblock">[source,json]
-----
-{
-    "$schema": "http://json-schema.org/draft-07/schema</mark>",
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-xaxis">JSON Schema for xAxis settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "input-dataset-info.schema.json",
     "title": "Input dataset info `dataset.json`",
-    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets</code> array. Should be named `dataset.json`",
+    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -3141,12 +3824,124 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "featuresDisplayOrder",
         "featuresDataOrder"
     ]
-}
-----</p>
-<p class="tableblock">&lt;&lt;&lt;</p></td>
-</tr>
-</tbody>
-</table>
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-yaxis">JSON Schema for yAxis settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "input-dataset-info.schema.json",
+    "title": "Input dataset info `dataset.json`",
+    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "title": {
+            "$ref": "definitions.schema.json#/definitions/dataset-title"
+        },
+        "name": {
+            "$ref": "definitions.schema.json#/definitions/name"
+        },
+        "version": {
+            "$ref": "definitions.schema.json#/definitions/version"
+        },
+        "description": {
+            "$ref": "definitions.schema.json#/definitions/description"
+        },
+        "image": {
+            "$ref": "definitions.schema.json#/input-data/image"
+        },
+        "link": {
+            "$ref": "definitions.schema.json#/definitions/link"
+        },
+        "userData": {
+            "$ref": "definitions.schema.json#/definitions/userData"
+        },
+        "production": {
+            "$ref": "definitions.schema.json#/definitions/production"
+        },
+        "featuresDataPath": {
+            "$ref": "definitions.schema.json#/input-data/featuresDataPath"
+        },
+        "featureDefsPath": {
+            "$ref": "definitions.schema.json#/input-data/featureDefsPath"
+        },
+        "viewerSettingsPath": {
+            "$ref": "definitions.schema.json#/input-data/viewerSettingsPath"
+        },
+        "albumPath": {
+            "$ref": "definitions.schema.json#/input-data/albumPath"
+        },
+        "thumbnailRoot": {
+            "$ref": "definitions.schema.json#/definitions/thumbnailRoot"
+        },
+        "downloadRoot": {
+            "$ref": "definitions.schema.json#/definitions/downloadRoot"
+        },
+        "volumeViewerDataRoot": {
+            "$ref": "definitions.schema.json#/definitions/volumeViewerDataRoot"
+        },
+        "xAxis": {
+            "title": "xAxis settings",
+            "description": "Settings for the x axis",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "yAxis": {
+            "title": "yAxis settings",
+            "description": "Settings for the y axis",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "colorBy": {
+            "title": "Color settings",
+            "description": "Settings for the color by menu",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "groupBy": {
+            "title": "Grouping settings",
+            "description": "Settings for the grouping menu",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
+        },
+        "featuresDisplayOrder": {
+            "$ref": "definitions.schema.json#/definitions/featuresDisplayOrder"
+        },
+        "featuresDataOrder": {
+            "$ref": "definitions.schema.json#/definitions/featuresDataOrder"
+        }
+    },
+    "required": [
+        "title",
+        "version",
+        "name",
+        "image",
+        "description",
+        "featuresDataPath",
+        "viewerSettingsPath",
+        "albumPath",
+        "thumbnailRoot",
+        "downloadRoot",
+        "volumeViewerDataRoot",
+        "xAxis",
+        "yAxis",
+        "groupBy",
+        "colorBy",
+        "featuresDisplayOrder",
+        "featuresDataOrder"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
