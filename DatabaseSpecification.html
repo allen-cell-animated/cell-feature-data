@@ -827,7 +827,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-sub-schema/dataset-card">Dataset Card</h2>
+<h2 id="reference-dataset-card">Dataset Card</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Data needed to render a dataset card</p>
@@ -852,19 +852,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of the dataset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display name of dataset.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the dataset (no version number)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the group (no version number). Lowercase with underscores.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">version year and number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version year and number</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -876,7 +876,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>image</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Url to image src</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Url of the dataset card image file on AWS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -887,14 +887,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>userData</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-userdata"><code>userData</code></a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Optional display data</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>production</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether this dataset ready to be shown in production</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether this dataset should be shown in production</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
@@ -905,14 +905,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-sub-schema/dataset-card"><code>sub-schema/dataset-card.schema.json</code></a></p>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-dataset-card"><code>dataset-card.schema.json</code></a></p>
 </li>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemadataset_card_title">sub-schema/dataset-card.title</h3>
+<h3 id="_dataset_card_title">dataset-card.title</h3>
 <div class="paragraph">
-<p>Display name of the dataset</p>
+<p>Display name of dataset.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -926,9 +926,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemadataset_card_name">sub-schema/dataset-card.name</h3>
+<h3 id="_dataset_card_name">dataset-card.name</h3>
 <div class="paragraph">
-<p>Name of the dataset (no version number)</p>
+<p>Name of the group (no version number). Lowercase with underscores.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -942,9 +942,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemadataset_card_version">sub-schema/dataset-card.version</h3>
+<h3 id="_dataset_card_version">dataset-card.version</h3>
 <div class="paragraph">
-<p>version year and number</p>
+<p>Version year and number</p>
 </div>
 <div class="ulist">
 <ul>
@@ -958,7 +958,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemadataset_card_description">sub-schema/dataset-card.description</h3>
+<h3 id="_dataset_card_description">dataset-card.description</h3>
 <div class="paragraph">
 <p>Description of the dataset</p>
 </div>
@@ -974,9 +974,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemadataset_card_image">sub-schema/dataset-card.image</h3>
+<h3 id="_dataset_card_image">dataset-card.image</h3>
 <div class="paragraph">
-<p>Url to image src</p>
+<p>Url of the dataset card image file on AWS</p>
 </div>
 <div class="ulist">
 <ul>
@@ -990,7 +990,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemadataset_card_link">sub-schema/dataset-card.link</h3>
+<h3 id="_dataset_card_link">dataset-card.link</h3>
 <div class="paragraph">
 <p>Link to website displaying the dataset</p>
 </div>
@@ -1006,14 +1006,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemadataset_card_userdata">sub-schema/dataset-card.userData</h3>
+<h3 id="_dataset_card_userdata">dataset-card.userData</h3>
 <div class="paragraph">
 <p>Optional display data</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <code>object</code></p>
+<p><strong>Type</strong>: <a href="#reference-userdata"><code>userData</code></a></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -1022,9 +1022,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sub_schemadataset_card_production">sub-schema/dataset-card.production</h3>
+<h3 id="_dataset_card_production">dataset-card.production</h3>
 <div class="paragraph">
-<p>Whether this dataset ready to be shown in production</p>
+<p>Whether this dataset should be shown in production</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1068,7 +1068,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>datasets</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/dataset-card"><code>sub-schema/dataset-card</code></a> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-dataset-card"><code>dataset-card</code></a> <code>[]</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
@@ -2059,7 +2059,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>datasets</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-sub-schema/dataset-card"><code>sub-schema/dataset-card</code></a> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-dataset-card"><code>dataset-card</code></a> <code>[]</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
@@ -2110,7 +2110,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-sub-schema/dataset-card"><code>sub-schema/dataset-card</code></a> <code>[]</code></p>
+<p><strong>Type</strong>: <a href="#reference-dataset-card"><code>dataset-card</code></a> <code>[]</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
@@ -2401,6 +2401,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <hr>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-userdata">User data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Optional display data</p>
+</div>
+<div class="paragraph">
+<p>Additional properties are allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-userdata"><code>definitions.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<hr>
 </div>
 </div>
 <div class="sect1">
@@ -2716,49 +2735,41 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-sub-schema/dataset-card">JSON Schema for Dataset Card</h2>
+<h2 id="schema-reference-dataset-card">JSON Schema for Dataset Card</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "sub-schema/dataset-card.schema.json",
+    "$id": "dataset-card.schema.json",
     "title": "Dataset Card",
     "description": "Data needed to render a dataset card",
     "type": "object",
     "additionalProperties": false,
     "properties": {
         "title": {
-            "description": "Display name of the dataset",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/dataset-title"
         },
         "name": {
-            "description": "Name of the dataset (no version number)",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/name"
         },
         "version": {
-            "description": "version year and number",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/version"
         },
         "description": {
-            "description": "Description of the dataset",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/description"
         },
         "image": {
-            "description": "Url to image src",
-            "type": "string"
+            "$ref": "definitions.schema.json#/processed-data/image"
         },
         "link": {
-            "description": "Link to website displaying the dataset",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/link"
         },
         "userData": {
-            "description": "Optional display data",
-            "type": "object"
+            "$ref": "definitions.schema.json#/definitions/userData"
         },
         "production": {
-            "description": "Whether this dataset ready to be shown in production",
-            "type": "boolean"
+            "$ref": "definitions.schema.json#/definitions/production"
         }
     },
     "required": [
@@ -3006,6 +3017,47 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "description": "Relative path to the album file.",
             "type": "string"
         }
+    },
+    "processed-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Firebase Timestamp. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of dateset cards.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "dataset-card.schema.json"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Url of the dataset card image file on AWS",
+            "type": "string"
+        },
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Url of the features JSON on AWS",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Database path to feature definition collection",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Database path to album information.",
+            "type": "string"
+        }
     }
 }</code></pre>
 </div>
@@ -3220,6 +3272,47 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    },
+    "processed-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Firebase Timestamp. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of dateset cards.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "dataset-card.schema.json"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Url of the dataset card image file on AWS",
+            "type": "string"
+        },
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Url of the features JSON on AWS",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Database path to feature definition collection",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Database path to album information.",
             "type": "string"
         }
     }
@@ -3493,7 +3586,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "datasets": {
             "type": "array",
             "items": {
-                "$ref": "sub-schema/dataset-card.schema.json"
+                "$ref": "dataset-card.schema.json"
             }
         },
         "dateCreated": {
@@ -3709,6 +3802,47 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "description": "Relative path to the album file.",
             "type": "string"
         }
+    },
+    "processed-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Firebase Timestamp. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of dateset cards.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "dataset-card.schema.json"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Url of the dataset card image file on AWS",
+            "type": "string"
+        },
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Url of the features JSON on AWS",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Database path to feature definition collection",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Database path to album information.",
+            "type": "string"
+        }
     }
 }</code></pre>
 </div>
@@ -3866,6 +4000,247 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    },
+    "processed-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Firebase Timestamp. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of dateset cards.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "dataset-card.schema.json"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Url of the dataset card image file on AWS",
+            "type": "string"
+        },
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Url of the features JSON on AWS",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Database path to feature definition collection",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Database path to album information.",
+            "type": "string"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-userdata">JSON Schema for User data</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "definitions.schema.json",
+    "title": "Definitions of dataset properties",
+    "type": "object",
+    "additionalProperties": false,
+    "definitions": {
+        "group-title": {
+            "title": "Group title",
+            "description": "Display name of dataset group.",
+            "type": "string"
+        },
+        "dataset-title": {
+            "title": "Dataset title",
+            "description": "Display name of dataset.",
+            "type": "string"
+        },
+        "name": {
+            "title": "Dataset name",
+            "description": "Name of the group (no version number). Lowercase with underscores.",
+            "type": "string"
+        },
+        "publications": {
+            "title": "Publications",
+            "description": "Publications associated with the group",
+            "type": "array",
+            "items": {
+                "$ref": "sub-schema/publication.schema.json"
+            }
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version year and number",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "Description of the dataset",
+            "type": "string"
+        },
+        "link": {
+            "title": "Link (deprecated)",
+            "description": "Link to website displaying the dataset",
+            "type": "string"
+        },
+        "userData": {
+            "title": "User data",
+            "description": "Optional display data",
+            "type": "object"
+        },
+        "production": {
+            "title": "Is production",
+            "description": "Whether this dataset should be shown in production",
+            "type": "boolean"
+        },
+        "thumbnailRoot": {
+            "title": "Thumbnail root",
+            "description": "Root url for thumbnail images",
+            "type": "string"
+        },
+        "downloadRoot": {
+            "title": "Download root",
+            "description": "Root url for downloading cell data",
+            "type": "string"
+        },
+        "volumeViewerDataRoot": {
+            "title": "VolumeViewer data root",
+            "description": "Root url for 3d images",
+            "type": "string"
+        },
+        "selection-settings": {
+            "title": "Selection settings",
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "Default feature key for the setting",
+                    "type": "string"
+                },
+                "exclude": {
+                    "description": "Optional list of feature keys to exclude",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "default"
+            ],
+            "additionalProperties": false
+        },
+        "featuresDisplayOrder": {
+            "title": "Feature display order",
+            "description": "Ordered array of feature keys for display on front end",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featuresDataOrder": {
+            "title": "Feature data order",
+            "description": "Ordered array of feature keys for packing and unpacking data",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "input-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Relative path to the dataset card image file, including filename.",
+            "type": "string"
+        },
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Relative path to the per cell data json, including filename.",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Relative path to the feature definition file, including filename.",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Relative path to the album file.",
+            "type": "string"
+        }
+    },
+    "processed-data": {
+        "dateCreated": {
+            "title": "Date the dataset was created",
+            "description": "Format: Firebase Timestamp. ",
+            "type": "string"
+        },
+        "datasets": {
+            "title": "Input datasets",
+            "description": "Array of dateset cards.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "dataset-card.schema.json"
+            }
+        },
+        "image": {
+            "title": "Image file",
+            "description": "Url of the dataset card image file on AWS",
+            "type": "string"
+        },
+        "featuresDataPath": {
+            "title": "Feature data path",
+            "description": "Url of the features JSON on AWS",
+            "type": "string"
+        },
+        "featureDefsPath": {
+            "title": "Feature defs path",
+            "description": "Database path to feature definition collection",
+            "type": "string"
+        },
+        "viewerSettingsPath": {
+            "title": "Viewer settings path",
+            "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
+            "type": "string"
+        },
+        "albumPath": {
+            "title": "Album path",
+            "description": "Database path to album information.",
             "type": "string"
         }
     }
