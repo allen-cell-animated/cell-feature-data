@@ -2213,15 +2213,13 @@ Each folder should have the same 5 files listed above.</p>
             "items": {
                 "type": "string"
             }
-        }
-    },
-    "input-data": {
-        "dateCreated": {
+        },
+        "input-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
-        "datasets": {
+        "input-datasets": {
             "title": "Input datasets",
             "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
@@ -2229,39 +2227,37 @@ Each folder should have the same 5 files listed above.</p>
                 "type": "string"
             }
         },
-        "image": {
+        "input-image": {
             "title": "Image file",
             "description": "Relative path to the dataset card image file, including filename.",
             "type": "string"
         },
-        "featuresDataPath": {
+        "input-featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
             "type": "string"
         },
-        "featureDefsPath": {
+        "input-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Relative path to the feature definition file, including filename.",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "input-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
             "type": "string"
         },
-        "albumPath": {
+        "input-albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
             "type": "string"
-        }
-    },
-    "processed-data": {
-        "dateCreated": {
+        },
+        "processed-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Firebase Timestamp. ",
             "type": "string"
         },
-        "datasets": {
+        "processed-datasets": {
             "title": "Input datasets",
             "description": "Array of dateset cards.",
             "type": "array",
@@ -2270,27 +2266,27 @@ Each folder should have the same 5 files listed above.</p>
                 "$ref": "dataset-card.schema.json"
             }
         },
-        "image": {
+        "processed-image": {
             "title": "Image file",
             "description": "Url of the dataset card image file on AWS",
             "type": "string"
         },
-        "featuresDataPath": {
+        "processed-featuresDataPath": {
             "title": "Feature data path",
             "description": "Url of the features JSON on AWS",
             "type": "string"
         },
-        "featureDefsPath": {
+        "processed-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Database path to feature definition collection",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "processed-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
             "type": "string"
         },
-        "albumPath": {
+        "processed-albumPath": {
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
@@ -2482,15 +2478,13 @@ Each folder should have the same 5 files listed above.</p>
             "items": {
                 "type": "string"
             }
-        }
-    },
-    "input-data": {
-        "dateCreated": {
+        },
+        "input-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
-        "datasets": {
+        "input-datasets": {
             "title": "Input datasets",
             "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
@@ -2498,39 +2492,37 @@ Each folder should have the same 5 files listed above.</p>
                 "type": "string"
             }
         },
-        "image": {
+        "input-image": {
             "title": "Image file",
             "description": "Relative path to the dataset card image file, including filename.",
             "type": "string"
         },
-        "featuresDataPath": {
+        "input-featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
             "type": "string"
         },
-        "featureDefsPath": {
+        "input-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Relative path to the feature definition file, including filename.",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "input-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
             "type": "string"
         },
-        "albumPath": {
+        "input-albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
             "type": "string"
-        }
-    },
-    "processed-data": {
-        "dateCreated": {
+        },
+        "processed-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Firebase Timestamp. ",
             "type": "string"
         },
-        "datasets": {
+        "processed-datasets": {
             "title": "Input datasets",
             "description": "Array of dateset cards.",
             "type": "array",
@@ -2539,27 +2531,27 @@ Each folder should have the same 5 files listed above.</p>
                 "$ref": "dataset-card.schema.json"
             }
         },
-        "image": {
+        "processed-image": {
             "title": "Image file",
             "description": "Url of the dataset card image file on AWS",
             "type": "string"
         },
-        "featuresDataPath": {
+        "processed-featuresDataPath": {
             "title": "Feature data path",
             "description": "Url of the features JSON on AWS",
             "type": "string"
         },
-        "featureDefsPath": {
+        "processed-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Database path to feature definition collection",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "processed-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
             "type": "string"
         },
-        "albumPath": {
+        "processed-albumPath": {
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
@@ -2597,7 +2589,7 @@ Each folder should have the same 5 files listed above.</p>
             "$ref": "definitions.schema.json#/definitions/description"
         },
         "image": {
-            "$ref": "definitions.schema.json#/input-data/image"
+            "$ref": "definitions.schema.json#/definitions/input-image"
         },
         "link": {
             "$ref": "definitions.schema.json#/definitions/link"
@@ -2609,16 +2601,16 @@ Each folder should have the same 5 files listed above.</p>
             "$ref": "definitions.schema.json#/definitions/production"
         },
         "featuresDataPath": {
-            "$ref": "definitions.schema.json#/input-data/featuresDataPath"
+            "$ref": "definitions.schema.json#/definitions/input-featuresDataPath"
         },
         "featureDefsPath": {
-            "$ref": "definitions.schema.json#/input-data/featureDefsPath"
+            "$ref": "definitions.schema.json#/definitions/input-featureDefsPath"
         },
         "viewerSettingsPath": {
-            "$ref": "definitions.schema.json#/input-data/viewerSettingsPath"
+            "$ref": "definitions.schema.json#/definitions/input-viewerSettingsPath"
         },
         "albumPath": {
-            "$ref": "definitions.schema.json#/input-data/albumPath"
+            "$ref": "definitions.schema.json#/definitions/input-albumPath"
         },
         "thumbnailRoot": {
             "$ref": "definitions.schema.json#/definitions/thumbnailRoot"
@@ -2808,15 +2800,13 @@ Each folder should have the same 5 files listed above.</p>
             "items": {
                 "type": "string"
             }
-        }
-    },
-    "input-data": {
-        "dateCreated": {
+        },
+        "input-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
-        "datasets": {
+        "input-datasets": {
             "title": "Input datasets",
             "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
@@ -2824,39 +2814,37 @@ Each folder should have the same 5 files listed above.</p>
                 "type": "string"
             }
         },
-        "image": {
+        "input-image": {
             "title": "Image file",
             "description": "Relative path to the dataset card image file, including filename.",
             "type": "string"
         },
-        "featuresDataPath": {
+        "input-featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
             "type": "string"
         },
-        "featureDefsPath": {
+        "input-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Relative path to the feature definition file, including filename.",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "input-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
             "type": "string"
         },
-        "albumPath": {
+        "input-albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
             "type": "string"
-        }
-    },
-    "processed-data": {
-        "dateCreated": {
+        },
+        "processed-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Firebase Timestamp. ",
             "type": "string"
         },
-        "datasets": {
+        "processed-datasets": {
             "title": "Input datasets",
             "description": "Array of dateset cards.",
             "type": "array",
@@ -2865,27 +2853,27 @@ Each folder should have the same 5 files listed above.</p>
                 "$ref": "dataset-card.schema.json"
             }
         },
-        "image": {
+        "processed-image": {
             "title": "Image file",
             "description": "Url of the dataset card image file on AWS",
             "type": "string"
         },
-        "featuresDataPath": {
+        "processed-featuresDataPath": {
             "title": "Feature data path",
             "description": "Url of the features JSON on AWS",
             "type": "string"
         },
-        "featureDefsPath": {
+        "processed-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Database path to feature definition collection",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "processed-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
             "type": "string"
         },
-        "albumPath": {
+        "processed-albumPath": {
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
@@ -2917,10 +2905,10 @@ Each folder should have the same 5 files listed above.</p>
             "$ref": "definitions.schema.json#/definitions/name"
         },
         "datasets": {
-            "$ref": "definitions.schema.json#/input-data/datasets"
+            "$ref": "definitions.schema.json#/definitions/input-datasets"
         },
         "dateCreated": {
-            "$ref": "definitions.schema.json#/input-data/dateCreated"
+            "$ref": "definitions.schema.json#/definitions/input-dateCreated"
         },
         "publications": {
             "title": "Publications",
@@ -3105,15 +3093,13 @@ Each folder should have the same 5 files listed above.</p>
             "items": {
                 "type": "string"
             }
-        }
-    },
-    "input-data": {
-        "dateCreated": {
+        },
+        "input-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
-        "datasets": {
+        "input-datasets": {
             "title": "Input datasets",
             "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
@@ -3121,39 +3107,37 @@ Each folder should have the same 5 files listed above.</p>
                 "type": "string"
             }
         },
-        "image": {
+        "input-image": {
             "title": "Image file",
             "description": "Relative path to the dataset card image file, including filename.",
             "type": "string"
         },
-        "featuresDataPath": {
+        "input-featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
             "type": "string"
         },
-        "featureDefsPath": {
+        "input-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Relative path to the feature definition file, including filename.",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "input-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
             "type": "string"
         },
-        "albumPath": {
+        "input-albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
             "type": "string"
-        }
-    },
-    "processed-data": {
-        "dateCreated": {
+        },
+        "processed-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Firebase Timestamp. ",
             "type": "string"
         },
-        "datasets": {
+        "processed-datasets": {
             "title": "Input datasets",
             "description": "Array of dateset cards.",
             "type": "array",
@@ -3162,27 +3146,27 @@ Each folder should have the same 5 files listed above.</p>
                 "$ref": "dataset-card.schema.json"
             }
         },
-        "image": {
+        "processed-image": {
             "title": "Image file",
             "description": "Url of the dataset card image file on AWS",
             "type": "string"
         },
-        "featuresDataPath": {
+        "processed-featuresDataPath": {
             "title": "Feature data path",
             "description": "Url of the features JSON on AWS",
             "type": "string"
         },
-        "featureDefsPath": {
+        "processed-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Database path to feature definition collection",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "processed-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
             "type": "string"
         },
-        "albumPath": {
+        "processed-albumPath": {
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
@@ -3317,15 +3301,13 @@ Each folder should have the same 5 files listed above.</p>
             "items": {
                 "type": "string"
             }
-        }
-    },
-    "input-data": {
-        "dateCreated": {
+        },
+        "input-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
-        "datasets": {
+        "input-datasets": {
             "title": "Input datasets",
             "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
@@ -3333,39 +3315,37 @@ Each folder should have the same 5 files listed above.</p>
                 "type": "string"
             }
         },
-        "image": {
+        "input-image": {
             "title": "Image file",
             "description": "Relative path to the dataset card image file, including filename.",
             "type": "string"
         },
-        "featuresDataPath": {
+        "input-featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
             "type": "string"
         },
-        "featureDefsPath": {
+        "input-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Relative path to the feature definition file, including filename.",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "input-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
             "type": "string"
         },
-        "albumPath": {
+        "input-albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
             "type": "string"
-        }
-    },
-    "processed-data": {
-        "dateCreated": {
+        },
+        "processed-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Firebase Timestamp. ",
             "type": "string"
         },
-        "datasets": {
+        "processed-datasets": {
             "title": "Input datasets",
             "description": "Array of dateset cards.",
             "type": "array",
@@ -3374,27 +3354,27 @@ Each folder should have the same 5 files listed above.</p>
                 "$ref": "dataset-card.schema.json"
             }
         },
-        "image": {
+        "processed-image": {
             "title": "Image file",
             "description": "Url of the dataset card image file on AWS",
             "type": "string"
         },
-        "featuresDataPath": {
+        "processed-featuresDataPath": {
             "title": "Feature data path",
             "description": "Url of the features JSON on AWS",
             "type": "string"
         },
-        "featureDefsPath": {
+        "processed-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Database path to feature definition collection",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "processed-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
             "type": "string"
         },
-        "albumPath": {
+        "processed-albumPath": {
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
@@ -3529,15 +3509,13 @@ Each folder should have the same 5 files listed above.</p>
             "items": {
                 "type": "string"
             }
-        }
-    },
-    "input-data": {
-        "dateCreated": {
+        },
+        "input-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
-        "datasets": {
+        "input-datasets": {
             "title": "Input datasets",
             "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
@@ -3545,39 +3523,37 @@ Each folder should have the same 5 files listed above.</p>
                 "type": "string"
             }
         },
-        "image": {
+        "input-image": {
             "title": "Image file",
             "description": "Relative path to the dataset card image file, including filename.",
             "type": "string"
         },
-        "featuresDataPath": {
+        "input-featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
             "type": "string"
         },
-        "featureDefsPath": {
+        "input-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Relative path to the feature definition file, including filename.",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "input-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
             "type": "string"
         },
-        "albumPath": {
+        "input-albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
             "type": "string"
-        }
-    },
-    "processed-data": {
-        "dateCreated": {
+        },
+        "processed-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Firebase Timestamp. ",
             "type": "string"
         },
-        "datasets": {
+        "processed-datasets": {
             "title": "Input datasets",
             "description": "Array of dateset cards.",
             "type": "array",
@@ -3586,27 +3562,27 @@ Each folder should have the same 5 files listed above.</p>
                 "$ref": "dataset-card.schema.json"
             }
         },
-        "image": {
+        "processed-image": {
             "title": "Image file",
             "description": "Url of the dataset card image file on AWS",
             "type": "string"
         },
-        "featuresDataPath": {
+        "processed-featuresDataPath": {
             "title": "Feature data path",
             "description": "Url of the features JSON on AWS",
             "type": "string"
         },
-        "featureDefsPath": {
+        "processed-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Database path to feature definition collection",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "processed-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
             "type": "string"
         },
-        "albumPath": {
+        "processed-albumPath": {
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"

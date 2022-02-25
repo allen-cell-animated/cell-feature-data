@@ -595,25 +595,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-colorby">Color settings</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Settings for the color by menu</p>
-</div>
-<div class="paragraph">
-<p>Additional properties are allowed.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-colorby"><code>input-dataset-info.schema.json</code></a></p>
-</li>
-</ul>
-</div>
-<hr>
-</div>
-</div>
-<div class="sect1">
 <h2 id="reference-array-items/condensed-measured-feature">Condensed measured feature</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1014,7 +995,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>dateCreated</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Format: Firebase Timestamp.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -1642,25 +1623,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-groupby">Grouping settings</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Settings for the grouping menu</p>
-</div>
-<div class="paragraph">
-<p>Additional properties are allowed.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-groupby"><code>input-dataset-info.schema.json</code></a></p>
-</li>
-</ul>
-</div>
-<hr>
-</div>
-</div>
-<div class="sect1">
 <h2 id="reference-array">Input datasets</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1705,25 +1667,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featuresDataPath</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">url to the per cell data json</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Url of the features JSON on AWS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>featureDefsPath</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">path to the feature def collection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Database path to feature definition collection</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>viewerSettingsPath</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">path to image per-channel settings for the 3d viewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Url of the per-channel settings file for the 3d viewer on AWS.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>albumPath</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">collection name of the album data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Database path to album information.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -1795,7 +1757,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_manifest_featuresdatapath">manifest.featuresDataPath</h3>
 <div class="paragraph">
-<p>url to the per cell data json</p>
+<p>Url of the features JSON on AWS</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1811,7 +1773,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_manifest_featuredefspath">manifest.featureDefsPath</h3>
 <div class="paragraph">
-<p>path to the feature def collection</p>
+<p>Database path to feature definition collection</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1827,7 +1789,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_manifest_viewersettingspath">manifest.viewerSettingsPath</h3>
 <div class="paragraph">
-<p>path to image per-channel settings for the 3d viewer</p>
+<p>Url of the per-channel settings file for the 3d viewer on AWS.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1843,7 +1805,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_manifest_albumpath">manifest.albumPath</h3>
 <div class="paragraph">
-<p>collection name of the album data</p>
+<p>Database path to album information.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2023,7 +1985,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>dateCreated</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Format: Firebase Timestamp.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -2081,7 +2043,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_megaset_card_datecreated">megaset-card.dateCreated</h3>
 <div class="paragraph">
-<p>Format: Month Day, Year. If it&#8217;s not specified, the date will be set to the upload date.</p>
+<p>Format: Firebase Timestamp.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2360,44 +2322,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
-<hr>
-</div>
-</div>
-<div class="sect1">
-<h2 id="reference-xaxis">xAxis settings</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Settings for the x axis</p>
-</div>
-<div class="paragraph">
-<p>Additional properties are allowed.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-xaxis"><code>input-dataset-info.schema.json</code></a></p>
-</li>
-</ul>
-</div>
-<hr>
-</div>
-</div>
-<div class="sect1">
-<h2 id="reference-yaxis">yAxis settings</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Settings for the y axis</p>
-</div>
-<div class="paragraph">
-<p>Additional properties are allowed.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-yaxis"><code>input-dataset-info.schema.json</code></a></p>
-</li>
-</ul>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -2481,120 +2405,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "dataset-data",
         "cell-data",
         "measured-features"
-    ]
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="schema-reference-colorby">JSON Schema for Color settings</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "input-dataset-info.schema.json",
-    "title": "Input dataset info `dataset.json`",
-    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "title": {
-            "$ref": "definitions.schema.json#/definitions/dataset-title"
-        },
-        "name": {
-            "$ref": "definitions.schema.json#/definitions/name"
-        },
-        "version": {
-            "$ref": "definitions.schema.json#/definitions/version"
-        },
-        "description": {
-            "$ref": "definitions.schema.json#/definitions/description"
-        },
-        "image": {
-            "$ref": "definitions.schema.json#/input-data/image"
-        },
-        "link": {
-            "$ref": "definitions.schema.json#/definitions/link"
-        },
-        "userData": {
-            "$ref": "definitions.schema.json#/definitions/userData"
-        },
-        "production": {
-            "$ref": "definitions.schema.json#/definitions/production"
-        },
-        "featuresDataPath": {
-            "$ref": "definitions.schema.json#/input-data/featuresDataPath"
-        },
-        "featureDefsPath": {
-            "$ref": "definitions.schema.json#/input-data/featureDefsPath"
-        },
-        "viewerSettingsPath": {
-            "$ref": "definitions.schema.json#/input-data/viewerSettingsPath"
-        },
-        "albumPath": {
-            "$ref": "definitions.schema.json#/input-data/albumPath"
-        },
-        "thumbnailRoot": {
-            "$ref": "definitions.schema.json#/definitions/thumbnailRoot"
-        },
-        "downloadRoot": {
-            "$ref": "definitions.schema.json#/definitions/downloadRoot"
-        },
-        "volumeViewerDataRoot": {
-            "$ref": "definitions.schema.json#/definitions/volumeViewerDataRoot"
-        },
-        "xAxis": {
-            "title": "xAxis settings",
-            "description": "Settings for the x axis",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "yAxis": {
-            "title": "yAxis settings",
-            "description": "Settings for the y axis",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "colorBy": {
-            "title": "Color settings",
-            "description": "Settings for the color by menu",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "groupBy": {
-            "title": "Grouping settings",
-            "description": "Settings for the grouping menu",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "featuresDisplayOrder": {
-            "$ref": "definitions.schema.json#/definitions/featuresDisplayOrder"
-        },
-        "featuresDataOrder": {
-            "$ref": "definitions.schema.json#/definitions/featuresDataOrder"
-        }
-    },
-    "required": [
-        "title",
-        "version",
-        "name",
-        "image",
-        "description",
-        "featuresDataPath",
-        "viewerSettingsPath",
-        "albumPath",
-        "thumbnailRoot",
-        "downloadRoot",
-        "volumeViewerDataRoot",
-        "xAxis",
-        "yAxis",
-        "groupBy",
-        "colorBy",
-        "featuresDisplayOrder",
-        "featuresDataOrder"
     ]
 }</code></pre>
 </div>
@@ -2701,7 +2511,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "$ref": "definitions.schema.json#/definitions/description"
         },
         "image": {
-            "$ref": "definitions.schema.json#/processed-data/image"
+            "$ref": "definitions.schema.json#/definitions/processed-image"
         },
         "link": {
             "$ref": "definitions.schema.json#/definitions/link"
@@ -2929,15 +2739,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "items": {
                 "type": "string"
             }
-        }
-    },
-    "input-data": {
-        "dateCreated": {
+        },
+        "input-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
-        "datasets": {
+        "input-datasets": {
             "title": "Input datasets",
             "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
@@ -2945,39 +2753,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 "type": "string"
             }
         },
-        "image": {
+        "input-image": {
             "title": "Image file",
             "description": "Relative path to the dataset card image file, including filename.",
             "type": "string"
         },
-        "featuresDataPath": {
+        "input-featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
             "type": "string"
         },
-        "featureDefsPath": {
+        "input-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Relative path to the feature definition file, including filename.",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "input-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
             "type": "string"
         },
-        "albumPath": {
+        "input-albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
             "type": "string"
-        }
-    },
-    "processed-data": {
-        "dateCreated": {
+        },
+        "processed-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Firebase Timestamp. ",
             "type": "string"
         },
-        "datasets": {
+        "processed-datasets": {
             "title": "Input datasets",
             "description": "Array of dateset cards.",
             "type": "array",
@@ -2986,27 +2792,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 "$ref": "dataset-card.schema.json"
             }
         },
-        "image": {
+        "processed-image": {
             "title": "Image file",
             "description": "Url of the dataset card image file on AWS",
             "type": "string"
         },
-        "featuresDataPath": {
+        "processed-featuresDataPath": {
             "title": "Feature data path",
             "description": "Url of the features JSON on AWS",
             "type": "string"
         },
-        "featureDefsPath": {
+        "processed-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Database path to feature definition collection",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "processed-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
             "type": "string"
         },
-        "albumPath": {
+        "processed-albumPath": {
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
@@ -3198,15 +3004,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "items": {
                 "type": "string"
             }
-        }
-    },
-    "input-data": {
-        "dateCreated": {
+        },
+        "input-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
-        "datasets": {
+        "input-datasets": {
             "title": "Input datasets",
             "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
@@ -3214,39 +3018,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 "type": "string"
             }
         },
-        "image": {
+        "input-image": {
             "title": "Image file",
             "description": "Relative path to the dataset card image file, including filename.",
             "type": "string"
         },
-        "featuresDataPath": {
+        "input-featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
             "type": "string"
         },
-        "featureDefsPath": {
+        "input-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Relative path to the feature definition file, including filename.",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "input-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
             "type": "string"
         },
-        "albumPath": {
+        "input-albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
             "type": "string"
-        }
-    },
-    "processed-data": {
-        "dateCreated": {
+        },
+        "processed-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Firebase Timestamp. ",
             "type": "string"
         },
-        "datasets": {
+        "processed-datasets": {
             "title": "Input datasets",
             "description": "Array of dateset cards.",
             "type": "array",
@@ -3255,27 +3057,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 "$ref": "dataset-card.schema.json"
             }
         },
-        "image": {
+        "processed-image": {
             "title": "Image file",
             "description": "Url of the dataset card image file on AWS",
             "type": "string"
         },
-        "featuresDataPath": {
+        "processed-featuresDataPath": {
             "title": "Feature data path",
             "description": "Url of the features JSON on AWS",
             "type": "string"
         },
-        "featureDefsPath": {
+        "processed-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Database path to feature definition collection",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "processed-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
             "type": "string"
         },
-        "albumPath": {
+        "processed-albumPath": {
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
@@ -3334,120 +3136,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "FOVId",
         "groupBy",
         "volumeviewerPath"
-    ]
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="schema-reference-groupby">JSON Schema for Grouping settings</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "input-dataset-info.schema.json",
-    "title": "Input dataset info `dataset.json`",
-    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "title": {
-            "$ref": "definitions.schema.json#/definitions/dataset-title"
-        },
-        "name": {
-            "$ref": "definitions.schema.json#/definitions/name"
-        },
-        "version": {
-            "$ref": "definitions.schema.json#/definitions/version"
-        },
-        "description": {
-            "$ref": "definitions.schema.json#/definitions/description"
-        },
-        "image": {
-            "$ref": "definitions.schema.json#/input-data/image"
-        },
-        "link": {
-            "$ref": "definitions.schema.json#/definitions/link"
-        },
-        "userData": {
-            "$ref": "definitions.schema.json#/definitions/userData"
-        },
-        "production": {
-            "$ref": "definitions.schema.json#/definitions/production"
-        },
-        "featuresDataPath": {
-            "$ref": "definitions.schema.json#/input-data/featuresDataPath"
-        },
-        "featureDefsPath": {
-            "$ref": "definitions.schema.json#/input-data/featureDefsPath"
-        },
-        "viewerSettingsPath": {
-            "$ref": "definitions.schema.json#/input-data/viewerSettingsPath"
-        },
-        "albumPath": {
-            "$ref": "definitions.schema.json#/input-data/albumPath"
-        },
-        "thumbnailRoot": {
-            "$ref": "definitions.schema.json#/definitions/thumbnailRoot"
-        },
-        "downloadRoot": {
-            "$ref": "definitions.schema.json#/definitions/downloadRoot"
-        },
-        "volumeViewerDataRoot": {
-            "$ref": "definitions.schema.json#/definitions/volumeViewerDataRoot"
-        },
-        "xAxis": {
-            "title": "xAxis settings",
-            "description": "Settings for the x axis",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "yAxis": {
-            "title": "yAxis settings",
-            "description": "Settings for the y axis",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "colorBy": {
-            "title": "Color settings",
-            "description": "Settings for the color by menu",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "groupBy": {
-            "title": "Grouping settings",
-            "description": "Settings for the grouping menu",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "featuresDisplayOrder": {
-            "$ref": "definitions.schema.json#/definitions/featuresDisplayOrder"
-        },
-        "featuresDataOrder": {
-            "$ref": "definitions.schema.json#/definitions/featuresDataOrder"
-        }
-    },
-    "required": [
-        "title",
-        "version",
-        "name",
-        "image",
-        "description",
-        "featuresDataPath",
-        "viewerSettingsPath",
-        "albumPath",
-        "thumbnailRoot",
-        "downloadRoot",
-        "volumeViewerDataRoot",
-        "xAxis",
-        "yAxis",
-        "groupBy",
-        "colorBy",
-        "featuresDisplayOrder",
-        "featuresDataOrder"
     ]
 }</code></pre>
 </div>
@@ -3578,15 +3266,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "items": {
                 "type": "string"
             }
-        }
-    },
-    "input-data": {
-        "dateCreated": {
+        },
+        "input-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
-        "datasets": {
+        "input-datasets": {
             "title": "Input datasets",
             "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
@@ -3594,39 +3280,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 "type": "string"
             }
         },
-        "image": {
+        "input-image": {
             "title": "Image file",
             "description": "Relative path to the dataset card image file, including filename.",
             "type": "string"
         },
-        "featuresDataPath": {
+        "input-featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
             "type": "string"
         },
-        "featureDefsPath": {
+        "input-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Relative path to the feature definition file, including filename.",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "input-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
             "type": "string"
         },
-        "albumPath": {
+        "input-albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
             "type": "string"
-        }
-    },
-    "processed-data": {
-        "dateCreated": {
+        },
+        "processed-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Firebase Timestamp. ",
             "type": "string"
         },
-        "datasets": {
+        "processed-datasets": {
             "title": "Input datasets",
             "description": "Array of dateset cards.",
             "type": "array",
@@ -3635,27 +3319,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 "$ref": "dataset-card.schema.json"
             }
         },
-        "image": {
+        "processed-image": {
             "title": "Image file",
             "description": "Url of the dataset card image file on AWS",
             "type": "string"
         },
-        "featuresDataPath": {
+        "processed-featuresDataPath": {
             "title": "Feature data path",
             "description": "Url of the features JSON on AWS",
             "type": "string"
         },
-        "featureDefsPath": {
+        "processed-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Database path to feature definition collection",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "processed-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
             "type": "string"
         },
-        "albumPath": {
+        "processed-albumPath": {
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
@@ -3681,44 +3365,49 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "additionalProperties": false,
     "properties": {
         "featuresDataPath": {
-            "description": "url to the per cell data json",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/processed-featuresDataPath"
         },
         "featureDefsPath": {
-            "description": "path to the feature def collection",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/processed-featureDefsPath"
         },
         "viewerSettingsPath": {
-            "description": "path to image per-channel settings for the 3d viewer",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/processed-viewerSettingsPath"
         },
         "albumPath": {
-            "description": "collection name of the album data",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/processed-albumPath"
         },
         "thumbnailRoot": {
-            "description": "Root url for thumbnail images",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/thumbnailRoot"
         },
         "downloadRoot": {
-            "description": "Root url for downloading cell data",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/downloadRoot"
         },
         "volumeViewerDataRoot": {
-            "description": "Root url for 3d images",
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/volumeViewerDataRoot"
         },
         "xAxis": {
-            "$ref": "input-dataset-info.schema.json#/properties/xAxis"
+            "title": "xAxis settings",
+            "description": "Settings for the x axis",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
         },
         "yAxis": {
-            "$ref": "input-dataset-info.schema.json#/properties/yAxis"
+            "title": "yAxis settings",
+            "description": "Settings for the y axis",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
         },
         "colorBy": {
-            "$ref": "input-dataset-info.schema.json#/properties/colorBy"
+            "title": "Color settings",
+            "description": "Settings for the color by menu",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
         },
         "groupBy": {
-            "$ref": "input-dataset-info.schema.json#/properties/groupBy"
+            "title": "Grouping settings",
+            "description": "Settings for the grouping menu",
+            "type": "object",
+            "$ref": "definitions.schema.json#/definitions/selection-settings"
         },
         "featuresDisplayOrder": {
             "$ref": "definitions.schema.json#/definitions/featuresDisplayOrder"
@@ -3761,10 +3450,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     "additionalProperties": false,
     "properties": {
         "datasets": {
-            "$ref": "definitions.schema.json#/processed-data/datasets"
+            "$ref": "definitions.schema.json#/definitions/processed-datasets"
         },
         "dateCreated": {
-            "$ref": "definitions.schema.json#/input-data/dateCreated"
+            "$ref": "definitions.schema.json#/definitions/processed-dateCreated"
         },
         "name": {
             "$ref": "definitions.schema.json#/definitions/name"
@@ -3920,15 +3609,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "items": {
                 "type": "string"
             }
-        }
-    },
-    "input-data": {
-        "dateCreated": {
+        },
+        "input-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
-        "datasets": {
+        "input-datasets": {
             "title": "Input datasets",
             "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
@@ -3936,39 +3623,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 "type": "string"
             }
         },
-        "image": {
+        "input-image": {
             "title": "Image file",
             "description": "Relative path to the dataset card image file, including filename.",
             "type": "string"
         },
-        "featuresDataPath": {
+        "input-featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
             "type": "string"
         },
-        "featureDefsPath": {
+        "input-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Relative path to the feature definition file, including filename.",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "input-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
             "type": "string"
         },
-        "albumPath": {
+        "input-albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
             "type": "string"
-        }
-    },
-    "processed-data": {
-        "dateCreated": {
+        },
+        "processed-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Firebase Timestamp. ",
             "type": "string"
         },
-        "datasets": {
+        "processed-datasets": {
             "title": "Input datasets",
             "description": "Array of dateset cards.",
             "type": "array",
@@ -3977,27 +3662,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 "$ref": "dataset-card.schema.json"
             }
         },
-        "image": {
+        "processed-image": {
             "title": "Image file",
             "description": "Url of the dataset card image file on AWS",
             "type": "string"
         },
-        "featuresDataPath": {
+        "processed-featuresDataPath": {
             "title": "Feature data path",
             "description": "Url of the features JSON on AWS",
             "type": "string"
         },
-        "featureDefsPath": {
+        "processed-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Database path to feature definition collection",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "processed-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
             "type": "string"
         },
-        "albumPath": {
+        "processed-albumPath": {
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
@@ -4132,15 +3817,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "items": {
                 "type": "string"
             }
-        }
-    },
-    "input-data": {
-        "dateCreated": {
+        },
+        "input-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
-        "datasets": {
+        "input-datasets": {
             "title": "Input datasets",
             "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
@@ -4148,39 +3831,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 "type": "string"
             }
         },
-        "image": {
+        "input-image": {
             "title": "Image file",
             "description": "Relative path to the dataset card image file, including filename.",
             "type": "string"
         },
-        "featuresDataPath": {
+        "input-featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
             "type": "string"
         },
-        "featureDefsPath": {
+        "input-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Relative path to the feature definition file, including filename.",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "input-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
             "type": "string"
         },
-        "albumPath": {
+        "input-albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
             "type": "string"
-        }
-    },
-    "processed-data": {
-        "dateCreated": {
+        },
+        "processed-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Firebase Timestamp. ",
             "type": "string"
         },
-        "datasets": {
+        "processed-datasets": {
             "title": "Input datasets",
             "description": "Array of dateset cards.",
             "type": "array",
@@ -4189,27 +3870,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 "$ref": "dataset-card.schema.json"
             }
         },
-        "image": {
+        "processed-image": {
             "title": "Image file",
             "description": "Url of the dataset card image file on AWS",
             "type": "string"
         },
-        "featuresDataPath": {
+        "processed-featuresDataPath": {
             "title": "Feature data path",
             "description": "Url of the features JSON on AWS",
             "type": "string"
         },
-        "featureDefsPath": {
+        "processed-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Database path to feature definition collection",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "processed-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
             "type": "string"
         },
-        "albumPath": {
+        "processed-albumPath": {
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
@@ -4344,15 +4025,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "items": {
                 "type": "string"
             }
-        }
-    },
-    "input-data": {
-        "dateCreated": {
+        },
+        "input-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Month Day, Year. If it's not specified, the date will be set to the upload date. ",
             "type": "string"
         },
-        "datasets": {
+        "input-datasets": {
             "title": "Input datasets",
             "description": "Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.",
             "type": "array",
@@ -4360,39 +4039,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 "type": "string"
             }
         },
-        "image": {
+        "input-image": {
             "title": "Image file",
             "description": "Relative path to the dataset card image file, including filename.",
             "type": "string"
         },
-        "featuresDataPath": {
+        "input-featuresDataPath": {
             "title": "Feature data path",
             "description": "Relative path to the per cell data json, including filename.",
             "type": "string"
         },
-        "featureDefsPath": {
+        "input-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Relative path to the feature definition file, including filename.",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "input-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Relative path to image per-channel settings file for the 3d viewer, including filename.",
             "type": "string"
         },
-        "albumPath": {
+        "input-albumPath": {
             "title": "Album path",
             "description": "Relative path to the album file.",
             "type": "string"
-        }
-    },
-    "processed-data": {
-        "dateCreated": {
+        },
+        "processed-dateCreated": {
             "title": "Date the dataset was created",
             "description": "Format: Firebase Timestamp. ",
             "type": "string"
         },
-        "datasets": {
+        "processed-datasets": {
             "title": "Input datasets",
             "description": "Array of dateset cards.",
             "type": "array",
@@ -4401,260 +4078,32 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
                 "$ref": "dataset-card.schema.json"
             }
         },
-        "image": {
+        "processed-image": {
             "title": "Image file",
             "description": "Url of the dataset card image file on AWS",
             "type": "string"
         },
-        "featuresDataPath": {
+        "processed-featuresDataPath": {
             "title": "Feature data path",
             "description": "Url of the features JSON on AWS",
             "type": "string"
         },
-        "featureDefsPath": {
+        "processed-featureDefsPath": {
             "title": "Feature defs path",
             "description": "Database path to feature definition collection",
             "type": "string"
         },
-        "viewerSettingsPath": {
+        "processed-viewerSettingsPath": {
             "title": "Viewer settings path",
             "description": "Url of the per-channel settings file for the 3d viewer on AWS.",
             "type": "string"
         },
-        "albumPath": {
+        "processed-albumPath": {
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
         }
     }
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="schema-reference-xaxis">JSON Schema for xAxis settings</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "input-dataset-info.schema.json",
-    "title": "Input dataset info `dataset.json`",
-    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "title": {
-            "$ref": "definitions.schema.json#/definitions/dataset-title"
-        },
-        "name": {
-            "$ref": "definitions.schema.json#/definitions/name"
-        },
-        "version": {
-            "$ref": "definitions.schema.json#/definitions/version"
-        },
-        "description": {
-            "$ref": "definitions.schema.json#/definitions/description"
-        },
-        "image": {
-            "$ref": "definitions.schema.json#/input-data/image"
-        },
-        "link": {
-            "$ref": "definitions.schema.json#/definitions/link"
-        },
-        "userData": {
-            "$ref": "definitions.schema.json#/definitions/userData"
-        },
-        "production": {
-            "$ref": "definitions.schema.json#/definitions/production"
-        },
-        "featuresDataPath": {
-            "$ref": "definitions.schema.json#/input-data/featuresDataPath"
-        },
-        "featureDefsPath": {
-            "$ref": "definitions.schema.json#/input-data/featureDefsPath"
-        },
-        "viewerSettingsPath": {
-            "$ref": "definitions.schema.json#/input-data/viewerSettingsPath"
-        },
-        "albumPath": {
-            "$ref": "definitions.schema.json#/input-data/albumPath"
-        },
-        "thumbnailRoot": {
-            "$ref": "definitions.schema.json#/definitions/thumbnailRoot"
-        },
-        "downloadRoot": {
-            "$ref": "definitions.schema.json#/definitions/downloadRoot"
-        },
-        "volumeViewerDataRoot": {
-            "$ref": "definitions.schema.json#/definitions/volumeViewerDataRoot"
-        },
-        "xAxis": {
-            "title": "xAxis settings",
-            "description": "Settings for the x axis",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "yAxis": {
-            "title": "yAxis settings",
-            "description": "Settings for the y axis",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "colorBy": {
-            "title": "Color settings",
-            "description": "Settings for the color by menu",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "groupBy": {
-            "title": "Grouping settings",
-            "description": "Settings for the grouping menu",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "featuresDisplayOrder": {
-            "$ref": "definitions.schema.json#/definitions/featuresDisplayOrder"
-        },
-        "featuresDataOrder": {
-            "$ref": "definitions.schema.json#/definitions/featuresDataOrder"
-        }
-    },
-    "required": [
-        "title",
-        "version",
-        "name",
-        "image",
-        "description",
-        "featuresDataPath",
-        "viewerSettingsPath",
-        "albumPath",
-        "thumbnailRoot",
-        "downloadRoot",
-        "volumeViewerDataRoot",
-        "xAxis",
-        "yAxis",
-        "groupBy",
-        "colorBy",
-        "featuresDisplayOrder",
-        "featuresDataOrder"
-    ]
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="schema-reference-yaxis">JSON Schema for yAxis settings</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "input-dataset-info.schema.json",
-    "title": "Input dataset info `dataset.json`",
-    "description": "File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "title": {
-            "$ref": "definitions.schema.json#/definitions/dataset-title"
-        },
-        "name": {
-            "$ref": "definitions.schema.json#/definitions/name"
-        },
-        "version": {
-            "$ref": "definitions.schema.json#/definitions/version"
-        },
-        "description": {
-            "$ref": "definitions.schema.json#/definitions/description"
-        },
-        "image": {
-            "$ref": "definitions.schema.json#/input-data/image"
-        },
-        "link": {
-            "$ref": "definitions.schema.json#/definitions/link"
-        },
-        "userData": {
-            "$ref": "definitions.schema.json#/definitions/userData"
-        },
-        "production": {
-            "$ref": "definitions.schema.json#/definitions/production"
-        },
-        "featuresDataPath": {
-            "$ref": "definitions.schema.json#/input-data/featuresDataPath"
-        },
-        "featureDefsPath": {
-            "$ref": "definitions.schema.json#/input-data/featureDefsPath"
-        },
-        "viewerSettingsPath": {
-            "$ref": "definitions.schema.json#/input-data/viewerSettingsPath"
-        },
-        "albumPath": {
-            "$ref": "definitions.schema.json#/input-data/albumPath"
-        },
-        "thumbnailRoot": {
-            "$ref": "definitions.schema.json#/definitions/thumbnailRoot"
-        },
-        "downloadRoot": {
-            "$ref": "definitions.schema.json#/definitions/downloadRoot"
-        },
-        "volumeViewerDataRoot": {
-            "$ref": "definitions.schema.json#/definitions/volumeViewerDataRoot"
-        },
-        "xAxis": {
-            "title": "xAxis settings",
-            "description": "Settings for the x axis",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "yAxis": {
-            "title": "yAxis settings",
-            "description": "Settings for the y axis",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "colorBy": {
-            "title": "Color settings",
-            "description": "Settings for the color by menu",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "groupBy": {
-            "title": "Grouping settings",
-            "description": "Settings for the grouping menu",
-            "type": "object",
-            "$ref": "definitions.schema.json#/definitions/selection-settings"
-        },
-        "featuresDisplayOrder": {
-            "$ref": "definitions.schema.json#/definitions/featuresDisplayOrder"
-        },
-        "featuresDataOrder": {
-            "$ref": "definitions.schema.json#/definitions/featuresDataOrder"
-        }
-    },
-    "required": [
-        "title",
-        "version",
-        "name",
-        "image",
-        "description",
-        "featuresDataPath",
-        "viewerSettingsPath",
-        "albumPath",
-        "thumbnailRoot",
-        "downloadRoot",
-        "volumeViewerDataRoot",
-        "xAxis",
-        "yAxis",
-        "groupBy",
-        "colorBy",
-        "featuresDisplayOrder",
-        "featuresDataOrder"
-    ]
 }</code></pre>
 </div>
 </div>
