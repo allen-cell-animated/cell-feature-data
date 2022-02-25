@@ -466,7 +466,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       _normalizedRequired: true,
       required: true
     },
-    name: { type: 'string', _normalizedRequired: true, required: true },
+    name: {
+      title: 'Dataset name',
+      description: 'Name of the group (no version number). Lowercase with underscores.',
+      type: 'string',
+      typeName: 'string',
+      _normalizedRequired: true,
+      required: true
+    },
     production: { type: 'boolean', _normalizedRequired: true, required: true },
     title: { type: 'string', _normalizedRequired: true, required: true },
     publications: {
@@ -1058,7 +1065,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the group (no version number). Lowercase with underscores.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -1091,12 +1098,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
-<hr>
-</div>
-</div>
-<div class="sect1">
-<h2 id="reference-input-megaset">Date created</h2>
-<div class="sectionbody">
 <hr>
 </div>
 </div>
@@ -2055,7 +2056,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the group (no version number). Lowercase with underscores.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
@@ -2119,6 +2120,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="sect2">
 <h3 id="_megaset_card_name">megaset-card.name</h3>
+<div class="paragraph">
+<p>Name of the group (no version number). Lowercase with underscores.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -2745,47 +2749,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "$ref": "megaset-card.schema.json"
         }
     }
-}</code></pre>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="schema-reference-input-megaset">JSON Schema for Date created</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "input-megaset.schema.json",
-    "title": "Input Megaset `dataset.json`",
-    "description": "File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named `dataset.json`",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "title": {
-            "$ref": "definitions.schema.json#/definitions/group-title"
-        },
-        "name": {
-            "$ref": "definitions.schema.json#/definitions/name"
-        },
-        "datasets": {
-            "$ref": "definitions.schema.json#/input-data/datasets"
-        },
-        "dateCreated": {
-            "title": "Date created",
-            "$ref": "definitions.schema.json#/input-data/dateCreated"
-        },
-        "publications": {
-            "$ref": "definitions.schema.json#/definitions/publications"
-        }
-    },
-    "required": [
-        "title",
-        "name",
-        "datasets"
-    ]
 }</code></pre>
 </div>
 </div>
@@ -3493,10 +3456,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             }
         },
         "dateCreated": {
-            "$ref": "input-megaset.schema.json#/properties/dateCreated"
+            "$ref": "definitions.schema.json#/input-data/dateCreated"
         },
         "name": {
-            "type": "string"
+            "$ref": "definitions.schema.json#/definitions/name"
         },
         "production": {
             "type": "boolean"
