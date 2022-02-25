@@ -525,22 +525,6 @@ Each folder should have the same 5 files listed above.</p>
 
 </div>
 <h1 id="_full_documentation" class="sect0">Full Documentation</h1>
-<div class="paragraph">
-<p>{
-  '^\\d{1,}$': {
-    '$schema': 'http://json-schema.org/draft-07/schema#',
-    '$id': 'array-items/discrete-feature-option.schema.json',
-    title: 'Discrete feature option',
-    description: 'Schema for each category in a discrete feature',
-    type: 'object',
-    properties: { color: [Object], name: [Object], key: [Object] },
-    additionalProperties: false,
-    required: undefined,
-    typeName: 'array-items/discrete-feature-option',
-    _normalizedRequired: true
-  }
-} discrete-feature-options.schema.json</p>
-</div>
 <hr>
 <div class="sect1">
 <h2 id="reference-cell-feature-dataset-handoff-specification">Cell Feature Dataset Handoff Specification</h2>
@@ -776,7 +760,7 @@ Each folder should have the same 5 files listed above.</p>
 <p>Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either <code>0</code> or <code>1</code>, there should be two option mappings.</p>
 </div>
 <div class="paragraph">
-<p>Mapping interface: <code>{[key:<strong>^\d{1,}$</strong>]:array-items/discrete-feature-option}</code></p>
+<p>Mapping interface: <code>{  [key: <strong>^\d{1,}$</strong> ]:array-items/discrete-feature-option }</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 3. <code>array-items/discrete-feature-option</code> Properties</caption>
