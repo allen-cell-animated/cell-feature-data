@@ -34,7 +34,6 @@
   },
   "featuresDisplayOrder": [],
   "featuresDataOrder": [
-    "cell-line",
     "cell-height",
     "cell-volume",
     "cell-surface-area",
@@ -55,6 +54,9 @@
     "shape-mode-8",
     "outlier",
     "baseline",
-    "sphere"
+    "sphere",
+    "edge",
+    "angle",
+    "cell-line"
   ]
 }
