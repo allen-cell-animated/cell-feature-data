@@ -32,7 +32,31 @@
   "groupBy": {
     "default": "cell-line"
   },
-  "featuresDisplayOrder": [],
+  "featuresDisplayOrder": [
+    "cell-line",
+    "cell-height",
+    "cell-volume",
+    "cell-surface-area",
+    "dna-height",
+    "dna-volume",
+    "dna-surface-area",
+    "intracellular-structure-volume",
+    "anaphase-segmentation-complete",
+    "interphase-or-mitosis",
+    "interphase-and-mitotic-stages",
+    "shape-mode-1",
+    "shape-mode-2",
+    "shape-mode-3",
+    "shape-mode-4",
+    "shape-mode-5",
+    "shape-mode-6",
+    "shape-mode-7",
+    "shape-mode-8",
+    "outlier",
+    "baseline",
+    "sphere",
+    "edge"
+  ],
   "featuresDataOrder": [
     "cell-height",
     "cell-volume",
