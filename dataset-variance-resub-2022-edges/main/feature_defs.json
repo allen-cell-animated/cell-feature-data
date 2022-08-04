@@ -198,6 +198,14 @@
     "discrete": false
   },
   {
+    "displayName": "Alignment angle",
+    "description": "Angle used to align the cell's longest axis with the x-axis.",
+    "tooltip": "Angle used to align the cell's longest axis with the x-axis.",
+    "unit": "degrees",
+    "key": "angle",
+    "discrete": false
+  },
+  {
     "displayName": "Cell class",
     "description": "Whether the cell is a non-edge or edge cell.",
     "tooltip": "Whether the cell is a non-edge or edge cell.",
@@ -220,7 +228,7 @@
     "description": "ID of shape-matched cell (available for edge cells only).",
     "tooltip": "ID of shape-matched cell (available for edge cells only).",
     "unit": "unitless",
-    "key": "type",
+    "key": "neigh",
     "discrete": false
   },
   {
