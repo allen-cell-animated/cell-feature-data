@@ -40,6 +40,9 @@ const processSingleDataset = async (id, datasetJson, shouldSkipFileInfoUpload, m
     const defaultGroupByIndex = datasetJson.featuresDataOrder.indexOf(defaultGroupBy);
 
     const featureDefsData = await readFeatureData();
+
+    await fsPromises.mkdir(TEMP_FOLDER, { recursive: true });
+
     // 1. upload dataset description and manifest
     const manifestRef = await uploadManifest(firebaseHandler, datasetJson, featureDefsData);
     // 2. check dataset feature defs for new features, upload them if needed
