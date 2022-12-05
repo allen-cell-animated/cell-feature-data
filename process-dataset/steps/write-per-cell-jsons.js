@@ -24,6 +24,7 @@ const formatAndWritePerCellJsons = async (firebaseHandler, readFolder, outFolder
             const counts = {}
             for (let index = 0; index < json.length; index++) {
                 const cellData = json[index];
+                // TODO  backfill old data to have empty(null) transform in the array
                 if (cellData.file_info.length !== FILE_INFO_KEYS.length) {
                     console.error("file info in not in expected format")
                     process.exit(1)

@@ -18,7 +18,8 @@ const FILE_INFO_KEYS = [
     "thumbnailPath",
     "volumeviewerPath",
     "fovThumbnailPath",
-    "fovVolumeviewerPath"
+    "fovVolumeviewerPath",
+    "transform"
 ]
 module.exports = {
     CELL_ID_KEY,
