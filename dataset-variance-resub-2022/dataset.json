@@ -10,6 +10,8 @@
         }
     ],
     "datasets": [
-        "main"
+        "main",
+        "edges",
+        "i2m2"
     ]
 }
