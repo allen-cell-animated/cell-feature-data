@@ -6,7 +6,7 @@
   "description": "This is the full dataset described in the paper: Integrated intracellular organization and its variations in human iPS cells.",
   "userData": {
     "isNew": true,
-    "inReview": true,
+    "inReview": false,
     "totalCells": 215081,
     "totalFOVs": 18000,
     "totalTaggedStructures": 25
