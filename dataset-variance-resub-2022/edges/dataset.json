@@ -6,7 +6,7 @@
   "description": "This is shape-matched dataset of edge cells described in the paper: Integrated intracellular organization and its variations in human iPS cells.",
   "userData": {
     "isNew": true,
-    "inReview": true,
+    "inReview": false,
     "totalCells": 9648,
     "totalFOVs": 0,
     "totalTaggedStructures": 25
