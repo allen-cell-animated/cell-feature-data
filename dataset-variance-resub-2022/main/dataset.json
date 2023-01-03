@@ -1,6 +1,6 @@
 {
-  "title": "hiPSC Single-Cell Image Dataset",
-  "version": "2022.1",
+  "title": "WTC-11 hiPSC Single-Cell Image Dataset",
+  "version": "v1",
   "name": "variance_resub",
   "image": "variance_resub.png",
   "description": "This is the full dataset described in the paper: Integrated intracellular organization and its variations in human iPS cells.",
