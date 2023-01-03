@@ -1,8 +1,8 @@
 {
   "title": "WTC-11 hiPSC Single-Cell Image Dataset (i2 and m2 cells)",
-  "version": "v1",
+  "version": "1",
   "name": "variance_resub_i2m2",
-  "image": "variance_resub.png",
+  "image": "",
   "description": "This is shape-matched dataset of i2 and m2 cells described in the paper: Integrated intracellular organization and its variations in human iPS cells.",
   "userData": {
     "isNew": true,
