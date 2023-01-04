@@ -1,5 +1,5 @@
 {
-  "title": "WTC-11 hiPSC Single-Cell Image Dataset (i2 and m2 cells)",
+  "title": "Interphase (i2) and early-prometaphase (m2) shape-matched cells",
   "version": "1",
   "name": "variance_resub_i2m2",
   "image": "",

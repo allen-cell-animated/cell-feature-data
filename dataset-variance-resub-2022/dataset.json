@@ -12,6 +12,7 @@
     "datasets": [
         "main",
         "edges",
+        "i1m1",
         "i2m2"
     ]
 }

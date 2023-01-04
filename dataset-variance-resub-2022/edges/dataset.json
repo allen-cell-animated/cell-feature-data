@@ -1,5 +1,5 @@
 {
-  "title": "WTC-11 hiPSC Single-Cell Image Dataset (non-edge and edge cells)",
+  "title": "Non-edge and edge shape-matched cells",
   "version": "1",
   "name": "variance_resub_edges",
   "image": "",
