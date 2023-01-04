@@ -1,9 +1,9 @@
 {
-  "title": "WTC-11 hiPSC Single-Cell Image Dataset (i1 and m1 cells)",
+  "title": "Interphase and prophase shape matched cells",
   "version": "1",
   "name": "variance_resub_i1m1",
   "image": "",
-  "description": "This is shape-matched dataset of i1 and m1 cells described in the paper: Integrated intracellular organization and its variations in human iPS cells.",
+  "description": "Dataset of shape matched interphase and prophase cells.",
   "userData": {
     "isNew": true,
     "inReview": true,
