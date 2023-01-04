@@ -1,7 +1,7 @@
 {
   "title": "Non-edge and edge shape-matched cells",
   "version": "1",
-  "name": "variance_resub_edges",
+  "name": "variance_edges",
   "image": "",
   "description": "This is shape-matched dataset of edge cells described in the paper: Integrated intracellular organization and its variations in human iPS cells.",
   "userData": {

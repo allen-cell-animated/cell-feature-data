@@ -1,7 +1,7 @@
 {
   "title": "Interphase (i2) and early-prometaphase (m2) shape-matched cells",
   "version": "1",
-  "name": "variance_resub_i2m2",
+  "name": "variance_i2m2",
   "image": "",
   "description": "This is shape-matched dataset of i2 and m2 cells described in the paper: Integrated intracellular organization and its variations in human iPS cells.",
   "userData": {

@@ -207,19 +207,19 @@
   },
   {
     "displayName": "Cell class",
-    "description": "Whether the cell is a non-edge or edge cell.",
-    "tooltip": "Whether the cell is a non-edge or edge cell.",
+    "description": "Whether the cell is an interphase (i2) or early prometaphase (m2) cell.",
+    "tooltip": "Whether the cell is an interphase (i2) or early prometaphase (m2) cell.",
     "unit": "unitless",
     "key": "type",
     "discrete": true,
     "options": {
       "0": {
         "color": "#fed98e",
-        "name": "Non-edge"
+        "name": "Interphase (i2)"
       },
       "1": {
         "color": "#7f48f3",
-        "name": "Edge"
+        "name": "Early prometaphase (m2)"
       }
     }
   },
