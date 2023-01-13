@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "inputMeasuredFeaturesSchema",
+    "$id": "input-measured-features.schema.json",
     "title": "One measured value",
     "description": "Per data point object. The measured features JSON is an array of these objects.",
     "additionalProperties": false,
@@ -13,13 +13,21 @@
                 "type": "string"
             },
             "minItems": 7,
-            "maxItems": 7
+            "maxItems": 8
         },
         "features": {
             "description": "Ordered array of measured features. Needs to match the order of featuresDataOrder",
             "type": "array",
             "items": {
-                "type": "number"
+                "anyOf": [
+                    {
+                        "type": "number"
+                    },
+                    {
+                        "type": "string",
+                        "pattern": "[NaN]"
+                    }
+                ]
             }
         }
     },
