@@ -141,6 +141,7 @@ const validateDatasets = () => {
 
     }).then((hasError) => {
         if (hasError) {
+            console.log("\x1b[0m");
             throw Error("Validation failed");
         }
     })
