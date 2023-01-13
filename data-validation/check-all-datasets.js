@@ -51,8 +51,10 @@ const checkForError = (fileName, json, schemaFileName) => {
     );
     if (!valid) {
         console.log("\x1b[0m", `${fileName}`, "\x1b[31m", `failed because: ${JSON.stringify(error)}`);
+        return true;
     } else {
         console.log("\x1b[0m", `${fileName}: check against ${schemaFileName}`, "\x1b[32m", "passed");
+        return false;
     }
 };
 
@@ -88,41 +90,60 @@ const unpackInputDataset = async (datasetReadFolder) => {
     return inputDataset;
 }
 
-fsPromises.readdir("./").then(async (files) => {
-    const foldersToCheck = [];
-    for (const name of files) {
-        try {
-            const subFiles = await fsPromises.readdir(name);
-            if (subFiles.includes("dataset.json")) {
-                foldersToCheck.push(name);
-            }
-        } catch (error) { }
-    }
-    for (const datasetFolder of foldersToCheck) {
-        const topLevelJson = await readDatasetJson(datasetFolder);
-        if (topLevelJson.datasets) {
-            checkForError(
-                `${datasetFolder}/dataset.json`,
-                topLevelJson,
-                "input-megaset.schema.json"
-            );
-            topLevelJson.datasets.map(async (subDatasetFolder) => {
-                const datasetReadFolder = `${datasetFolder}/${subDatasetFolder}`;
-                const inputDataset = await unpackInputDataset(datasetReadFolder)
-                checkForError(
-                    `${datasetReadFolder}`,
+const validateDatasets = () => {
+    fsPromises.readdir("./").then(async (files) => {
+        const foldersToCheck = [];
+        let hasError = false;
+        for (const name of files) {
+            try {
+                const subFiles = await fsPromises.readdir(name);
+                if (subFiles.includes("dataset.json")) {
+                    foldersToCheck.push(name);
+                }
+            } catch (error) { }
+        }
+        for (const datasetFolder of foldersToCheck) {
+            const topLevelJson = await readDatasetJson(datasetFolder);
+            if (topLevelJson.datasets) {
+                const foundError = checkForError(
+                    `${datasetFolder}/dataset.json`,
+                    topLevelJson,
+                    "input-megaset.schema.json"
+                );
+                if (foundError) {
+                    hasError = true;
+                }
+                for (const subDatasetFolder of topLevelJson.datasets) {
+                    const datasetReadFolder = `${datasetFolder}/${subDatasetFolder}`;
+                    const inputDataset = await unpackInputDataset(datasetReadFolder)
+                    const foundError = checkForError(
+                        `${datasetReadFolder}`,
+                        inputDataset,
+                        "input-dataset.schema.json"
+                    );
+                    if (foundError) {
+                        hasError = true;
+                    }
+                }
+            } else {
+                const inputDataset = await unpackInputDataset(datasetFolder);
+                const foundError = checkForError(
+                    `${datasetFolder}`,
                     inputDataset,
                     "input-dataset.schema.json"
                 );
-            });
-        } else {
-            const inputDataset = await unpackInputDataset(datasetFolder);
-
-            checkForError(
-                `${datasetFolder}`,
-                inputDataset,
-                "input-dataset.schema.json"
-            );
+                if (foundError) {
+                    hasError = true;
+                }
+            }
         }
-    }
-});
+        return hasError
+
+    }).then((hasError) => {
+        if (hasError) {
+            throw Error("Validation failed");
+        }
+    })
+}
+
+validateDatasets();
