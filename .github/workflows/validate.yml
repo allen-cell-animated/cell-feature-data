@@ -9,7 +9,7 @@ on: [push]
 
 jobs:
     validate:
-        name: ✅ Validate
+        name: ✅ Validate datasets
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
@@ -18,4 +18,4 @@ jobs:
               with:
                   node-version: ${{env.NODE_VERSION}}
             - run: npm ci
-            - run: npm npm run validate-datasets
+            - run: npm run validate-datasets
