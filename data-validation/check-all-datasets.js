@@ -1,7 +1,7 @@
 const fsPromises = require("fs").promises;
 const Ajv = require("ajv").default;
-const StreamZip = require('node-stream-zip');
 
+const { readDatasetJson, readAndParseFile, readPossibleZippedFile } = require("../utils");
 const dataPrep = require("../data-validation/data-prep");
 
 // ref schemas
@@ -34,16 +34,6 @@ const ajv = new Ajv({
     ],
 });
 
-const readDatasetJson = async (folder) => {
-    const data = await fsPromises.readFile(`${folder}/dataset.json`);
-    return JSON.parse(data);
-};
-
-const readFile = async (path) => {
-    const data = await fsPromises.readFile(path);
-    return JSON.parse(data);
-};
-
 const checkForError = (fileName, json, schemaFileName) => {
     const { valid, error } = dataPrep.validate(
         json,
@@ -60,27 +50,14 @@ const checkForError = (fileName, json, schemaFileName) => {
 
 const unpackInputDataset = async (datasetReadFolder) => {
     const datasetJson = await readDatasetJson(datasetReadFolder);
-    const featureDefs = await readFile(
+    const featureDefs = await readAndParseFile(
         `${datasetReadFolder}/${datasetJson.featureDefsPath}`
     );
-    const images = await readFile(
+    const images = await readAndParseFile(
         `${datasetReadFolder}/${datasetJson.viewerSettingsPath}`
     );
-    let measuredFeatures;
-    try {
-        const data = await fsPromises.readFile(
-            `${datasetReadFolder}/${datasetJson.featuresDataPath}`
-        );
-        measuredFeatures = JSON.parse(data);
-    } catch (error) {
-        const fileName = datasetJson.featuresDataPath.replace(".json", ".zip");
-        const zip = new StreamZip.async({
-            file: `${datasetReadFolder}/${fileName}`,
-        });
-        const data = await zip.entryData(`${datasetJson.featuresDataPath}`);
-        measuredFeatures = JSON.parse(data);
-        await zip.close();
-    }
+    const measuredFeatures = await readPossibleZippedFile(datasetReadFolder, datasetJson.featuresDataPath)
+
     const inputDataset = {
         dataset: datasetJson,
         "feature-defs": featureDefs,
