@@ -18,6 +18,9 @@
         "description": {
             "$ref": "definitions.schema.json#/definitions/description"
         },
+        "extra": {
+            "$ref": "definitions.schema.json#/definitions/extra"
+        },
         "image": {
             "$ref": "definitions.schema.json#/definitions/processed-image"
         },
@@ -29,6 +32,9 @@
         },
         "production": {
             "$ref": "definitions.schema.json#/definitions/production"
+        },
+        "index": {
+            "$ref": "definitions.schema.json#/definitions/index"
         }
     },
     "required": [
