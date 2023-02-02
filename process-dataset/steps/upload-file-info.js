@@ -6,12 +6,12 @@ const {
 
 const TEMP_LOCAL_FILE_INFO_JSON = require("../constants").TEMP_LOCAL_FILE_INFO_JSON;
 
-const uploadFileInfo = async (firebaseHandler, readFolder, uploadFileInfo) => {
+const uploadFileInfo = async (firebaseHandler, readFolder, skipUpload) => {
     console.log("uploading file info...")
     const json = await readAndParseFile(`${readFolder}/${TEMP_LOCAL_FILE_INFO_JSON}`);
     const startingJson = json;
     const writeBatch = async () => {
-        if (uploadFileInfo) {
+        if (skipUpload) {
             return
         }
         const batchOfData = startingJson.splice(0, 498); // max is 500, at most a batch of this size will have 2 cell lines to upload
