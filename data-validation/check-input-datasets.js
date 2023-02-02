@@ -2,7 +2,7 @@ const fsPromises = require("fs").promises;
 const Ajv = require("ajv").default;
 
 const { readDatasetJson, readAndParseFile, readPossibleZippedFile } = require("../utils");
-const dataPrep = require("../data-validation/data-prep");
+const dataPrep = require("./data-prep");
 
 // ref schemas
 const refSchemas = [
