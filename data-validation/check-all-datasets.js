@@ -15,7 +15,7 @@ const refSchemas = [
 
 const inputMegaset = require("./schema/input-megaset.schema.json");
 const inputDatasetInfo = require("./schema/input-dataset-info.schema.json");
-const inputMeasuredFeatures = require("./schema/input-measured-features.schema.json");
+const inputMeasuredFeatures = require("./schema/input-measured-features-doc.schema.json");
 const inputDataSet = require("./schema/input-dataset.schema.json");
 const inputImages = require("./schema/images.schema.json");
 const featureDef = require("./schema/feature-def.schema.json");
