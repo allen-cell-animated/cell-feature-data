@@ -10,7 +10,7 @@ const refSchemas = [
     require("./schema/discrete-feature-options.schema.json"),
     require("./schema/array-items/discrete-feature-option.schema.json"),
     require("./schema/array-items/file-info.schema.json"),
-    require("./schema/array-items/condensed-measured-feature.schema.json"),
+    require("./schema/array-items/input-measured-features.schema.json"),
 ];
 
 const inputMegaset = require("./schema/input-megaset.schema.json");
@@ -82,6 +82,8 @@ const validateDatasets = () => {
         for (const datasetFolder of foldersToCheck) {
             const topLevelJson = await readDatasetJson(datasetFolder);
             if (topLevelJson.datasets) {
+                // is a megaset, need to check both megaset 
+                // file and each dataset folder
                 const foundError = checkForError(
                     `${datasetFolder}/dataset.json`,
                     topLevelJson,
@@ -118,7 +120,7 @@ const validateDatasets = () => {
 
     }).then((hasError) => {
         if (hasError) {
-            console.log("\x1b[0m");
+            console.log("\x1b[31m");
             throw Error("Validation failed");
         }
     })
