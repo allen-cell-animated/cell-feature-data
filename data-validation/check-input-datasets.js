@@ -4,7 +4,7 @@ const Ajv = require("ajv").default;
 const { readDatasetJson, readAndParseFile, readPossibleZippedFile } = require("../utils");
 const dataPrep = require("./data-prep");
 
-// ref schemas
+// referenced partial schemas 
 const refSchemas = [
     require("./schema/definitions.schema.json"),
     require("./schema/discrete-feature-options.schema.json"),
@@ -13,6 +13,8 @@ const refSchemas = [
     require("./schema/array-items/input-measured-features.schema.json"),
 ];
 
+// Schemas that describe the handoff files that define a dataset or a 
+// collection of datasets. 
 const inputMegaset = require("./schema/input-megaset.schema.json");
 const inputDatasetInfo = require("./schema/input-dataset-info.schema.json");
 const inputMeasuredFeatures = require("./schema/input-measured-features-doc.schema.json");
@@ -20,18 +22,22 @@ const inputDataSet = require("./schema/input-dataset.schema.json");
 const inputImages = require("./schema/images.schema.json");
 const featureDef = require("./schema/feature-def.schema.json");
 
+const INPUT_DATASET_SCHEMA = [
+    ...refSchemas,
+    inputImages,
+    featureDef,
+    inputMegaset,
+    inputDatasetInfo,
+    inputMeasuredFeatures,
+    inputDataSet,
+];
+const INPUT_DATASET_SCHEMA_FILE = "input-dataset.schema.json";
+const INPUT_MEGASET_SCHEMA_FILE = "input-megaset.schema.json";
+
 const ajv = new Ajv({
     coerceTypes: true,
     removeAdditional: true,
-    schemas: [
-        ...refSchemas,
-        inputImages,
-        featureDef,
-        inputMegaset,
-        inputDatasetInfo,
-        inputMeasuredFeatures,
-        inputDataSet,
-    ],
+    schemas: INPUT_DATASET_SCHEMA
 });
 
 const checkForError = (fileName, json, schemaFileName) => {
@@ -70,7 +76,20 @@ const unpackInputDataset = async (datasetReadFolder) => {
 const validateDatasets = () => {
     fsPromises.readdir("./").then(async (files) => {
         const foldersToCheck = [];
+
         let hasError = false;
+        const checkSingleDatasetInput = async (datasetFolder) => {
+            const inputDataset = await unpackInputDataset(datasetFolder);
+            const foundError = checkForError(
+                `${datasetFolder}`,
+                inputDataset,
+                INPUT_DATASET_SCHEMA_FILE
+            );
+            if (foundError) {
+                hasError = true;
+            }
+        }
+
         for (const name of files) {
             try {
                 const subFiles = await fsPromises.readdir(name);
@@ -87,33 +106,17 @@ const validateDatasets = () => {
                 const foundError = checkForError(
                     `${datasetFolder}/dataset.json`,
                     topLevelJson,
-                    "input-megaset.schema.json"
+                    INPUT_MEGASET_SCHEMA_FILE
                 );
                 if (foundError) {
                     hasError = true;
                 }
                 for (const subDatasetFolder of topLevelJson.datasets) {
                     const datasetReadFolder = `${datasetFolder}/${subDatasetFolder}`;
-                    const inputDataset = await unpackInputDataset(datasetReadFolder)
-                    const foundError = checkForError(
-                        `${datasetReadFolder}`,
-                        inputDataset,
-                        "input-dataset.schema.json"
-                    );
-                    if (foundError) {
-                        hasError = true;
-                    }
+                    await checkSingleDatasetInput(datasetReadFolder);
                 }
             } else {
-                const inputDataset = await unpackInputDataset(datasetFolder);
-                const foundError = checkForError(
-                    `${datasetFolder}`,
-                    inputDataset,
-                    "input-dataset.schema.json"
-                );
-                if (foundError) {
-                    hasError = true;
-                }
+                await checkSingleDatasetInput(datasetFolder);
             }
         }
         return hasError
