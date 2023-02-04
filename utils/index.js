@@ -19,13 +19,23 @@ const readPossibleZippedFile = async (folder, fileName) => {
         );
         parsedData = JSON.parse(data);
     } catch (error) {
-        const zipFileName = fileName.replace(".json", ".zip");
-        const zip = new StreamZip.async({
-            file: `${folder}/${zipFileName}`,
-        });
-        const data = await zip.entryData(fileName);
-        parsedData = JSON.parse(data);
-        await zip.close();
+        if (error.message.includes("no such file or directory")) {
+            try {
+                const zipFileName = fileName.replace(".json", ".zip");
+                const zip = new StreamZip.async({
+                    file: `${folder}/${zipFileName}`,
+                });
+                const data = await zip.entryData(fileName);
+                parsedData = JSON.parse(data);
+                await zip.close();
+            } catch (error) {
+                console.log("Was unable to find a json file, or open a zip file", error);
+                process.exit(1);
+            }
+        } else {
+            console.log("Was unable to read the JSON file", error);
+            process.exit(1);
+        }
     }
     return parsedData;
 }
