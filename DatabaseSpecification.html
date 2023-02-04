@@ -794,6 +794,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extra</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Extra text to display on the card with a callout box</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>image</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Url of the dataset card image file on AWS</p></td>
@@ -815,6 +821,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>production</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Whether this dataset should be shown in production</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>index</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Index of dataset in a megaset.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
@@ -894,6 +906,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
+<h3 id="_dataset_card_extra">dataset-card.extra</h3>
+<div class="paragraph">
+<p>Extra text to display on the card with a callout box</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_dataset_card_image">dataset-card.image</h3>
 <div class="paragraph">
 <p>Url of the dataset card image file on AWS</p>
@@ -950,6 +978,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul>
 <li>
 <p><strong>Type</strong>: <code>boolean</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dataset_card_index">dataset-card.index</h3>
+<div class="paragraph">
+<p>Index of dataset in a megaset.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>number</code></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -1495,6 +1539,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">Path to the fov 3d data</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>transform</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transform to apply to the cell</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -1612,6 +1662,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul>
 <li>
 <p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_array_itemsfile_info_transform">array-items/file-info.transform</h3>
+<div class="paragraph">
+<p>Transform to apply to the cell</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>object</code></p>
 </li>
 <li>
 <p><strong>Required</strong>: No</p>
@@ -2510,6 +2576,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "description": {
             "$ref": "definitions.schema.json#/definitions/description"
         },
+        "extra": {
+            "$ref": "definitions.schema.json#/definitions/extra"
+        },
         "image": {
             "$ref": "definitions.schema.json#/definitions/processed-image"
         },
@@ -2521,6 +2590,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         },
         "production": {
             "$ref": "definitions.schema.json#/definitions/production"
+        },
+        "index": {
+            "$ref": "definitions.schema.json#/definitions/index"
         }
     },
     "required": [
@@ -2643,6 +2715,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
+        "index": {
+            "title": "Dataset index",
+            "description": "Index of dataset in a megaset.",
+            "type": "number"
+        },
         "publication": {
             "title": "Publication",
             "description": "Publication data",
@@ -2671,6 +2748,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
+            "type": "string"
+        },
+        "extra": {
+            "title": "Extra",
+            "description": "Extra text to display on the card with a callout box",
             "type": "string"
         },
         "link": {
@@ -2908,6 +2990,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
+        "index": {
+            "title": "Dataset index",
+            "description": "Index of dataset in a megaset.",
+            "type": "number"
+        },
         "publication": {
             "title": "Publication",
             "description": "Publication data",
@@ -2936,6 +3023,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
+            "type": "string"
+        },
+        "extra": {
+            "title": "Extra",
+            "description": "Extra text to display on the card with a callout box",
             "type": "string"
         },
         "link": {
@@ -3129,6 +3221,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "fovVolumeviewerPath": {
             "description": "Path to the fov 3d data",
             "type": "string"
+        },
+        "transform": {
+            "description": "Transform to apply to the cell",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "translation": {
+                    "description": "Translation to apply to the cell",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "rotation": {
+                    "description": "Rotation to apply to the cell, as XYZ Euler angles in radians",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            }
         }
     },
     "required": [
@@ -3170,6 +3283,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
+        "index": {
+            "title": "Dataset index",
+            "description": "Index of dataset in a megaset.",
+            "type": "number"
+        },
         "publication": {
             "title": "Publication",
             "description": "Publication data",
@@ -3198,6 +3316,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
+            "type": "string"
+        },
+        "extra": {
+            "title": "Extra",
+            "description": "Extra text to display on the card with a callout box",
             "type": "string"
         },
         "link": {
@@ -3513,6 +3636,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
+        "index": {
+            "title": "Dataset index",
+            "description": "Index of dataset in a megaset.",
+            "type": "number"
+        },
         "publication": {
             "title": "Publication",
             "description": "Publication data",
@@ -3541,6 +3669,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
+            "type": "string"
+        },
+        "extra": {
+            "title": "Extra",
+            "description": "Extra text to display on the card with a callout box",
             "type": "string"
         },
         "link": {
@@ -3721,6 +3854,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
+        "index": {
+            "title": "Dataset index",
+            "description": "Index of dataset in a megaset.",
+            "type": "number"
+        },
         "publication": {
             "title": "Publication",
             "description": "Publication data",
@@ -3749,6 +3887,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
+            "type": "string"
+        },
+        "extra": {
+            "title": "Extra",
+            "description": "Extra text to display on the card with a callout box",
             "type": "string"
         },
         "link": {
@@ -3929,6 +4072,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
+        "index": {
+            "title": "Dataset index",
+            "description": "Index of dataset in a megaset.",
+            "type": "number"
+        },
         "publication": {
             "title": "Publication",
             "description": "Publication data",
@@ -3957,6 +4105,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
+            "type": "string"
+        },
+        "extra": {
+            "title": "Extra",
+            "description": "Extra text to display on the card with a callout box",
             "type": "string"
         },
         "link": {
@@ -4113,7 +4266,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-22 17:00:35 -0800
+Last updated 2022-12-05 11:57:34 -0800
 </div>
 </div>
 </body>

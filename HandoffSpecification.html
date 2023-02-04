@@ -463,7 +463,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="#reference-feature-def">feature_defs.json</a></p>
 </li>
 <li>
-<p>images.json</p>
+<p><a href="#reference-images">images.json</a></p>
 </li>
 <li>
 <p>card-cover.png (for display on the homepage)</p>
@@ -527,10 +527,95 @@ Each folder should have the same 5 files listed above.</p>
 <h1 id="_full_documentation" class="sect0">Full Documentation</h1>
 <hr>
 <div class="sect1">
+<h2 id="reference-images">3D Viewer Settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Settings for the 3D viewer</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. <code>3D Viewer Settings</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>maskChannelName</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of channel to use as mask, applied to all other enabled channels. Generally this would be a segmentation channel or a channel with binary data.  If omitted, then no masking will be available.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>groups</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>object</code> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Collection of named channel groupings. If omitted, then there will be a single group called "Channels".</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-images"><code>images.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_images_maskchannelname">images.maskChannelName</h3>
+<div class="paragraph">
+<p>Name of channel to use as mask, applied to all other enabled channels. Generally this would be a segmentation channel or a channel with binary data.  If omitted, then no masking will be available.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_images_groups">images.groups</h3>
+<div class="paragraph">
+<p>Collection of named channel groupings. If omitted, then there will be a single group called "Channels".</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>object</code> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-cell-feature-dataset-handoff-specification">Cell Feature Dataset Handoff Specification</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>all the files needed for handoff</p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. <code>Cell Feature Dataset Handoff Specification</code> Properties</caption>
+<caption class="title">Table 2. <code>Cell Feature Dataset Handoff Specification</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -566,9 +651,15 @@ Each folder should have the same 5 files listed above.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>measured-features</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-input-measured-features"><code>input-measured-features</code></a> <code>[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">File that contains the measured analysis values, which will drive the plot. It is an array of measured features</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-array-items/input-measured-features"><code>array-items/input-measured-features</code></a> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Input file containing measured features and file info for each image.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>images</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-images"><code>images</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Settings for the 3D viewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
 </tbody>
 </table>
@@ -633,15 +724,31 @@ Each folder should have the same 5 files listed above.</p>
 <div class="sect2">
 <h3 id="_cell_feature_dataset_handoff_specification_measured_features">Cell Feature Dataset Handoff Specification.measured-features</h3>
 <div class="paragraph">
-<p>File that contains the measured analysis values, which will drive the plot. It is an array of measured features</p>
+<p>Input file containing measured features and file info for each image.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Type</strong>: <a href="#reference-input-measured-features"><code>input-measured-features</code></a> <code>[]</code></p>
+<p><strong>Type</strong>: <a href="#reference-array-items/input-measured-features"><code>array-items/input-measured-features</code></a> <code>[]</code></p>
 </li>
 <li>
 <p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cell_feature_dataset_handoff_specification_images">Cell Feature Dataset Handoff Specification.images</h3>
+<div class="paragraph">
+<p>Settings for the 3D viewer</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-images"><code>images</code></a></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
 </li>
 </ul>
 </div>
@@ -656,7 +763,7 @@ Each folder should have the same 5 files listed above.</p>
 <p>Schema for each category in a discrete feature</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. <code>Discrete feature option</code> Properties</caption>
+<caption class="title">Table 3. <code>Discrete feature option</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -763,7 +870,7 @@ Each folder should have the same 5 files listed above.</p>
 <p>Mapping interface: <code>{  [ key: <strong>^\d{1,}$</strong> ]: array-items/discrete-feature-option }</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. <code>array-items/discrete-feature-option</code> Properties</caption>
+<caption class="title">Table 4. <code>array-items/discrete-feature-option</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -838,7 +945,7 @@ Each folder should have the same 5 files listed above.</p>
 <p>Definition of a measured features in the dataset. Feature definitions file is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. <code>Feature Definition</code> Properties</caption>
+<caption class="title">Table 5. <code>Feature Definition</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1049,7 +1156,7 @@ Each folder should have the same 5 files listed above.</p>
 <p>File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON <code>datasets</code> array. Should be named <code>dataset.json</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. <code>Input dataset info `dataset.json`</code> Properties</caption>
+<caption class="title">Table 6. <code>Input dataset info `dataset.json`</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1556,7 +1663,7 @@ Each folder should have the same 5 files listed above.</p>
 <p>File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named <code>dataset.json</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. <code>Input Megaset `dataset.json`</code> Properties</caption>
+<caption class="title">Table 7. <code>Input Megaset `dataset.json`</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1698,85 +1805,22 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reference-input-measured-features">One measured value</h2>
+<h2 id="reference-input-measured-features-doc">measured features JSON</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Per data point object. The measured features JSON is an array of these objects.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. <code>One measured value</code> Properties</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>file_info</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code> <code>[7]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>features</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>number</code> <code>[]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of measured features. Needs to match the order of featuresDataOrder</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Additional properties are not allowed.</p>
+<p>Input file containing measured features and file info for each image.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>JSON schema</strong>: <a href="#schema-reference-input-measured-features"><code>input-measured-features.schema.json</code></a></p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_input_measured_features_file_info">input-measured-features.file_info</h3>
-<div class="paragraph">
-<p>Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>string</code> <code>[7]</code></p>
+<p><strong>Type</strong>: <a href="#reference-array-items/input-measured-features"><code>array-items/input-measured-features</code></a></p>
 </li>
 <li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_input_measured_features_features">input-measured-features.features</h3>
-<div class="paragraph">
-<p>Ordered array of measured features. Needs to match the order of featuresDataOrder</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Type</strong>: <code>number</code> <code>[]</code></p>
-</li>
-<li>
-<p><strong>Required</strong>:  &#10003; Yes</p>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-input-measured-features-doc"><code>input-measured-features-doc.schema.json</code></a></p>
 </li>
 </ul>
 </div>
 <hr>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1963,6 +2007,102 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-array-items/input-measured-features">The measured features and fileInfo for one image</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Per data point object. The measured features JSON is an array of these objects.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. <code>The measured features and fileInfo for one image</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>file_info</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>(string or object)[7-8]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>features</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>(number or string)[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered array of measured features. Needs to match the order of featuresDataOrder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-array-items/input-measured-features"><code>array-items/input-measured-features.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_array_itemsinput_measured_features_file_info">array-items/input-measured-features.file_info</h3>
+<div class="paragraph">
+<p>Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>(string or object)[7-8]</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Each element in the array must be one of the following values:</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_array_itemsinput_measured_features_features">array-items/input-measured-features.features</h3>
+<div class="paragraph">
+<p>Ordered array of measured features. Needs to match the order of featuresDataOrder</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>(number or string)[]</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Each element in the array must be one of the following values:</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-userdata">User data</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1987,14 +2127,102 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="schema-reference-images">JSON Schema for 3D Viewer Settings</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "images.schema.json",
+    "title": "3D Viewer Settings",
+    "description": "Settings for the 3D viewer",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "maskChannelName": {
+            "description": "Name of channel to use as mask, applied to all other enabled channels. Generally this would be a segmentation channel or a channel with binary data.  If omitted, then no masking will be available.",
+            "type": "string"
+        },
+        "groups": {
+            "description": "Collection of named channel groupings. If omitted, then there will be a single group called \"Channels\".",
+            "type": "array",
+            "items": {
+                "title": "3D Viewer Channel Group",
+                "description": "Settings for a grouping of channels for the 3D viewer",
+                "type": "object",
+                "properties": {
+                    "name":{
+                        "description": "Name of the channel group",
+                        "type":"string"
+                    },
+                    "channels": {
+                        "description": "Collection of channel settings in the group",
+                        "type": "array",
+                        "items": {
+                            "title": "Channel Settings",
+                            "description": "Default 3D Viewer per-channel settings",
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "description": "Displayed name of the channel. If \"match\" is omitted, then this must be an actual channel name in the image.",
+                                    "type": "string"
+                                },
+                                "match": {
+                                    "description": "Regular expression, or List of Regular expressions to match channel names.",
+                                    "anyOf": [
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "type":"string"
+                                        }
+                                    ]
+                                },
+                                "color": {
+                                    "description": "Color to use for the channel. Must be a 6 digit hex value of format RRGGBB",
+                                    "type": "string",
+                                    "pattern": "^[0-9A-Fa-f]{6}$"
+                                },
+                                "enabled": {
+                                    "description": "Whether the channel should be enabled (visible) by default",
+                                    "type": "boolean"
+                                },
+                                "lut": {
+                                    "description": "Min and max threshold values to use for this channel.  If omitted, viewer default will be used. Prefix with p for percentile, or m for percentage of median. E.g. m105 is 105% of the median intensity. p98 is the 98th percentile intensity. Plain number is interpreted as raw intensity value (0..255 max)",
+                                    "type": "array",
+                                    "maxItems": 2,
+                                    "minItems": 2,
+                                    "items": {
+                                        "type": "string",
+                                        "pattern": "^[pm0-9]+(\\.[0-9]+)?$"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="schema-reference-cell-feature-dataset-handoff-specification">JSON Schema for Cell Feature Dataset Handoff Specification</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
-    "$schema": "https://json-schema.org/draft-07/schema",
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "input-dataset.schema.json",
     "title": "Cell Feature Dataset Handoff Specification",
+    "description": "all the files needed for handoff",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -2013,12 +2241,12 @@ Each folder should have the same 5 files listed above.</p>
             }
         },
         "measured-features": {
-            "title": "Measured values `features.json`",
-            "description": "File that contains the measured analysis values, which will drive the plot. It is an array of measured features",
-            "type": "array",
-            "items": {
-                "$ref": "input-measured-features.schema.json"
-            }
+            "$ref": "input-measured-features-doc.schema.json"
+        },
+        "images": {
+            "title": "3D Viewer settings `images.json`",
+            "description": "File that contains the 3D viewer settings. These are settings consistent with the type of images being displayed.",
+            "$ref": "images.schema.json"
         }
     },
     "required": [
@@ -2117,6 +2345,11 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
+        "index": {
+            "title": "Dataset index",
+            "description": "Index of dataset in a megaset.",
+            "type": "number"
+        },
         "publication": {
             "title": "Publication",
             "description": "Publication data",
@@ -2145,6 +2378,11 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
+            "type": "string"
+        },
+        "extra": {
+            "title": "Extra",
+            "description": "Extra text to display on the card with a callout box",
             "type": "string"
         },
         "link": {
@@ -2382,6 +2620,11 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
+        "index": {
+            "title": "Dataset index",
+            "description": "Index of dataset in a megaset.",
+            "type": "number"
+        },
         "publication": {
             "title": "Publication",
             "description": "Publication data",
@@ -2410,6 +2653,11 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
+            "type": "string"
+        },
+        "extra": {
+            "title": "Extra",
+            "description": "Extra text to display on the card with a callout box",
             "type": "string"
         },
         "link": {
@@ -2704,6 +2952,11 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
+        "index": {
+            "title": "Dataset index",
+            "description": "Index of dataset in a megaset.",
+            "type": "number"
+        },
         "publication": {
             "title": "Publication",
             "description": "Publication data",
@@ -2732,6 +2985,11 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
+            "type": "string"
+        },
+        "extra": {
+            "title": "Extra",
+            "description": "Extra text to display on the card with a callout box",
             "type": "string"
         },
         "link": {
@@ -2931,39 +3189,19 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="schema-reference-input-measured-features">JSON Schema for One measured value</h2>
+<h2 id="schema-reference-input-measured-features-doc">JSON Schema for measured features JSON</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-json" data-lang="json">{
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "inputMeasuredFeaturesSchema",
-    "title": "One measured value",
-    "description": "Per data point object. The measured features JSON is an array of these objects.",
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-        "file_info": {
-            "description": "Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]",
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "minItems": 7,
-            "maxItems": 7
-        },
-        "features": {
-            "description": "Ordered array of measured features. Needs to match the order of featuresDataOrder",
-            "type": "array",
-            "items": {
-                "type": "number"
-            }
-        }
-    },
-    "required": [
-        "file_info",
-        "features"
-    ]
+    "$id": "input-measured-features-doc.schema.json",
+    "title": "measured features JSON",
+    "description": "Input file containing measured features and file info for each image.",
+    "type": "array",
+    "items": {
+        "$ref": "array-items/input-measured-features.schema.json"
+    }
 }</code></pre>
 </div>
 </div>
@@ -2997,6 +3235,11 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
+        "index": {
+            "title": "Dataset index",
+            "description": "Index of dataset in a megaset.",
+            "type": "number"
+        },
         "publication": {
             "title": "Publication",
             "description": "Publication data",
@@ -3025,6 +3268,11 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
+            "type": "string"
+        },
+        "extra": {
+            "title": "Extra",
+            "description": "Extra text to display on the card with a callout box",
             "type": "string"
         },
         "link": {
@@ -3205,6 +3453,11 @@ Each folder should have the same 5 files listed above.</p>
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
         },
+        "index": {
+            "title": "Dataset index",
+            "description": "Index of dataset in a megaset.",
+            "type": "number"
+        },
         "publication": {
             "title": "Publication",
             "description": "Publication data",
@@ -3233,6 +3486,11 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
+            "type": "string"
+        },
+        "extra": {
+            "title": "Extra",
+            "description": "Extra text to display on the card with a callout box",
             "type": "string"
         },
         "link": {
@@ -3387,6 +3645,79 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="schema-reference-array-items/input-measured-features">JSON Schema for The measured features and fileInfo for one image</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "array-items/input-measured-features.schema.json",
+    "title": "The measured features and fileInfo for one image",
+    "description": "Per data point object. The measured features JSON is an array of these objects.",
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+        "file_info": {
+            "description": "Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]",
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "rotation": {
+                                "type": "array",
+                                "maxItems": 3,
+                                "minItems": 3,
+                                "items": {
+                                    "type": "number"
+                                }
+                            },
+                            "translation": {
+                                "type": "array",
+                                "maxItems": 3,
+                                "minItems": 3,
+                                "items": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "minItems": 7,
+            "maxItems": 8
+        },
+        "features": {
+            "description": "Ordered array of measured features. Needs to match the order of featuresDataOrder",
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    {
+                        "type": "number"
+                    },
+                    {
+                        "type": "string",
+                        "pattern": "[NaN]"
+                    }
+                ]
+            }
+        }
+    },
+    "required": [
+        "file_info",
+        "features"
+    ]
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="schema-reference-userdata">JSON Schema for User data</h2>
 <div class="sectionbody">
 <div class="listingblock">
@@ -3412,6 +3743,11 @@ Each folder should have the same 5 files listed above.</p>
             "title": "Dataset name",
             "description": "Name of the group (no version number). Lowercase with underscores.",
             "type": "string"
+        },
+        "index": {
+            "title": "Dataset index",
+            "description": "Index of dataset in a megaset.",
+            "type": "number"
         },
         "publication": {
             "title": "Publication",
@@ -3441,6 +3777,11 @@ Each folder should have the same 5 files listed above.</p>
         "description": {
             "title": "Description",
             "description": "Description of the dataset",
+            "type": "string"
+        },
+        "extra": {
+            "title": "Extra",
+            "description": "Extra text to display on the card with a callout box",
             "type": "string"
         },
         "link": {
@@ -3597,7 +3938,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-22 16:54:18 -0800
+Last updated 2022-12-05 11:57:34 -0800
 </div>
 </div>
 </body>
