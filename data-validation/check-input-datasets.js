@@ -46,10 +46,10 @@ const checkForError = (fileName, json, schemaFileName) => {
         ajv.getSchema(schemaFileName)
     );
     if (!valid) {
-        console.log("\x1b[0m", `${fileName}`, "\x1b[31m", `failed because: ${JSON.stringify(error)}`);
+        console.log("\x1b[0m", `${fileName}`, "\x1b[31m", `failed because: ${JSON.stringify(error)}`, "\x1b[0m");
         return true;
     } else {
-        console.log("\x1b[0m", `${fileName}: check against ${schemaFileName}`, "\x1b[32m", "passed");
+        console.log("\x1b[0m", `${fileName}: check against ${schemaFileName}`, "\x1b[32m", "passed", "\x1b[0m");
         return false;
     }
 };
