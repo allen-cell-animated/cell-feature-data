@@ -45,7 +45,7 @@ const releaseDataset = async () => {
         })
     )
 
-    console.log(`${megasetName} is now released to production`)
+    console.log(`${megasetName} is now released`)
     process.exit(0)
 
 }
