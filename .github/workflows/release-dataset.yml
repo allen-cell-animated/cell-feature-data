@@ -12,6 +12,7 @@ on:
         type: string
         default: ""
       database:
+        description: "Please choose a database to release dataset"
         type: choice
         default: "staging"
         options: 
@@ -21,7 +22,6 @@ on:
 
 jobs:
   release_dataset: 
-    if: github.ref == 'refs/heads/main'
     name: Release Dataset
     runs-on: ubuntu-latest
     env:
@@ -30,6 +30,8 @@ jobs:
       FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
       AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
       AWS_ID: ${{ secrets.CFE_AWS_ID }}
+      ADMINS: "meganrm, rugeli, toloudis"
+    if: github.ref == 'refs/heads/main' && contains($ADMINS, ${{ github.triggering_actor }})
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
@@ -39,3 +41,5 @@ jobs:
       - run: npm ci
       - name: Release dataset
         run: npm run release-dataset ${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }}
+      
+
