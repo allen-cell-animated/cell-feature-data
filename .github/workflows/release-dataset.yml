@@ -24,7 +24,7 @@ jobs:
   release_dataset: 
     name: Release Dataset
     runs-on: ubuntu-latest
-    if: ${{ contains($ADMINS, ${{ github.triggering_actor }}) }}
+    if: contains($ADMIN, ${{ github.triggering_actor }})
     env:
       NODE_ENV: ${{ github.event.inputs.database }}
       STAGING_FIREBASE_TOKEN: ${{ secrets.STAGING_FIREBASE_TOKEN }}
@@ -33,7 +33,7 @@ jobs:
       FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
       AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
       AWS_ID: ${{ secrets.CFE_AWS_ID }}
-      ADMINS: ("meganrm", "toloudis") #${{ secrets.OWNERS }}
+      ADMIN: "meganrm", "toloudis1" #${{ secrets.OWNERS }}
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
@@ -48,6 +48,6 @@ jobs:
       - name: test
         run: echo "${{ github.triggering_actor }}"
       - name: admins
-        run: echo "${{ env.ADMINS }}"
+        run: echo "${{ env.ADMIN }}"
       
 
