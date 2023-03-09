@@ -24,7 +24,7 @@ jobs:
   release_dataset: 
     name: Release Dataset
     runs-on: ubuntu-latest
-    if: ${{ contains(fromJson(env.ADMINS), ${{ github.triggering_actor }}) }}
+    if: ${{ contains($ADMINS, ${{ github.triggering_actor }}) }}
     env:
       NODE_ENV: ${{ github.event.inputs.database }}
       STAGING_FIREBASE_TOKEN: ${{ secrets.STAGING_FIREBASE_TOKEN }}
