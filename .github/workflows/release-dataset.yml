@@ -41,7 +41,7 @@ jobs:
       - name: Make environment variables global 
         id: init
         run: |
-          echo "stageEnv=${{ env.stageEnv }}" >> $GITHUB_OUTPUT
+          echo "stageEnv=${{ env.ADMINS }}" >> $GITHUB_OUTPUT
   release_dataset: 
     name: Release Dataset
     runs-on: ubuntu-latest
