@@ -46,7 +46,7 @@ jobs:
     name: Release Dataset
     runs-on: ubuntu-latest
     # if: ${{ env.ADMINTEST == github.triggering_actor }}
-    if: (github.ref == 'refs/heads/main') && contains(needs.build.outputs.stageEnv, ${{ github.triggering_actor }})
+    if: ${{ (github.ref == 'refs/heads/main') && contains(needs.build.outputs.stageEnv, github.triggering_actor) }}
     # env:
     #   NODE_ENV: ${{ github.event.inputs.database }}
     #   STAGING_FIREBASE_TOKEN: ${{ secrets.STAGING_FIREBASE_TOKEN }}
