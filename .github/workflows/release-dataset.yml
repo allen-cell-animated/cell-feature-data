@@ -24,7 +24,7 @@ jobs:
   release_dataset: 
     name: Release Dataset
     runs-on: ubuntu-latest
-    if: contains($ADMINS, ${{ github.triggering_actor }})
+    if: github.ref == 'refs/heads/main' && contains($ADMINS, ${{ github.triggering_actor }})
     env:
       NODE_ENV: ${{ github.event.inputs.database }}
       STAGING_FIREBASE_TOKEN: ${{ secrets.STAGING_FIREBASE_TOKEN }}
@@ -45,6 +45,4 @@ jobs:
         run: npm run release-dataset ${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }}
       - name: specify database 
         run: echo "${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }} is successfully released to ${{ github.event.inputs.database }} database."
-      - name: admins
-        run: echo "${{ env.ADMINS }}"
 
