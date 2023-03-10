@@ -28,12 +28,13 @@ env:
       AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
       AWS_ID: ${{ secrets.CFE_AWS_ID }}
       ADMINS: ${{ secrets.OWNERS }}
+      ADMINTEST: "string"
 
 jobs:
   release_dataset: 
     name: Release Dataset
     runs-on: ubuntu-latest
-    if: (github.ref == 'refs/heads/main') && contains($secrets.OWNERS, ${{ github.triggering_actor }})
+    if: (github.ref == 'refs/heads/main') && contains($ADMINTEST, ${{ github.triggering_actor }})
     # env:
     #   NODE_ENV: ${{ github.event.inputs.database }}
     #   STAGING_FIREBASE_TOKEN: ${{ secrets.STAGING_FIREBASE_TOKEN }}
