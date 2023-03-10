@@ -57,6 +57,6 @@ jobs:
       - name: debug
         run: |
           echo "${{ github.triggering_actor }}"
-          echo "$ADMINS"
+          echo "${{ env.ADMINS }}"
           echo "${{ github.ref }}"
 
