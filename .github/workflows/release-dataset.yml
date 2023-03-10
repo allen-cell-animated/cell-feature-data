@@ -45,4 +45,9 @@ jobs:
         run: npm run release-dataset ${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }}
       - name: specify database 
         run: echo "${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }} is successfully released to ${{ github.event.inputs.database }} database."
+      - name: debug
+        run: |
+          echo "${{ github.triggering_actor }}"
+          echo "$ADMINS"
+          echo "${{ github.ref }}"
 
