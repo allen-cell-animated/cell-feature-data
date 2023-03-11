@@ -18,8 +18,23 @@ on:
         options: 
         - staging
         - production
-      
-env:
+
+jobs:
+  # build:
+  #   name: Build
+  #   runs-on: ubuntu-latest         
+  #   outputs:
+  #     stageEnv: ${{ steps.init.outputs.ADMINS }}
+    
+  #   steps:        
+  #     - name: Make environment variables global 
+  #       id: init
+  #       run: |
+  #         echo "stageEnv=${{ env.ADMINS }}" >> $GITHUB_OUTPUT
+  release_dataset: 
+    name: Release Dataset
+    runs-on: ubuntu-latest
+    env:
       NODE_ENV: ${{ github.event.inputs.database }}
       STAGING_FIREBASE_TOKEN: ${{ secrets.STAGING_FIREBASE_TOKEN }}
       STAGING_FIREBASE_EMAIL: ${{ secrets.STAGING_FIREBASE_EMAIL }}
@@ -28,34 +43,7 @@ env:
       AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
       AWS_ID: ${{ secrets.CFE_AWS_ID }}
       ADMINS: ${{ secrets.OWNERS }}
-      ADMINTEST: "string"
-
-jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest         
-    outputs:
-      stageEnv: ${{ steps.init.outputs.ADMINS }}
-    
-    steps:        
-      - name: Make environment variables global 
-        id: init
-        run: |
-          echo "stageEnv=${{ env.ADMINS }}" >> $GITHUB_OUTPUT
-  release_dataset: 
-    name: Release Dataset
-    runs-on: ubuntu-latest
-    # if: ${{ env.ADMINTEST == github.triggering_actor }}
-    if: ${{ contains(needs.build.outputs.stageEnv, github.triggering_actor) }}
-    # env:
-    #   NODE_ENV: ${{ github.event.inputs.database }}
-    #   STAGING_FIREBASE_TOKEN: ${{ secrets.STAGING_FIREBASE_TOKEN }}
-    #   STAGING_FIREBASE_EMAIL: ${{ secrets.STAGING_FIREBASE_EMAIL }}
-    #   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-    #   FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
-    #   AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
-    #   AWS_ID: ${{ secrets.CFE_AWS_ID }}
-    #   ADMINS: ${{ secrets.OWNERS }}
+    if: ${{ contains($ADMINS, github.triggering_actor) }}
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
@@ -70,6 +58,6 @@ jobs:
       - name: debug
         run: |
           echo "${{ github.triggering_actor }}"
-          echo "${{ env.ADMINS }}"
+          echo "${{ $ADMINS }}"
           echo "${{ github.ref }}"
 
