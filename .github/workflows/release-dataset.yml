@@ -43,7 +43,7 @@ jobs:
       AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
       AWS_ID: ${{ secrets.CFE_AWS_ID }}
       ADMINS: ${{ secrets.OWNERS }}
-    if: contains(env.ADMINS, github.triggering_actor)
+    if: contains($ADMINS, github.triggering_actor)
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
@@ -59,6 +59,6 @@ jobs:
         run: |
           echo "${{ github.triggering_actor }}"
           echo "${{ github.actor }}"
-          echo "${{ env.ADMINS }}"
+          echo "$ADMINS"
           echo "${{ github.ref }}"
 
