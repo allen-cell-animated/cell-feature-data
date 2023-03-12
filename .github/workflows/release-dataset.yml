@@ -30,6 +30,7 @@ jobs:
         id: check
         run: | 
           echo "ADMINS=${{ env.ADMINS }}" >> $GITHUB_OUTPUT
+          echo "${{ steps.check.outputs.ADMINS }}"
         
   release_dataset: 
     name: Release Dataset
@@ -44,7 +45,7 @@ jobs:
       AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
       AWS_ID: ${{ secrets.CFE_AWS_ID }}
       ADMINS: ${{ secrets.OWNERS }}
-    if: contains(needs.check_user.outputs.ADMINS, github.triggering_actor)
+    if: contains(needs.check_user.outputs.ADMINS, github.triggering_actor) #&& github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
@@ -61,5 +62,3 @@ jobs:
           echo "${{ github.triggering_actor }}"
           echo "${{ github.actor }}"
           echo "${{ github.ref }}"
-          echo "${{ steps.check.outputs.ADMINS }}"
-
