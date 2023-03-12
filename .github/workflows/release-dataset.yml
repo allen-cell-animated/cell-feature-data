@@ -29,8 +29,9 @@ jobs:
       - name: Make env variable ADMINS global
         id: check
         run: | 
-          echo "ADMINS=${{ env.ADMINS }}" >> $GITHUB_OUTPUT
-          echo "${{ steps.check.outputs.ADMINS }}"
+          echo "ADMINS=${{ secrets.OWNERS }}" >> $GITHUB_OUTPUT
+          echo "${{ steps.check.outputs.ADMINS }}" 
+        # echo ${{ steps.check.outputs.ADMINS }} == ""
         
   release_dataset: 
     name: Release Dataset
@@ -44,7 +45,7 @@ jobs:
       FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
       AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
       AWS_ID: ${{ secrets.CFE_AWS_ID }}
-      ADMINS: ${{ secrets.OWNERS }}
+      # ADMINS: ${{ secrets.OWNERS }} # meganrm, rugeli, toloudis
     if: contains(needs.check_user.outputs.ADMINS, github.triggering_actor) #&& github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
