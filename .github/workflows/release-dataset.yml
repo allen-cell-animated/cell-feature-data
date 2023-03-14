@@ -27,7 +27,7 @@ env:
       FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
       AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
       AWS_ID: ${{ secrets.CFE_AWS_ID }}
-      ADMINS: "meganrm, rugeli, toloudis" #${{ secrets.OWNERS }}
+      ADMINS: "meganrm, toloudis" #${{ secrets.OWNERS }}
 
 
 jobs:
