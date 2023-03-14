@@ -19,7 +19,25 @@ on:
         - staging
         - production
 
-env:
+
+jobs:
+  # check_user:
+  #   name: Authorization Check
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     ADMINS: ${{ steps.check.outputs.ADMINS }}
+  #   steps: 
+  #     - name: Make env variable ADMINS global
+  #       id: check
+  #       run: | 
+  #         echo "ADMINS=${{ env.ADMINS }}" >> $GITHUB_OUTPUT
+  #         echo "${{ steps.check.outputs.ADMINS }}" 
+        
+  release_dataset: 
+    name: Release Dataset
+    runs-on: ubuntu-latest
+    # needs: [check_user]
+    env:
       NODE_ENV: ${{ github.event.inputs.database }}
       STAGING_FIREBASE_TOKEN: ${{ secrets.STAGING_FIREBASE_TOKEN }}
       STAGING_FIREBASE_EMAIL: ${{ secrets.STAGING_FIREBASE_EMAIL }}
@@ -27,27 +45,8 @@ env:
       FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
       AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
       AWS_ID: ${{ secrets.CFE_AWS_ID }}
-      ADMINS: ${{ secrets.OWNERS }} # meganrm, rugeli, toloudis
-
-jobs:
-  check_user:
-    name: Authorization Check
-    runs-on: ubuntu-latest
-    outputs:
-      ADMINS: ${{ steps.check.outputs.ADMINS }}
-    steps: 
-      - name: Make env variable ADMINS global
-        id: check
-        run: | 
-          echo "ADMINS=${{ env.ADMINS }}" >> $GITHUB_OUTPUT
-          echo "${{ steps.check.outputs.ADMINS }}" 
-        # echo ${{ steps.check.outputs.ADMINS }} == ""
-        
-  release_dataset: 
-    name: Release Dataset
-    runs-on: ubuntu-latest
-    needs: [check_user]
-    if: contains(needs.check_user.outputs.ADMINS, github.triggering_actor) #&& github.ref == 'refs/heads/main'
+      ADMINS: "meganrm, rugeli, toloudis" #${{ secrets.OWNERS }}
+    if: contains($ADMINS, github.triggering_actor) #&& github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
@@ -64,3 +63,4 @@ jobs:
           echo "${{ github.triggering_actor }}"
           echo "${{ github.actor }}"
           echo "${{ github.ref }}"
+          echo "${{ env.ADMINS }}"
