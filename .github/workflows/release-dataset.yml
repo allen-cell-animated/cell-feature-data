@@ -31,23 +31,23 @@ env:
 
 
 jobs:
-  check_user:
-    name: Authorization Check
-    runs-on: ubuntu-latest
-    outputs:
-      admins: ${{ steps.check.outputs.admins }}
-    steps: 
-      - name: Env variable ADMINS to output
-        id: check
-        run: | 
-          echo "admins=${{ env.ADMINS }}" >> $GITHUB_OUTPUT
-          echo "${{ steps.check.outputs.admins }}" 
+  # check_user:
+  #   name: Authorization Check
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     admins: ${{ steps.check.outputs.admins }}
+  #   steps: 
+  #     - name: Env variable ADMINS to output
+  #       id: check
+  #       run: | 
+  #         echo "admins=${{ env.ADMINS }}" >> $GITHUB_OUTPUT
+  #         echo "${{ steps.check.outputs.admins }}" 
         
   release_dataset: 
     name: Release Dataset
     runs-on: ubuntu-latest
-    needs: [check_user]
-    if: contains(${{ needs.check_user.outputs.admins }}, github.triggering_actor) #&& github.ref == 'refs/heads/main'
+    # needs: [check_user]
+    if: contains($ADMINS, github.triggering_actor) #&& github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
@@ -55,13 +55,12 @@ jobs:
         with:
           node-version: 16.x
       - run: npm ci
-      - name: Release dataset
-        run: npm run release-dataset ${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }}
+      # - name: Release dataset
+      #   run: npm run release-dataset ${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }}
       - name: specify database 
         run: echo "${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }} is successfully released to ${{ github.event.inputs.database }} database."
       - name: debug
         run: |
           echo "${{ github.triggering_actor }}"
-          echo "${{ github.actor }}"
           echo "${{ github.ref }}"
           echo "${{ env.ADMINS }}"
