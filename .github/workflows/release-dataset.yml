@@ -20,14 +20,14 @@ on:
         - production
 
 env:
-      NODE_ENV: ${{ github.event.inputs.database }}
-      STAGING_FIREBASE_TOKEN: ${{ secrets.STAGING_FIREBASE_TOKEN }}
-      STAGING_FIREBASE_EMAIL: ${{ secrets.STAGING_FIREBASE_EMAIL }}
-      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
-      AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
-      AWS_ID: ${{ secrets.CFE_AWS_ID }}
-      ADMINS: ${{ secrets.OWNERS }}
+  NODE_ENV: ${{ github.event.inputs.database }}
+  STAGING_FIREBASE_TOKEN: ${{ secrets.STAGING_FIREBASE_TOKEN }}
+  STAGING_FIREBASE_EMAIL: ${{ secrets.STAGING_FIREBASE_EMAIL }}
+  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+  FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
+  AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
+  AWS_ID: ${{ secrets.CFE_AWS_ID }}
+  ADMINS: ${{ secrets.OWNERS }}
 
 
 jobs:     
