@@ -27,29 +27,23 @@ env:
       FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
       AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
       AWS_ID: ${{ secrets.CFE_AWS_ID }}
-      ADMINS: ${{ secrets.OWNERS }} #'["meganrm", "toloudis"]' 
+      ADMINS: ${{ secrets.OWNERS }}
 
 
 jobs:     
   release_dataset: 
     name: Release Dataset
     runs-on: ubuntu-latest
-    # if:  github.ref == 'refs/heads/main'
+    if:  github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      # - run: npm ci
+      - run: npm ci
       - name: Release dataset
         if: contains(env.ADMINS, github.triggering_actor)
-      #   run: npm run release-dataset ${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }}
-        run: echo "would run"
+        run: npm run release-dataset ${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }}
       - name: specify database 
         run: echo "${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }} is successfully released to ${{ github.event.inputs.database }} database."
-      - name: debug
-        run: |
-          echo "${{ github.triggering_actor }}"
-          echo "${{ github.ref }}"
-          echo "${{ env.ADMINS }}"
