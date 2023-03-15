@@ -27,27 +27,14 @@ env:
       FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
       AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
       AWS_ID: ${{ secrets.CFE_AWS_ID }}
-      ADMINS: '["meganrm", "toloudis"]' #${{ secrets.OWNERS }}
+      ADMINS: ${{ secrets.OWNERS }} #'["meganrm", "toloudis"]' 
 
 
-jobs:
-  # check_user:
-  #   name: Authorization Check
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     admins: ${{ steps.check.outputs.admins }}
-  #   steps: 
-  #     - name: Env variable ADMINS to output
-  #       id: check
-  #       run: | 
-  #         echo "admins=${{ env.ADMINS }}" >> $GITHUB_OUTPUT
-  #         echo "${{ steps.check.outputs.admins }}" 
-        
+jobs:     
   release_dataset: 
     name: Release Dataset
     runs-on: ubuntu-latest
-    # needs: [check_user]
-    # if:  github.ref == 'refs/heads/main'
+    if:  github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
