@@ -44,6 +44,9 @@ jobs:
       - run: npm ci
       - name: Release dataset
         if: contains(env.ADMINS, github.triggering_actor)
-        run: npm run release-dataset ${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }}
-      - name: specify database 
-        run: echo "${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }} is successfully released to ${{ github.event.inputs.database }} database."
+        run: |
+          npm run release-dataset ${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }}
+          echo "${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }} is successfully released to ${{ github.event.inputs.database }} database."
+      - name: Not authorized to release dataset
+        if: ${{ !contains(env.ADMINS, github.triggering_actor) }}
+        run: echo "Failed to release dataset. Please contact the owner of the repository to obtain the permission."
