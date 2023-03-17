@@ -44,7 +44,7 @@ jobs:
         run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
       - name: Process dataset to production
         if: ${{ github.event.inputs.database == 'production' }} && github.ref == 'refs/heads/main' && contains(env.ADMINS, github.triggering_actor)
-        run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}
+        run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
       - name: Not authorized to process dataset to production
         if: ${{ github.event.inputs.database == 'production' }} && ${{ !contains(env.ADMINS, github.triggering_actor) }}
         run: echo "Failed to process dataset to production database. Please contact the owner of the repository to obtain the permission."
