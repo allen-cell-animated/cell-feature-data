@@ -29,9 +29,10 @@ env:
   ADMINS: ${{ secrets.OWNERS }}
 
 jobs: 
-  process_dataset: 
+  process_dataset to staging: 
     name: Process Dataset
     runs-on: ubuntu-latest
+    if: github.event.inputs.database == 'staging'
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
@@ -40,11 +41,29 @@ jobs:
           node-version: 16.x
       - run: npm ci
       - name: Process dataset to staging
-        if: ${{ github.event.inputs.database == 'staging' }}
-        run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
+        echo "${{ github.event.inputs.database }}"
+        # run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
+
+  process_dataset to production: 
+    name: Process Dataset
+    runs-on: ubuntu-latest
+    if: github.event.inputs.database == 'production' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - run: npm ci
       - name: Process dataset to production
-        if: ${{ github.event.inputs.database == 'production' }} && github.ref == 'refs/heads/main' && contains(env.ADMINS, github.triggering_actor)
-        run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
+        if: contains(env.ADMINS, github.triggering_actor)
+        # run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
       - name: Not authorized to process dataset to production
-        if: ${{ github.event.inputs.database == 'production' }} && ${{ !contains(env.ADMINS, github.triggering_actor) }}
+        if: ${{ !contains(env.ADMINS, github.triggering_actor) }}
         run: echo "Failed to process dataset to production database. Please contact the owner of the repository to obtain the permission."
+      - name: debug
+        run: | 
+          echo "${{ github.event.inputs.database }}"
+          echo "${{ github.ref }}"
+          echo "${{ github.triggering_actor }}"
+
