@@ -57,11 +57,13 @@ jobs:
       - run: npm ci
       - name: Process dataset to production
         if: contains(env.ADMINS, github.triggering_actor)
+        run: echo "${{ github.event.inputs.database }}"
         # run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
       - name: Not authorized to process dataset to production
         if: ${{ !contains(env.ADMINS, github.triggering_actor) }}
         run: echo "Failed to process dataset to production database. Please contact the owner of the repository to obtain the permission."
       - name: debug
-        run: echo "${{ github.event.inputs.database }}"
-        run: echo "${{ github.ref }}"
+        run: | 
+          echo "${{ github.ref }}"
+          echo "${{ github.triggering_actor }}"
 
