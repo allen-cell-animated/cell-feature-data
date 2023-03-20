@@ -1,4 +1,4 @@
-name: Release dataset to production DB
+name: Release dataset to staging or production DB
 
 on:
   workflow_dispatch:
