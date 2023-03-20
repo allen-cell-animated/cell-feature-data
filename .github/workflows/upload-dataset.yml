@@ -8,10 +8,10 @@ on:
         required: true
       skip-per-cell-upload:
         type: boolean
-        description: "Set to true to skip the file-info upload (save some processing time)"
+        description: "Skip the file-info upload to save some processing time. Only select if this isn't the first time uploading the dataset, and there are no changes to per cell file-info"
         default: false
       database:
-        description: "Please choose a database to release dataset"
+        description: "Please choose a database to upload dataset"
         type: choice
         default: "staging"
         options: 
