@@ -1,4 +1,4 @@
-name: Upload dataset to staging DB
+name: Upload dataset to staging or production DB
 
 on:
   workflow_dispatch:
@@ -30,7 +30,7 @@ env:
 
 jobs: 
   process_dataset to staging: 
-    name: Process Dataset
+    name: Process Dataset to Stag
     runs-on: ubuntu-latest
     if: github.event.inputs.database == 'staging'
     steps:
@@ -45,7 +45,7 @@ jobs:
         # run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
 
   process_dataset to production: 
-    name: Process Dataset
+    name: Process Dataset to Prod
     runs-on: ubuntu-latest
     if: github.event.inputs.database == 'production' && github.ref == 'refs/heads/main'
     steps:
@@ -61,9 +61,4 @@ jobs:
       - name: Not authorized to process dataset to production
         if: ${{ !contains(env.ADMINS, github.triggering_actor) }}
         run: echo "Failed to process dataset to production database. Please contact the owner of the repository to obtain the permission."
-      - name: debug
-        run: | 
-          echo "${{ github.event.inputs.database }}"
-          echo "${{ github.ref }}"
-          echo "${{ github.triggering_actor }}"
 
