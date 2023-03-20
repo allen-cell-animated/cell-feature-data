@@ -41,13 +41,12 @@ jobs:
           node-version: 16.x
       - run: npm ci
       - name: Process dataset to staging
-        run: echo "Processing dataset to staging"
-        #run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
+        run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
 
   process_dataset_to_production: 
     name: Process Dataset to Prod
     runs-on: ubuntu-latest
-    if: github.event.inputs.database == 'production' #&& github.ref == 'refs/heads/main'
+    if: github.event.inputs.database == 'production' && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
@@ -57,8 +56,7 @@ jobs:
       - run: npm ci
       - name: Process dataset to production
         if: contains(env.ADMINS, github.triggering_actor)
-        run: echo "Processing dataset to production"
-        # run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
+        run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
       - name: Not authorized to process dataset to production
         if: ${{ !contains(env.ADMINS, github.triggering_actor) }}
         run: echo "Failed to process dataset to production database. Please contact the owner of the repository to obtain the permission."
