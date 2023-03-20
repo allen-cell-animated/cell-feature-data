@@ -29,7 +29,7 @@ env:
   ADMINS: ${{ secrets.OWNERS }}
 
 jobs: 
-  process_dataset to staging: 
+  process_dataset_to_staging: 
     name: Process Dataset to Stag
     runs-on: ubuntu-latest
     if: github.event.inputs.database == 'staging'
@@ -44,7 +44,7 @@ jobs:
         run: echo "${{ github.event.inputs.database }}"
         # run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
 
-  process_dataset to production: 
+  process_dataset_to_production: 
     name: Process Dataset to Prod
     runs-on: ubuntu-latest
     if: github.event.inputs.database == 'production' && github.ref == 'refs/heads/main'
