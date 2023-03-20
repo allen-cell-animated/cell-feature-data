@@ -1,4 +1,4 @@
-name: Release dataset to production DB
+name: Release dataset to staging or production DB
 
 on:
   workflow_dispatch:
@@ -12,24 +12,29 @@ on:
         type: string
         default: ""
       database:
+        description: "Please choose a database to release dataset"
         type: choice
         default: "staging"
         options: 
         - staging
         - production
-      
 
-jobs:
+env:
+  NODE_ENV: ${{ github.event.inputs.database }}
+  STAGING_FIREBASE_TOKEN: ${{ secrets.STAGING_FIREBASE_TOKEN }}
+  STAGING_FIREBASE_EMAIL: ${{ secrets.STAGING_FIREBASE_EMAIL }}
+  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+  FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
+  AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
+  AWS_ID: ${{ secrets.CFE_AWS_ID }}
+  ADMINS: ${{ secrets.OWNERS }}
+
+
+jobs:     
   release_dataset: 
-    if: github.ref == 'refs/heads/main'
     name: Release Dataset
     runs-on: ubuntu-latest
-    env:
-      NODE_ENV: ${{ github.event.inputs.database }}
-      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
-      AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
-      AWS_ID: ${{ secrets.CFE_AWS_ID }}
+    if:  github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
@@ -38,4 +43,10 @@ jobs:
           node-version: 16.x
       - run: npm ci
       - name: Release dataset
-        run: npm run release-dataset ${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }}
+        if: contains(env.ADMINS, github.triggering_actor)
+        run: |
+          npm run release-dataset ${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }}
+          echo "${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }} is successfully released to ${{ github.event.inputs.database }} database."
+      - name: Not authorized to release dataset
+        if: ${{ !contains(env.ADMINS, github.triggering_actor) }}
+        run: echo "Failed to release dataset. Please contact the owner of the repository to obtain the permission."
