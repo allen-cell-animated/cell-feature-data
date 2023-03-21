@@ -56,6 +56,6 @@ jobs:
       - name: Get collaborators
         run: |
           curl --request GET \
-          --url https://api.github.com/orgs/allen-cell-animated/memberships/${{github.actor}} \
+          --url https://api.github.com/orgs/allen-cell-animated/members \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
           --header 'content-type: application/json' \
