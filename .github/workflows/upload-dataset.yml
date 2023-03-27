@@ -26,7 +26,7 @@ env:
   FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
   AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
   AWS_ID: ${{ secrets.CFE_AWS_ID }}
-  ADMINS: ${{ secrets.OWNERS }}
+  # ADMINS: ${{ secrets.OWNERS }}
 
 jobs: 
   process_dataset_to_staging: 
@@ -43,10 +43,31 @@ jobs:
       - name: Process dataset to staging
         run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
 
-  process_dataset_to_production: 
-    name: Process Dataset to Prod
+  name: Upload dataset to staging or production DB
+
+on:
+  workflow_dispatch:
+    inputs: 
+      dataset-folder:
+        description: "Enter the relative path to the new dataset"
+        required: true
+      skip-per-cell-upload:
+        type: boolean
+        description: "Skip the file-info upload to save some processing time. Only select if this isn't the first time uploading the dataset, and there are no changes to per cell file-info"
+        default: false
+      database:
+        description: "Please choose a database to upload dataset"
+        type: choice
+        default: "staging"
+        options: 
+        - staging
+        - production
+
+jobs: 
+  process_dataset_to_staging: 
+    name: Process Dataset to Stag
     runs-on: ubuntu-latest
-    if: github.event.inputs.database == 'production' && github.ref == 'refs/heads/main'
+    if: github.event.inputs.database == 'staging'
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
@@ -54,10 +75,43 @@ jobs:
         with:
           node-version: 16.x
       - run: npm ci
+      - name: Process dataset to staging
+        run: echo "process to stag"
+        
+  get_admins:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get collaborators
+        id: check_collaborator
+        run: |
+          response=$(curl --request GET \
+            --header "Accept: application/vnd.github+json" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            --url https://api.github.com/repos/${{ github.repository }}/collaborators \
+            --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+            --header 'content-type: application/json')
+          is_collaborator=$(echo "$response" | jq --arg login "${{ github.triggering_actor }}" '.[] | select(.login == $login) | length')
+          echo ${{ github.triggering_actor }}
+          echo ${{ steps.check_collaborator.outputs.is_collaborator }}
+
+  process_dataset_to_production: 
+    name: Process Dataset to Prod
+    runs-on: ubuntu-latest
+#     if: github.event.inputs.database == 'production' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - run: echo "npm ci"
       - name: Process dataset to production
-        if: contains(env.ADMINS, github.triggering_actor)
-        run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
+        if: steps.check_collaborator.outputs.is_collaborator == '1'
+        run: | 
+          echo "process to prod"
       - name: Not authorized to process dataset to production
-        if: ${{ !contains(env.ADMINS, github.triggering_actor) }}
-        run: echo "Failed to process dataset to production database. Please contact the owner of the repository to obtain the permission."
+        if: steps.check_collaborator.outputs.is_collaborator != '1'
+        run: |
+          echo "Failed to process dataset to production database. Please contact the owner of the repository to obtain the permission."
+
 
