@@ -41,6 +41,7 @@ jobs:
       - run: npm ci
       - name: Process dataset to staging
         # run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
+        run: echo "process to stag"
 
         
   get_admins:
