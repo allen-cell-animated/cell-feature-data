@@ -26,7 +26,6 @@ env:
   FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
   AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
   AWS_ID: ${{ secrets.CFE_AWS_ID }}
-  # ADMINS: ${{ secrets.OWNERS }}
 
 jobs: 
   process_dataset_to_staging: 
@@ -41,42 +40,8 @@ jobs:
           node-version: 16.x
       - run: npm ci
       - name: Process dataset to staging
-        run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
+        # run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
 
-  name: Upload dataset to staging or production DB
-
-on:
-  workflow_dispatch:
-    inputs: 
-      dataset-folder:
-        description: "Enter the relative path to the new dataset"
-        required: true
-      skip-per-cell-upload:
-        type: boolean
-        description: "Skip the file-info upload to save some processing time. Only select if this isn't the first time uploading the dataset, and there are no changes to per cell file-info"
-        default: false
-      database:
-        description: "Please choose a database to upload dataset"
-        type: choice
-        default: "staging"
-        options: 
-        - staging
-        - production
-
-jobs: 
-  process_dataset_to_staging: 
-    name: Process Dataset to Stag
-    runs-on: ubuntu-latest
-    if: github.event.inputs.database == 'staging'
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-      - run: npm ci
-      - name: Process dataset to staging
-        run: echo "process to stag"
         
   get_admins:
     runs-on: ubuntu-latest
@@ -104,7 +69,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      - run: echo "npm ci"
+      - run: npm ci
       - name: Process dataset to production
         if: steps.check_collaborator.outputs.is_collaborator == '1'
         run: | 
