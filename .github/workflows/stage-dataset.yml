@@ -1,4 +1,4 @@
-name: Upload dataset to staging or production DB
+name: Upload dataset to staging DB
 
 on:
   workflow_dispatch:
@@ -63,7 +63,7 @@ jobs:
   process_dataset_to_production: 
     name: Process Dataset to Prod
     runs-on: ubuntu-latest
-#     if: github.event.inputs.database == 'production' && github.ref == 'refs/heads/main'
+    if: github.event.inputs.database == 'production' && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
