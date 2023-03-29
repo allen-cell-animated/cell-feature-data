@@ -42,7 +42,7 @@ DEV_FIREBASE_EMAIL= project settings/services accounts/firebase service account
 > To access `AWS`, `production`, or `staging`, please contact the development team for the necessary credentials 
 
 # To process a dataset:
-
+## Full [documentation here](https://allen-cell-animated.github.io/cell-feature-data/HandoffSpecification.html)
 ## Expected files in a dataset directory:
 - `dataset.json`: a json file with metadata about the dataset and the names of the other files, using the keys listed below
 - featureDefsPath: path to a json describing the measured features in this dataset, *the order of this document has to match the order of the values in the `featuresData` file. Also if no displayOrder is given it will be used as the display order on the website. *
