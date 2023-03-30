@@ -66,10 +66,11 @@ DEV_FIREBASE_EMAIL= project settings/services accounts/firebase service account
 
 ### Three database endpoints:
 - `dev`: developer's personal testing database, the default option for development. Create your own credentials to access. 
-- `staging`: group testing || for scientists to review 
-- `production`: group production 
+- `staging`: group testing || for scientists to review. NODE_ENV=="staging"
+- `production`: production database for cfe.allencell.org. NODE_ENV=="production"
 
-## To run process:
+## To create a new dataset:
+
 `node process-dataset [PATH/TO/DATASET]`
 or
 `npm run process-dataset [PATH/TO/DATASET]`
