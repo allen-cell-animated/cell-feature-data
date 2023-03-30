@@ -5,12 +5,12 @@
 1. make a branch or fork of this repo
 2. create a new dataset folder under `data`
 #### Expected files in a dataset directory:
-- `dataset.json`: a json file with metadata about the dataset and the names of the other files, using the keys listed below
-- featureDefsPath: path to a json describing the measured features in this dataset, *the order of this document has to match the order of the values in the `featuresData` file. Also if no displayOrder is given it will be used as the display order on the website. *
-- featuresDataPath: path to a json listing the per cell data
-- viewerSettingsPath: path to a json with settings for volume data channels in the 3d viewer
+- `dataset.json`: a json file with metadata about the dataset and the names of the other files. *this is the only filename that matters. Otherwise everything is a relative path.*
+- a json file describing the measured features in this dataset. Key in `dataset.json`: `featureDefsPath`
+- a json file listing the per cell data. Key in `dataset.json`: `featuresDataPath`
+- a json file with settings for volume data channels in the 3d viewer. Key in `dataset.json`: viewerSettingsPath: path to
 For more on what these files should look like, look at `process-dataset/data-validation/schema.js`
-and [Full spec documentation](https://allen-cell-animated.github.io/cell-feature-data/HandoffSpecification.html)
+and **[Full spec documentation](https://allen-cell-animated.github.io/cell-feature-data/HandoffSpecification.html)**
 3. Make a PR back to this repo. Make sure the validation set passes. If it doesn't check the logs to see what went wrong and fix any errors.
 4. If everything looks good, run the [process dataset from `Actions`](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/stage-dataset.yml). 
 * set branch to your branch
