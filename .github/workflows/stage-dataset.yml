@@ -46,6 +46,8 @@ jobs:
         
   get_admins:
     runs-on: ubuntu-latest
+    outputs:
+      collaborators: ${{ steps.check_collaborator.outputs.collaborators }}
     steps:
       - name: Get collaborators
         id: check_collaborator
@@ -56,13 +58,13 @@ jobs:
             --url https://api.github.com/repos/${{ github.repository }}/collaborators \
             --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
             --header 'content-type: application/json')
-          is_collaborator=$(echo "$response" | jq --arg login "${{ github.triggering_actor }}" '.[] | select(.login == $login) | length')
-          echo ${{ github.triggering_actor }}
-          echo ${{ steps.check_collaborator.outputs.is_collaborator }}
+          collaborators=$(echo "$response" | jq -r '.[] | select(.permissions.admin == true) | .login')
+          echo "collaborators=$collaborators" >> "$GITHUB_OUTPUT"
 
   process_dataset_to_production: 
     name: Process Dataset to Prod
     runs-on: ubuntu-latest
+    needs: get_admins
     if: github.event.inputs.database == 'production' # && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
@@ -72,11 +74,11 @@ jobs:
           node-version: 16.x
       - run: npm ci
       - name: Process dataset to production
-        if: steps.check_collaborator.outputs.is_collaborator == '1'
+        if: contains(needs.get_admins.outputs.collaborators, github.triggering_actor)
         run: | 
           echo "process to prod"
       - name: Not authorized to process dataset to production
-        if: steps.check_collaborator.outputs.is_collaborator != '1'
+        if: ${{ !contains(needs.get_admins.outputs.collaborators, github.triggering_actor) }}
         run: |
           echo "Failed to process dataset to production database. Please contact the owner of the repository to obtain the permission."
 
