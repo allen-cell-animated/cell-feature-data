@@ -59,7 +59,10 @@ jobs:
             --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
             --header 'content-type: application/json')
           collaborators=$(echo "$response" | jq -r '.[] | select(.permissions.admin == true) | .login')
-          echo "collaborators=$collaborators" >> "$GITHUB_OUTPUT"
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "collaborators<<$EOF" >> $GITHUB_OUTPUT
+          echo "$collaborators" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
           echo $collaborators
 
   process_dataset_to_production: 
