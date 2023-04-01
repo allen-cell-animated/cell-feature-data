@@ -68,7 +68,7 @@ jobs:
   process_dataset_to_production: 
     name: Process Dataset to Prod
     runs-on: ubuntu-latest
-    # if: github.event.inputs.database == 'production' && github.ref == 'refs/heads/main'
+    if: github.event.inputs.database == 'production' #&& github.ref == 'refs/heads/main'
     needs: get_admins
     steps:
       - uses: actions/checkout@v3
@@ -81,11 +81,9 @@ jobs:
         if: contains(needs.get_admins.outputs.collaborators, github.triggering_actor)
         run: | 
           echo "process to prod"
-          echo ${{ needs.get_admins.outputs.collaborators }}
       - name: Not authorized to process dataset to production
         if: ${{ !contains(needs.get_admins.outputs.collaborators, github.triggering_actor) }}
         run: |
           echo "Failed to process dataset to production database. Please contact the owner of the repository to obtain the permission."
-          echo ${{ needs.get_admins.outputs.collaborators }}
 
 
