@@ -1,4 +1,4 @@
-name: Upload dataset to staging DB
+name: Upload dataset to staging or production DB
 
 on:
   workflow_dispatch:
@@ -40,8 +40,7 @@ jobs:
           node-version: 16.x
       - run: npm ci
       - name: Process dataset to staging
-        # run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
-        run: echo "process to stag"
+        run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
 
         
   get_admins:
@@ -63,12 +62,11 @@ jobs:
           echo "collaborators<<$EOF" >> $GITHUB_OUTPUT
           echo "$collaborators" >> $GITHUB_OUTPUT
           echo "$EOF" >> $GITHUB_OUTPUT
-          echo $collaborators
 
   process_dataset_to_production: 
     name: Process Dataset to Prod
     runs-on: ubuntu-latest
-    if: github.event.inputs.database == 'production' #&& github.ref == 'refs/heads/main'
+    if: github.event.inputs.database == 'production' && github.ref == 'refs/heads/main'
     needs: get_admins
     steps:
       - uses: actions/checkout@v3
@@ -79,11 +77,9 @@ jobs:
       - run: npm ci
       - name: Process dataset to production
         if: contains(needs.get_admins.outputs.collaborators, github.triggering_actor)
-        run: | 
-          echo "process to prod"
+        run: npm run process-dataset ${{ github.event.inputs.dataset-folder }} ${{ github.event.inputs.skip-per-cell-upload}}
       - name: Not authorized to process dataset to production
         if: ${{ !contains(needs.get_admins.outputs.collaborators, github.triggering_actor) }}
-        run: |
-          echo "Failed to process dataset to production database. Please contact the owner of the repository to obtain the permission."
+        run: echo "Failed to process dataset to production database. Please contact the owner of the repository to obtain the permission."
 
 
