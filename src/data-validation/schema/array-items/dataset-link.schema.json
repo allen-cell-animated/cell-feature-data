@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "array-items/dataset-link.schema.json",
+    "title": "Dataset Link",
+    "description": "Schema for each single dataset",
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+        "date": {
+            "type": "string"
+        },
+        "title":{ 
+            "type": "string" 
+        },
+        "link": { 
+            "type": "string" 
+        }
+    },
+    "required": [
+        "date",
+        "title",
+        "link"
+    ]
+}
