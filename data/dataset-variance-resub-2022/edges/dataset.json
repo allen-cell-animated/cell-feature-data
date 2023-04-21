@@ -60,12 +60,12 @@
   ],
   "downloadLinks": [
     {
-      "date": "Jul/19/2022",
+      "dateReleased": "Jul/19/2022",
       "title": "The hiPSC single edge cell image dataset",
       "link": "https://open.quiltdata.com/b/allencell/packages/aics/hipsc_single_edge_cell_image_dataset/tree/latest/metadata.csv"
     },
     {
-      "date": "Sep/28/2022",
+      "dateReleased": "Sep/28/2022",
       "title": "The hiPSC single non-edge cell image dataset",
       "link": "https://open.quiltdata.com/b/allencell/packages/aics/hipsc_single_nonedge_cell_image_dataset/tree/latest/metadata.csv"
     }

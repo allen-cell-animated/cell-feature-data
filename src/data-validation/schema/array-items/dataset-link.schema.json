@@ -6,7 +6,7 @@
     "additionalProperties": false,
     "type": "object",
     "properties": {
-        "date": {
+        "dateReleased": {
             "type": "string"
         },
         "title":{ 
@@ -17,7 +17,7 @@
         }
     },
     "required": [
-        "date",
+        "dateReleased",
         "title",
         "link"
     ]
