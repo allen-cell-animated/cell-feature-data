@@ -24,6 +24,7 @@
 1. Go to [Manual deploy Action](https://github.com/allen-cell-animated/cell-feature-explorer/actions/workflows/manual-deploy.yml) 
     * Click the workflow drop down, leave branch at `main`
     * Set `Deploy with staging db` to `true`
+2. Go to `staging.cfe.allencell.org`
 
 #### Option 2: Run Cell Feature explorer locally
 1. `git clone https://github.com/allen-cell-animated/cell-feature-explorer.git`
