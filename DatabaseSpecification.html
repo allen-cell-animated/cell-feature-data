@@ -829,6 +829,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">Index of dataset in a megaset.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>datasetLinks</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference-array-items/dataset-link"><code>array-items/dataset-link</code></a> <code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Array of dataset links</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -1000,6 +1006,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_dataset_card_datasetlinks">dataset-card.datasetLinks</h3>
+<div class="paragraph">
+<p>Array of dataset links</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <a href="#reference-array-items/dataset-link"><code>array-items/dataset-link</code></a> <code>[]</code></p>
+</li>
+<li>
+<p><strong>Required</strong>: No</p>
+</li>
+</ul>
+</div>
 <hr>
 </div>
 </div>
@@ -1082,13 +1104,108 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
+<h2 id="reference-array-items/dataset-link">Dataset Link</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Schema for each single dataset</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. <code>Dataset Link</code> Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>dateReleased</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>title</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>link</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>string</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#10003; Yes</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Additional properties are not allowed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JSON schema</strong>: <a href="#schema-reference-array-items/dataset-link"><code>array-items/dataset-link.schema.json</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_array_itemsdataset_link_datereleased">array-items/dataset-link.dateReleased</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_array_itemsdataset_link_title">array-items/dataset-link.title</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_array_itemsdataset_link_link">array-items/dataset-link.link</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Type</strong>: <code>string</code></p>
+</li>
+<li>
+<p><strong>Required</strong>:  &#10003; Yes</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="reference-array-items/discrete-feature-option">Discrete feature option</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Schema for each category in a discrete feature</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. <code>Discrete feature option</code> Properties</caption>
+<caption class="title">Table 6. <code>Discrete feature option</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1195,7 +1312,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Mapping interface: <code>{  [ key: <strong>^\d{1,}$</strong> ]: array-items/discrete-feature-option }</code></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. <code>array-items/discrete-feature-option</code> Properties</caption>
+<caption class="title">Table 7. <code>array-items/discrete-feature-option</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1270,7 +1387,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Definition of a measured features in the dataset. Feature definitions file is an array of these objects.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. <code>Feature Definition</code> Properties</caption>
+<caption class="title">Table 8. <code>Feature Definition</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1481,7 +1598,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>File info for one cell, this is the data needed to access images for the cell.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. <code>File info</code> Properties</caption>
+<caption class="title">Table 9. <code>File info</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1714,7 +1831,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>High level data for each dataset that points to where all the data is stored for this dataset.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. <code>Manifest</code> Properties</caption>
+<caption class="title">Table 10. <code>Manifest</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2026,7 +2143,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Data needed to render a megaset card</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. <code>Megaset Card</code> Properties</caption>
+<caption class="title">Table 11. <code>Megaset Card</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2196,7 +2313,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Publication data</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. <code>Publication</code> Properties</caption>
+<caption class="title">Table 12. <code>Publication</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2297,7 +2414,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="reference-selection-settings">Selection settings</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. <code>Selection settings</code> Properties</caption>
+<caption class="title">Table 13. <code>Selection settings</code> Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2593,6 +2710,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         },
         "index": {
             "$ref": "definitions.schema.json#/definitions/index"
+        },
+        "datasetLinks": {
+            "$ref": "definitions.schema.json#/definitions/datasetLinks"
         }
     },
     "required": [
@@ -2624,6 +2744,40 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "$ref": "megaset-card.schema.json"
         }
     }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="schema-reference-array-items/dataset-link">JSON Schema for Dataset Link</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "array-items/dataset-link.schema.json",
+    "title": "Dataset Link",
+    "description": "Schema for each single dataset",
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+        "dateReleased": {
+            "type": "string"
+        },
+        "title":{ 
+            "type": "string" 
+        },
+        "link": { 
+            "type": "string" 
+        }
+    },
+    "required": [
+        "dateReleased",
+        "title",
+        "link"
+    ]
 }</code></pre>
 </div>
 </div>
@@ -2898,6 +3052,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
+        },
+        "datasetLinks": {
+            "title": "Dataset Link",
+            "description": "Array of dataset links",
+            "type": "array",
+            "items": {
+                "$ref": "array-items/dataset-link.schema.json",
+                "type": "object"
+            }
         }
     }
 }</code></pre>
@@ -3173,6 +3336,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
+        },
+        "datasetLinks": {
+            "title": "Dataset Link",
+            "description": "Array of dataset links",
+            "type": "array",
+            "items": {
+                "$ref": "array-items/dataset-link.schema.json",
+                "type": "object"
+            }
         }
     }
 }</code></pre>
@@ -3466,6 +3638,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
+        },
+        "datasetLinks": {
+            "title": "Dataset Link",
+            "description": "Array of dataset links",
+            "type": "array",
+            "items": {
+                "$ref": "array-items/dataset-link.schema.json",
+                "type": "object"
+            }
         }
     }
 }</code></pre>
@@ -3819,6 +4000,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
+        },
+        "datasetLinks": {
+            "title": "Dataset Link",
+            "description": "Array of dataset links",
+            "type": "array",
+            "items": {
+                "$ref": "array-items/dataset-link.schema.json",
+                "type": "object"
+            }
         }
     }
 }</code></pre>
@@ -4037,6 +4227,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
+        },
+        "datasetLinks": {
+            "title": "Dataset Link",
+            "description": "Array of dataset links",
+            "type": "array",
+            "items": {
+                "$ref": "array-items/dataset-link.schema.json",
+                "type": "object"
+            }
         }
     }
 }</code></pre>
@@ -4255,6 +4454,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
+        },
+        "datasetLinks": {
+            "title": "Dataset Link",
+            "description": "Array of dataset links",
+            "type": "array",
+            "items": {
+                "$ref": "array-items/dataset-link.schema.json",
+                "type": "object"
+            }
         }
     }
 }</code></pre>
