@@ -31,8 +31,7 @@
 2. `npm i`
 2. `npm run start:dev-db`
 
-#### Option 2: Point cell feature explorer staging site to staging database
-1. [In manual deploy](https://github.com/allen-cell-animated/cell-feature-explorer/actions/workflows/manual-deploy.yml) run workflow with `Deploy with staging db == true`
+
 
 
 # For Developers: 
