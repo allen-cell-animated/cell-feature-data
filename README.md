@@ -13,10 +13,26 @@
     #### For more on what these files should look like, look at `process-dataset/data-validation/schema.js` and [Full spec documentation](https://allen-cell-animated.github.io/cell-feature-data/HandoffSpecification.html)
 
 3. Make a PR back to this repo. Make sure the validation set passes. If it doesn't check the logs to see what went wrong and fix any errors.
+4. If everything looks good, run the [process dataset from `Actions`](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/upload-dataset.yml) by clicking the "Run workflow" dropdown and entering the following settings:
+    * set `branch` to your branch
+    * enter the folder name that contains your dataset
+    * leave checkbox unchecked if this is your first time uploading
+    * leave db set to `staging`
+
+## To view your dataset:
+#### Option 1: Point cell feature explorer staging site to staging database
+1. Go to [Manual deploy Action](https://github.com/allen-cell-animated/cell-feature-explorer/actions/workflows/manual-deploy.yml) 
+    * Click the workflow drop down, leave branch at `main`
+    * Set `Deploy with staging db` to `true`
+2. Go to `staging.cfe.allencell.org`
+
+#### Option 2: Run Cell Feature explorer locally
 1. `git clone https://github.com/allen-cell-animated/cell-feature-explorer.git`
 2. `npm i`
 2. `npm run start:dev-db`
 
+#### Option 2: Point cell feature explorer staging site to staging database
+1. [In manual deploy](https://github.com/allen-cell-animated/cell-feature-explorer/actions/workflows/manual-deploy.yml) run workflow with `Deploy with staging db == true`
 
 
 # For Developers: 
@@ -79,4 +95,3 @@ or
 `npm run release-dataset [MEGASET_NAME]` // will release every dataset in a megaset. Note, this isn't the folder name, it's the megaset name
 `npm run release-dataset [DATASET_ID]` // will release a dataset that isn't part of a megaset, id should be in the format `[NAME]_v[VERSION]`
 `npm run release-dataset [MEGASET_NAME]  [DATASET_ID]` // will a dataset contained within a megaset, id should be in the format `[NAME]_v[VERSION]`
-

@@ -21,6 +21,20 @@
   "thumbnailRoot": "https://s3.console.aws.amazon.com/s3/buckets/animatedcell-test-data/drug_pilot/thumbs",
   "downloadRoot": "",
   "volumeViewerDataRoot": "https://s3.console.aws.amazon.com/s3/buckets/animatedcell-test-data/drug_pilot/images",
+  "xAxis": {
+    "default": "concentration",
+    "exclude": []
+  },
+  "yAxis": {
+    "default": "concentration",
+    "exclude": []
+  },
+  "colorBy": {
+    "default": "Gene"
+  },
+  "groupBy": {
+    "default": "Gene"
+  },
   "featuresDisplayOrder": [],
   "featuresDataOrder": [
     "CellLine",

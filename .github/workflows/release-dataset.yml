@@ -27,12 +27,14 @@ env:
   FIREBASE_EMAIL: ${{ secrets.FIREBASE_EMAIL }}
   AWS_SECRET: ${{ secrets.CFE_AWS_SECRET }}
   AWS_ID: ${{ secrets.CFE_AWS_ID }}
+  ADMINS: ${{ secrets.OWNERS }}
 
+
+jobs:     
   release_dataset: 
     name: Release Dataset
     runs-on: ubuntu-latest
     if:  github.ref == 'refs/heads/main'
-
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
@@ -41,8 +43,10 @@ env:
           node-version: 16.x
       - run: npm ci
       - name: Release dataset
+        if: contains(env.ADMINS, github.triggering_actor)
         run: |
           npm run release-dataset ${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }}
           echo "${{ github.event.inputs.megaset-name }} ${{ github.event.inputs.dataset-id }} is successfully released to ${{ github.event.inputs.database }} database."
       - name: Not authorized to release dataset
+        if: ${{ !contains(env.ADMINS, github.triggering_actor) }}
         run: echo "Failed to release dataset. Please contact the owner of the repository to obtain the permission."
