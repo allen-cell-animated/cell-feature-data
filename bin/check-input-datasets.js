@@ -97,7 +97,6 @@ const validateDatasets = () => {
         throw Error("Validation failed");
       }
     })
-    .catch(console.log);
 };
 
 validateDatasets();
