@@ -18,9 +18,9 @@
   "featuresDataPath": "cell_feature_analysis.json",
   "viewerSettingsPath": "images.json",
   "albumPath": "albums",
-  "thumbnailRoot": "https://s3-us-west-2.amazonaws.com/bisque.allencell.org/v2.0.0/Cell-Viewer_Thumbnails",
-  "downloadRoot": "https://files.allencell.org/api/2.0/file/download?collection=cellviewer-2-0",
-  "volumeViewerDataRoot": "https://s3-us-west-2.amazonaws.com/bisque.allencell.org/v2.0.0/Cell-Viewer_Thumbnails",
+  "thumbnailRoot": "https://s3.console.aws.amazon.com/s3/buckets/animatedcell-test-data/drug_pilot/thumbs",
+  "downloadRoot": "",
+  "volumeViewerDataRoot": "https://s3.console.aws.amazon.com/s3/buckets/animatedcell-test-data/drug_pilot/images",
   "featuresDisplayOrder": [],
   "featuresDataOrder": [
     "CellLine",
