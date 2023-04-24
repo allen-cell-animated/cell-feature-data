@@ -21,7 +21,9 @@
 
 ## To view your dataset:
 #### Option 1: Point cell feature explorer staging site to staging database
-1. [In manual deploy](https://github.com/allen-cell-animated/cell-feature-explorer/actions/workflows/manual-deploy.yml) run workflow with `Deploy with staging db == true`
+1. Go to [In manual deploy](https://github.com/allen-cell-animated/cell-feature-explorer/actions/workflows/manual-deploy.yml) 
+    * In the workflow drop down, leave branch at `main`
+    * Set staging db to `true`
 
 #### Option 2: Run Cell Feature explorer locally
 1. `git clone https://github.com/allen-cell-animated/cell-feature-explorer.git`
