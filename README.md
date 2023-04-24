@@ -13,7 +13,7 @@
     #### For more on what these files should look like, look at `process-dataset/data-validation/schema.js` and [Full spec documentation](https://allen-cell-animated.github.io/cell-feature-data/HandoffSpecification.html)
 
 3. Make a PR back to this repo. Make sure the validation set passes. If it doesn't check the logs to see what went wrong and fix any errors.
-4. If everything looks good, run the [process dataset from `Actions`](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/upload-dataset.yml). 
+4. If everything looks good, run the [process dataset from `Actions`](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/upload-dataset.yml) by clicking the "Run workflow" dropdown and entering the following settings:
     * set `branch` to your branch
     * enter the folder name that contains your dataset
     * leave checkbox unchecked if this is your first time uploading
@@ -21,9 +21,9 @@
 
 ## To view your dataset:
 #### Option 1: Point cell feature explorer staging site to staging database
-1. Go to [In manual deploy](https://github.com/allen-cell-animated/cell-feature-explorer/actions/workflows/manual-deploy.yml) 
-    * In the workflow drop down, leave branch at `main`
-    * Set staging db to `true`
+1. Go to [Manual deploy Action](https://github.com/allen-cell-animated/cell-feature-explorer/actions/workflows/manual-deploy.yml) 
+    * Click the workflow drop down, leave branch at `main`
+    * Set `Deploy with staging db` to `true`
 
 #### Option 2: Run Cell Feature explorer locally
 1. `git clone https://github.com/allen-cell-animated/cell-feature-explorer.git`
