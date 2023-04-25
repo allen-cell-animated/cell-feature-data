@@ -7,7 +7,8 @@
     "type": "object",
     "properties": {
         "file_info": {
-            "description": "Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]. Any of these can be empty strings if they aren't applicable, but the array needs to be at least 7 items long (8 if including the translation and rotation)",
+            "description": "Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]. Any of the parent items can be empty strings if they aren't applicable. \
+            For example, if you don't have "parent" cells, this array could look like: ["F1239C11","","AICS-75","F1239C11.png","","",""], but the array needs to be at least 7 items long (8 if including the translation and rotation)",
             "type": "array",
             "items": {
                 "anyOf": [
