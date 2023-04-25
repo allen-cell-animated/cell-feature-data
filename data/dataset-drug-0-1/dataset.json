@@ -38,7 +38,6 @@
   },
   "featuresDisplayOrder": [],
   "featuresDataOrder": [
-    "CellLine",
     "Gene",
     "Objective",
     "Structure",

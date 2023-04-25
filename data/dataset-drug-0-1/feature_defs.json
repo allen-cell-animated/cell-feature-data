@@ -178,5 +178,35 @@
     "unit": "\u00b5M",
     "key": "concentration",
     "discrete": false
+  },
+  {
+    "displayName": "Drug Label",
+    "description": "Name of drug added to cells",
+    "tooltip": "Name of drug added to cells",
+    "unit": "",
+    "key": "drug_label",
+    "discrete": true,
+    "options": {
+      "0": {
+        "color": "#fed98e",
+        "name": "Paclitaxel"
+      },
+      "1": {
+        "color": "#7f48f3",
+        "name": "Brefeldin"
+      },
+      "2": {
+        "color": "#7f48f3",
+        "name": "Staurosporine"
+      },
+      "3": {
+        "color": "#7f48f3",
+        "name": "s-Nitro-Blebbistatin"
+      },
+      "4": {
+        "color": "#7f48f3",
+        "name": "Rapamycin"
+      }
+    }
   }
 ]
