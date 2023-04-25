@@ -6,7 +6,8 @@
     "additionalProperties": false,
     "type": "object",
     "properties": {
-        "dateReleased": {
+        "date": {
+            "description": "Date of the dataset release",
             "type": "string"
         },
         "title":{ 
@@ -17,7 +18,7 @@
         }
     },
     "required": [
-        "dateReleased",
+        "date",
         "title",
         "link"
     ]
