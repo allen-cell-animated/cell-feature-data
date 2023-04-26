@@ -208,5 +208,13 @@
         "name": "Rapamycin"
       }
     }
+  },
+  {
+    "displayName": "FOV #",
+    "description": "FOV #",
+    "tooltip": "FOV #",
+    "unit": "\u00b5M",
+    "key": "fov_number",
+    "discrete": false
   }
 ]

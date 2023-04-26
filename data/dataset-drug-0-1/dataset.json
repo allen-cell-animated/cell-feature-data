@@ -45,6 +45,7 @@
     "treatment_group",
     "time_point",
     "concentration",
-    "drug_label"
+    "drug_label",
+    "fov_number"
   ]
 }
