@@ -23,11 +23,11 @@
   "downloadRoot": "",
   "volumeViewerDataRoot": "https://animatedcell-test-data.s3.us-west-2.amazonaws.com/drug_pilot/images",
   "xAxis": {
-    "default": "concentration",
+    "default": "Gene",
     "exclude": []
   },
   "yAxis": {
-    "default": "concentration",
+    "default": "fov_number",
     "exclude": []
   },
   "colorBy": {
