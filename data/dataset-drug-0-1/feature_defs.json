@@ -213,7 +213,7 @@
     "displayName": "FOV #",
     "description": "FOV #",
     "tooltip": "FOV #",
-    "unit": "\u00b5M",
+    "unit": "",
     "key": "fov_number",
     "discrete": false
   }
