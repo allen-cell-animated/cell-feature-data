@@ -19,9 +19,9 @@
   "featuresDataPath": "cell_feature_analysis.json",
   "viewerSettingsPath": "images.json",
   "albumPath": "albums",
-  "thumbnailRoot": "https://s3.console.aws.amazon.com/s3/buckets/animatedcell-test-data/drug_pilot/thumbs",
+  "thumbnailRoot": "https://animatedcell-test-data.s3.us-west-2.amazonaws.com/drug_pilot/thumbs",
   "downloadRoot": "",
-  "volumeViewerDataRoot": "https://s3.console.aws.amazon.com/s3/buckets/animatedcell-test-data/drug_pilot/images",
+  "volumeViewerDataRoot": "https://animatedcell-test-data.s3.us-west-2.amazonaws.com/drug_pilot/images",
   "xAxis": {
     "default": "concentration",
     "exclude": []
