@@ -8,15 +8,15 @@
     "discrete": true,
     "options": {
       "0": {
-        "color": "#fed98e",
+        "color": "#e9ebee",
         "name": "TUBA1B"
       },
       "1": {
-        "color": "#7f48f3",
+        "color": "#c51b8a",
         "name": "SEC61B"
       },
       "2": {
-        "color": "#838383",
+        "color": "#fed98e",
         "name": "ACTB"
       },
       "3": {
@@ -24,15 +24,15 @@
         "name": "ST6GAL1"
       },
       "4": {
-        "color": "#fed98e",
+        "color": "#66c2a4",
         "name": "TJP1"
       },
       "5": {
-        "color": "#fed98e",
+        "color": "#7f48f3",
         "name": "MYH10"
       },
       "6": {
-        "color": "#fed98e",
+        "color": "#838383",
         "name": "LAMP1"
       }
     }
@@ -60,11 +60,11 @@
     "discrete": true,
     "options": {
       "0": {
-        "color": "#fed98e",
+        "color": "#e9ebee",
         "name": "Microtubules"
       },
       "1": {
-        "color": "#7f48f3",
+        "color": "#c51b8a",
         "name": "Endoplasmic reticulum"
       },
       "2": {
@@ -76,15 +76,15 @@
         "name": "Golgi"
       },
       "4": {
-        "color": "#fed98e",
+        "color": "#66c2a4",
         "name": "Tight junctions"
       },
       "5": {
-        "color": "#fed98e",
+        "color": "#7f48f3",
         "name": "Actomyosin bundles"
       },
       "6": {
-        "color": "#fed98e",
+        "color": "#838383",
         "name": "Lysosome"
       }
     }
@@ -98,11 +98,11 @@
     "discrete": true,
     "options": {
       "0": {
-        "color": "#fed98e",
+        "color": "#e9ebee",
         "name": "Alpha-tubulin"
       },
       "1": {
-        "color": "#7f48f3",
+        "color": "#c51b8a",
         "name": "Sec61 beta"
       },
       "2": {
@@ -114,15 +114,15 @@
         "name": "Sialyltransferase 1"
       },
       "4": {
-        "color": "#fed98e",
+        "color": "#66c2a4",
         "name": "Tight junction protein ZO-1"
       },
       "5": {
-        "color": "#fed98e",
+        "color": "#7f48f3",
         "name": "Non-muscle myosin heavy chain IIB"
       },
       "6": {
-        "color": "#fed98e",
+        "color": "#838383",
         "name": "LAMP-1"
       }
     }
@@ -162,11 +162,11 @@
         "name": "1"
       },
       "2": {
-        "color": "#7f48f3",
+        "color": "#e9ebee",
         "name": "2"
       },
       "3": {
-        "color": "#7f48f3",
+        "color": "#838383",
         "name": "24"
       }
     }
@@ -188,19 +188,19 @@
     "discrete": true,
     "options": {
       "0": {
-        "color": "#fed98e",
+        "color": "#e9ebee",
         "name": "Paclitaxel"
       },
       "1": {
-        "color": "#7f48f3",
+        "color": "#c51b8a",
         "name": "Brefeldin"
       },
       "2": {
-        "color": "#7f48f3",
+        "color": "#fed98e",
         "name": "Staurosporine"
       },
       "3": {
-        "color": "#7f48f3",
+        "color": "#66c2a4",
         "name": "s-Nitro-Blebbistatin"
       },
       "4": {
