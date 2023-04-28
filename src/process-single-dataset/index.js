@@ -42,6 +42,18 @@ const processSingleDataset = async (
     datasetJson.featuresDataOrder.indexOf(defaultGroupBy);
 
   const featureDefsData = await readFeatureData();
+  const featuresDataOrder = datasetJson.featuresDataOrder;
+  if (featuresDataOrder.length > featureDefsData.length) {
+    console.error("Error: Too many features in featuresDataOrder");
+    process.exit(1);
+  }
+  const keyList = Array.from(featureDefsData, (featureDataJson) => featureDataJson.key);
+  featuresDataOrder.forEach((keyName) => {
+    if (!keyList.includes(keyName)) {
+      console.error(`Error: key ${keyName} not found`);
+      process.exit(1);
+    }
+  });
 
   const TEMP_FOLDER = "./tmp/" + id;
 
