@@ -1,5 +1,5 @@
 {
-  "title": "Drug Image Dataset",
+  "title": "Drug Perturbation Pilot Dataset",
   "version": "0.1",
   "name": "drug_data",
   "dateCreated": "April 13, 2023",
@@ -11,9 +11,9 @@
   "userData": {
     "isNew": false,
     "inReview": false,
-    "totalCells": 395,
+    "totalCells": 0,
     "totalFOVs": 395,
-    "totalTaggedStructures": 1
+    "totalTaggedStructures": 7
   },
   "featureDefsPath": "feature_defs.json",
   "featuresDataPath": "cell_feature_analysis.json",
