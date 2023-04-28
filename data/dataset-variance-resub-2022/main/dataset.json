@@ -82,5 +82,12 @@
     "edge",
     "angle",
     "cell-line"
+  ],
+  "downloadLinks": [
+    {
+      "date": "May/26/2021",
+      "title": "The hiPSC single-cell image dataset",
+      "link": "https://open.quiltdata.com/b/allencell/packages/aics/hipsc_single_cell_image_dataset/tree/latest/metadata.csv"
+    }
   ]
 }

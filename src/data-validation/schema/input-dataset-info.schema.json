@@ -80,6 +80,9 @@
         },
         "featuresDataOrder": {
             "$ref": "definitions.schema.json#/definitions/featuresDataOrder"
+        },
+        "datasetLinks":{
+            "$ref": "definitions.schema.json#/definitions/datasetLinks"
         }
     },
     "required": [

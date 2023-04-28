@@ -2,6 +2,7 @@ const Ajv = require("ajv").default;
 
 const refSchemas = [
   require("./schema/definitions.schema.json"),
+  require("./schema/array-items/dataset-link.schema.json"),
   require("./schema/discrete-feature-options.schema.json"),
   require("./schema/array-items/discrete-feature-option.schema.json"),
   require("./schema/array-items/file-info.schema.json"),
