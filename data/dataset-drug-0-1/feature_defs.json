@@ -1,7 +1,7 @@
 [
   {
     "displayName": "Gene",
-    "description": "Gene expressed by hiPSCs",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
     "tooltip": "Gene expressed by hiPSCs",
     "unit": "gene",
     "key": "Gene",
@@ -39,7 +39,7 @@
   },
   {
     "displayName": "Objective",
-    "description": "Magnification of the Objective used to image cells",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
     "tooltip": "Magnification of the Objective used to image cells",
     "unit": "magnification",
     "key": "Objective",
@@ -53,7 +53,7 @@
   },
   {
     "displayName": "Structure",
-    "description": "Cellular structure that was GFP tagged in imaged cells",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
     "tooltip": "Cellular structure that was GFP tagged in imaged cells",
     "unit": "structure",
     "key": "Structure",
@@ -91,7 +91,7 @@
   },
   {
     "displayName": "Protein",
-    "description": "Protein that is expressed with GFP tag in imaged cells",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
     "tooltip": "Protein that is expressed with GFP tag in imaged cells",
     "unit": "protein",
     "key": "Protein_Name",
@@ -129,7 +129,7 @@
   },
   {
     "displayName": "Drug Treatment Group",
-    "description": "Are the imaged cells treated with drug or vehicle",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
     "tooltip": "Are the imaged cells treated with drug or vehicle",
     "unit": "drug-or-vehicle",
     "key": "treatment_group",
@@ -147,7 +147,7 @@
   },
   {
     "displayName": "Drug Time Point",
-    "description": "How many hours after drug addition was imaging done",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
     "tooltip": "How many hours after drug addition was imaging done",
     "unit": "hours",
     "key": "time_point",
@@ -173,7 +173,7 @@
   },
   {
     "displayName": "Drug Concentration",
-    "description": "Concentration of Drug added to imaged cells, in units of \u00b5M",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
     "tooltip": "Concentration of Drug added to imaged cells, in units of \u00b5M",
     "unit": "\u00b5M",
     "key": "concentration",
@@ -181,7 +181,7 @@
   },
   {
     "displayName": "Drug Label",
-    "description": "Name of drug added to cells",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
     "tooltip": "Name of drug added to cells",
     "unit": "",
     "key": "drug_label",
@@ -211,7 +211,7 @@
   },
   {
     "displayName": "FOV #",
-    "description": "FOV #",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
     "tooltip": "FOV #",
     "unit": "",
     "key": "fov_number",
