@@ -35,6 +35,9 @@
         },
         "index": {
             "$ref": "definitions.schema.json#/definitions/index"
+        },
+        "datasetLinks": {
+            "$ref": "definitions.schema.json#/definitions/datasetLinks"
         }
     },
     "required": [
