@@ -17,12 +17,35 @@ const checkForError = (fileName, json, schemaFileName) => {
     json,
     ajv.getSchema(schemaFileName)
   );
-  if (!valid) {
+  let featureKeysError = false;
+  let keysErrorMsg = "";
+  if (json["feature-defs"]) {
+    const featuresDataOrder = json.dataset.featuresDataOrder;
+    const featureDefsData = json["feature-defs"];
+    const keyList = Array.from(
+      featureDefsData,
+      (featureDataJson) => featureDataJson.key
+    );
+    if (featuresDataOrder.length > keyList.length) {
+      keysErrorMsg =
+        `featureDefs has ${keyList.length} features but there are ${featuresDataOrder.length} listed in featuresDataOrder`;
+      featureKeysError = true;
+    }
+    featuresDataOrder.forEach((keyName) => {
+      if (!keyList.includes(keyName)) {
+        keysErrorMsg =
+          `key ${keyName} in featuresDataOrder does not exist in featureDefs`;
+        featureKeysError = true;
+      }
+    });
+  }
+
+  if (!valid || featureKeysError) {
     console.log(
       "\x1b[0m",
       `${fileName}`,
       "\x1b[31m",
-      `failed because: ${JSON.stringify(error)}`,
+      `failed because: ${JSON.stringify(error || keysErrorMsg)}`,
       "\x1b[0m"
     );
     return true;
@@ -96,7 +119,7 @@ const validateDatasets = () => {
         console.log("\x1b[31m");
         throw Error("Validation failed");
       }
-    })
+    });
 };
 
 validateDatasets();
