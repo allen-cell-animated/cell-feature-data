@@ -44,13 +44,15 @@ const processSingleDataset = async (
   const featureDefsData = await readFeatureData();
   const featuresDataOrder = datasetJson.featuresDataOrder;
   if (featuresDataOrder.length > featureDefsData.length) {
-    console.error("Error: Too many features in featuresDataOrder");
+    console.error(`Error: featureDefs has ${featureDefsData.length} features but there are ${featuresDataOrder.length} listed in featuresDataOrder`);
     process.exit(1);
   }
   const keyList = Array.from(featureDefsData, (featureDataJson) => featureDataJson.key);
   featuresDataOrder.forEach((keyName) => {
     if (!keyList.includes(keyName)) {
-      console.error(`Error: key ${keyName} not found`);
+      console.error(
+        `Error: key ${keyName} in featuresDataOrder does not exist in featureDefs`
+      );
       process.exit(1);
     }
   });
