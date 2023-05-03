@@ -6,7 +6,7 @@ const { DATA_FOLDER_NAME } = require("../src/process-single-dataset/constants");
 const { readDatasetJson } = require("../src/utils");
 const dataPrep = require("../src/data-validation/data-prep");
 const unpackInputDataset = require("../src/data-validation/unpack-input-dataset");
-
+const {validateFeatureDataKeys} = require("../src/utils");
 // referenced partial schemas
 const INPUT_DATASET_SCHEMA_FILE = "input-dataset.schema.json";
 const INPUT_MEGASET_SCHEMA_FILE = "input-megaset.schema.json";
@@ -22,23 +22,10 @@ const checkForError = (fileName, json, schemaFileName) => {
   if (json["feature-defs"]) {
     const featuresDataOrder = json.dataset.featuresDataOrder;
     const featureDefsData = json["feature-defs"];
-    const keyList = Array.from(
-      featureDefsData,
-      (featureDataJson) => featureDataJson.key
-    );
-    if (featuresDataOrder.length > keyList.length) {
-      keysErrorMsg =
-        `featureDefs has ${keyList.length} features but there are ${featuresDataOrder.length} listed in featuresDataOrder`;
-      featureKeysError = true;
-    }
-    featuresDataOrder.forEach((keyName) => {
-      if (!keyList.includes(keyName)) {
-        keysErrorMsg =
-          `key ${keyName} in featuresDataOrder does not exist in featureDefs`;
-        featureKeysError = true;
-      }
-    });
-  }
+    const result = validateFeatureDataKeys( featuresDataOrder, featureDefsData );
+    featureKeysError = result.featureKeysError;
+    keysErrorMsg = result.keysErrorMsg;
+  };
 
   if (!valid || featureKeysError) {
     console.log(

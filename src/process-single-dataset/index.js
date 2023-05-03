@@ -7,6 +7,7 @@ const uploadFileInfo = require("./steps/upload-file-info");
 const uploadFeaturesFileToS3 = require("./steps/upload-features-to-aws");
 const uploadFileToS3 = require("./steps/upload-file-to-aws");
 const uploadDatasetImage = require("./steps/upload-dataset-image");
+const {validateFeatureDataKeys} = require("../utils");
 
 const FirebaseHandler = require("../firebase/firebase-handler");
 
@@ -43,19 +44,11 @@ const processSingleDataset = async (
 
   const featureDefsData = await readFeatureData();
   const featuresDataOrder = datasetJson.featuresDataOrder;
-  if (featuresDataOrder.length > featureDefsData.length) {
-    console.error(`Error: featureDefs has ${featureDefsData.length} features but there are ${featuresDataOrder.length} listed in featuresDataOrder`);
+  const { featureKeysError, keysErrorMsg } = validateFeatureDataKeys(featuresDataOrder, featureDefsData); 
+  if (featureKeysError) {
+    console.error(keysErrorMsg);
     process.exit(1);
   }
-  const keyList = Array.from(featureDefsData, (featureDataJson) => featureDataJson.key);
-  featuresDataOrder.forEach((keyName) => {
-    if (!keyList.includes(keyName)) {
-      console.error(
-        `Error: key ${keyName} in featuresDataOrder does not exist in featureDefs`
-      );
-      process.exit(1);
-    }
-  });
 
   const TEMP_FOLDER = "./tmp/" + id;
 
