@@ -48,12 +48,14 @@ const validateFeatureDataKeys = (featuresDataOrder, featureDefs) => {
         keysErrorMsg = 
             `Error: featureDefs has ${keyList.length} features but there are ${featuresDataOrder.length} listed in featuresDataOrder`;
         featureKeysError = true;
+        return { featureKeysError, keysErrorMsg };
     };
     featuresDataOrder.forEach((keyName) => {
         if (!keyList.includes(keyName)) {
             keysErrorMsg =
                 `Error: key ${keyName} in featuresDataOrder does not exist in featureDefs`;
             featureKeysError = true;
+            return { featureKeysError, keysErrorMsg };
         }
     });
     return { featureKeysError, keysErrorMsg };
