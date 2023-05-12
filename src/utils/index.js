@@ -61,9 +61,20 @@ const validateFeatureDataKeys = (featuresDataOrder, featureDefs) => {
     return { featureKeysError, keysErrorMsg };
 };
 
+const validateUserDataValues = (totalCells, totalFOVs) => {
+    let userDataError = false;
+    let userDataErrorMsg = "";
+    if (!totalCells && !totalFOVs) {
+        userDataErrorMsg = "Error: totalCells and totalFOVs can't both be zero or undefined";
+        userDataError = true;
+    };
+    return { userDataError, userDataErrorMsg };
+};
+
 module.exports = {
     readDatasetJson,
     readAndParseFile, 
     readPossibleZippedFile,
-    validateFeatureDataKeys
+    validateFeatureDataKeys,
+    validateUserDataValues
 }

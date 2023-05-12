@@ -1,5 +1,5 @@
 const fsPromises = require("fs").promises;
-const { readAndParseFile } = require("../utils");
+const utils = require("../utils");
 const uploadManifest = require("./steps/upload-manifest");
 const uploadFeatureDefs = require("./steps/upload-feature-defs");
 const formatAndWritePerCellJsons = require("./steps/write-per-cell-jsons");
@@ -7,7 +7,6 @@ const uploadFileInfo = require("./steps/upload-file-info");
 const uploadFeaturesFileToS3 = require("./steps/upload-features-to-aws");
 const uploadFileToS3 = require("./steps/upload-file-to-aws");
 const uploadDatasetImage = require("./steps/upload-dataset-image");
-const {validateFeatureDataKeys} = require("../utils");
 
 const FirebaseHandler = require("../firebase/firebase-handler");
 
@@ -34,7 +33,7 @@ const processSingleDataset = async (
     }
   }
   const readFeatureData = async () => {
-    return await readAndParseFile(
+    return await utils.readAndParseFile(
       `${datasetReadFolder}/${fileNames.featureDefs}`
     );
   };
@@ -44,11 +43,18 @@ const processSingleDataset = async (
 
   const featureDefsData = await readFeatureData();
   const featuresDataOrder = datasetJson.featuresDataOrder;
-  const { featureKeysError, keysErrorMsg } = validateFeatureDataKeys(featuresDataOrder, featureDefsData); 
+  const { featureKeysError, keysErrorMsg } = utils.validateFeatureDataKeys(featuresDataOrder, featureDefsData); 
   if (featureKeysError) {
     console.error(keysErrorMsg);
     process.exit(1);
-  }
+  };
+  const totalCells = datasetJson.userData.totalCells;
+  const totalFOVs = datasetJson.userData.totalFOVs;
+  const {userDataError, userDataErrorMsg} = utils.validateUserDataValues(totalCells, totalFOVs);
+  if (userDataError) {
+    console.error(userDataErrorMsg);
+    process.exit(1);
+  };
 
   const TEMP_FOLDER = "./tmp/" + id;
 
