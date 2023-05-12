@@ -1,0 +1,220 @@
+[
+  {
+    "displayName": "Gene",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
+    "tooltip": "Gene expressed by hiPSCs",
+    "unit": "gene",
+    "key": "Gene",
+    "discrete": true,
+    "options": {
+      "0": {
+        "color": "#e9ebee",
+        "name": "TUBA1B"
+      },
+      "1": {
+        "color": "#c51b8a",
+        "name": "SEC61B"
+      },
+      "2": {
+        "color": "#fed98e",
+        "name": "ACTB"
+      },
+      "3": {
+        "color": "#fed98e",
+        "name": "ST6GAL1"
+      },
+      "4": {
+        "color": "#66c2a4",
+        "name": "TJP1"
+      },
+      "5": {
+        "color": "#7f48f3",
+        "name": "MYH10"
+      },
+      "6": {
+        "color": "#838383",
+        "name": "LAMP1"
+      }
+    }
+  },
+  {
+    "displayName": "Objective",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
+    "tooltip": "Magnification of the Objective used to image cells",
+    "unit": "magnification",
+    "key": "Objective",
+    "discrete": true,
+    "options": {
+      "0": {
+        "color": "#fed98e",
+        "name": "100"
+      }
+    }
+  },
+  {
+    "displayName": "Structure",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
+    "tooltip": "Cellular structure that was GFP tagged in imaged cells",
+    "unit": "structure",
+    "key": "Structure",
+    "discrete": true,
+    "options": {
+      "0": {
+        "color": "#e9ebee",
+        "name": "Microtubules"
+      },
+      "1": {
+        "color": "#c51b8a",
+        "name": "Endoplasmic reticulum"
+      },
+      "2": {
+        "color": "#838383",
+        "name": "Actin filaments"
+      },
+      "3": {
+        "color": "#fed98e",
+        "name": "Golgi"
+      },
+      "4": {
+        "color": "#66c2a4",
+        "name": "Tight junctions"
+      },
+      "5": {
+        "color": "#7f48f3",
+        "name": "Actomyosin bundles"
+      },
+      "6": {
+        "color": "#838383",
+        "name": "Lysosome"
+      }
+    }
+  },
+  {
+    "displayName": "Protein",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
+    "tooltip": "Protein that is expressed with GFP tag in imaged cells",
+    "unit": "protein",
+    "key": "Protein_Name",
+    "discrete": true,
+    "options": {
+      "0": {
+        "color": "#e9ebee",
+        "name": "Alpha-tubulin"
+      },
+      "1": {
+        "color": "#c51b8a",
+        "name": "Sec61 beta"
+      },
+      "2": {
+        "color": "#838383",
+        "name": "Beta-actin"
+      },
+      "3": {
+        "color": "#fed98e",
+        "name": "Sialyltransferase 1"
+      },
+      "4": {
+        "color": "#66c2a4",
+        "name": "Tight junction protein ZO-1"
+      },
+      "5": {
+        "color": "#7f48f3",
+        "name": "Non-muscle myosin heavy chain IIB"
+      },
+      "6": {
+        "color": "#838383",
+        "name": "LAMP-1"
+      }
+    }
+  },
+  {
+    "displayName": "Drug Treatment Group",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
+    "tooltip": "Are the imaged cells treated with drug or vehicle",
+    "unit": "drug-or-vehicle",
+    "key": "treatment_group",
+    "discrete": true,
+    "options": {
+      "0": {
+        "color": "#fed98e",
+        "name": "Drug"
+      },
+      "1": {
+        "color": "#7f48f3",
+        "name": "Vehicle"
+      }
+    }
+  },
+  {
+    "displayName": "Drug Time Point",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
+    "tooltip": "How many hours after drug addition was imaging done",
+    "unit": "hours",
+    "key": "time_point",
+    "discrete": true,
+    "options": {
+      "0": {
+        "color": "#fed98e",
+        "name": "0.5"
+      },
+      "1": {
+        "color": "#7f48f3",
+        "name": "1"
+      },
+      "2": {
+        "color": "#e9ebee",
+        "name": "2"
+      },
+      "3": {
+        "color": "#838383",
+        "name": "24"
+      }
+    }
+  },
+  {
+    "displayName": "Drug Concentration",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
+    "tooltip": "Concentration of Drug added to imaged cells, in units of \u00b5M",
+    "unit": "\u00b5M",
+    "key": "concentration",
+    "discrete": false
+  },
+  {
+    "displayName": "Drug Label",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
+    "tooltip": "Name of drug added to cells",
+    "unit": "",
+    "key": "drug_label",
+    "discrete": true,
+    "options": {
+      "0": {
+        "color": "#e9ebee",
+        "name": "Paclitaxel"
+      },
+      "1": {
+        "color": "#c51b8a",
+        "name": "Brefeldin"
+      },
+      "2": {
+        "color": "#fed98e",
+        "name": "Staurosporine"
+      },
+      "3": {
+        "color": "#66c2a4",
+        "name": "s-Nitro-Blebbistatin"
+      },
+      "4": {
+        "color": "#7f48f3",
+        "name": "Rapamycin"
+      }
+    }
+  },
+  {
+    "displayName": "FOV #",
+    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
+    "tooltip": "FOV #",
+    "unit": "",
+    "key": "fov_number",
+    "discrete": false
+  }
+]
