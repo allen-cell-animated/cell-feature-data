@@ -40,8 +40,30 @@ const readPossibleZippedFile = async (folder, fileName) => {
     return parsedData;
 }
 
+const validateFeatureDataKeys = (featuresDataOrder, featureDefs) => {
+    let featureKeysError = false;
+    let keysErrorMsg = "";
+    const keyList = Array.from(featureDefs, (featureDataJson) => featureDataJson.key);
+    if (featuresDataOrder.length > keyList.length) {
+        keysErrorMsg = 
+            `Error: featureDefs has ${keyList.length} features but there are ${featuresDataOrder.length} listed in featuresDataOrder`;
+        featureKeysError = true;
+        return { featureKeysError, keysErrorMsg };
+    };
+    featuresDataOrder.forEach((keyName) => {
+        if (!keyList.includes(keyName)) {
+            keysErrorMsg =
+                `Error: key ${keyName} in featuresDataOrder does not exist in featureDefs`;
+            featureKeysError = true;
+            return { featureKeysError, keysErrorMsg };
+        }
+    });
+    return { featureKeysError, keysErrorMsg };
+};
+
 module.exports = {
     readDatasetJson,
     readAndParseFile, 
-    readPossibleZippedFile
+    readPossibleZippedFile,
+    validateFeatureDataKeys
 }

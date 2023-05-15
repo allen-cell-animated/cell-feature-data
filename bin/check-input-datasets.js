@@ -6,7 +6,7 @@ const { DATA_FOLDER_NAME } = require("../src/process-single-dataset/constants");
 const { readDatasetJson } = require("../src/utils");
 const dataPrep = require("../src/data-validation/data-prep");
 const unpackInputDataset = require("../src/data-validation/unpack-input-dataset");
-
+const {validateFeatureDataKeys} = require("../src/utils");
 // referenced partial schemas
 const INPUT_DATASET_SCHEMA_FILE = "input-dataset.schema.json";
 const INPUT_MEGASET_SCHEMA_FILE = "input-megaset.schema.json";
@@ -17,12 +17,22 @@ const checkForError = (fileName, json, schemaFileName) => {
     json,
     ajv.getSchema(schemaFileName)
   );
-  if (!valid) {
+  let featureKeysError = false;
+  let keysErrorMsg = "";
+  if (json["feature-defs"]) {
+    const featuresDataOrder = json.dataset.featuresDataOrder;
+    const featureDefsData = json["feature-defs"];
+    const result = validateFeatureDataKeys( featuresDataOrder, featureDefsData );
+    featureKeysError = result.featureKeysError;
+    keysErrorMsg = result.keysErrorMsg;
+  };
+
+  if (!valid || featureKeysError) {
     console.log(
       "\x1b[0m",
       `${fileName}`,
       "\x1b[31m",
-      `failed because: ${JSON.stringify(error)}`,
+      `failed because: ${JSON.stringify(error || keysErrorMsg)}`,
       "\x1b[0m"
     );
     return true;
@@ -96,7 +106,7 @@ const validateDatasets = () => {
         console.log("\x1b[31m");
         throw Error("Validation failed");
       }
-    })
+    });
 };
 
 validateDatasets();
