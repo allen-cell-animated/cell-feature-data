@@ -1,7 +1,7 @@
 {
   "title": "Drug Perturbation Pilot Dataset with axes lock",
   "version": "0.1",
-  "name": "drug_data",
+  "name": "drug_data_axes_lock",
   "dateCreated": "April 13, 2023",
   "image": "",
   "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
