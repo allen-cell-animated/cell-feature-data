@@ -5,7 +5,37 @@
     "tooltip": "Gene expressed by hiPSCs",
     "unit": "gene",
     "key": "Gene",
-    "discrete": false
+    "discrete": true,
+    "options": {
+      "0": {
+        "color": "#e9ebee",
+        "name": "TUBA1B"
+      },
+      "1": {
+        "color": "#c51b8a",
+        "name": "SEC61B"
+      },
+      "2": {
+        "color": "#fed98e",
+        "name": "ACTB"
+      },
+      "3": {
+        "color": "#fed98e",
+        "name": "ST6GAL1"
+      },
+      "4": {
+        "color": "#66c2a4",
+        "name": "TJP1"
+      },
+      "5": {
+        "color": "#7f48f3",
+        "name": "MYH10"
+      },
+      "6": {
+        "color": "#838383",
+        "name": "LAMP1"
+      }
+    }
   },
   {
     "displayName": "Objective",
