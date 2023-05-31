@@ -39,7 +39,7 @@ const validateDatasets = (singleDatasetFolder = null) => {
         } else if (singleDatasetFolder) {
           console.log(`logging featureName and order... ${datasetFolder}`);
           datasetCheck();
-        }; //log feature info, maybe somewhere else?
+        }; 
         const topLevelJson = await utils.readDatasetJson(datasetFolder);
         if (topLevelJson.datasets) {
           // is a megaset, need to check both megaset
@@ -54,6 +54,10 @@ const validateDatasets = (singleDatasetFolder = null) => {
           }
           for (const subDatasetFolder of topLevelJson.datasets) {
             const datasetReadFolder = `${datasetFolder}/${subDatasetFolder}`;
+            if (singleDatasetFolder) {
+              console.log(`logging featureName and order... ${datasetFolder}`);
+              datasetCheck();
+            };
             const foundSubError = await checkSingleDatasetInput(datasetReadFolder);
             if (foundSubError) {
               hasError = true;

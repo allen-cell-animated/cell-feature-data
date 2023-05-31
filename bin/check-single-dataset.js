@@ -107,8 +107,8 @@ const checkSingleDatasetInput = async (datasetFolder) => {
 // }
 
 const datasetCheck =() => {
-  return "feature logs"
-}
+  return console.log("feature logs")
+};
 
 // const datasetCheck =() => {
   // const args = process.argv.slice(2);
