@@ -22,16 +22,13 @@ const validateDatasets = () => {
         }
       }
       for (const datasetFolder of foldersToCheck) {
-        hasError = await validateSingleDataset(datasetFolder);
+        foundError = await validateSingleDataset(datasetFolder);
+        if (foundError) {
+          hasError = true;
+        }
       }
-      return hasError;
+        return hasError;
     })
-    .then((hasError) => {
-      if (hasError) {
-        console.log("\x1b[31m");
-        throw Error("Validation failed");
-      }
-    });
 };
 
 
