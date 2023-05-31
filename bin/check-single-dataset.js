@@ -1,8 +1,6 @@
-const fsPromises = require("fs").promises;
 const {
   getInputDatasetSchema,
 } = require("../src/data-validation/get-input-dataset-schema");
-const { DATA_FOLDER_NAME } = require("../src/process-single-dataset/constants");
 const utils = require("../src/utils");
 const dataPrep = require("../src/data-validation/data-prep");
 const unpackInputDataset = require("../src/data-validation/unpack-input-dataset");
@@ -71,64 +69,40 @@ const checkSingleDatasetInput = async (datasetFolder) => {
   return foundError;
 };
 
-// const validateSingleDataset = async (datasetFolder) => {
-//   console.log(`Checking 1 ${datasetFolder}`);
-//   const topLevelJson = await utils.readDatasetJson(datasetFolder);
-//   if (topLevelJson.datasets) {
-//     // is a megaset, need to check both megaset
-//     // file and each dataset folder
-//     const foundError = checkForError(
-//       `${datasetFolder}/dataset.json`,
-//       topLevelJson,
-//       INPUT_MEGASET_SCHEMA_FILE
-//     );
-//     if (foundError) {
-//       return true;
-//     }
-//     for (const subDatasetFolder of topLevelJson.datasets) {
-//       const datasetReadFolder = `${datasetFolder}/${subDatasetFolder}`;
-//       const subError = await checkSingleDatasetInput(datasetReadFolder);
-//       if (subError) {
-//         return true;
-//       }
-//     }
-//   } else {
-//     const singleDatasetError = await checkSingleDatasetInput(datasetFolder);
-//     if (singleDatasetError) {
-//       return true;
-//     }
-//   }
-//   return false;
-// };
-
-// if (process.argv[2]) {
-//   const datasetFolder = process.argv[2];
-//   validateSingleDataset(datasetFolder);
-// }
-
-const datasetCheck =() => {
-  return console.log("feature logs")
+const validateSingleDataset = async (datasetFolder) => {
+  const topLevelJson = await utils.readDatasetJson(datasetFolder);
+  if (topLevelJson.datasets) {
+    // is a megaset, need to check both megaset
+    // file and each dataset folder
+    const foundError = checkForError(
+      `${datasetFolder}/dataset.json`,
+      topLevelJson,
+      INPUT_MEGASET_SCHEMA_FILE
+    );
+    if (foundError) {
+      return true;
+    }
+    for (const subDatasetFolder of topLevelJson.datasets) {
+      const datasetReadFolder = `${datasetFolder}/${subDatasetFolder}`;
+      const foundSubError = await checkSingleDatasetInput(datasetReadFolder);
+      if (foundSubError) {
+        hasError = true;
+      }
+    }
+  } else {
+    const foundError = await checkSingleDatasetInput(datasetFolder);
+    if (foundError) {
+      hasError = true;
+    }
+  }
 };
 
-// const datasetCheck =() => {
-  // const args = process.argv.slice(2);
-  // const inputFolder = args[0];
-// datasetData = dataset.json file contents
-// measuredFeatures = cell-feature-analysis file contents
-// dataOrder = datasetData.featuresDataOrder
-// testCaseFeatures = measuredFeatures[0].features
-// toLog = {}
-// for each featureName, index in testCaseFeatures:
-//   toLog[featureName] = testCaseFeatures[index]
-// log out 
-// console.log("here is the current data order for the first cell:
-      // JSON.stringify(toLog)
-      
-      // if that looks incorrect, please address in dataset.json, featuresDataOrder"
+if (process.argv[2]) {
+  const datasetFolder = process.argv[2];
+  validateSingleDataset(datasetFolder);
+}
 
 
 module.exports = {
-  checkForError,
-  checkSingleDatasetInput,
-  datasetCheck
+  validateSingleDataset
 };
