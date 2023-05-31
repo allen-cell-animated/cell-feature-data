@@ -18,7 +18,7 @@
     "publish-docs": "gh-pages -d dist",
     "postpublish-docs": "cd src/data-validation && make clean",
     "validate-datasets": "node bin/check-input-datasets.js",
-    "validate-single-dataset": "node bin/check-input-datasets.js"
+    "validate-single-dataset": "node bin/check-single-dataset.js"
   },
   "repository": {
     "type": "git",
