@@ -136,7 +136,6 @@ const validateSingleDataset = async (datasetFolder, mapFeatures=false) => {
 if (process.argv[2]) {
   const datasetFolder = process.argv[2];
   validateSingleDataset(datasetFolder, true);
-  // datasetFeatureMap(datasetFolder, true);
 }
 
 
