@@ -59,7 +59,7 @@ const checkForError = (fileName, json, schemaFileName) => {
   }
 };
 
-const checkSingleDatasetInput = async (datasetFolder, hasError=false) => {
+const checkSingleDatasetInput = async (datasetFolder) => {
   const inputDataset = await unpackInputDataset(datasetFolder);
   const foundError = checkForError(
     `${datasetFolder}`,
@@ -67,12 +67,13 @@ const checkSingleDatasetInput = async (datasetFolder, hasError=false) => {
     INPUT_DATASET_SCHEMA_FILE
   );
   if (foundError) {
-    hasError = true;
+    return true;
   };
 };
 
-const validateSingleDataset = async (datasetFolder, hasError=false) => {
+const validateSingleDataset = async (datasetFolder) => {
   const topLevelJson = await utils.readDatasetJson(datasetFolder);
+  let hasError = false;
   if (topLevelJson.datasets) {
     // is a megaset, need to check both megaset
     // file and each dataset folder
