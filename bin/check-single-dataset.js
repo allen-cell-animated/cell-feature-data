@@ -81,7 +81,9 @@ const datasetFeatureMap = async (datasetFolder) => {
     toLog[dataOrder[i]] = testCaseFeatures[i];
   }
   console.log(
-    "The current features data order for the first cell:",
+    "The current features data order for the first cell in",
+    "\x1b[34m",
+    `${datasetFolder}:`,
     "\x1b[33m",
     JSON.stringify(toLog, null, 2),
     "\x1b[0m"
@@ -95,7 +97,7 @@ const datasetFeatureMap = async (datasetFolder) => {
 };
 
 
-const validateSingleDataset = async (datasetFolder) => {
+const validateSingleDataset = async (datasetFolder, mapFeatures=false) => {
   const topLevelJson = await utils.readDatasetJson(datasetFolder);
   let hasError = false;
   if (topLevelJson.datasets) {
@@ -115,11 +117,17 @@ const validateSingleDataset = async (datasetFolder) => {
       if (foundSubError) {
         hasError = true;
       }
+      if (mapFeatures) {
+        datasetFeatureMap(datasetReadFolder);
+      }
     }
   } else {
     const foundError = await checkSingleDatasetInput(datasetFolder);
     if (foundError) {
       hasError = true;
+    }
+    if (mapFeatures) {
+      datasetFeatureMap(datasetFolder);
     }
   }
   return hasError;
@@ -127,8 +135,8 @@ const validateSingleDataset = async (datasetFolder) => {
 
 if (process.argv[2]) {
   const datasetFolder = process.argv[2];
-  validateSingleDataset(datasetFolder);
-  datasetFeatureMap(datasetFolder);
+  validateSingleDataset(datasetFolder, true);
+  // datasetFeatureMap(datasetFolder, true);
 }
 
 
