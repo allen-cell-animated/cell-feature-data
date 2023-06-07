@@ -4,7 +4,6 @@ const {
 const utils = require("../src/utils");
 const dataPrep = require("../src/data-validation/data-prep");
 const unpackInputDataset = require("../src/data-validation/unpack-input-dataset");
-const { dataset } = require("../src/data-validation/full-schema");
 // referenced partial schemas
 const INPUT_DATASET_SCHEMA_FILE = "input-dataset.schema.json";
 const INPUT_MEGASET_SCHEMA_FILE = "input-megaset.schema.json";
@@ -91,7 +90,7 @@ const datasetFeatureMap = async (datasetFolder) => {
 
   console.log(
     "\x1b[30m", 
-    "If the mapping looks incorrect, please update featuresDataOrder in dataset.json",
+    "If the data looks incorrect, please update featuresDataOrder in dataset.json",
     "\x1b[0m" 
   );
 };
