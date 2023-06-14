@@ -189,23 +189,43 @@
     "options": {
       "0": {
         "color": "#e9ebee",
-        "name": "Paclitaxel"
+        "name": "Paclitaxel-Drug"
       },
       "1": {
-        "color": "#c51b8a",
-        "name": "Brefeldin"
+        "color": "#e9ebee",
+        "name": "Paclitaxel-Vehicle"
       },
       "2": {
-        "color": "#fed98e",
-        "name": "Staurosporine"
+        "color": "#c51b8a",
+        "name": "Brefeldin-Drug"
       },
       "3": {
-        "color": "#66c2a4",
-        "name": "s-Nitro-Blebbistatin"
+        "color": "#c51b8a",
+        "name": "Brefeldin-Vehicle"
       },
       "4": {
+        "color": "#fed98e",
+        "name": "Staurosporine-Drug"
+      },
+      "5": {
+        "color": "#fed98e",
+        "name": "Staurosporine-Vehicle"
+      },
+      "6": {
+        "color": "#66c2a4",
+        "name": "s-Nitro-Blebbistatin-Drug"
+      },
+      "7": {
+        "color": "#66c2a4",
+        "name": "s-Nitro-Blebbistatin-Vehicle"
+      },
+      "8": {
         "color": "#7f48f3",
-        "name": "Rapamycin"
+        "name": "Rapamycin-Drug"
+      },
+      "9": {
+        "color": "#7f48f3",
+        "name": "Rapamycin-Vehicle"
       }
     }
   },
