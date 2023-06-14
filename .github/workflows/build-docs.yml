@@ -19,10 +19,7 @@ jobs:
     - name: Install Dependencies 
       run: npm ci
     - name: Generate Documentation
-      run: |
-        make input-docs
-        make database-docs
-        make convert-to-html
+      run: make all-docs
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
