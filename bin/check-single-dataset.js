@@ -80,7 +80,7 @@ const datasetFeatureMap = async (datasetFolder) => {
     toLog[dataOrder[i]] = testCaseFeatures[i];
   }
   console.log(
-    "The current features data order for the first cell in",
+    "The current features data order for the first image in",
     "\x1b[34m",
     `${datasetFolder}:`,
     "\x1b[33m",
