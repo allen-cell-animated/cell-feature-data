@@ -15,7 +15,7 @@ const checkForError = (fileName, json, schemaFileName) => {
     ajv.getSchema(schemaFileName)
   );
   let datasetsError = false;
-  let ErrorMsg = "";
+  let errorMsg = "";
   if (json["feature-defs"]) {
     const featuresDataOrder = json.dataset.featuresDataOrder;
     const featureDefsData = json["feature-defs"];
@@ -25,7 +25,7 @@ const checkForError = (fileName, json, schemaFileName) => {
     );
     if (result.featureKeysError) {
       datasetsError = result.featureKeysError;
-      ErrorMsg = result.keysErrorMsg;
+      errorMsg = result.keysErrorMsg;
     }
   }
   if (json["dataset"]) {
@@ -34,7 +34,7 @@ const checkForError = (fileName, json, schemaFileName) => {
     const result = utils.validateUserDataValues(totalCells, totalFOVs);
     if (result.userDataError) {
       datasetsError = result.userDataError;
-      ErrorMsg = result.userDataErrorMsg;
+      errorMsg = result.userDataErrorMsg;
     }
   }
 
@@ -43,7 +43,7 @@ const checkForError = (fileName, json, schemaFileName) => {
       "\x1b[0m",
       `${fileName}`,
       "\x1b[31m",
-      `failed because: ${JSON.stringify(error || ErrorMsg)}`,
+      `failed because: ${JSON.stringify(error || errorMsg)}`,
       "\x1b[0m"
     );
     return true;
