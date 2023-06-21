@@ -15,7 +15,7 @@ const checkForError = (fileName, json, schemaFileName) => {
     ajv.getSchema(schemaFileName)
   );
   let datasetsError = false;
-  let ErrorMsg = "";
+  let errorMsg = "";
   if (json["feature-defs"]) {
     const featuresDataOrder = json.dataset.featuresDataOrder;
     const featureDefsData = json["feature-defs"];
@@ -25,7 +25,7 @@ const checkForError = (fileName, json, schemaFileName) => {
     );
     if (result.featureKeysError) {
       datasetsError = result.featureKeysError;
-      ErrorMsg = result.keysErrorMsg;
+      errorMsg = result.keysErrorMsg;
     }
   }
   if (json["dataset"]) {
@@ -34,7 +34,7 @@ const checkForError = (fileName, json, schemaFileName) => {
     const result = utils.validateUserDataValues(totalCells, totalFOVs);
     if (result.userDataError) {
       datasetsError = result.userDataError;
-      ErrorMsg = result.userDataErrorMsg;
+      errorMsg = result.userDataErrorMsg;
     }
   }
 
@@ -43,7 +43,7 @@ const checkForError = (fileName, json, schemaFileName) => {
       "\x1b[0m",
       `${fileName}`,
       "\x1b[31m",
-      `failed because: ${JSON.stringify(error || ErrorMsg)}`,
+      `failed because: ${JSON.stringify(error || errorMsg)}`,
       "\x1b[0m"
     );
     return true;
@@ -71,7 +71,32 @@ const checkSingleDatasetInput = async (datasetFolder) => {
   };
 };
 
-const validateSingleDataset = async (datasetFolder) => {
+const datasetFeatureMap = async (datasetFolder) => {
+  const inputDataset = await unpackInputDataset(datasetFolder);
+  const dataOrder = inputDataset.dataset.featuresDataOrder;
+  const testCaseFeatures = inputDataset["measured-features"][0].features;
+  const toLog = {};
+  for (let i = 0; i < testCaseFeatures.length; i++) {
+    toLog[dataOrder[i]] = testCaseFeatures[i];
+  }
+  console.log(
+    "The current features data order for the first image in",
+    "\x1b[34m",
+    `${datasetFolder}:`,
+    "\x1b[33m",
+    JSON.stringify(toLog, null, 2),
+    "\x1b[0m"
+  );
+
+  console.log(
+    "\x1b[30m", 
+    "If the data looks incorrect, please update featuresDataOrder in dataset.json",
+    "\x1b[0m" 
+  );
+};
+
+
+const validateSingleDataset = async (datasetFolder, mapFeatures=false) => {
   const topLevelJson = await utils.readDatasetJson(datasetFolder);
   let hasError = false;
   if (topLevelJson.datasets) {
@@ -91,11 +116,17 @@ const validateSingleDataset = async (datasetFolder) => {
       if (foundSubError) {
         hasError = true;
       }
+      if (mapFeatures) {
+        datasetFeatureMap(datasetReadFolder);
+      }
     }
   } else {
     const foundError = await checkSingleDatasetInput(datasetFolder);
     if (foundError) {
       hasError = true;
+    }
+    if (mapFeatures) {
+      datasetFeatureMap(datasetFolder);
     }
   }
   return hasError;
@@ -103,7 +134,7 @@ const validateSingleDataset = async (datasetFolder) => {
 
 if (process.argv[2]) {
   const datasetFolder = process.argv[2];
-  validateSingleDataset(datasetFolder);
+  validateSingleDataset(datasetFolder, true);
 }
 
 
