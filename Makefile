@@ -31,7 +31,7 @@ database-docs:
 convert-to-html:
 	$(ASCIIDOCTOR) -D ./dist ${TARGETS}
 
-docs: 
+all-docs: 
 	make input-docs
 	make database-docs
 	make convert-to-html
