@@ -1,0 +1,1124 @@
+
+
+
+
+'''
+[#reference-cell-feature-database-specification]
+== Cell Feature Database Specification
+
+Structure of the data stored in firebase and AWS
+
+.`Cell Feature Database Specification` Properties
+|===
+|   |Type|Description|Required
+
+|**dataset-descriptions**
+|<<reference-dataset-descriptions,`dataset-descriptions`>>
+|Endpoint that gets called first to load all the available datasets. Each DATASET_ID maps to a megaset card
+| &#10003; Yes
+
+|**manifests**
+|`object`
+|Collection of manifests for each published dataset.
+| &#10003; Yes
+
+|**dataset-data**
+|`object`
+|High level data for a dataset, ie not per cell data
+| &#10003; Yes
+
+|**cell-data**
+|`object`
+|Per cell data
+| &#10003; Yes
+
+|**measured-features**
+|<<reference-array-items/condensed-measured-feature,`array-items/condensed-measured-feature`>> `[]`
+|File stored on AWS that has the condensed measured data. Is an array of condensed measured features.
+| &#10003; Yes
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-cell-feature-database-specification,`database.schema.json`>>
+
+=== Cell Feature Database Specification.dataset-descriptions
+
+Endpoint that gets called first to load all the available datasets. Each DATASET_ID maps to a megaset card
+
+* **Type**: <<reference-dataset-descriptions,`dataset-descriptions`>>
+* **Required**:  &#10003; Yes
+
+=== Cell Feature Database Specification.manifests
+
+Collection of manifests for each published dataset.
+
+* **Type**: `object`
+* **Required**:  &#10003; Yes
+
+=== Cell Feature Database Specification.dataset-data
+
+High level data for a dataset, ie not per cell data
+
+* **Type**: `object`
+* **Required**:  &#10003; Yes
+
+=== Cell Feature Database Specification.cell-data
+
+Per cell data
+
+* **Type**: `object`
+* **Required**:  &#10003; Yes
+
+=== Cell Feature Database Specification.measured-features
+
+File stored on AWS that has the condensed measured data. Is an array of condensed measured features.
+
+* **Type**: <<reference-array-items/condensed-measured-feature,`array-items/condensed-measured-feature`>> `[]`
+* **Required**:  &#10003; Yes
+
+
+
+
+'''
+[#reference-array-items/condensed-measured-feature]
+== Condensed measured feature
+
+Data per cell needed to create the CFE plot
+
+.`Condensed measured feature` Properties
+|===
+|   |Type|Description|Required
+
+|**f**
+|`(number or string)[]`
+|ordered array of measured features
+| &#10003; Yes
+
+|**p**
+|`string`
+|Protein name
+| &#10003; Yes
+
+|**t**
+|`string`
+|Thumbnail Path
+| &#10003; Yes
+
+|**i**
+|`string`
+|Cell id
+| &#10003; Yes
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-array-items/condensed-measured-feature,`array-items/condensed-measured-feature.schema.json`>>
+
+=== array-items/condensed-measured-feature.f
+
+ordered array of measured features
+
+* **Type**: `(number or string)[]`
+** Each element in the array must be one of the following values:
+* **Required**:  &#10003; Yes
+
+=== array-items/condensed-measured-feature.p
+
+Protein name
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/condensed-measured-feature.t
+
+Thumbnail Path
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/condensed-measured-feature.i
+
+Cell id
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+
+
+
+'''
+[#reference-measured-features]
+== Condensed measured features JSON
+
+File stored on AWS that has the condensed measured data. Is an array of condensed measured features.
+
+* **Type**: <<reference-array-items/condensed-measured-feature,`array-items/condensed-measured-feature`>>
+* **JSON schema**: <<schema-reference-measured-features,`measured-features.schema.json`>>
+
+
+
+'''
+[#reference-dataset-card]
+== Dataset Card
+
+Data needed to render a dataset card
+
+.`Dataset Card` Properties
+|===
+|   |Type|Description|Required
+
+|**title**
+|`string`
+|Display name of dataset.
+| &#10003; Yes
+
+|**name**
+|`string`
+|Name of the group (no version number). Lowercase with underscores.
+| &#10003; Yes
+
+|**version**
+|`string`
+|Version year and number
+| &#10003; Yes
+
+|**description**
+|`string`
+|Description of the dataset
+| &#10003; Yes
+
+|**extra**
+|`string`
+|Extra text to display on the card with a callout box
+|No
+
+|**image**
+|`string`
+|Url of the dataset card image file on AWS
+| &#10003; Yes
+
+|**link**
+|`string`
+|Link to website displaying the dataset
+|No
+
+|**userData**
+|<<reference-userdata,`userData`>>
+|Optional display data
+|No
+
+|**production**
+|`boolean`
+|Whether this dataset should be shown in production
+|No
+
+|**index**
+|`number`
+|Index of dataset in a megaset.
+|No
+
+|**datasetLinks**
+|<<reference-array-items/dataset-link,`array-items/dataset-link`>> `[]`
+|Array of dataset links
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-dataset-card,`dataset-card.schema.json`>>
+
+=== dataset-card.title
+
+Display name of dataset.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== dataset-card.name
+
+Name of the group (no version number). Lowercase with underscores.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== dataset-card.version
+
+Version year and number
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== dataset-card.description
+
+Description of the dataset
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== dataset-card.extra
+
+Extra text to display on the card with a callout box
+
+* **Type**: `string`
+* **Required**: No
+
+=== dataset-card.image
+
+Url of the dataset card image file on AWS
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== dataset-card.link
+
+Link to website displaying the dataset
+
+* **Type**: `string`
+* **Required**: No
+
+=== dataset-card.userData
+
+Optional display data
+
+* **Type**: <<reference-userdata,`userData`>>
+* **Required**: No
+
+=== dataset-card.production
+
+Whether this dataset should be shown in production
+
+* **Type**: `boolean`
+* **Required**: No
+
+=== dataset-card.index
+
+Index of dataset in a megaset.
+
+* **Type**: `number`
+* **Required**: No
+
+=== dataset-card.datasetLinks
+
+Array of dataset links
+
+* **Type**: <<reference-array-items/dataset-link,`array-items/dataset-link`>> `[]`
+* **Required**: No
+
+
+
+
+'''
+[#reference-dataset-descriptions]
+== Dataset Description Collection
+
+Endpoint that gets called first to load all the available datasets. Each DATASET_ID maps to a megaset card
+
+Mapping interface: `{  [ key: **^(\w{1,})_(v\d{4}.\d{1,}|\w{1,})$** ]: megaset-card }`
+
+.`megaset-card` Properties
+|===
+|   |Type|Description|Required
+
+|**datasets**
+|<<reference-dataset-card,`dataset-card`>> `[]`
+|Array of dateset cards.
+| &#10003; Yes
+
+|**dateCreated**
+|`string`
+|Format: Firebase Timestamp. 
+| &#10003; Yes
+
+|**name**
+|`string`
+|Name of the group (no version number). Lowercase with underscores.
+| &#10003; Yes
+
+|**production**
+|`boolean`
+|Whether this dataset should be shown in production
+| &#10003; Yes
+
+|**title**
+|`string`
+|Display name of dataset group.
+| &#10003; Yes
+
+|**publications**
+|<<reference-publication,`publication`>> `[]`
+|Publications associated with the group
+|No
+
+|===
+
+Additional properties are allowed.
+
+* **JSON schema**: <<schema-reference-dataset-descriptions,`dataset-descriptions.schema.json`>>
+
+
+
+
+'''
+[#reference-array-items/dataset-link]
+== Dataset Link
+
+Schema for each single dataset
+
+.`Dataset Link` Properties
+|===
+|   |Type|Description|Required
+
+|**date**
+|`string`
+|Date of the dataset release
+| &#10003; Yes
+
+|**title**
+|`string`
+|
+| &#10003; Yes
+
+|**link**
+|`string`
+|
+| &#10003; Yes
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-array-items/dataset-link,`array-items/dataset-link.schema.json`>>
+
+=== array-items/dataset-link.date
+
+Date of the dataset release
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/dataset-link.title
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/dataset-link.link
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+
+
+
+'''
+[#reference-array-items/discrete-feature-option]
+== Discrete feature option
+
+Schema for each category in a discrete feature
+
+.`Discrete feature option` Properties
+|===
+|   |Type|Description|Required
+
+|**color**
+|`string`
+|Hex string
+| &#10003; Yes
+
+|**name**
+|`string`
+|Display name for the option. Doesn't have to be unique, but if it's not unique, `key` is required.
+| &#10003; Yes
+
+|**key**
+|`string`
+|unique key for the option.
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-array-items/discrete-feature-option,`array-items/discrete-feature-option.schema.json`>>
+
+=== array-items/discrete-feature-option.color
+
+Hex string
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/discrete-feature-option.name
+
+Display name for the option. Doesn't have to be unique, but if it's not unique, `key` is required.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/discrete-feature-option.key
+
+unique key for the option.
+
+* **Type**: `string`
+* **Required**: No
+
+
+
+
+'''
+[#reference-discrete-feature-options]
+== Discrete feature options
+
+Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0` or `1`, there should be two option mappings.
+
+Mapping interface: `{  [ key: **^\d{1,}$** ]: array-items/discrete-feature-option }`
+
+.`array-items/discrete-feature-option` Properties
+|===
+|   |Type|Description|Required
+
+|**color**
+|`string`
+|Hex string
+| &#10003; Yes
+
+|**name**
+|`string`
+|Display name for the option. Doesn't have to be unique, but if it's not unique, `key` is required.
+| &#10003; Yes
+
+|**key**
+|`string`
+|unique key for the option.
+|No
+
+|===
+
+Additional properties are allowed.
+
+* **JSON schema**: <<schema-reference-discrete-feature-options,`discrete-feature-options.schema.json`>>
+
+
+
+
+'''
+[#reference-array]
+== Feature data order
+
+Ordered array of feature keys for packing and unpacking data
+
+* **Type**: `string`
+* **JSON schema**: <<schema-reference-array,`definitions.schema.json`>>
+
+
+
+'''
+[#reference-feature-def]
+== Feature Definition
+
+Definition of a measured features in the dataset. Feature definitions file is an array of these objects.
+
+.`Feature Definition` Properties
+|===
+|   |Type|Description|Required
+
+|**displayName**
+|`string`
+|Human readable name
+| &#10003; Yes
+
+|**description**
+|`string`
+|Description of how the data was collected/measured
+| &#10003; Yes
+
+|**tooltip**
+|`string`
+|Shorter version of description
+| &#10003; Yes
+
+|**unit**
+|`string`
+|unit of measurement
+| &#10003; Yes
+
+|**key**
+|`string`
+|Id of the feature
+| &#10003; Yes
+
+|**discrete**
+|`boolean`
+|Whether it's a continuous measurement or not
+| &#10003; Yes
+
+|**options**
+|<<reference-discrete-feature-options,`discrete-feature-options`>>
+|Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0` or `1`, there should be two option mappings.
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-feature-def,`feature-def.schema.json`>>
+
+=== feature-def.displayName
+
+Human readable name
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== feature-def.description
+
+Description of how the data was collected/measured
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== feature-def.tooltip
+
+Shorter version of description
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== feature-def.unit
+
+unit of measurement
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== feature-def.key
+
+Id of the feature
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== feature-def.discrete
+
+Whether it's a continuous measurement or not
+
+* **Type**: `boolean`
+* **Required**:  &#10003; Yes
+
+=== feature-def.options
+
+Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0` or `1`, there should be two option mappings.
+
+* **Type**: <<reference-discrete-feature-options,`discrete-feature-options`>>
+* **Required**: No
+
+
+
+
+'''
+[#reference-array]
+== Feature display order
+
+Ordered array of feature keys for display on front end
+
+* **Type**: `string`
+* **JSON schema**: <<schema-reference-array,`definitions.schema.json`>>
+
+
+
+'''
+[#reference-array-items/file-info]
+== File info
+
+File info for one cell, this is the data needed to access images for the cell.
+
+.`File info` Properties
+|===
+|   |Type|Description|Required
+
+|**CellId**
+|`string`
+|unique id for segmented cell
+| &#10003; Yes
+
+|**FOVId**
+|`string`
+|Field of view cell came from
+| &#10003; Yes
+
+|**groupBy**
+|`string`
+|Id of feature the data is grouped by by default
+| &#10003; Yes
+
+|**thumbnailPath**
+|`string`
+|Path to thumbnail image for cell
+|No
+
+|**volumeviewerPath**
+|`string`
+|path to 3d data for cell
+| &#10003; Yes
+
+|**fovThumbnailPath**
+|`string`
+|Path to fov thumbnail
+|No
+
+|**fovVolumeviewerPath**
+|`string`
+|Path to the fov 3d data
+|No
+
+|**transform**
+|`object`
+|Transform to apply to the cell
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-array-items/file-info,`array-items/file-info.schema.json`>>
+
+=== array-items/file-info.CellId
+
+unique id for segmented cell
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/file-info.FOVId
+
+Field of view cell came from
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/file-info.groupBy
+
+Id of feature the data is grouped by by default
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/file-info.thumbnailPath
+
+Path to thumbnail image for cell
+
+* **Type**: `string`
+* **Required**: No
+
+=== array-items/file-info.volumeviewerPath
+
+path to 3d data for cell
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/file-info.fovThumbnailPath
+
+Path to fov thumbnail
+
+* **Type**: `string`
+* **Required**: No
+
+=== array-items/file-info.fovVolumeviewerPath
+
+Path to the fov 3d data
+
+* **Type**: `string`
+* **Required**: No
+
+=== array-items/file-info.transform
+
+Transform to apply to the cell
+
+* **Type**: `object`
+* **Required**: No
+
+
+
+
+'''
+[#reference-array]
+== Input datasets
+
+Array of dateset cards.
+
+* **Type**: <<reference-dataset-card,`dataset-card`>>
+* **JSON schema**: <<schema-reference-array,`definitions.schema.json`>>
+
+
+
+'''
+[#reference-manifest]
+== Manifest
+
+High level data for each dataset that points to where all the data is stored for this dataset.
+
+.`Manifest` Properties
+|===
+|   |Type|Description|Required
+
+|**featuresDataPath**
+|`string`
+|Url of the features JSON on AWS
+| &#10003; Yes
+
+|**featureDefsPath**
+|`string`
+|Database path to feature definition collection
+|No
+
+|**viewerSettingsPath**
+|`string`
+|Url of the per-channel settings file for the 3d viewer on AWS.
+| &#10003; Yes
+
+|**albumPath**
+|`string`
+|Database path to album information.
+| &#10003; Yes
+
+|**thumbnailRoot**
+|`string`
+|Root url for thumbnail images
+| &#10003; Yes
+
+|**downloadRoot**
+|`string`
+|Root url for downloading cell data
+| &#10003; Yes
+
+|**volumeViewerDataRoot**
+|`string`
+|Root url for 3d images
+| &#10003; Yes
+
+|**xAxis**
+|<<reference-selection-settings,`selection-settings`>>
+|
+| &#10003; Yes
+
+|**yAxis**
+|<<reference-selection-settings,`selection-settings`>>
+|
+| &#10003; Yes
+
+|**colorBy**
+|<<reference-selection-settings,`selection-settings`>>
+|
+| &#10003; Yes
+
+|**groupBy**
+|<<reference-selection-settings,`selection-settings`>>
+|
+| &#10003; Yes
+
+|**featuresDisplayOrder**
+|`string` `[]`
+|Ordered array of feature keys for display on front end
+| &#10003; Yes
+
+|**featuresDataOrder**
+|`string` `[]`
+|Ordered array of feature keys for packing and unpacking data
+| &#10003; Yes
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-manifest,`manifest.schema.json`>>
+
+=== manifest.featuresDataPath
+
+Url of the features JSON on AWS
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== manifest.featureDefsPath
+
+Database path to feature definition collection
+
+* **Type**: `string`
+* **Required**: No
+
+=== manifest.viewerSettingsPath
+
+Url of the per-channel settings file for the 3d viewer on AWS.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== manifest.albumPath
+
+Database path to album information.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== manifest.thumbnailRoot
+
+Root url for thumbnail images
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== manifest.downloadRoot
+
+Root url for downloading cell data
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== manifest.volumeViewerDataRoot
+
+Root url for 3d images
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== manifest.xAxis
+
+* **Type**: <<reference-selection-settings,`selection-settings`>>
+* **Required**:  &#10003; Yes
+
+=== manifest.yAxis
+
+* **Type**: <<reference-selection-settings,`selection-settings`>>
+* **Required**:  &#10003; Yes
+
+=== manifest.colorBy
+
+* **Type**: <<reference-selection-settings,`selection-settings`>>
+* **Required**:  &#10003; Yes
+
+=== manifest.groupBy
+
+* **Type**: <<reference-selection-settings,`selection-settings`>>
+* **Required**:  &#10003; Yes
+
+=== manifest.featuresDisplayOrder
+
+Ordered array of feature keys for display on front end
+
+* **Type**: `string` `[]`
+* **Required**:  &#10003; Yes
+
+=== manifest.featuresDataOrder
+
+Ordered array of feature keys for packing and unpacking data
+
+* **Type**: `string` `[]`
+* **Required**:  &#10003; Yes
+
+
+
+
+'''
+[#reference-megaset-card]
+== Megaset Card
+
+Data needed to render a megaset card
+
+.`Megaset Card` Properties
+|===
+|   |Type|Description|Required
+
+|**datasets**
+|<<reference-dataset-card,`dataset-card`>> `[]`
+|Array of dateset cards.
+| &#10003; Yes
+
+|**dateCreated**
+|`string`
+|Format: Firebase Timestamp. 
+| &#10003; Yes
+
+|**name**
+|`string`
+|Name of the group (no version number). Lowercase with underscores.
+| &#10003; Yes
+
+|**production**
+|`boolean`
+|Whether this dataset should be shown in production
+| &#10003; Yes
+
+|**title**
+|`string`
+|Display name of dataset group.
+| &#10003; Yes
+
+|**publications**
+|<<reference-publication,`publication`>> `[]`
+|Publications associated with the group
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-megaset-card,`megaset-card.schema.json`>>
+
+=== megaset-card.datasets
+
+Array of dateset cards.
+
+* **Type**: <<reference-dataset-card,`dataset-card`>> `[]`
+* **Required**:  &#10003; Yes
+
+=== megaset-card.dateCreated
+
+Format: Firebase Timestamp. 
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== megaset-card.name
+
+Name of the group (no version number). Lowercase with underscores.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== megaset-card.production
+
+Whether this dataset should be shown in production
+
+* **Type**: `boolean`
+* **Required**:  &#10003; Yes
+
+=== megaset-card.title
+
+Display name of dataset group.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== megaset-card.publications
+
+Publications associated with the group
+
+* **Type**: <<reference-publication,`publication`>> `[]`
+* **Required**: No
+
+
+
+
+'''
+[#reference-publication]
+== Publication
+
+Publication data
+
+.`Publication` Properties
+|===
+|   |Type|Description|Required
+
+|**title**
+|`string`
+|Article title
+|No
+
+|**url**
+|`string`
+|Article link
+|No
+
+|**citation**
+|`string`
+|Article journal and date
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-publication,`definitions.schema.json`>>
+
+=== publication.title
+
+Article title
+
+* **Type**: `string`
+* **Required**: No
+
+=== publication.url
+
+Article link
+
+* **Type**: `string`
+* **Required**: No
+
+=== publication.citation
+
+Article journal and date
+
+* **Type**: `string`
+* **Required**: No
+
+
+
+
+
+
+'''
+[#reference-selection-settings]
+== Selection settings
+
+.`Selection settings` Properties
+|===
+|   |Type|Description|Required
+
+|**default**
+|`string`
+|Default feature key for the setting
+| &#10003; Yes
+
+|**exclude**
+|`string` `[]`
+|Optional list of feature keys to exclude
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-selection-settings,`definitions.schema.json`>>
+
+=== selection-settings.default
+
+Default feature key for the setting
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== selection-settings.exclude
+
+Optional list of feature keys to exclude
+
+* **Type**: `string` `[]`
+* **Required**: No
+
+
+
+
+'''
+[#reference-userdata]
+== User data
+
+Optional display data
+
+Additional properties are allowed.
+
+* **JSON schema**: <<schema-reference-userdata,`definitions.schema.json`>>
+
+

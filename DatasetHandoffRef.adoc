@@ -1,0 +1,925 @@
+
+
+'''
+[#reference-images]
+== 3D Viewer Settings
+
+Settings for the 3D viewer
+
+.`3D Viewer Settings` Properties
+|===
+|   |Type|Description|Required
+
+|**maskChannelName**
+|`string`
+|Name of channel to use as mask, applied to all other enabled channels. Generally this would be a segmentation channel or a channel with binary data.  If omitted, then no masking will be available.
+|No
+
+|**groups**
+|`object` `[]`
+|Collection of named channel groupings. If omitted, then there will be a single group called "Channels".
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-images,`images.schema.json`>>
+
+=== images.maskChannelName
+
+Name of channel to use as mask, applied to all other enabled channels. Generally this would be a segmentation channel or a channel with binary data.  If omitted, then no masking will be available.
+
+* **Type**: `string`
+* **Required**: No
+
+=== images.groups
+
+Collection of named channel groupings. If omitted, then there will be a single group called "Channels".
+
+* **Type**: `object` `[]`
+* **Required**: No
+
+
+
+
+
+
+'''
+[#reference-cell-feature-dataset-handoff-specification]
+== Cell Feature Dataset Handoff Specification
+
+all the files needed for handoff
+
+.`Cell Feature Dataset Handoff Specification` Properties
+|===
+|   |Type|Description|Required
+
+|**megaset**
+|<<reference-input-megaset,`input-megaset`>>
+|File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named `dataset.json`
+|No
+
+|**dataset**
+|<<reference-input-dataset-info,`input-dataset-info`>>
+|File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`
+| &#10003; Yes
+
+|**feature-defs**
+|<<reference-feature-def,`feature-def`>> `[]`
+|File that describes the measured feature definitions. Is an array of feature definitions.
+| &#10003; Yes
+
+|**measured-features**
+|<<reference-array-items/input-measured-features,`array-items/input-measured-features`>> `[]`
+|Input file containing measured features and file info for each image.
+| &#10003; Yes
+
+|**images**
+|<<reference-images,`images`>>
+|Settings for the 3D viewer
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-cell-feature-dataset-handoff-specification,`input-dataset.schema.json`>>
+
+=== Cell Feature Dataset Handoff Specification.megaset
+
+File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named `dataset.json`
+
+* **Type**: <<reference-input-megaset,`input-megaset`>>
+* **Required**: No
+
+=== Cell Feature Dataset Handoff Specification.dataset
+
+File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`
+
+* **Type**: <<reference-input-dataset-info,`input-dataset-info`>>
+* **Required**:  &#10003; Yes
+
+=== Cell Feature Dataset Handoff Specification.feature-defs
+
+File that describes the measured feature definitions. Is an array of feature definitions.
+
+* **Type**: <<reference-feature-def,`feature-def`>> `[]`
+* **Required**:  &#10003; Yes
+
+=== Cell Feature Dataset Handoff Specification.measured-features
+
+Input file containing measured features and file info for each image.
+
+* **Type**: <<reference-array-items/input-measured-features,`array-items/input-measured-features`>> `[]`
+* **Required**:  &#10003; Yes
+
+=== Cell Feature Dataset Handoff Specification.images
+
+Settings for the 3D viewer
+
+* **Type**: <<reference-images,`images`>>
+* **Required**: No
+
+
+
+
+'''
+[#reference-array-items/dataset-link]
+== Dataset Link
+
+Schema for each single dataset
+
+.`Dataset Link` Properties
+|===
+|   |Type|Description|Required
+
+|**date**
+|`string`
+|Date of the dataset release
+| &#10003; Yes
+
+|**title**
+|`string`
+|
+| &#10003; Yes
+
+|**link**
+|`string`
+|
+| &#10003; Yes
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-array-items/dataset-link,`array-items/dataset-link.schema.json`>>
+
+=== array-items/dataset-link.date
+
+Date of the dataset release
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/dataset-link.title
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/dataset-link.link
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+
+
+
+'''
+[#reference-array-items/discrete-feature-option]
+== Discrete feature option
+
+Schema for each category in a discrete feature
+
+.`Discrete feature option` Properties
+|===
+|   |Type|Description|Required
+
+|**color**
+|`string`
+|Hex string
+| &#10003; Yes
+
+|**name**
+|`string`
+|Display name for the option. Doesn't have to be unique, but if it's not unique, `key` is required.
+| &#10003; Yes
+
+|**key**
+|`string`
+|unique key for the option.
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-array-items/discrete-feature-option,`array-items/discrete-feature-option.schema.json`>>
+
+=== array-items/discrete-feature-option.color
+
+Hex string
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/discrete-feature-option.name
+
+Display name for the option. Doesn't have to be unique, but if it's not unique, `key` is required.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== array-items/discrete-feature-option.key
+
+unique key for the option.
+
+* **Type**: `string`
+* **Required**: No
+
+
+
+
+'''
+[#reference-discrete-feature-options]
+== Discrete feature options
+
+Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0` or `1`, there should be two option mappings.
+
+Mapping interface: `{  [ key: **^\d{1,}$** ]: array-items/discrete-feature-option }`
+
+.`array-items/discrete-feature-option` Properties
+|===
+|   |Type|Description|Required
+
+|**color**
+|`string`
+|Hex string
+| &#10003; Yes
+
+|**name**
+|`string`
+|Display name for the option. Doesn't have to be unique, but if it's not unique, `key` is required.
+| &#10003; Yes
+
+|**key**
+|`string`
+|unique key for the option.
+|No
+
+|===
+
+Additional properties are allowed.
+
+* **JSON schema**: <<schema-reference-discrete-feature-options,`discrete-feature-options.schema.json`>>
+
+
+
+
+'''
+[#reference-array]
+== Feature data order
+
+Ordered array of feature keys for packing and unpacking data
+
+* **Type**: `string`
+* **JSON schema**: <<schema-reference-array,`definitions.schema.json`>>
+
+
+
+'''
+[#reference-feature-def]
+== Feature Definition
+
+Definition of a measured features in the dataset. Feature definitions file is an array of these objects.
+
+.`Feature Definition` Properties
+|===
+|   |Type|Description|Required
+
+|**displayName**
+|`string`
+|Human readable name
+| &#10003; Yes
+
+|**description**
+|`string`
+|Description of how the data was collected/measured
+| &#10003; Yes
+
+|**tooltip**
+|`string`
+|Shorter version of description
+| &#10003; Yes
+
+|**unit**
+|`string`
+|unit of measurement
+| &#10003; Yes
+
+|**key**
+|`string`
+|Id of the feature
+| &#10003; Yes
+
+|**discrete**
+|`boolean`
+|Whether it's a continuous measurement or not
+| &#10003; Yes
+
+|**options**
+|<<reference-discrete-feature-options,`discrete-feature-options`>>
+|Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0` or `1`, there should be two option mappings.
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-feature-def,`feature-def.schema.json`>>
+
+=== feature-def.displayName
+
+Human readable name
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== feature-def.description
+
+Description of how the data was collected/measured
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== feature-def.tooltip
+
+Shorter version of description
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== feature-def.unit
+
+unit of measurement
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== feature-def.key
+
+Id of the feature
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== feature-def.discrete
+
+Whether it's a continuous measurement or not
+
+* **Type**: `boolean`
+* **Required**:  &#10003; Yes
+
+=== feature-def.options
+
+Mapping of numeral key in the analysis to category names. There should be one key value pair for each category of a discrete feature. For example, if the feature is a boolean, and the numeral data is either `0` or `1`, there should be two option mappings.
+
+* **Type**: <<reference-discrete-feature-options,`discrete-feature-options`>>
+* **Required**: No
+
+
+
+
+
+
+'''
+[#reference-array]
+== Feature display order
+
+Ordered array of feature keys for display on front end
+
+* **Type**: `string`
+* **JSON schema**: <<schema-reference-array,`definitions.schema.json`>>
+
+
+
+'''
+[#reference-input-dataset-info]
+== Input dataset info `dataset.json`
+
+File containing the data needed to process a dataset. If single dataset, should be at the highest folder level. If one of many in a group of datasets, should be in a subfolder pointed to by the megaset JSON `datasets` array. Should be named `dataset.json`
+
+.`Input dataset info `dataset.json`` Properties
+|===
+|   |Type|Description|Required
+
+|**title**
+|`string`
+|Display name of dataset.
+| &#10003; Yes
+
+|**name**
+|`string`
+|Name of the group (no version number). Lowercase with underscores.
+| &#10003; Yes
+
+|**version**
+|`string`
+|Version year and number
+| &#10003; Yes
+
+|**description**
+|`string`
+|Description of the dataset
+| &#10003; Yes
+
+|**image**
+|`string`
+|Relative path to the dataset card image file, including filename.
+| &#10003; Yes
+
+|**link**
+|`string`
+|Link to website displaying the dataset
+|No
+
+|**userData**
+|<<reference-userdata,`userData`>>
+|Optional display data
+|No
+
+|**production**
+|`boolean`
+|Whether this dataset should be shown in production
+|No
+
+|**featuresDataPath**
+|`string`
+|Relative path to the per cell data json, including filename.
+| &#10003; Yes
+
+|**featureDefsPath**
+|`string`
+|Relative path to the feature definition file, including filename.
+|No
+
+|**viewerSettingsPath**
+|`string`
+|Relative path to image per-channel settings file for the 3d viewer, including filename.
+| &#10003; Yes
+
+|**albumPath**
+|`string`
+|Relative path to the album file.
+| &#10003; Yes
+
+|**thumbnailRoot**
+|`string`
+|Root url for thumbnail images
+| &#10003; Yes
+
+|**downloadRoot**
+|`string`
+|Root url for downloading cell data
+| &#10003; Yes
+
+|**volumeViewerDataRoot**
+|`string`
+|Root url for 3d images
+| &#10003; Yes
+
+|**xAxis**
+|<<reference-selection-settings,`selection-settings`>>
+|
+| &#10003; Yes
+
+|**yAxis**
+|<<reference-selection-settings,`selection-settings`>>
+|
+| &#10003; Yes
+
+|**colorBy**
+|<<reference-selection-settings,`selection-settings`>>
+|
+| &#10003; Yes
+
+|**groupBy**
+|<<reference-selection-settings,`selection-settings`>>
+|
+| &#10003; Yes
+
+|**featuresDisplayOrder**
+|`string` `[]`
+|Ordered array of feature keys for display on front end
+| &#10003; Yes
+
+|**featuresDataOrder**
+|`string` `[]`
+|Ordered array of feature keys for packing and unpacking data
+| &#10003; Yes
+
+|**datasetLinks**
+|<<reference-array-items/dataset-link,`array-items/dataset-link`>> `[]`
+|Array of dataset links
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-input-dataset-info,`input-dataset-info.schema.json`>>
+
+=== input-dataset-info.title
+
+Display name of dataset.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.name
+
+Name of the group (no version number). Lowercase with underscores.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.version
+
+Version year and number
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.description
+
+Description of the dataset
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.image
+
+Relative path to the dataset card image file, including filename.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.link
+
+Link to website displaying the dataset
+
+* **Type**: `string`
+* **Required**: No
+
+=== input-dataset-info.userData
+
+Optional display data
+
+* **Type**: <<reference-userdata,`userData`>>
+* **Required**: No
+
+=== input-dataset-info.production
+
+Whether this dataset should be shown in production
+
+* **Type**: `boolean`
+* **Required**: No
+
+=== input-dataset-info.featuresDataPath
+
+Relative path to the per cell data json, including filename.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.featureDefsPath
+
+Relative path to the feature definition file, including filename.
+
+* **Type**: `string`
+* **Required**: No
+
+=== input-dataset-info.viewerSettingsPath
+
+Relative path to image per-channel settings file for the 3d viewer, including filename.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.albumPath
+
+Relative path to the album file.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.thumbnailRoot
+
+Root url for thumbnail images
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.downloadRoot
+
+Root url for downloading cell data
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.volumeViewerDataRoot
+
+Root url for 3d images
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.xAxis
+
+* **Type**: <<reference-selection-settings,`selection-settings`>>
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.yAxis
+
+* **Type**: <<reference-selection-settings,`selection-settings`>>
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.colorBy
+
+* **Type**: <<reference-selection-settings,`selection-settings`>>
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.groupBy
+
+* **Type**: <<reference-selection-settings,`selection-settings`>>
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.featuresDisplayOrder
+
+Ordered array of feature keys for display on front end
+
+* **Type**: `string` `[]`
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.featuresDataOrder
+
+Ordered array of feature keys for packing and unpacking data
+
+* **Type**: `string` `[]`
+* **Required**:  &#10003; Yes
+
+=== input-dataset-info.datasetLinks
+
+Array of dataset links
+
+* **Type**: <<reference-array-items/dataset-link,`array-items/dataset-link`>> `[]`
+* **Required**: No
+
+
+
+
+'''
+[#reference-array]
+== Input datasets
+
+Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.
+
+* **Type**: `string`
+* **JSON schema**: <<schema-reference-array,`definitions.schema.json`>>
+
+
+
+'''
+[#reference-input-megaset]
+== Input Megaset `dataset.json`
+
+File that describes a group of datasets (ie a 'Megaset'). Should be at the highest level, and the datasets nested in their own folders. This file needs to be named `dataset.json`
+
+.`Input Megaset `dataset.json`` Properties
+|===
+|   |Type|Description|Required
+
+|**title**
+|`string`
+|Display name of dataset group.
+| &#10003; Yes
+
+|**name**
+|`string`
+|Name of the group (no version number). Lowercase with underscores.
+| &#10003; Yes
+
+|**datasets**
+|`string` `[]`
+|Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.
+| &#10003; Yes
+
+|**dateCreated**
+|`string`
+|Format: Month Day, Year. If it's not specified, the date will be set to the upload date. 
+|No
+
+|**publications**
+|<<reference-publication,`publication`>> `[]`
+|Publications associated with the group
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-input-megaset,`input-megaset.schema.json`>>
+
+=== input-megaset.title
+
+Display name of dataset group.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== input-megaset.name
+
+Name of the group (no version number). Lowercase with underscores.
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== input-megaset.datasets
+
+Array of subfolder names that point to each dataset in the group. Each subfolder should contain their own `dataset.json`.
+
+* **Type**: `string` `[]`
+* **Required**:  &#10003; Yes
+
+=== input-megaset.dateCreated
+
+Format: Month Day, Year. If it's not specified, the date will be set to the upload date. 
+
+* **Type**: `string`
+* **Required**: No
+
+=== input-megaset.publications
+
+Publications associated with the group
+
+* **Type**: <<reference-publication,`publication`>> `[]`
+* **Required**: No
+
+
+
+
+'''
+[#reference-input-measured-features-doc]
+== measured features JSON
+
+Input file containing measured features and file info for each image.
+
+* **Type**: <<reference-array-items/input-measured-features,`array-items/input-measured-features`>>
+* **JSON schema**: <<schema-reference-input-measured-features-doc,`input-measured-features-doc.schema.json`>>
+
+
+
+'''
+[#reference-publication]
+== Publication
+
+Publication data
+
+.`Publication` Properties
+|===
+|   |Type|Description|Required
+
+|**title**
+|`string`
+|Article title
+|No
+
+|**url**
+|`string`
+|Article link
+|No
+
+|**citation**
+|`string`
+|Article journal and date
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-publication,`definitions.schema.json`>>
+
+=== publication.title
+
+Article title
+
+* **Type**: `string`
+* **Required**: No
+
+=== publication.url
+
+Article link
+
+* **Type**: `string`
+* **Required**: No
+
+=== publication.citation
+
+Article journal and date
+
+* **Type**: `string`
+* **Required**: No
+
+
+
+
+
+
+'''
+[#reference-selection-settings]
+== Selection settings
+
+.`Selection settings` Properties
+|===
+|   |Type|Description|Required
+
+|**default**
+|`string`
+|Default feature key for the setting
+| &#10003; Yes
+
+|**exclude**
+|`string` `[]`
+|Optional list of feature keys to exclude
+|No
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-selection-settings,`definitions.schema.json`>>
+
+=== selection-settings.default
+
+Default feature key for the setting
+
+* **Type**: `string`
+* **Required**:  &#10003; Yes
+
+=== selection-settings.exclude
+
+Optional list of feature keys to exclude
+
+* **Type**: `string` `[]`
+* **Required**: No
+
+
+
+
+'''
+[#reference-array-items/input-measured-features]
+== The measured features and fileInfo for one image
+
+Per data point object. The measured features JSON is an array of these objects.
+
+.`The measured features and fileInfo for one image` Properties
+|===
+|   |Type|Description|Required
+
+|**file_info**
+|`(string or object)[7-8]`
+|Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]. Any of these can be empty strings if they aren't applicable, but the array needs to be at least 7 items long (8 if including the translation and rotation)
+| &#10003; Yes
+
+|**features**
+|`(number or string)[]`
+|Ordered array of measured features. Needs to match the order of featuresDataOrder
+| &#10003; Yes
+
+|===
+
+Additional properties are not allowed.
+
+* **JSON schema**: <<schema-reference-array-items/input-measured-features,`array-items/input-measured-features.schema.json`>>
+
+=== array-items/input-measured-features.file_info
+
+Ordered array of file info: [id, parentId, id of default group, thumbnail path, volume viewer path, parent thumbnail path, parent volume viewer path]. Any of these can be empty strings if they aren't applicable, but the array needs to be at least 7 items long (8 if including the translation and rotation)
+
+* **Type**: `(string or object)[7-8]`
+** Each element in the array must be one of the following values:
+* **Required**:  &#10003; Yes
+
+=== array-items/input-measured-features.features
+
+Ordered array of measured features. Needs to match the order of featuresDataOrder
+
+* **Type**: `(number or string)[]`
+** Each element in the array must be one of the following values:
+* **Required**:  &#10003; Yes
+
+
+
+
+'''
+[#reference-userdata]
+== User data
+
+Optional display data
+
+Additional properties are allowed.
+
+* **JSON schema**: <<schema-reference-userdata,`definitions.schema.json`>>
+
+
