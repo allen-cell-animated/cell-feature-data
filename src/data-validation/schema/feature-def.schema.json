@@ -43,5 +43,21 @@
         "unit",
         "key",
         "discrete"
+    ],
+    "oneOf": [
+        {
+            "if": {
+                "properties": {
+                    "discrete": {
+                        "const": true
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "options"
+                ]
+            }
+        }
     ]
 }
