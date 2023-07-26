@@ -181,8 +181,8 @@
   },
   {
     "displayName": "Drug Label",
-    "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
-    "tooltip": "Name of drug added to cells",
+    "description": "PTX: Paclitaxel, BFA: Brefeldin, STS: Staurosporin, NBleb: S-nitro Blebbistatin, RAP; Rapamycin.",
+    "tooltip": "PTX: Paclitaxel, BFA: Brefeldin, STS: Staurosporin, NBleb: S-nitro Blebbistatin, RAP; Rapamycin.",
     "unit": "",
     "key": "drug_label",
     "discrete": true,
