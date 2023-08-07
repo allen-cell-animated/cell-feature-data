@@ -8,6 +8,7 @@ const unpackInputDataset = require("../src/data-validation/unpack-input-dataset"
 const INPUT_DATASET_SCHEMA_FILE = "input-dataset.schema.json";
 const INPUT_MEGASET_SCHEMA_FILE = "input-megaset.schema.json";
 const ajv = getInputDatasetSchema();
+const terminalLink = require("terminal-link");
 
 const checkForError = (fileName, json, schemaFileName) => {
   const { valid, error } = dataPrep.validate(
@@ -88,10 +89,18 @@ const datasetFeatureMap = async (datasetFolder) => {
     "\x1b[0m"
   );
 
+  const link = terminalLink("Specification Documentation", "https://allen-cell-animated.github.io/cell-feature-data/HandoffSpecification.html");
   console.log(
     "\x1b[30m", 
-    "If the data looks incorrect, please update featuresDataOrder in dataset.json",
+    "If the data looks incorrect, please update featuresDataOrder in dataset.json.",
     "\x1b[0m" 
+  );
+  console.log(
+    "\x1b[30m",
+    "For more information, see the",
+    "\x1b[34m",
+    `${link}`,
+    "\x1b[0m"
   );
 };
 
