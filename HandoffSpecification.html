@@ -2758,6 +2758,29 @@ Each folder should have the same 5 files listed above.</p>
         "unit",
         "key",
         "discrete"
+    ],
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "discrete": {
+                        "const": true
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "options"
+                ]
+            },
+            "else": {
+                "not": {
+                    "required": [
+                        "options"
+                    ]
+                }
+            }
+        }
     ]
 }</code></pre>
 </div>
@@ -4158,7 +4181,7 @@ Each folder should have the same 5 files listed above.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-07-18 19:46:17 UTC
+Last updated 2023-08-07 18:13:43 UTC
 </div>
 </div>
 </body>
