@@ -27,6 +27,16 @@ const checkForError = (fileName, json, schemaFileName) => {
     if (result.featureKeysError) {
       datasetsError = result.featureKeysError;
       errorMsg = result.keysErrorMsg;
+    };
+    for (let featureDef of featureDefsData) {
+      if (featureDef.options){
+        const optionsArray = Object.values(featureDef.options);
+        const results = utils.validateKeyInOptions(optionsArray);
+        if (results.optionKeyError) {
+          datasetsError = results.optionKeyError;
+          errorMsg = results.optionKeyErrorMsg;
+        }
+      }
     }
   }
   if (json["dataset"]) {
