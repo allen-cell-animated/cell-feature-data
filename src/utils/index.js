@@ -71,10 +71,26 @@ const validateUserDataValues = (totalCells, totalFOVs) => {
     return { userDataError, userDataErrorMsg };
 };
 
+const validateKeyInOptions = (options) => {
+    let optionKeyError = false;
+    let optionKeyErrorMsg = "";
+    const uniqueNames = new Set();
+    options.forEach((option) => {
+        if (uniqueNames.has(option.name) && !option.key) {
+            optionKeyErrorMsg = `Error: option name ${option.name} is not unique, key is required`;
+            optionKeyError = true;
+        }
+        uniqueNames.add(option.name);
+    });
+    return { optionKeyError, optionKeyErrorMsg };
+};
+
+
 module.exports = {
     readDatasetJson,
     readAndParseFile, 
     readPossibleZippedFile,
     validateFeatureDataKeys,
-    validateUserDataValues
+    validateUserDataValues,
+    validateKeyInOptions,
 }
