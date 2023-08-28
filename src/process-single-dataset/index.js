@@ -48,6 +48,16 @@ const processSingleDataset = async (
     console.error(keysErrorMsg);
     process.exit(1);
   };
+  for (let featureDef of featureDefsData) {
+    if (featureDef.options){
+      const optionsArray = Object.values(featureDef.options);
+      const {optionKeyError, optionKeyErrorMsg} = utils.validateKeyInOptions(optionsArray);
+      if (optionKeyError) {
+        console.error(optionKeyErrorMsg);
+        process.exit(1);
+      }
+    }  
+  };
   const totalCells = datasetJson.userData.totalCells;
   const totalFOVs = datasetJson.userData.totalFOVs;
   const {userDataError, userDataErrorMsg} = utils.validateUserDataValues(totalCells, totalFOVs);
