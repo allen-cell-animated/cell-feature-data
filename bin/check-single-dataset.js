@@ -20,21 +20,21 @@ const checkForError = (fileName, json, schemaFileName) => {
   if (json["feature-defs"]) {
     const featuresDataOrder = json.dataset.featuresDataOrder;
     const featureDefsData = json["feature-defs"];
-    const result = utils.validateFeatureDataKeys(
+    const { featureKeysError, keysErrorMsg } = utils.validateFeatureDataKeys(
       featuresDataOrder,
       featureDefsData
     );
-    if (result.featureKeysError) {
-      datasetsError = result.featureKeysError;
-      errorMsg = result.keysErrorMsg;
+    if (featureKeysError) {
+      datasetsError = featureKeysError;
+      errorMsg = keysErrorMsg;
     };
     for (let featureDef of featureDefsData) {
       if (featureDef.options){
         const optionsArray = Object.values(featureDef.options);
-        const results = utils.validateKeyInOptions(optionsArray);
-        if (results.optionKeyError) {
-          datasetsError = results.optionKeyError;
-          errorMsg = results.optionKeyErrorMsg;
+        const { optionKeyError, optionKeyErrorMsg } = utils.validateKeyInOptions(optionsArray);
+        if (optionKeyError) {
+          datasetsError = optionKeyError;
+          errorMsg = optionKeyErrorMsg;
         }
       }
     }
@@ -42,10 +42,10 @@ const checkForError = (fileName, json, schemaFileName) => {
   if (json["dataset"]) {
     const totalCells = json.dataset.userData.totalCells;
     const totalFOVs = json.dataset.userData.totalFOVs;
-    const result = utils.validateUserDataValues(totalCells, totalFOVs);
-    if (result.userDataError) {
-      datasetsError = result.userDataError;
-      errorMsg = result.userDataErrorMsg;
+    const { userDataError, userDataErrorMsg }= utils.validateUserDataValues(totalCells, totalFOVs);
+    if (userDataError) {
+      datasetsError = userDataError;
+      errorMsg = userDataErrorMsg;
     }
   }
 
