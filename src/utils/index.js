@@ -41,48 +41,41 @@ const readPossibleZippedFile = async (folder, fileName) => {
 }
 
 const validateFeatureDataKeys = (featuresDataOrder, featureDefs) => {
-    let featureKeysError = false;
-    let keysErrorMsg = "";
     const keyList = Array.from(featureDefs, (featureDataJson) => featureDataJson.key);
     if (featuresDataOrder.length > keyList.length) {
-        keysErrorMsg = 
+        const keysErrorMsg = 
             `Error: featureDefs has ${keyList.length} features but there are ${featuresDataOrder.length} listed in featuresDataOrder`;
-        featureKeysError = true;
-        return { featureKeysError, keysErrorMsg };
+        return { featureKeysError: true, keysErrorMsg };
     };
-    featuresDataOrder.forEach((keyName) => {
+    for (const keyName of featuresDataOrder) {
         if (!keyList.includes(keyName)) {
-            keysErrorMsg =
+            const keysErrorMsg =
                 `Error: key ${keyName} in featuresDataOrder does not exist in featureDefs`;
-            featureKeysError = true;
-            return { featureKeysError, keysErrorMsg };
+            return { featureKeysError: true, keysErrorMsg };
         }
-    });
-    return { featureKeysError, keysErrorMsg };
+    }
+    return { featureKeysError: false, keysErrorMsg: "" };
 };
 
 const validateUserDataValues = (totalCells, totalFOVs) => {
-    let userDataError = false;
-    let userDataErrorMsg = "";
     if (!totalCells && !totalFOVs) {
-        userDataErrorMsg = "Error: totalCells and totalFOVs can't both be zero or undefined";
-        userDataError = true;
-    };
-    return { userDataError, userDataErrorMsg };
+        const userDataErrorMsg = "Error: totalCells and totalFOVs can't both be zero or undefined";
+        return { userDataError: true, userDataErrorMsg };
+    }
+    return { userDataError: false, userDataErrorMsg: "" };
 };
 
 const validateKeyInOptions = (options) => {
-    let optionKeyError = false;
-    let optionKeyErrorMsg = "";
     const uniqueNames = new Set();
-    options.forEach((option) => {
+
+    for (const option of options) {
         if (uniqueNames.has(option.name) && !option.key) {
-            optionKeyErrorMsg = `Error: option name ${option.name} is not unique, key is required`;
-            optionKeyError = true;
+            const optionKeyErrorMsg = `Error: option ${option.name} is not unique, key is required`;
+            return { optionKeyError: true, optionKeyErrorMsg };
         }
         uniqueNames.add(option.name);
-    });
-    return { optionKeyError, optionKeyErrorMsg };
+    }
+    return { optionKeyError: false, optionKeyErrorMsg: "" };
 };
 
 

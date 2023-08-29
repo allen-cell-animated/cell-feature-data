@@ -15,41 +15,7 @@ const checkForError = (fileName, json, schemaFileName) => {
     json,
     ajv.getSchema(schemaFileName)
   );
-  let datasetsError = false;
-  let errorMsg = "";
-  if (json["feature-defs"]) {
-    const featuresDataOrder = json.dataset.featuresDataOrder;
-    const featureDefsData = json["feature-defs"];
-    const { featureKeysError, keysErrorMsg } = utils.validateFeatureDataKeys(
-      featuresDataOrder,
-      featureDefsData
-    );
-    if (featureKeysError) {
-      datasetsError = featureKeysError;
-      errorMsg = keysErrorMsg;
-    };
-    for (let featureDef of featureDefsData) {
-      if (featureDef.options){
-        const optionsArray = Object.values(featureDef.options);
-        const { optionKeyError, optionKeyErrorMsg } = utils.validateKeyInOptions(optionsArray);
-        if (optionKeyError) {
-          datasetsError = optionKeyError;
-          errorMsg = optionKeyErrorMsg;
-        }
-      }
-    }
-  }
-  if (json["dataset"]) {
-    const totalCells = json.dataset.userData.totalCells;
-    const totalFOVs = json.dataset.userData.totalFOVs;
-    const { userDataError, userDataErrorMsg }= utils.validateUserDataValues(totalCells, totalFOVs);
-    if (userDataError) {
-      datasetsError = userDataError;
-      errorMsg = userDataErrorMsg;
-    }
-  }
-
-  if (!valid || datasetsError) {
+  const logError = (errorMsg) => {
     console.log(
       "\x1b[0m",
       `${fileName}`,
@@ -58,7 +24,8 @@ const checkForError = (fileName, json, schemaFileName) => {
       "\x1b[0m"
     );
     return true;
-  } else {
+  };
+  const logSuccess = () => {
     console.log(
       "\x1b[0m",
       `${fileName}: check against ${schemaFileName}`,
@@ -67,7 +34,35 @@ const checkForError = (fileName, json, schemaFileName) => {
       "\x1b[0m"
     );
     return false;
+  };
+  if (!valid) return logError(errorMsg);
+
+  if (json["feature-defs"]) {
+    const featuresDataOrder = json.dataset.featuresDataOrder;
+    const featureDefsData = json["feature-defs"];
+    const { featureKeysError, keysErrorMsg } = utils.validateFeatureDataKeys(
+      featuresDataOrder,
+      featureDefsData
+    );
+    if (featureKeysError) return logError(keysErrorMsg);
+
+    for (let featureDef of featureDefsData) {
+      if (featureDef.options){
+        const optionsArray = Object.values(featureDef.options);
+        const { optionKeyError, optionKeyErrorMsg } = utils.validateKeyInOptions(optionsArray);
+        if (optionKeyError) return logError(optionKeyErrorMsg);
+      }
+    }
   }
+
+  if (json["dataset"]) {
+    const totalCells = json.dataset.userData.totalCells;
+    const totalFOVs = json.dataset.userData.totalFOVs;
+    const { userDataError, userDataErrorMsg }= utils.validateUserDataValues(totalCells, totalFOVs);
+    if (userDataError) return logError(userDataErrorMsg);
+  }
+
+  return logSuccess();
 };
 
 const checkSingleDatasetInput = async (datasetFolder) => {
