@@ -78,6 +78,19 @@ const validateKeyInOptions = (options) => {
     return { optionKeyError: false, optionKeyErrorMsg: "" };
 };
 
+const validateFeatureDataOptions = (featureDefsData) => {
+    for (let featureDef of featureDefsData) {
+        if (featureDef.options){
+            const options = Object.values(featureDef.options);
+            const {optionKeyError, optionKeyErrorMsg} = validateKeyInOptions(options);
+            if (optionKeyError) {
+                return { optionKeyError, optionKeyErrorMsg };
+            }
+        }
+    }
+    return { optionKeyError: false, optionKeyErrorMsg: "" };
+};
+
 
 module.exports = {
     readDatasetJson,
@@ -85,5 +98,5 @@ module.exports = {
     readPossibleZippedFile,
     validateFeatureDataKeys,
     validateUserDataValues,
-    validateKeyInOptions,
+    validateFeatureDataOptions,
 }

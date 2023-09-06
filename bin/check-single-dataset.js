@@ -45,15 +45,10 @@ const checkForError = (fileName, json, schemaFileName) => {
       featureDefsData
     );
     if (featureKeysError) return logError(keysErrorMsg);
-
-    for (let featureDef of featureDefsData) {
-      if (featureDef.options){
-        const optionsArray = Object.values(featureDef.options);
-        const { optionKeyError, optionKeyErrorMsg } = utils.validateKeyInOptions(optionsArray);
-        if (optionKeyError) return logError(optionKeyErrorMsg);
-      }
-    }
+    const { optionKeyError, optionKeyErrorMsg } = utils.validateFeatureDataOptions(featureDefsData);
+    if (optionKeyError) return logError(optionKeyErrorMsg);
   }
+
 
   if (json["dataset"]) {
     const totalCells = json.dataset.userData.totalCells;
