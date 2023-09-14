@@ -12,7 +12,10 @@
 
     #### For more on what these files should look like, look at `process-dataset/data-validation/schema.js` and [Full spec documentation](https://allen-cell-animated.github.io/cell-feature-data/HandoffSpecification.html)
 
-3. Make a PR back to this repo. Make sure the validation set passes. If it doesn't check the logs to see what went wrong and fix any errors.
+3. Before pushing a PR back to this repo, run the preliminary data consistency checks locally and make sure the validation passes. If it doesn't check the logs to see what went wrong and fix any errors.
+    * to validate a single dataset: `npm run validate-single-dataset [PATH/TO/DATASET]` 
+    * to validate all datasets: `npm run validate-datasets`
+
 4. If everything looks good, run the [process dataset from `Actions`](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/upload-dataset.yml) by clicking the "Run workflow" dropdown and entering the following settings:
     * set `branch` to your branch
     * enter the folder name that contains your dataset
@@ -93,4 +96,5 @@ or
 ## Release dataset to production
 `npm run release-dataset [MEGASET_NAME]` // will release every dataset in a megaset. Note, this isn't the folder name, it's the megaset name
 `npm run release-dataset [DATASET_ID]` // will release a dataset that isn't part of a megaset, id should be in the format `[NAME]_v[VERSION]`
-`npm run release-dataset [MEGASET_NAME]  [DATASET_ID]` // will a dataset contained within a megaset, id should be in the format `[NAME]_v[VERSION]`
+`npm run release-dataset [MEGASET_NAME]  [DATASET_ID]` // will a dataset contained within a megaset, id should be in the format `[NAME]_v[VERSION]` 
+

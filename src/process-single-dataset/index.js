@@ -1,5 +1,5 @@
 const fsPromises = require("fs").promises;
-const { readAndParseFile } = require("../utils");
+const utils = require("../utils");
 const uploadManifest = require("./steps/upload-manifest");
 const uploadFeatureDefs = require("./steps/upload-feature-defs");
 const formatAndWritePerCellJsons = require("./steps/write-per-cell-jsons");
@@ -33,7 +33,7 @@ const processSingleDataset = async (
     }
   }
   const readFeatureData = async () => {
-    return await readAndParseFile(
+    return await utils.readAndParseFile(
       `${datasetReadFolder}/${fileNames.featureDefs}`
     );
   };
@@ -42,6 +42,19 @@ const processSingleDataset = async (
     datasetJson.featuresDataOrder.indexOf(defaultGroupBy);
 
   const featureDefsData = await readFeatureData();
+  const featuresDataOrder = datasetJson.featuresDataOrder;
+  const { featureKeysError, keysErrorMsg } = utils.validateFeatureDataKeys(featuresDataOrder, featureDefsData); 
+  if (featureKeysError) {
+    console.error(keysErrorMsg);
+    process.exit(1);
+  };
+  const totalCells = datasetJson.userData.totalCells;
+  const totalFOVs = datasetJson.userData.totalFOVs;
+  const {userDataError, userDataErrorMsg} = utils.validateUserDataValues(totalCells, totalFOVs);
+  if (userDataError) {
+    console.error(userDataErrorMsg);
+    process.exit(1);
+  };
 
   const TEMP_FOLDER = "./tmp/" + id;
 

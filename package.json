@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "16"
+    "node": ">=16"
   },
   "directories": {
     "lib": "lib"
@@ -14,10 +14,11 @@
     "process-dataset": "node bin/process-dataset",
     "upload-image": "node bin/upload-dataset-image",
     "release-dataset": "node bin/release-dataset",
-    "prepublish-docs": "make docs",
+    "prepublish-docs": "make all-docs",
     "publish-docs": "gh-pages -d dist",
     "postpublish-docs": "cd src/data-validation && make clean",
-    "validate-datasets": "node bin/check-input-datasets.js"
+    "validate-datasets": "node bin/check-input-datasets.js",
+    "validate-single-dataset": "node bin/check-single-dataset.js"
   },
   "repository": {
     "type": "git",
@@ -36,10 +37,12 @@
     "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "firebase-admin": "^11.5.0",
+    "jsonpointer": "^5.0.1",
     "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "node-stream-zip": "^1.15.0",
-    "prompt": "^1.1.0"
+    "prompt": "^1.1.0",
+    "terminal-link": "^2.1.1"
   },
   "devDependencies": {
     "asciidoctor": "^2.2.6",

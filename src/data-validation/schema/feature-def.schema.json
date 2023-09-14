@@ -43,5 +43,28 @@
         "unit",
         "key",
         "discrete"
+    ],
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "discrete": {
+                        "const": true
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "options"
+                ]
+            },
+            "else": {
+                "not": {
+                    "required": [
+                        "options"
+                    ]
+                }
+            }
+        }
     ]
 }

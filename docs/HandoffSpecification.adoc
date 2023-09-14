@@ -1,9 +1,9 @@
 = How to hand off a dataset
 
-=== 1. Create the files
+== 1. Create the files
 (the only file names that matters are `dataset.json`)
 
-===== For a single dataset:
+=== For a single dataset:
 [toc]
 
 Create a folder with 5 files:
@@ -14,7 +14,7 @@ Create a folder with 5 files:
 * xref:DatasetHandoffRef.adoc#reference-images[images.json]
 * card-cover.png (for display on the homepage)
 
-===== For a group of datasets, ie a Megaset 
+==== For a group of datasets, ie a Megaset 
 [toc]
 
 Create a folder with 1 file and one folder per dataset.
@@ -32,9 +32,9 @@ Megaset Folder/::
 
 Refer to xref:DatasetHandoffRef.adoc#reference-input-megaset[Megaset] for more information.
 
-=== 2. Make a PR to this repo with your dataset folder. 
+== 2. Make a PR to this repo with your dataset folder. 
 
-= Full Documentation 
+== Full Documentation 
 
 include::DatasetHandoffRef.adoc[]
 :toc: 

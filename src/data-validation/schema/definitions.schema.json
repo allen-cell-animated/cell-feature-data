@@ -203,6 +203,15 @@
             "title": "Album path",
             "description": "Database path to album information.",
             "type": "string"
+        },
+        "datasetLinks": {
+            "title": "Dataset Link",
+            "description": "Array of dataset links",
+            "type": "array",
+            "items": {
+                "$ref": "array-items/dataset-link.schema.json",
+                "type": "object"
+            }
         }
     }
 }
