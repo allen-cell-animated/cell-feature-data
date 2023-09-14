@@ -19,9 +19,9 @@
   "featuresDataPath": "cell_feature_analysis.json",
   "viewerSettingsPath": "images.json",
   "albumPath": "albums",
-  "thumbnailRoot": "https://animatedcell-test-data.s3.us-west-2.amazonaws.com/drug_pilot/thumbs",
+  "thumbnailRoot": "https://image-data-releases.allencell.org/drug_data_v0.1/thumbs",
   "downloadRoot": "",
-  "volumeViewerDataRoot": "https://animatedcell-test-data.s3.us-west-2.amazonaws.com/drug_pilot/images",
+  "volumeViewerDataRoot": "https://image-data-releases.allencell.org/drug_data_v0.1/images",
   "xAxis": {
     "default": "drug_label",
     "exclude": []
