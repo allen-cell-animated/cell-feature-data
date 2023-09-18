@@ -52,9 +52,14 @@ const formatAndWritePerCellJsons = async (
     }, {});
 
     const categoryValue = cellData.features[defaultGroupByIndex];
-    const groupBy = find(featureDefs, {
+    const groupByFeature = find(featureDefs, {
       key: defaultGroupBy,
-    }).options[categoryValue];
+    });
+    if (!groupByFeature.discrete || !groupByFeature.options) {
+      console.log(`Error: defaultGroupBy \x1b[33m${defaultGroupBy}\x1b[0m, must be discrete and should have corresponding options`);
+      process.exit(1);
+    };
+    const groupBy = groupByFeature.options[categoryValue];
     if (!groupBy) {
       console.log("NO GROUP BY FOR ", defaultGroupBy, categoryValue);
       process.exit(1);

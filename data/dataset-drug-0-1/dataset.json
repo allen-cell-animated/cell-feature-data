@@ -1,0 +1,51 @@
+{
+  "title": "Drug Perturbation Pilot Dataset",
+  "version": "0.1",
+  "name": "drug_data",
+  "dateCreated": "October 27, 2017",
+  "image": "",
+  "description": "The goal of our drug perturbation pilot study is to identify signature profiles of cellular organization for a range of well-characterized agonists and antagonists commonly used to perturb specific cellular processes or pathways. ​The analysis not only shows the effects of these drugs on structures they are known to perturb but also on other structures providing a rich signature of pathway alterations.",
+  "extra": "",
+  "publications": [
+  ],
+  "userData": {
+    "isNew": false,
+    "inReview": false,
+    "totalCells": 0,
+    "totalFOVs": 395,
+    "totalTaggedStructures": 7
+  },
+  "featureDefsPath": "feature_defs.json",
+  "featuresDataPath": "cell_feature_analysis.json",
+  "viewerSettingsPath": "images.json",
+  "albumPath": "albums",
+  "thumbnailRoot": "https://image-data-releases.allencell.org/drug_data_v0.1/thumbs",
+  "downloadRoot": "",
+  "volumeViewerDataRoot": "https://image-data-releases.allencell.org/drug_data_v0.1/images",
+  "xAxis": {
+    "default": "drug_label",
+    "exclude": []
+  },
+  "yAxis": {
+    "default": "fov_number",
+    "exclude": []
+  },
+  "colorBy": {
+    "default": "Gene"
+  },
+  "groupBy": {
+    "default": "Gene"
+  },
+  "featuresDisplayOrder": [],
+  "featuresDataOrder": [
+    "Gene",
+    "Objective",
+    "Structure",
+    "Protein_Name",
+    "treatment_group",
+    "time_point",
+    "concentration",
+    "drug_label",
+    "fov_number"
+  ]
+}
