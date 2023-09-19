@@ -74,6 +74,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
+      - name: Process firebase token
+        run: echo "FIREBASE_TOKEN=(echo $FIREBASE_TOKEN | sed 's/\\n/\n/g')" >> $GITHUB_ENV
       - run: npm ci
       - name: Process dataset to production
         if: contains(needs.get_admins.outputs.collaborators, github.triggering_actor)
