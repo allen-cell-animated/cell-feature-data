@@ -66,7 +66,7 @@ jobs:
   process_dataset_to_production: 
     name: Process Dataset to Prod
     runs-on: ubuntu-latest
-    if: github.event.inputs.database == 'production'
+    if: github.event.inputs.database == 'production' && github.ref == 'refs/heads/main'
     needs: get_admins
     steps:
       - uses: actions/checkout@v3
@@ -74,8 +74,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      - name: Process firebase token
-        run: echo "FIREBASE_TOKEN=(echo $FIREBASE_TOKEN | sed 's/\\n/\n/g')" >> $GITHUB_ENV
       - run: npm ci
       - name: Process dataset to production
         if: contains(needs.get_admins.outputs.collaborators, github.triggering_actor)
