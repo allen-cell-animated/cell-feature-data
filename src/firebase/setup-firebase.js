@@ -1,5 +1,5 @@
 require("dotenv").config();
-const admin = require("firebase-admin");
+const admin = require("firebase-admin/app");
 
 const notProduction = process.env.NODE_ENV !== "production";
 
