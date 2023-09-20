@@ -60,7 +60,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
       - run: npm ci
       - name: Release dataset
         if: contains(needs.get_admins.outputs.collaborators, github.triggering_actor)
