@@ -20,7 +20,7 @@ var app = admin.initializeApp({
     type: "service_account",
     projectId: FIREBASE_ID,
     clientEmail: FIREBASE_EMAIL,
-    privateKey: FIREBASE_TOKEN,
+    privateKey: firebasekey,
   }),
   databaseURL: FIREBASE_DB_URL,
 });
