@@ -14,6 +14,7 @@ if (notProduction) {
 }
 const { FIREBASE_TOKEN, FIREBASE_ID, FIREBASE_DB_URL,FIREBASE_EMAIL } = ref;
 const firebasekey = FIREBASE_TOKEN.replace(/\\n/g, "\n");
+const firebasekey_without_quotes = firebasekey.replace(/^"|"$/g, "");
 console.log("FIREBASE_TOKEN", FIREBASE_TOKEN);
 console.log("firebasekey", firebasekey);
 
@@ -22,7 +23,7 @@ var app = admin.initializeApp({
     type: "service_account",
     projectId: FIREBASE_ID,
     clientEmail: FIREBASE_EMAIL,
-    privateKey: firebasekey,
+    privateKey: firebasekey_without_quotes,
   }),
   databaseURL: FIREBASE_DB_URL,
 });
