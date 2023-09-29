@@ -14,6 +14,7 @@ if (notProduction) {
 }
 const { FIREBASE_TOKEN, FIREBASE_ID, FIREBASE_DB_URL, FIREBASE_EMAIL } = ref;
 const firebasekey = FIREBASE_TOKEN.replace(/\\n/g, "\n").trim().replace(/^"|"$/g, "");
+console.log("firebasekey", firebasekey);
 
 var app = admin.initializeApp({
   credential: admin.credential.cert({
