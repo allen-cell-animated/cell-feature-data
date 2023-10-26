@@ -1,19 +1,71 @@
 import csv
+import json
+import os
 import sys
 
 
 class DataLoader:
-    def __init__(self, path):
+    def __init__(self, path, dataset_name):
         self.path = path
+        self.dataset_name = dataset_name
 
-    def load(self):
+    def csv_to_json(self):
+        try:
+            with open(self.path, "r") as f:
+                reader = csv.DictReader(f)
+                data = list(reader)
+            json_filename = self.dataset_name + ".json"
+            full_path = os.path.join(os.path.dirname(self.path), json_filename)
+            print("full_path....", full_path)
+            with open(full_path, "w") as f:
+                json.dump(data, f, indent=4)
+        except Exception as e:
+            print(f"Error while converting CSV to JSON: {e}")
+
+
+class DatasetManager(DataLoader):
+    def __init__(self, path, dataset_name):
+        super().__init__(path, dataset_name)
+
+    def get_inputs(self):
         """
-        Load data from csv file
+        get the inputs from the user
         """
-        with open(self.path, "r") as f:
-            reader = csv.reader(f)
-            data = list(reader)
-        return data
+        # version is required, title and description are optional
+        # Q: should we have a default title and description?
+        # return version, title, description
+        pass
+
+    def create_dataset_folder(self):
+        """
+        create a folder with the database_name
+        initialize the folder with required json files
+        """
+        # folder_name = self.dataset_name + "_" + version
+        # path = os.path.join("data", folder_name)
+        # os.makedirs(path, exist_ok=True)
+        # create json files
+        pass
+
+
+class FeatureDefsHandler:
+    def __init__(self) -> None:
+        pass
+
+
+class DatasetHandler:
+    def __init__(self) -> None:
+        pass
+
+
+class CellFeatureAnalysisHandler:
+    def __init__(self) -> None:
+        pass
+
+
+class ImageSettingsHandler:
+    def __init__(self) -> None:
+        pass
 
 
 if __name__ == "__main__":
@@ -21,5 +73,6 @@ if __name__ == "__main__":
         file_path = sys.argv[1]
     else:
         file_path = input("Enter the file path: ")
-    loader = DataLoader(file_path)
-    loader.load()
+    dataset_name = os.path.splitext(os.path.basename(file_path))[0]
+    manager = DatasetManager(file_path, dataset_name)
+    manager.csv_to_json()
