@@ -1,0 +1,5 @@
+cell_id,parent_id,cell_group,cell_thumbnail,cell_image,parent_thumbnail,parent_image,cell-line,cellular-volume (fL),cell-surface-area (\u00b5m\u00b2),interphase-or-mitosis (stage)
+3,7649,AICS-22,AICS-22/AICS-22_7649_3.png,AICS-22/AICS-22_7649_3_atlas.json,AICS-22/AICS-22_7649.png,AICS-22/AICS-22_7649_atlas.json,22,0.6023035,1429.4477,0
+4,237649,AICS-23,AICS-22/AICS-22_7649_4.png,AICS-22/AICS-22_7649_4_atlas.json,AICS-22/AICS-22_7649.png,AICS-22/AICS-22_7649_atlas.json,22,0.7109504555,1069.4997,1
+5,43,AICS-24,AICS-22/AICS-22_7649_8.png,AICS-22/AICS-22_7649_8_atlas.json,AICS-22/AICS-22_7649.png,AICS-22/AICS-22_7649_atlas.json,22,0.6897936778,910.803,1
+6,21,AICS-25,AICS-22/AICS-22_7649_9.png,AICS-22/AICS-22_7649_9_atlas.json,AICS-22/AICS-22_7649.png,AICS-22/AICS-22_7649_atlas.json,22,0.7751718146,723.5123,-1
