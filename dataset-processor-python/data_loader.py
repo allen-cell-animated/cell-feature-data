@@ -1,7 +1,7 @@
-import csv
-import json
 import os
 import sys
+import csv
+import json
 
 
 class DataLoader:
@@ -10,13 +10,15 @@ class DataLoader:
         self.dataset_name = dataset_name
 
     def csv_to_json(self):
+        """
+        converts the csv file to json format
+        """
         try:
             with open(self.path, "r") as f:
                 reader = csv.DictReader(f)
                 data = list(reader)
             json_filename = self.dataset_name + ".json"
             full_path = os.path.join(os.path.dirname(self.path), json_filename)
-            print("full_path....", full_path)
             with open(full_path, "w") as f:
                 json.dump(data, f, indent=4)
         except Exception as e:
@@ -24,6 +26,10 @@ class DataLoader:
 
 
 class DatasetManager(DataLoader):
+    """
+    Class to create the dataset folder and json files
+    """
+
     def __init__(self, path, dataset_name):
         super().__init__(path, dataset_name)
 
@@ -44,26 +50,42 @@ class DatasetManager(DataLoader):
         # folder_name = self.dataset_name + "_" + version
         # path = os.path.join("data", folder_name)
         # os.makedirs(path, exist_ok=True)
-        # create json files
+        # create json files -> feature_defs.json, dataset.json, cell_feature_analysis.json, image_settings.json
         pass
 
 
 class FeatureDefsHandler:
+    """
+    Handles operations on feature_defs.json
+    """
+
     def __init__(self) -> None:
         pass
 
 
 class DatasetHandler:
+    """
+    Handles operations on dataset.json
+    """
+
     def __init__(self) -> None:
         pass
 
 
 class CellFeatureAnalysisHandler:
+    """
+    Handles operations on cell_feature_analysis.json(aka features.json)
+    """
+
     def __init__(self) -> None:
         pass
 
 
 class ImageSettingsHandler:
+    """
+    Handles operations on image_settings.json(aka images.json)
+    """
+
     def __init__(self) -> None:
         pass
 
