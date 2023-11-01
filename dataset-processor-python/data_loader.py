@@ -1,33 +1,33 @@
 import os
 import sys
 import csv
-import json
 
 
 class DataLoader:
     def __init__(self, path, dataset_name):
         self.path = path
         self.dataset_name = dataset_name
+        self.initial_data = None
 
-    def csv_to_json(self):
+    def read_csv(self):
         """
-        converts the csv file to json format
+        read the csv file and store the data
         """
         try:
             with open(self.path, "r") as f:
                 reader = csv.DictReader(f)
-                data = list(reader)
-            json_filename = self.dataset_name + ".json"
-            full_path = os.path.join(os.path.dirname(self.path), json_filename)
-            with open(full_path, "w") as f:
-                json.dump(data, f, indent=4)
+                data = list(
+                    reader
+                )  # data is a list of dictionaries, each dictionary is a row
+                self.initial_data = data
+                print("CSV file read successfully", self.initial_data)
         except Exception as e:
-            print(f"Error while converting CSV to JSON: {e}")
+            print(f"Error while reading CSV: {e}")
 
 
-class DatasetManager(DataLoader):
+class DatasetWriter(DataLoader):
     """
-    Class to create the dataset folder and json files
+    Class to create the dataset folder and write json files
     """
 
     def __init__(self, path, dataset_name):
@@ -37,8 +37,7 @@ class DatasetManager(DataLoader):
         """
         get the inputs from the user
         """
-        # version is required, title and description are optional
-        # Q: should we have a default title and description?
+        # version is required, title and description are optional, default values are set as empty string
         # return version, title, description
         pass
 
@@ -54,47 +53,11 @@ class DatasetManager(DataLoader):
         pass
 
 
-class FeatureDefsHandler:
-    """
-    Handles operations on feature_defs.json
-    """
-
-    def __init__(self) -> None:
-        pass
-
-
-class DatasetHandler:
-    """
-    Handles operations on dataset.json
-    """
-
-    def __init__(self) -> None:
-        pass
-
-
-class CellFeatureAnalysisHandler:
-    """
-    Handles operations on cell_feature_analysis.json(aka features.json)
-    """
-
-    def __init__(self) -> None:
-        pass
-
-
-class ImageSettingsHandler:
-    """
-    Handles operations on image_settings.json(aka images.json)
-    """
-
-    def __init__(self) -> None:
-        pass
-
-
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         file_path = sys.argv[1]
     else:
         file_path = input("Enter the file path: ")
     dataset_name = os.path.splitext(os.path.basename(file_path))[0]
-    manager = DatasetManager(file_path, dataset_name)
-    manager.csv_to_json()
+    manager = DatasetWriter(file_path, dataset_name)
+    manager.read_csv()
