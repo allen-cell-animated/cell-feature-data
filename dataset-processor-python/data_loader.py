@@ -20,7 +20,6 @@ class DataLoader:
                     reader
                 )  # data is a list of dictionaries, each dictionary is a row
                 self.initial_data = data
-                print("CSV file read successfully", self.initial_data)
         except Exception as e:
             print(f"Error while reading CSV: {e}")
 
