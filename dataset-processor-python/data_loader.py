@@ -4,6 +4,7 @@ import re
 import sys
 import csv
 import pandas as pd
+import numpy
 
 
 class DataLoader:
@@ -65,14 +66,15 @@ class DatasetWriter(DataLoader):
     def process_data(self):
         for row in self.data:
             file_info, features = self.get_row_data(row)
-            self.update_cell_feature_analysis(file_info, features)
-        self.prepare_feature_defs()
-        self.prepare_dataset()
+            self.process_cell_feature_analysis(file_info, features)
+        self.process_feature_defs()
+        self.process_dataset()
 
     def get_row_data(self, row):
         file_info = []
         features = []
         for column, value in row.items():
+            print(f"{column}: {value}")
             value = self.convert_str_to_num(value)
             if column in self.FILEINFO_COLUMN_NAMES:
                 file_info.append(value)
@@ -84,6 +86,12 @@ class DatasetWriter(DataLoader):
                     print(f"Invalid value: {value} in column {column}")
                     sys.exit(1)
         return file_info, features
+
+    def get_column_data(self, column):
+        column_data = []
+        for row in self.data:
+            column_data.append(row.get(column, ""))
+        return column_data
 
     def convert_str_to_num(self, value):
         try:
@@ -109,31 +117,35 @@ class DatasetWriter(DataLoader):
             return False
         return numeric_value == int(numeric_value)
 
-    def update_cell_feature_analysis(self, file_info, features):
+    def process_cell_feature_analysis(self, file_info, features):
         self.cell_feature_analysis_file.append(
             {"file_info": file_info, "features": features}
         )
 
-    def prepare_feature_defs(self):
+    def process_feature_defs(self):
         description = ""
         tooltip = ""
         discrete = None
         for key in self.feature_def_keys:
+            feature_def = {}
             discrete = self.discrete_features_dict[key]
             unit = self.get_unit(key)
-            key = key.replace(f"({unit})", "").strip()
-            self.features_data_order.append(key)
-            display_name = DatasetWriter.format_display_name(key.replace("-", " "))
+            stripped_key = key.replace(f"({unit})", "").strip()
+            self.features_data_order.append(stripped_key)
+            display_name = DatasetWriter.format_display_name(
+                stripped_key.replace("-", " ")
+            )
             feature_def = {
-                "key": key,
+                "key": stripped_key,
                 "displayName": display_name,
                 "unit": unit,
                 "description": description,
                 "tooltip": tooltip,
-                "discrete": discrete
+                "discrete": discrete,
             }
             if discrete:
-                options = self.prepare_discrete_feature_options(key)
+                column_data = self.get_column_data(key)
+                options = self.write_discrete_feature_options(column_data)
                 feature_def["options"] = options
             self.feature_defs_file.append(feature_def)
 
@@ -154,17 +166,31 @@ class DatasetWriter(DataLoader):
             unit = ""
         return unit
 
-    def prepare_discrete_feature_options(self, key):
-        # TODO: write the options dict for discrete features
-        # test option data
-        return {
-            "0": {"color": "#fed98e", "name": "Incomplete"},
-            "1": {"color": "#7f48f3", "name": "Complete"},
-            "-1": {"color": "#838383", "name": "Not determined"},
-        }
+    def write_discrete_feature_options(self, data_values):
+        keys = numpy.unique(data_values)
+        options = {}
+        # TODO: key in options is optional
+        for index, key in enumerate(keys):
+            options[key] = {"color": self.get_color(index), "name": key, "key": key}
+        return options
 
-    def prepare_dataset(self):
-        # TODO: get more input data from users
+    def get_color(self, index):
+        colors = [
+            "#A6CEE3",
+            "#1F78B4",
+            "#B2DF8A",
+            "#33A02C",
+            "#FB9A99",
+            "#E31A1C",
+            "#FDBF6F",
+            "#FF7F00",
+            "#CAB2D6",
+        ]
+        if index >= len(colors):
+            index = index % len(colors)
+        return colors[index]
+
+    def process_dataset(self):
         fields_to_write = {
             "title": self.title,
             "version": self.version,
@@ -173,7 +199,6 @@ class DatasetWriter(DataLoader):
             "featuresDataOrder": self.features_data_order,
         }
         self.dataset_file.update(fields_to_write)
-        return self.dataset_file
 
     def create_dataset_folder(self):
         folder_name = f"{self.dataset_name}_v{self.version}"
