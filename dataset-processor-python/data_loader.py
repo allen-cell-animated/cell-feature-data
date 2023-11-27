@@ -66,32 +66,19 @@ class DatasetWriter(DataLoader):
     def process_data(self):
         for row in self.data:
             file_info, features = self.get_row_data(row)
-            self.process_cell_feature_analysis(file_info, features)
-        self.process_feature_defs()
-        self.process_dataset()
+            self.compile_cell_feature_analysis(file_info, features)
+        self.compile_feature_defs()
+        self.compile_dataset()
 
     def get_row_data(self, row):
-        file_info = []
-        features = []
+        file_info, features = [], []
         for column, value in row.items():
-            print(f"{column}: {value}")
             value = self.convert_str_to_num(value)
             if column in self.FILEINFO_COLUMN_NAMES:
                 file_info.append(value)
             else:
-                if self.is_valid_feature_value(value):
-                    features.append(value)
-                    self.update_feature_metadata(column, value)
-                else:
-                    print(f"Invalid value: {value} in column {column}")
-                    sys.exit(1)
+                self.process_features(column, value, features)
         return file_info, features
-
-    def get_column_data(self, column):
-        column_data = []
-        for row in self.data:
-            column_data.append(row.get(column, ""))
-        return column_data
 
     def convert_str_to_num(self, value):
         try:
@@ -102,6 +89,14 @@ class DatasetWriter(DataLoader):
         except ValueError:
             # if not number, return the original value
             return value
+
+    def process_features(self, column, value, features):
+        if self.is_valid_feature_value(value):
+            features.append(value)
+            self.update_feature_metadata(column, value)
+        else:
+            print(f"Invalid value: {value} in column {column}")
+            sys.exit(1)
 
     def is_valid_feature_value(self, value):
         return pd.isna(value) or isinstance(value, (int, float))
@@ -117,12 +112,12 @@ class DatasetWriter(DataLoader):
             return False
         return numeric_value == int(numeric_value)
 
-    def process_cell_feature_analysis(self, file_info, features):
+    def compile_cell_feature_analysis(self, file_info, features):
         self.cell_feature_analysis_file.append(
             {"file_info": file_info, "features": features}
         )
 
-    def process_feature_defs(self):
+    def compile_feature_defs(self):
         description = ""
         tooltip = ""
         discrete = None
@@ -166,10 +161,16 @@ class DatasetWriter(DataLoader):
             unit = ""
         return unit
 
+    def get_column_data(self, column):
+        column_data = []
+        for row in self.data:
+            column_data.append(row.get(column, ""))
+        return column_data
+
     def write_discrete_feature_options(self, data_values):
         keys = numpy.unique(data_values)
         options = {}
-        # TODO: key in options is optional
+        # TODO: "key" in options is optional
         for index, key in enumerate(keys):
             options[key] = {"color": self.get_color(index), "name": key, "key": key}
         return options
@@ -190,7 +191,7 @@ class DatasetWriter(DataLoader):
             index = index % len(colors)
         return colors[index]
 
-    def process_dataset(self):
+    def compile_dataset(self):
         fields_to_write = {
             "title": self.title,
             "version": self.version,
