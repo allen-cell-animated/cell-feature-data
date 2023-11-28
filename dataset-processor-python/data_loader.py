@@ -25,7 +25,7 @@ class DataLoader:
 
     def load_csv(self):
         """
-        read the csv file and store the data
+        Read the csv file and store the data
         """
         try:
             with open(self.path, "r") as f:
@@ -33,7 +33,7 @@ class DataLoader:
                 return list(reader)
         except Exception as e:
             print(f"Error while reading CSV: {e}")
-            sys.exit(1)
+            return None
 
 
 class DatasetWriter(DataLoader):
@@ -54,7 +54,6 @@ class DatasetWriter(DataLoader):
         self.version = input("Enter the version: ").strip()
         if not self.version or not self.is_valid_version(self.version):
             print("Please enter a valid version in the format [yyyy.number].")
-            # recursively call to prompt the user
             return self.get_user_inputs()
         self.title = input("Enter the title: ").strip()
         self.description = input("Enter the description: ").strip()
@@ -64,6 +63,9 @@ class DatasetWriter(DataLoader):
         return re.match(pattern, version) is not None
 
     def process_data(self):
+        """
+        Process each row of the csv file and compile the json files
+        """
         for row in self.data:
             file_info, features = self.get_row_data(row)
             self.compile_cell_feature_analysis(file_info, features)
@@ -71,6 +73,9 @@ class DatasetWriter(DataLoader):
         self.compile_dataset()
 
     def get_row_data(self, row):
+        """
+        Separates the file info and features from the row
+        """
         file_info, features = [], []
         for column, value in row.items():
             value = self.convert_str_to_num(value)
@@ -96,7 +101,7 @@ class DatasetWriter(DataLoader):
             self.update_feature_metadata(column, value)
         else:
             print(f"Invalid value: {value} in column {column}")
-            sys.exit(1)
+            return
 
     def is_valid_feature_value(self, value):
         return pd.isna(value) or isinstance(value, (int, float))
@@ -108,9 +113,10 @@ class DatasetWriter(DataLoader):
             self.feature_def_keys.append(column)
 
     def is_discrete(self, numeric_value):
-        if pd.isna(numeric_value):
-            return False
-        return numeric_value == int(numeric_value)
+        """
+        Determines if the numeric value is discrete
+        """
+        return not pd.isna(numeric_value) and numeric_value == int(numeric_value)
 
     def compile_cell_feature_analysis(self, file_info, features):
         self.cell_feature_analysis_file.append(
@@ -120,9 +126,7 @@ class DatasetWriter(DataLoader):
     def compile_feature_defs(self):
         description = ""
         tooltip = ""
-        discrete = None
         for key in self.feature_def_keys:
-            feature_def = {}
             discrete = self.discrete_features_dict[key]
             unit = self.get_unit(key)
             stripped_key = key.replace(f"({unit})", "").strip()
@@ -153,15 +157,16 @@ class DatasetWriter(DataLoader):
 
     @staticmethod
     def get_unit(key):
+        """
+        Extracts the unit from the key if present
+        """
         match = re.search(r"\((.*?)\)", key)
-        if match:
-            # get the unit from the key
-            unit = match.group(1)
-        else:
-            unit = ""
-        return unit
+        return match.group(1) if match else ""
 
     def get_column_data(self, column):
+        """
+        Returns the column data from the dataset
+        """
         column_data = []
         for row in self.data:
             column_data.append(row.get(column, ""))
@@ -170,9 +175,9 @@ class DatasetWriter(DataLoader):
     def write_discrete_feature_options(self, data_values):
         keys = numpy.unique(data_values)
         options = {}
-        # TODO: "key" in options is optional
         for index, key in enumerate(keys):
-            options[key] = {"color": self.get_color(index), "name": key, "key": key}
+            # In options, "color" and "name" are required, and "key" is optional. "name" and "key" should be defined by the user.
+            options[key] = {"color": self.get_color(index), "name": "", "key": ""}
         return options
 
     def get_color(self, index):
