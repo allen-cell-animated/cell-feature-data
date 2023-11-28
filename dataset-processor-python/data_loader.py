@@ -44,9 +44,9 @@ class DatasetWriter(DataLoader):
     def __init__(self, path, dataset_name):
         super().__init__(path, dataset_name)
         # initialize the json files in the data folder
-        self.cell_feature_analysis_file = []
-        self.feature_defs_file = []
-        self.dataset_file = {}
+        self.cell_feature_analysis_data = []
+        self.feature_defs_data = []
+        self.dataset_data = {}
         # utility variables - to organize and categorize the feature data for file writing
         self.feature_def_keys = []
         self.discrete_features_dict = {}
@@ -185,7 +185,7 @@ class DatasetWriter(DataLoader):
                 column_data = self.get_column_data(key)
                 options = self.write_discrete_feature_options(column_data)
                 feature_def["options"] = options
-            self.feature_defs_file.append(feature_def)
+            self.feature_defs_data.append(feature_def)
 
     def compile_dataset(self):
         fields_to_write = {
@@ -195,7 +195,7 @@ class DatasetWriter(DataLoader):
             "description": self.description,
             "featuresDataOrder": self.features_data_order,
         }
-        self.dataset_file.update(fields_to_write)
+        self.dataset_data.update(fields_to_write)
 
     def get_row_data(self, row):
         """
@@ -211,7 +211,7 @@ class DatasetWriter(DataLoader):
         return file_info, features
 
     def compile_cell_feature_analysis(self, file_info, features):
-        self.cell_feature_analysis_file.append(
+        self.cell_feature_analysis_data.append(
             {"file_info": file_info, "features": features}
         )
 
@@ -233,9 +233,9 @@ class DatasetWriter(DataLoader):
 
     def write_json_files(self, path):
         json_files = {
-            "cell_feature_analysis.json": self.cell_feature_analysis_file,
-            "feature_defs.json": self.feature_defs_file,
-            "dataset.json": self.dataset_file,
+            "cell_feature_analysis.json": self.cell_feature_analysis_data,
+            "feature_defs.json": self.feature_defs_data,
+            "dataset.json": self.dataset_data,
             "image_settings.json": {},
         }
         for file_name, data in json_files.items():
