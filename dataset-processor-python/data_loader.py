@@ -43,12 +43,19 @@ class DatasetWriter(DataLoader):
 
     def __init__(self, path, dataset_name):
         super().__init__(path, dataset_name)
+        # initialize the json files in the data folder
         self.cell_feature_analysis_file = []
         self.feature_defs_file = []
         self.dataset_file = {}
+        # utility variables - to organize and categorize the feature data for file writing
         self.feature_def_keys = []
         self.discrete_features_dict = {}
         self.features_data_order = []
+
+    @staticmethod
+    def is_valid_version(version):
+        pattern = r"^\d{4}\.[0-9]+$"
+        return re.match(pattern, version) is not None
 
     def get_user_inputs(self):
         self.version = input("Enter the version: ").strip()
@@ -58,34 +65,8 @@ class DatasetWriter(DataLoader):
         self.title = input("Enter the title: ").strip()
         self.description = input("Enter the description: ").strip()
 
-    def is_valid_version(self, version):
-        pattern = r"^\d{4}\.[0-9]+$"
-        return re.match(pattern, version) is not None
-
-    def process_data(self):
-        """
-        Process each row of the csv file and compile the json files
-        """
-        for row in self.data:
-            file_info, features = self.get_row_data(row)
-            self.compile_cell_feature_analysis(file_info, features)
-        self.compile_feature_defs()
-        self.compile_dataset()
-
-    def get_row_data(self, row):
-        """
-        Separates the file info and features from the row
-        """
-        file_info, features = [], []
-        for column, value in row.items():
-            value = self.convert_str_to_num(value)
-            if column in self.FILEINFO_COLUMN_NAMES:
-                file_info.append(value)
-            else:
-                self.process_features(column, value, features)
-        return file_info, features
-
-    def convert_str_to_num(self, value):
+    @staticmethod
+    def convert_str_to_num(value):
         try:
             numeric_value = float(value)
             if numeric_value.is_integer():
@@ -95,6 +76,30 @@ class DatasetWriter(DataLoader):
             # if not number, return the original value
             return value
 
+    @staticmethod
+    def is_valid_feature_value(value):
+        return pd.isna(value) or isinstance(value, (int, float))
+
+    @staticmethod
+    def is_discrete(numeric_value):
+        """
+        Determines if the numeric value is discrete
+        """
+        return not pd.isna(numeric_value) and numeric_value == int(numeric_value)
+
+    def update_feature_metadata(self, column, value):
+        is_discrete = self.is_discrete(value)
+        if column in self.discrete_features_dict:
+            if is_discrete != self.discrete_features_dict[column]:
+                print(
+                    f"Column {column} has both discrete and continuous values. Please make sure that all values in a column are either discrete or continuous."
+                )
+                return
+        else:
+            self.discrete_features_dict[column] = is_discrete
+        if column not in self.feature_def_keys:
+            self.feature_def_keys.append(column)
+
     def process_features(self, column, value, features):
         if self.is_valid_feature_value(value):
             features.append(value)
@@ -103,25 +108,59 @@ class DatasetWriter(DataLoader):
             print(f"Invalid value: {value} in column {column}")
             return
 
-    def is_valid_feature_value(self, value):
-        return pd.isna(value) or isinstance(value, (int, float))
-
-    def update_feature_metadata(self, column, value):
-        is_discrete = self.is_discrete(value)
-        self.discrete_features_dict[column] = is_discrete
-        if column not in self.feature_def_keys:
-            self.feature_def_keys.append(column)
-
-    def is_discrete(self, numeric_value):
+    @staticmethod
+    def get_unit(key):
         """
-        Determines if the numeric value is discrete
+        Extracts the unit from the key if present
         """
-        return not pd.isna(numeric_value) and numeric_value == int(numeric_value)
+        match = re.search(r"\((.*?)\)", key)
+        return match.group(1) if match else ""
 
-    def compile_cell_feature_analysis(self, file_info, features):
-        self.cell_feature_analysis_file.append(
-            {"file_info": file_info, "features": features}
+    @staticmethod
+    def format_display_name(title):
+        """
+        Formats the title to display name, e.g. "the title of the feature" -> "The Title of the Feature"
+        """
+        lowercase_list = ["the", "for", "in", "of", "on", "to", "and", "as", "or"]
+        title_words = title.split()
+        return " ".join(
+            word if (word in lowercase_list and i != 0) else word.title()
+            for i, word in enumerate(title_words)
         )
+
+    def get_column_data(self, column):
+        """
+        Returns the column data from the dataset
+        """
+        column_data = []
+        for row in self.data:
+            column_data.append(row.get(column, ""))
+        return column_data
+
+    @staticmethod
+    def get_color(index):
+        colors = [
+            "#A6CEE3",
+            "#1F78B4",
+            "#B2DF8A",
+            "#33A02C",
+            "#FB9A99",
+            "#E31A1C",
+            "#FDBF6F",
+            "#FF7F00",
+            "#CAB2D6",
+        ]
+        if index >= len(colors):
+            index = index % len(colors)
+        return colors[index]
+
+    def write_discrete_feature_options(self, data_values):
+        keys = numpy.unique(data_values)
+        options = {}
+        for index, key in enumerate(keys):
+            # In options, "color" and "name" are required, and "key" is optional. "name" and "key" should be defined by the user.
+            options[key] = {"color": self.get_color(index), "name": "", "key": ""}
+        return options
 
     def compile_feature_defs(self):
         description = ""
@@ -148,54 +187,6 @@ class DatasetWriter(DataLoader):
                 feature_def["options"] = options
             self.feature_defs_file.append(feature_def)
 
-    @staticmethod
-    def format_display_name(title):
-        lowercase_list = ["the", "for", "in", "of", "on", "to", "and", "as", "or"]
-        return " ".join(
-            word if word in lowercase_list else word.title() for word in title.split()
-        )
-
-    @staticmethod
-    def get_unit(key):
-        """
-        Extracts the unit from the key if present
-        """
-        match = re.search(r"\((.*?)\)", key)
-        return match.group(1) if match else ""
-
-    def get_column_data(self, column):
-        """
-        Returns the column data from the dataset
-        """
-        column_data = []
-        for row in self.data:
-            column_data.append(row.get(column, ""))
-        return column_data
-
-    def write_discrete_feature_options(self, data_values):
-        keys = numpy.unique(data_values)
-        options = {}
-        for index, key in enumerate(keys):
-            # In options, "color" and "name" are required, and "key" is optional. "name" and "key" should be defined by the user.
-            options[key] = {"color": self.get_color(index), "name": "", "key": ""}
-        return options
-
-    def get_color(self, index):
-        colors = [
-            "#A6CEE3",
-            "#1F78B4",
-            "#B2DF8A",
-            "#33A02C",
-            "#FB9A99",
-            "#E31A1C",
-            "#FDBF6F",
-            "#FF7F00",
-            "#CAB2D6",
-        ]
-        if index >= len(colors):
-            index = index % len(colors)
-        return colors[index]
-
     def compile_dataset(self):
         fields_to_write = {
             "title": self.title,
@@ -205,6 +196,34 @@ class DatasetWriter(DataLoader):
             "featuresDataOrder": self.features_data_order,
         }
         self.dataset_file.update(fields_to_write)
+
+    def get_row_data(self, row):
+        """
+        Separates the file info and features from the row
+        """
+        file_info, features = [], []
+        for column, value in row.items():
+            value = self.convert_str_to_num(value)
+            if column in self.FILEINFO_COLUMN_NAMES:
+                file_info.append(value)
+            else:
+                self.process_features(column, value, features)
+        return file_info, features
+
+    def compile_cell_feature_analysis(self, file_info, features):
+        self.cell_feature_analysis_file.append(
+            {"file_info": file_info, "features": features}
+        )
+
+    def process_data(self):
+        """
+        Process each row of the csv file and compile the json files
+        """
+        for row in self.data:
+            file_info, features = self.get_row_data(row)
+            self.compile_cell_feature_analysis(file_info, features)
+        self.compile_feature_defs()
+        self.compile_dataset()
 
     def create_dataset_folder(self):
         folder_name = f"{self.dataset_name}_v{self.version}"
