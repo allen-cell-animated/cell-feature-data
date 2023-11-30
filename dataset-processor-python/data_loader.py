@@ -8,15 +8,9 @@ import numpy
 
 
 class DataLoader:
-    FILEINFO_COLUMN_NAMES = [
-        "cell_id",
-        "parent_id",
-        "cell_group",
-        "cell_thumbnail",
-        "cell_image",
-        "parent_thumbnail",
-        "parent_image",
-    ]
+    """
+    Loads the csv file and stores the initial data
+    """
 
     def __init__(self, path, dataset_name):
         self.path = path
@@ -36,21 +30,13 @@ class DataLoader:
             return None
 
 
-class DatasetWriter(DataLoader):
+class UserInputHandler:
     """
-    Class to create the dataset folder and write json files
+    Class to handle user inputs
     """
 
-    def __init__(self, path, dataset_name):
-        super().__init__(path, dataset_name)
-        # initialize the json files in the data folder
-        self.cell_feature_analysis_data = []
-        self.feature_defs_data = []
-        self.dataset_data = {}
-        # utility variables - to organize and categorize the feature data for file writing
-        self.feature_def_keys = []
-        self.discrete_features_dict = {}
-        self.features_data_order = []
+    def __init__(self):
+        pass
 
     @staticmethod
     def is_valid_version(version):
@@ -58,12 +44,45 @@ class DatasetWriter(DataLoader):
         return re.match(pattern, version) is not None
 
     def get_user_inputs(self):
-        self.version = input("Enter the version: ").strip()
-        if not self.version or not self.is_valid_version(self.version):
+        version = input("Enter the version: ").strip()
+        if not version or not self.is_valid_version(version):
             print("Please enter a valid version in the format [yyyy.number].")
             return self.get_user_inputs()
-        self.title = input("Enter the title: ").strip()
-        self.description = input("Enter the description: ").strip()
+        title = input("Enter the title: ").strip()
+        description = input("Enter the description: ").strip()
+        return {
+            "version": version,
+            "title": title,
+            "description": description,
+        }
+
+
+class DatasetWriter(DataLoader):
+    """
+    Class to create the dataset folder and write json files
+    """
+
+    FILEINFO_COLUMN_NAMES = [
+        "cell_id",
+        "parent_id",
+        "cell_group",
+        "cell_thumbnail",
+        "cell_image",
+        "parent_thumbnail",
+        "parent_image",
+    ]
+
+    def __init__(self, path, dataset_name, inputs=None):
+        super().__init__(path, dataset_name)
+        # initialize the json files in the data folder
+        self.inputs = inputs
+        self.cell_feature_analysis_data = []
+        self.feature_defs_data = []
+        self.dataset_data = {}
+        # utility variables - to organize and categorize the feature data for file writing
+        self.feature_def_keys = []
+        self.discrete_features_dict = {}
+        self.features_data_order = []
 
     @staticmethod
     def convert_str_to_num(value):
@@ -189,10 +208,10 @@ class DatasetWriter(DataLoader):
 
     def compile_dataset(self):
         fields_to_write = {
-            "title": self.title,
-            "version": self.version,
+            "title": self.inputs["title"],
+            "version": self.inputs["version"],
             "name": self.dataset_name,
-            "description": self.description,
+            "description": self.inputs["description"],
             "featuresDataOrder": self.features_data_order,
         }
         self.dataset_data.update(fields_to_write)
@@ -226,7 +245,7 @@ class DatasetWriter(DataLoader):
         self.compile_dataset()
 
     def create_dataset_folder(self):
-        folder_name = f"{self.dataset_name}_v{self.version}"
+        folder_name = f"{self.dataset_name}_v{self.inputs['version']}"
         path = os.path.join("data", folder_name)
         os.makedirs(path, exist_ok=True)
         self.write_json_files(path)
@@ -250,7 +269,11 @@ if __name__ == "__main__":
     else:
         file_path = input("Enter the file path: ")
     dataset_name = os.path.splitext(os.path.basename(file_path))[0]
-    writer = DatasetWriter(file_path, dataset_name)
-    writer.get_user_inputs()
+    input_handler = UserInputHandler()
+    inputs = input_handler.get_user_inputs()
+    if not inputs:
+        print("Please enter valid inputs.")
+        sys.exit(1)
+    writer = DatasetWriter(file_path, dataset_name, inputs)
     writer.process_data()
     writer.create_dataset_folder()
