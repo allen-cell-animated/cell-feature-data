@@ -36,7 +36,7 @@ class UserInputHandler:
     """
 
     def __init__(self):
-        pass
+        self.inputs = self.get_user_inputs()
 
     @staticmethod
     def is_valid_version(version):
@@ -80,7 +80,7 @@ class DatasetWriter(DataLoader):
         self.feature_defs_data = []
         self.dataset_data = {}
         # utility variables - to organize and categorize the feature data for file writing
-        self.feature_def_keys = []
+        self.feature_def_keys = set()
         self.discrete_features_dict = {}
         self.features_data_order = []
 
@@ -108,16 +108,13 @@ class DatasetWriter(DataLoader):
 
     def update_feature_metadata(self, column, value):
         is_discrete = self.is_discrete(value)
-        if column in self.discrete_features_dict:
-            if is_discrete != self.discrete_features_dict[column]:
+        if column in self.discrete_features_dict and is_discrete != self.discrete_features_dict[column]:
                 print(
                     f"Column {column} has both discrete and continuous values. Please make sure that all values in a column are either discrete or continuous."
                 )
                 return
-        else:
-            self.discrete_features_dict[column] = is_discrete
-        if column not in self.feature_def_keys:
-            self.feature_def_keys.append(column)
+        self.discrete_features_dict[column] = is_discrete
+        self.feature_def_keys.add(column)
 
     def process_features(self, column, value, features):
         if self.is_valid_feature_value(value):
@@ -270,7 +267,7 @@ if __name__ == "__main__":
         file_path = input("Enter the file path: ")
     dataset_name = os.path.splitext(os.path.basename(file_path))[0]
     input_handler = UserInputHandler()
-    inputs = input_handler.get_user_inputs()
+    inputs = input_handler.inputs
     if not inputs:
         print("Please enter valid inputs.")
         sys.exit(1)
