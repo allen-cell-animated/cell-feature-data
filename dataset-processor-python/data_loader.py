@@ -108,11 +108,14 @@ class DatasetWriter(DataLoader):
 
     def update_feature_metadata(self, column, value):
         is_discrete = self.is_discrete(value)
-        if column in self.discrete_features_dict and is_discrete != self.discrete_features_dict[column]:
-                print(
-                    f"Column {column} has both discrete and continuous values. Please make sure that all values in a column are either discrete or continuous."
-                )
-                return
+        if (
+            column in self.discrete_features_dict
+            and is_discrete != self.discrete_features_dict[column]
+        ):
+            print(
+                f"Column {column} has both discrete and continuous values. Please make sure that all values in a column are either discrete or continuous."
+            )
+            return
         self.discrete_features_dict[column] = is_discrete
         self.feature_def_keys.add(column)
 
