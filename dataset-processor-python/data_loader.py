@@ -7,35 +7,14 @@ import pandas as pd
 import numpy
 
 
-class DataLoader:
-    """
-    Loads the csv file and stores the initial data
-    """
-
-    def __init__(self, path, dataset_name):
-        self.path = path
-        self.dataset_name = dataset_name
-        self.data = self.load_csv()
-
-    def load_csv(self):
-        """
-        Read the csv file and store the data
-        """
-        try:
-            with open(self.path, "r") as f:
-                reader = csv.DictReader(f)
-                return list(reader)
-        except Exception as e:
-            print(f"Error while reading CSV: {e}")
-            return None
-
-
 class UserInputHandler:
     """
     Class to handle user inputs
     """
 
-    def __init__(self):
+    def __init__(self, path, dataset_name):
+        self.path = path
+        self.dataset_name = dataset_name
         self.inputs = self.get_user_inputs()
 
     @staticmethod
@@ -51,13 +30,37 @@ class UserInputHandler:
         title = input("Enter the title: ").strip()
         description = input("Enter the description: ").strip()
         return {
+            "path": self.path,
+            "dataset_name": self.dataset_name,
             "version": version,
             "title": title,
             "description": description,
         }
 
 
-class DatasetWriter(DataLoader):
+class DataLoader:
+    """
+    Loads the csv file and stores the initial data
+    """
+
+    def __init__(self, inputs):
+        self.inputs = inputs
+        self.data = self.load_csv()
+
+    def load_csv(self):
+        """
+        Read the csv file and store the data
+        """
+        try:
+            with open(self.inputs["path"], "r") as f:
+                reader = csv.DictReader(f)
+                return list(reader)
+        except Exception as e:
+            print(f"Error while reading CSV: {e}")
+            return None
+
+
+class DatasetWriter:
     """
     Class to create the dataset folder and write json files
     """
@@ -72,9 +75,9 @@ class DatasetWriter(DataLoader):
         "parent_image",
     ]
 
-    def __init__(self, path, dataset_name, inputs=None):
-        super().__init__(path, dataset_name)
+    def __init__(self, data_loader, inputs):
         # initialize the json files in the data folder
+        self.data = data_loader.data
         self.inputs = inputs
         self.cell_feature_analysis_data = []
         self.feature_defs_data = []
@@ -210,8 +213,11 @@ class DatasetWriter(DataLoader):
         fields_to_write = {
             "title": self.inputs["title"],
             "version": self.inputs["version"],
-            "name": self.dataset_name,
+            "name": self.inputs["dataset_name"],
             "description": self.inputs["description"],
+            "featureDefsPath": "feature_defs.json",
+            "featuresDataPath": "cell_feature_analysis.json",
+            "viewerSettingsPath": "image_settings.json",
             "featuresDataOrder": self.features_data_order,
         }
         self.dataset_data.update(fields_to_write)
@@ -245,7 +251,7 @@ class DatasetWriter(DataLoader):
         self.compile_dataset()
 
     def create_dataset_folder(self):
-        folder_name = f"{self.dataset_name}_v{self.inputs['version']}"
+        folder_name = f"{self.inputs['dataset_name']}_v{self.inputs['version']}"
         path = os.path.join("data", folder_name)
         os.makedirs(path, exist_ok=True)
         self.write_json_files(path)
@@ -269,11 +275,12 @@ if __name__ == "__main__":
     else:
         file_path = input("Enter the file path: ")
     dataset_name = os.path.splitext(os.path.basename(file_path))[0]
-    input_handler = UserInputHandler()
+    input_handler = UserInputHandler(file_path, dataset_name)
     inputs = input_handler.inputs
     if not inputs:
         print("Please enter valid inputs.")
         sys.exit(1)
-    writer = DatasetWriter(file_path, dataset_name, inputs)
+    loader = DataLoader(inputs)
+    writer = DatasetWriter(loader, inputs)
     writer.process_data()
     writer.create_dataset_folder()
