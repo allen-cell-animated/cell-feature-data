@@ -135,7 +135,7 @@ class DatasetWriter:
         """
         Extracts the unit from the key if present
         """
-        match = re.search(r"\((.*?)\)", key)
+        match = re.search(r"\((.*?)\)$", key)
         return match.group(1) if match else ""
 
     @staticmethod
