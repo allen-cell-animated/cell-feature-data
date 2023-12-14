@@ -45,9 +45,9 @@ class DataLoader:
 
     def __init__(self, inputs):
         self.inputs = inputs
-        self.data = self.read_csv()
+        self.data = self.load_csv()
 
-    def read_csv(self):
+    def load_csv(self):
         """
         Read the csv file and store the data
         Returns a list of dictionaries, where each dictionary represents a row in the csv file
