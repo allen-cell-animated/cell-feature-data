@@ -19,7 +19,7 @@ class UserInputHandler:
 
     @staticmethod
     def is_valid_version(version):
-        pattern = r"^\d{4}\.[0-9]+$"
+        pattern = r"^[0-9]{4}\.[0-9]+$"
         return re.match(pattern, version) is not None
 
     def get_user_inputs(self):
@@ -45,11 +45,12 @@ class DataLoader:
 
     def __init__(self, inputs):
         self.inputs = inputs
-        self.data = self.load_csv()
+        self.data = self.read_csv()
 
-    def load_csv(self):
+    def read_csv(self):
         """
         Read the csv file and store the data
+        Returns a list of dictionaries, where each dictionary represents a row in the csv file
         """
         try:
             with open(self.inputs["path"], "r") as f:
@@ -82,8 +83,11 @@ class DatasetWriter:
         self.cell_feature_analysis_data = []
         self.feature_defs_data = []
         self.dataset_data = {}
-        # utility variables - to organize and categorize the feature data for file writing
-        self.feature_def_keys = set()
+        # utility variables - to organize and prepare the feature data for file writing
+        # self.feature_def_keys is a list of feature names(with units if applicable) in order of appearance in the csv file
+        self.feature_def_keys = []
+        # self.discrete_features_dict is a dictionary of feature names and whether they are discrete or not
+        # e.g. {"feature1": True, "feature2": False}
         self.discrete_features_dict = {}
         self.features_data_order = []
 
@@ -110,6 +114,10 @@ class DatasetWriter:
         return not pd.isna(numeric_value) and numeric_value == int(numeric_value)
 
     def update_feature_metadata(self, column, value):
+        """
+        Updates the feature metadata with whether the feature is discrete or not
+        Store the list of original feature names for writing the feature defs file
+        """
         is_discrete = self.is_discrete(value)
         if (
             column in self.discrete_features_dict
@@ -120,7 +128,8 @@ class DatasetWriter:
             )
             return
         self.discrete_features_dict[column] = is_discrete
-        self.feature_def_keys.add(column)
+        if column not in self.feature_def_keys:
+            self.feature_def_keys.append(column)
 
     def process_features(self, column, value, features):
         if self.is_valid_feature_value(value):
@@ -177,10 +186,27 @@ class DatasetWriter:
         return colors[index]
 
     def write_discrete_feature_options(self, data_values):
+        """
+        Keys in options are the unique values in the column, and values are the color and name of the feature
+        Returns the options for a discrete feature
+
+        Options example:
+        "options":{
+            "7": {
+                "color": "#FF96FF",
+                "name": "Actin filaments",
+                "key": "Alpha-actinin-1"
+            },
+            "16": {
+                "color": "#FFB1FF",
+                "name": "Actin filaments",
+                "key": "Beta-actin"
+        }
+        """
         keys = numpy.unique(data_values)
         options = {}
         for index, key in enumerate(keys):
-            # In options, "color" and "name" are required, and "key" is optional. "name" and "key" should be defined by the user.
+            # "key" is optional, if "name" is not unique, use "key" to distinguish between the options
             options[key] = {"color": self.get_color(index), "name": "", "key": ""}
         return options
 
