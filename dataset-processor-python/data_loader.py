@@ -76,6 +76,11 @@ class DatasetWriter:
         "parent_image",
     ]
 
+    CELL_FEATURE_ANALYSIS_FILENAME = "cell_feature_analysis.json"
+    DATASET_FILENAME = "dataset.json"
+    FEATURE_DEFS_FILENAME = "feature_defs.json"
+    IMAGE_SETTINGS_FILENAME = "image_settings.json"
+
     def __init__(self, data_loader, inputs):
         # initialize the json files in the data folder
         self.data = data_loader.data
@@ -241,9 +246,9 @@ class DatasetWriter:
             "version": self.inputs["version"],
             "name": self.inputs["dataset_name"],
             "description": self.inputs["description"],
-            "featureDefsPath": "feature_defs.json",
-            "featuresDataPath": "cell_feature_analysis.json",
-            "viewerSettingsPath": "image_settings.json",
+            "featureDefsPath": self.FEATURE_DEFS_FILENAME,
+            "featuresDataPath": self.CELL_FEATURE_ANALYSIS_FILENAME,
+            "viewerSettingsPath": self.IMAGE_SETTINGS_FILENAME,
             "featuresDataOrder": self.features_data_order,
         }
         self.dataset_data.update(fields_to_write)
@@ -284,10 +289,10 @@ class DatasetWriter:
 
     def write_json_files(self, path):
         json_files = {
-            "cell_feature_analysis.json": self.cell_feature_analysis_data,
-            "feature_defs.json": self.feature_defs_data,
-            "dataset.json": self.dataset_data,
-            "image_settings.json": {},
+            self.CELL_FEATURE_ANALYSIS_FILENAME: self.cell_feature_analysis_data,
+            self.DATASET_FILENAME: self.dataset_data,
+            self.FEATURE_DEFS_FILENAME: self.feature_defs_data,
+            self.IMAGE_SETTINGS_FILENAME: {},
         }
         for file_name, data in json_files.items():
             file_path = os.path.join(path, file_name)
