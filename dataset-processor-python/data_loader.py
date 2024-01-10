@@ -3,8 +3,9 @@ import os
 import re
 import sys
 import csv
-import pandas as pd
 import numpy
+import pandas as pd
+import questionary
 
 
 class UserInputHandler:
@@ -12,9 +13,10 @@ class UserInputHandler:
     Class to handle user inputs
     """
 
-    def __init__(self, path, dataset_name):
+    def __init__(self, path, dataset_name, dataset_writer=None):
         self.path = path
         self.dataset_name = dataset_name
+        self.dataset_writer = dataset_writer
         self.inputs = self.get_user_inputs()
 
     @staticmethod
@@ -23,19 +25,89 @@ class UserInputHandler:
         return re.match(pattern, version) is not None
 
     def get_user_inputs(self):
-        version = input("Enter the version: ").strip()
-        if not version or not self.is_valid_version(version):
-            print("Please enter a valid version in the format [yyyy.number].")
-            return self.get_user_inputs()
-        title = input("Enter the title: ").strip()
-        description = input("Enter the description: ").strip()
+        version = questionary.text(
+            "Enter the version(yyyy.number):",
+            default="2024.0",
+            validate=self.is_valid_version,
+        ).ask()
+        title = questionary.text("Enter the title:").ask()
+        description = questionary.text("Enter the description:").ask()
         return {
             "path": self.path,
             "dataset_name": self.dataset_name,
-            "version": version,
-            "title": title,
-            "description": description,
+            "version": version.strip(),
+            "title": title.strip(),
+            "description": description.strip(),
         }
+
+    def get_additional_inputs(self):
+        """
+        Get additional inputs from the user with interactive prompts
+        """
+        if self.dataset_writer:
+            cell_features = self.dataset_writer.features_data_order
+            discrete_features = self.dataset_writer.discrete_features
+            first_feature = (
+                cell_features[0] if cell_features else "Error: No features found"
+            )
+            xAxis = questionary.autocomplete(
+                "Enter the x-axis feature name:",
+                default=first_feature,
+                validate=self.is_valid_feature,
+                choices=cell_features,
+            ).ask()
+            second_feature = (
+                cell_features[1] if cell_features else "Error: No features found"
+            )
+            yAxis = questionary.autocomplete(
+                "Enter the y-axis feature name:",
+                default=second_feature,
+                validate=self.is_valid_feature,
+                choices=cell_features,
+            ).ask()
+            color_by = questionary.autocomplete(
+                "Enter the feature name to color by:",
+                default=first_feature,
+                validate=self.is_valid_feature,
+                choices=cell_features,
+            ).ask()
+            first_discrete_feature = (
+                discrete_features[0]
+                if discrete_features
+                else "Error: No discrete features found"
+            )
+            group_by = questionary.autocomplete(
+                "Enter the discrete feature name to group by:",
+                default=first_discrete_feature,
+                validate=self.is_valid_feature,
+                choices=discrete_features,
+            ).ask()
+            thumbnail_root = questionary.text("Enter the thumbnail root:").ask()
+            volume_viewer_data_root = questionary.text(
+                "Enter the volume viewer data root:"
+            ).ask()
+            download_root = questionary.text("Enter the download root:").ask()
+            return {
+                "thumbnailRoot": thumbnail_root,
+                "downloadRoot": download_root,
+                "volumeViewerDataRoot": volume_viewer_data_root,
+                "xAxis": {"default": xAxis, "exclude": []},
+                "yAxis": {"default": yAxis, "exclude": []},
+                "colorBy": {"default": color_by},
+                "groupBy": {"default": group_by},
+            }
+        else:
+            print("Error: Dataset writer not initialized.")
+            return None
+
+    @staticmethod
+    def is_valid_feature(input):
+        return input in [
+            "cell-line",
+            "cellular-volume",
+            "cell-surface-area",
+            "interphase-or-mitosis",
+        ]
 
 
 class DataLoader:
@@ -91,10 +163,13 @@ class DatasetWriter:
         # utility variables - to organize and prepare the feature data for file writing
         # self.feature_def_keys is a list of feature names(with units if applicable) in order of appearance in the csv file
         self.feature_def_keys = []
-        # self.discrete_features_dict is a dictionary of feature names and whether they are discrete or not
+        # self.feature_discreteness_map is a dictionary of feature names and whether they are discrete or not
         # e.g. {"feature1": True, "feature2": False}
-        self.discrete_features_dict = {}
+        self.feature_discreteness_map = {}
+        # self.features_data_order is a list of feature names(without units) in order of appearance in the csv file
         self.features_data_order = []
+        # self.discrete_features is a list of discrete feature names
+        self.discrete_features = []
 
     @staticmethod
     def convert_str_to_num(value):
@@ -125,14 +200,14 @@ class DatasetWriter:
         """
         is_discrete = self.is_discrete(value)
         if (
-            column in self.discrete_features_dict
-            and is_discrete != self.discrete_features_dict[column]
+            column in self.feature_discreteness_map
+            and is_discrete != self.feature_discreteness_map[column]
         ):
             print(
                 f"Column {column} has both discrete and continuous values. Please make sure that all values in a column are either discrete or continuous."
             )
             return
-        self.discrete_features_dict[column] = is_discrete
+        self.feature_discreteness_map[column] = is_discrete
         if column not in self.feature_def_keys:
             self.feature_def_keys.append(column)
 
@@ -155,8 +230,9 @@ class DatasetWriter:
     @staticmethod
     def format_display_name(title):
         """
-        Formats the title to display name, e.g. "the title of the feature" -> "The Title of the Feature"
+        Formats the title to display name, e.g. "the-title-of-the-feature" -> "The Title of the Feature"
         """
+        title = title.replace("-", " ")
         lowercase_list = ["the", "for", "in", "of", "on", "to", "and", "as", "or"]
         title_words = title.split()
         return " ".join(
@@ -219,13 +295,11 @@ class DatasetWriter:
         description = ""
         tooltip = ""
         for key in self.feature_def_keys:
-            discrete = self.discrete_features_dict[key]
+            discrete = self.feature_discreteness_map[key]
             unit = self.get_unit(key)
             stripped_key = key.replace(f"({unit})", "").strip()
             self.features_data_order.append(stripped_key)
-            display_name = DatasetWriter.format_display_name(
-                stripped_key.replace("-", " ")
-            )
+            display_name = DatasetWriter.format_display_name(stripped_key)
             feature_def = {
                 "key": stripped_key,
                 "displayName": display_name,
@@ -235,6 +309,7 @@ class DatasetWriter:
                 "discrete": discrete,
             }
             if discrete:
+                self.discrete_features.append(stripped_key)
                 column_data = self.get_column_data(key)
                 options = self.write_discrete_feature_options(column_data)
                 feature_def["options"] = options
@@ -298,6 +373,33 @@ class DatasetWriter:
             file_path = os.path.join(path, file_name)
             with open(file_path, "w") as f:
                 json.dump(data, f, indent=4)
+        print("Generating JSON files... Done!")
+
+    def update_json_file_with_additional_data(self, file_path, additional_data):
+        # Load existing data from the JSON file
+        try:
+            with open(file_path, "r") as file:
+                data = json.load(file)
+        except FileNotFoundError:
+            print(f"File not found: {file_path}")
+            return
+        except json.JSONDecodeError:
+            print(f"Error decoding JSON from {file_path}")
+            return
+
+        # Update the data with additional settings
+        data.update(additional_data)
+
+        # Write the updated data back to the JSON file
+        with open(file_path, "w") as file:
+            json.dump(data, file, indent=4)
+
+    def update_json_files(self, path, additional_data):
+        """
+        Updates the dataset.json file with additional settings
+        """
+        self.update_json_file_with_additional_data(path, additional_data)
+        print(f"Updating {path}... Done!")
 
 
 if __name__ == "__main__":
@@ -307,11 +409,22 @@ if __name__ == "__main__":
         file_path = input("Enter the file path: ")
     dataset_name = os.path.splitext(os.path.basename(file_path))[0]
     input_handler = UserInputHandler(file_path, dataset_name)
-    inputs = input_handler.inputs
-    if not inputs:
+    init_inputs = input_handler.inputs
+    if not init_inputs:
         print("Please enter valid inputs.")
         sys.exit(1)
-    loader = DataLoader(inputs)
-    writer = DatasetWriter(loader, inputs)
+    loader = DataLoader(init_inputs)
+    writer = DatasetWriter(loader, init_inputs)
     writer.process_data()
     writer.create_dataset_folder()
+
+    additional_settings = questionary.select(
+        "How do you want to add additional settings?",
+        choices=["Edit JSON files manually", "By prompts", "Do it later"],
+    ).ask()
+    if additional_settings == "By prompts":
+        input_handler.dataset_writer = writer
+        additional_inputs = input_handler.get_additional_inputs()
+        writer.update_json_files(
+            "data/test_data_v2024.0/dataset.json", additional_inputs
+        )
