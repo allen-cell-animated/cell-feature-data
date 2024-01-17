@@ -17,97 +17,99 @@ class UserInputHandler:
         self.path = path
         self.dataset_name = dataset_name
         self.dataset_writer = dataset_writer
-        self.inputs = self.get_user_inputs()
+        self.inputs = self.get_initial_settings()
 
     @staticmethod
     def is_valid_version(version):
         pattern = r"^[0-9]{4}\.[0-9]+$"
         return re.match(pattern, version) is not None
 
-    def get_user_inputs(self):
+    @staticmethod
+    def is_feature_in_list(input, features):
+        return input in features
+
+    def get_initial_settings(self):
         version = questionary.text(
             "Enter the version(yyyy.number):",
             default="2024.0",
             validate=self.is_valid_version,
         ).ask()
-        title = questionary.text("Enter the title:").ask()
-        description = questionary.text("Enter the description:").ask()
         return {
             "path": self.path,
             "dataset_name": self.dataset_name,
             "version": version.strip(),
-            "title": title.strip(),
-            "description": description.strip(),
         }
 
-    def get_additional_inputs(self):
+    def get_questionary_input(self, prompt, default=None, validator=None, choices=None):
         """
-        Get additional inputs from the user with interactive prompts
+        Helper function to get user input by prompts with validation and autocompletion
         """
-        if self.dataset_writer:
-            cell_features = self.dataset_writer.features_data_order
-            discrete_features = self.dataset_writer.discrete_features
-            first_feature = (
-                cell_features[0] if cell_features else "Error: No features found"
-            )
-            xAxis = questionary.autocomplete(
-                "Enter the x-axis feature name:",
-                default=first_feature,
-                validate=self.is_valid_feature,
-                choices=cell_features,
+        return (
+            questionary.autocomplete(
+                prompt,
+                default=default,
+                validate=validator,
+                choices=choices,
             ).ask()
-            second_feature = (
-                cell_features[1] if cell_features else "Error: No features found"
-            )
-            yAxis = questionary.autocomplete(
-                "Enter the y-axis feature name:",
-                default=second_feature,
-                validate=self.is_valid_feature,
-                choices=cell_features,
-            ).ask()
-            color_by = questionary.autocomplete(
-                "Enter the feature name to color by:",
-                default=first_feature,
-                validate=self.is_valid_feature,
-                choices=cell_features,
-            ).ask()
-            first_discrete_feature = (
-                discrete_features[0]
-                if discrete_features
-                else "Error: No discrete features found"
-            )
-            group_by = questionary.autocomplete(
-                "Enter the discrete feature name to group by:",
-                default=first_discrete_feature,
-                validate=self.is_valid_feature,
-                choices=discrete_features,
-            ).ask()
-            thumbnail_root = questionary.text("Enter the thumbnail root:").ask()
-            volume_viewer_data_root = questionary.text(
-                "Enter the volume viewer data root:"
-            ).ask()
-            download_root = questionary.text("Enter the download root:").ask()
-            return {
-                "thumbnailRoot": thumbnail_root,
-                "downloadRoot": download_root,
-                "volumeViewerDataRoot": volume_viewer_data_root,
-                "xAxis": {"default": xAxis, "exclude": []},
-                "yAxis": {"default": yAxis, "exclude": []},
-                "colorBy": {"default": color_by},
-                "groupBy": {"default": group_by},
-            }
-        else:
+            if choices
+            else default
+        )
+
+    def get_feature(self, prompt, features, default_index=0):
+        """
+        Get feature input from the user
+        """
+        default_feature = (
+            features[default_index] if features else "Error: No features found"
+        )
+        return self.get_questionary_input(
+            prompt,
+            default=default_feature,
+            choices=features,
+            validator=lambda user_input: self.is_feature_in_list(user_input, features),
+        )
+
+    def get_additional_settings(self):
+        """
+        Collect additional settings from the user via interactive prompts
+        """
+        if not self.dataset_writer:
             print("Error: Dataset writer not initialized.")
             return None
 
-    @staticmethod
-    def is_valid_feature(input):
-        return input in [
-            "cell-line",
-            "cellular-volume",
-            "cell-surface-area",
-            "interphase-or-mitosis",
-        ]
+        title = questionary.text("Enter the dataset title:").ask()
+        description = questionary.text("Enter the dataset description:").ask()
+        thumbnail_root = questionary.text("Enter the thumbnail root:").ask()
+        download_root = questionary.text("Enter the download root:").ask()
+        volume_viewer_data_root = questionary.text(
+            "Enter the volume viewer data root:"
+        ).ask()
+        cell_features = self.dataset_writer.features_data_order
+        discrete_features = self.dataset_writer.discrete_features
+        xAxis = self.get_feature(
+            "Enter the feature name for xAxis default:", cell_features
+        )
+        yAxis = self.get_feature(
+            "Enter the feature name for yAxis default:", cell_features, default_index=1
+        )
+        color_by = self.get_feature(
+            "Enter the feature name for colorBy:", cell_features
+        )
+        group_by = self.get_feature(
+            "Enter the feature name for groupBy:", discrete_features
+        )
+
+        return {
+            "title": title,
+            "description": description,
+            "thumbnailRoot": thumbnail_root,
+            "downloadRoot": download_root,
+            "volumeViewerDataRoot": volume_viewer_data_root,
+            "xAxis": {"default": xAxis, "exclude": []},
+            "yAxis": {"default": yAxis, "exclude": []},
+            "colorBy": {"default": color_by},
+            "groupBy": {"default": group_by},
+        }
 
 
 class DataLoader:
@@ -160,6 +162,7 @@ class DatasetWriter:
         self.cell_feature_analysis_data = []
         self.feature_defs_data = []
         self.dataset_data = {}
+        self.image_settings_data = {}
         # utility variables - to organize and prepare the feature data for file writing
         # self.feature_def_keys is a list of feature names(with units if applicable) in order of appearance in the csv file
         self.feature_def_keys = []
@@ -170,6 +173,8 @@ class DatasetWriter:
         self.features_data_order = []
         # self.discrete_features is a list of discrete feature names
         self.discrete_features = []
+        # self.json_file_path_dict is a dictionary of json file names and their paths
+        self.json_file_path_dict = {}
 
     @staticmethod
     def convert_str_to_num(value):
@@ -288,7 +293,7 @@ class DatasetWriter:
         options = {}
         for index, key in enumerate(keys):
             # "key" is optional, if "name" is not unique, use "key" to distinguish between the options
-            options[key] = {"color": self.get_color(index), "name": "", "key": ""}
+            options[key] = {"color": self.get_color(index), "name": key, "key": key}
         return options
 
     def compile_feature_defs(self):
@@ -316,17 +321,41 @@ class DatasetWriter:
             self.feature_defs_data.append(feature_def)
 
     def compile_dataset(self):
-        fields_to_write = {
-            "title": self.inputs["title"],
+        # default values for the dataset.json file
+        title = ""
+        image = ""
+        description = ""
+        album_path = ""
+        thumbnail_root = ""
+        download_root = ""
+        volume_viewer_data_root = ""
+        xAxis = {"default": "", "exclude": []}
+        yAxis = {"default": "", "exclude": []}
+        color_by = {"default": ""}
+        group_by = {"default": ""}
+        features_display_order = []
+
+        required_fields_to_write = {
+            "title": title,
             "version": self.inputs["version"],
             "name": self.inputs["dataset_name"],
-            "description": self.inputs["description"],
+            "image": image,
+            "description": description,
             "featureDefsPath": self.FEATURE_DEFS_FILENAME,
             "featuresDataPath": self.CELL_FEATURE_ANALYSIS_FILENAME,
             "viewerSettingsPath": self.IMAGE_SETTINGS_FILENAME,
+            "albumPath": album_path,
+            "thumbnailRoot": thumbnail_root,
+            "downloadRoot": download_root,
+            "volumeViewerDataRoot": volume_viewer_data_root,
+            "xAxis": xAxis,
+            "yAxis": yAxis,
+            "colorBy": color_by,
+            "groupBy": group_by,
+            "featuresDisplayOrder": features_display_order,
             "featuresDataOrder": self.features_data_order,
         }
-        self.dataset_data.update(fields_to_write)
+        self.dataset_data.update(required_fields_to_write)
 
     def get_row_data(self, row):
         """
@@ -367,10 +396,11 @@ class DatasetWriter:
             self.CELL_FEATURE_ANALYSIS_FILENAME: self.cell_feature_analysis_data,
             self.DATASET_FILENAME: self.dataset_data,
             self.FEATURE_DEFS_FILENAME: self.feature_defs_data,
-            self.IMAGE_SETTINGS_FILENAME: {},
+            self.IMAGE_SETTINGS_FILENAME: self.image_settings_data,
         }
         for file_name, data in json_files.items():
             file_path = os.path.join(path, file_name)
+            self.json_file_path_dict[file_name] = file_path
             with open(file_path, "w") as f:
                 json.dump(data, f, indent=4)
         print("Generating JSON files... Done!")
@@ -410,21 +440,17 @@ if __name__ == "__main__":
     dataset_name = os.path.splitext(os.path.basename(file_path))[0]
     input_handler = UserInputHandler(file_path, dataset_name)
     init_inputs = input_handler.inputs
-    if not init_inputs:
-        print("Please enter valid inputs.")
-        sys.exit(1)
     loader = DataLoader(init_inputs)
     writer = DatasetWriter(loader, init_inputs)
     writer.process_data()
     writer.create_dataset_folder()
 
     additional_settings = questionary.select(
-        "How do you want to add additional settings?",
-        choices=["Edit JSON files manually", "By prompts", "Do it later"],
+        "How do you want to add additional settings for the dataset?",
+        choices=["By prompts", "Manually edit the JSON files later"],
     ).ask()
     if additional_settings == "By prompts":
         input_handler.dataset_writer = writer
-        additional_inputs = input_handler.get_additional_inputs()
-        writer.update_json_files(
-            "data/test_data_v2024.0/dataset.json", additional_inputs
-        )
+        additional_inputs = input_handler.get_additional_settings()
+        dataset_filepath = writer.json_file_path_dict[writer.DATASET_FILENAME]
+        writer.update_json_files(dataset_filepath, additional_inputs)
