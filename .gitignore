@@ -15,3 +15,4 @@ docs/DatabaseSchema.adoc
 docs/DatasetHandoffRef.adoc
 docs/DatasetHandoffSchema.adoc
 cfe-pyenv/
+__pycache__/
