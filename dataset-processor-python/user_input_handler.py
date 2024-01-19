@@ -1,6 +1,35 @@
+from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Dict
+import constants
 import questionary
 import re
+
+
+@dataclass
+class DatasetSettings:
+    """
+    Class to store required dataset settings
+    """
+
+    title: str = ""
+    version: str = ""
+    name: str = ""
+    image: str = ""
+    description: str = ""
+    featureDefsPath: str = constants.FEATURE_DEFS_FILENAME
+    featuresDataPath: str = constants.CELL_FEATURE_ANALYSIS_FILENAME
+    viewerSettingsPath: str = constants.IMAGE_SETTINGS_FILENAME
+    albumPath: str = ""
+    thumbnailRoot: str = ""
+    downloadRoot: str = ""
+    volumeViewerDataRoot: str = ""
+    xAxis: Dict = field(default_factory=dict)
+    yAxis: Dict = field(default_factory=dict)
+    colorBy: Dict = field(default_factory=dict)
+    groupBy: Dict = field(default_factory=dict)
+    featuresDisplayOrder: list = field(default_factory=list)
+    featuresDataOrder: list = field(default_factory=list)
 
 
 class UserInputHandler:
@@ -10,7 +39,6 @@ class UserInputHandler:
 
     def __init__(self, path, dataset_writer=None):
         self.path = Path(path)
-        self.dataset_name = self.path.stem
         self.dataset_writer = dataset_writer
         self.inputs = self.get_initial_settings()
 
@@ -29,11 +57,8 @@ class UserInputHandler:
             default="2024.0",
             validate=self.is_valid_version,
         ).ask()
-        return {
-            "path": self.path,
-            "dataset_name": self.dataset_name,
-            "version": version.strip(),
-        }
+        dataset_name = self.path.stem.lower().replace(" ", "_")
+        return DatasetSettings(name=dataset_name, version=version.strip())
 
     def get_questionary_input(self, prompt, default=None, validator=None, choices=None):
         """
@@ -83,10 +108,10 @@ class UserInputHandler:
         ).ask()
         cell_features = self.dataset_writer.features_data_order
         discrete_features = self.dataset_writer.discrete_features
-        xAxis = self.get_feature(
+        xAxis_default = self.get_feature(
             "Enter the feature name for xAxis default:", cell_features
         )
-        yAxis = self.get_feature(
+        yAxis_default = self.get_feature(
             "Enter the feature name for yAxis default:", cell_features, default_index=1
         )
         color_by = self.get_feature(
@@ -96,14 +121,15 @@ class UserInputHandler:
             "Enter the feature name for groupBy:", discrete_features
         )
 
-        return {
-            "title": title,
-            "description": description,
-            "thumbnailRoot": thumbnail_root,
-            "downloadRoot": download_root,
-            "volumeViewerDataRoot": volume_viewer_data_root,
-            "xAxis": {"default": xAxis, "exclude": []},
-            "yAxis": {"default": yAxis, "exclude": []},
-            "colorBy": {"default": color_by},
-            "groupBy": {"default": group_by},
-        }
+        self.inputs.title = title
+        self.inputs.description = description
+        self.inputs.thumbnailRoot = thumbnail_root
+        self.inputs.downloadRoot = download_root
+        self.inputs.volumeViewerDataRoot = volume_viewer_data_root
+        self.inputs.xAxis = {"default": xAxis_default, "exclude": []}
+        self.inputs.yAxis = {"default": yAxis_default, "exclude": []}
+        self.inputs.colorBy = {"default": color_by}
+        self.inputs.groupBy = {"default": group_by}
+        self.inputs.featuresDataOrder = cell_features
+
+        return self.inputs

@@ -1,3 +1,4 @@
+from dataclasses import asdict
 import json
 from pathlib import Path
 import re
@@ -7,15 +8,18 @@ import numpy
 import pandas as pd
 import questionary
 from user_input_handler import UserInputHandler
+import constants
 
 
 class DataLoader:
     """
     Loads the csv file and stores the initial data
+    Returns a list of dictionaries, where each dictionary represents a row in the csv file
     """
 
-    def __init__(self, inputs):
+    def __init__(self, inputs, path):
         self.inputs = inputs
+        self.path = path
         self.data = self.load_csv()
 
     def load_csv(self):
@@ -24,7 +28,8 @@ class DataLoader:
         Returns a list of dictionaries, where each dictionary represents a row in the csv file
         """
         try:
-            with open(self.inputs["path"], "r") as f:
+            print("path 4: ", self.path)
+            with open(self.path, "r") as f:
                 reader = csv.DictReader(f)
                 return list(reader)
         except Exception as e:
@@ -32,67 +37,17 @@ class DataLoader:
             return None
 
 
-# global constants
-CELL_FEATURE_ANALYSIS_FILENAME = "cell_feature_analysis.json"
-DATASET_FILENAME = "dataset.json"
-FEATURE_DEFS_FILENAME = "feature_defs.json"
-IMAGE_SETTINGS_FILENAME = "image_settings.json"
-
-FILEINFO_COLUMN_NAMES = [
-    "cell_id",
-    "parent_id",
-    "cell_group",
-    "cell_thumbnail",
-    "cell_image",
-    "parent_thumbnail",
-    "parent_image",
-]
-
-
 class DatasetDoc:
     """
     Class to store data for the dataset.json
     """
 
-    # default values for the dataset.json file
-    title = ""
-    image = ""
-    description = ""
-    album_path = ""
-    thumbnail_root = ""
-    download_root = ""
-    volume_viewer_data_root = ""
-    xAxis = {"default": "", "exclude": []}
-    yAxis = {"default": "", "exclude": []}
-    color_by = {"default": ""}
-    group_by = {"default": ""}
-    features_display_order = []
-
     def __init__(self, inputs):
         self.inputs = inputs
         self.dataset_data = {}
 
-    def compile_dataset(self, features_data_order):
-        required_fields_to_write = {
-            "title": self.title,
-            "version": self.inputs["version"],
-            "name": self.inputs["dataset_name"],
-            "image": self.image,
-            "description": self.description,
-            "featureDefsPath": FEATURE_DEFS_FILENAME,
-            "featuresDataPath": CELL_FEATURE_ANALYSIS_FILENAME,
-            "viewerSettingsPath": IMAGE_SETTINGS_FILENAME,
-            "albumPath": self.album_path,
-            "thumbnailRoot": self.thumbnail_root,
-            "downloadRoot": self.download_root,
-            "volumeViewerDataRoot": self.volume_viewer_data_root,
-            "xAxis": self.xAxis,
-            "yAxis": self.yAxis,
-            "colorBy": self.color_by,
-            "groupBy": self.group_by,
-            "featuresDisplayOrder": self.features_display_order,
-            "featuresDataOrder": features_data_order,
-        }
+    def compile_dataset(self):
+        required_fields_to_write = asdict(self.inputs)
         self.dataset_data.update(required_fields_to_write)
 
 
@@ -312,7 +267,7 @@ class DatasetWriter:
         file_info, features = [], []
         for column, value in row.items():
             value = self.cell_feature_doc.convert_str_to_num(value)
-            if column in FILEINFO_COLUMN_NAMES:
+            if column in constants.FILEINFO_COLUMN_NAMES:
                 file_info.append(value)
             else:
                 self.feature_defs_doc.process_features(column, value, features)
@@ -326,14 +281,14 @@ class DatasetWriter:
             file_info, features = self.get_row_data(row)
             self.cell_feature_doc.compile_cell_feature_analysis(file_info, features)
         self.feature_defs_doc.compile_feature_defs()
-        self.dataset_doc.compile_dataset(self.features_data_order)
+        self.dataset_doc.compile_dataset()
 
     def write_json_files(self, path):
         json_files = {
-            CELL_FEATURE_ANALYSIS_FILENAME: self.cell_feature_doc.cell_feature_analysis_data,
-            DATASET_FILENAME: self.dataset_doc.dataset_data,
-            FEATURE_DEFS_FILENAME: self.feature_defs_doc.feature_defs_data,
-            IMAGE_SETTINGS_FILENAME: self.image_settings_doc.image_settings_data,
+            constants.CELL_FEATURE_ANALYSIS_FILENAME: self.cell_feature_doc.cell_feature_analysis_data,
+            constants.DATASET_FILENAME: self.dataset_doc.dataset_data,
+            constants.FEATURE_DEFS_FILENAME: self.feature_defs_doc.feature_defs_data,
+            constants.IMAGE_SETTINGS_FILENAME: self.image_settings_doc.image_settings_data,
         }
         for file_name, data in json_files.items():
             file_path = path / file_name
@@ -343,12 +298,19 @@ class DatasetWriter:
         print("Generating JSON files... Done!")
 
     def create_dataset_folder(self):
-        folder_name = f"{self.inputs['dataset_name']}_v{self.inputs['version']}"
+        folder_name = f"{self.inputs.name}_v{self.inputs.version}"
         path = Path("data") / folder_name
         path.mkdir(parents=True, exist_ok=True)
         self.write_json_files(path)
 
     def update_json_file_with_additional_data(self, file_path, additional_data):
+        """
+        Updates the JSON file with additional settings
+
+        Args:
+            - file_path: Path of the JSON file
+            - additional_data: DatasetSettings object
+        """
         # Load existing data from the JSON file
         try:
             with open(file_path, "r") as file:
@@ -360,31 +322,30 @@ class DatasetWriter:
             print(f"Error decoding JSON from {file_path}")
             return
 
+        # Convert DatasetSettings object to dictionary
+        additional_data_dict = asdict(additional_data)
+
         # Update the data with additional settings
-        data.update(additional_data)
+        data.update(additional_data_dict)
 
         # Write the updated data back to the JSON file
         with open(file_path, "w") as file:
             json.dump(data, file, indent=4)
 
-    def update_json_files(self, path, additional_data):
-        """
-        Updates the dataset.json file with additional settings
-        """
-        self.update_json_file_with_additional_data(path, additional_data)
-        print(f"Updating {path}... Done!")
+        print(f"Updating {file_path}... Done!")
 
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         file_path = sys.argv[1]
+        print(f"File path 1: {file_path}")
     else:
         file_path = input("Enter the file path: ")
 
     # Initialize the user input handler, data loader and dataset writer
     input_handler = UserInputHandler(file_path)
     init_inputs = input_handler.inputs
-    loader = DataLoader(init_inputs)
+    loader = DataLoader(init_inputs, input_handler.path)
     writer = DatasetWriter(loader, init_inputs)
 
     writer.process_data()
@@ -398,5 +359,7 @@ if __name__ == "__main__":
     if additional_settings == "By prompts":
         input_handler.dataset_writer = writer
         additional_inputs = input_handler.get_additional_settings()
-        dataset_filepath = writer.json_file_path_dict[DATASET_FILENAME]
-        writer.update_json_files(dataset_filepath, additional_inputs)
+        dataset_filepath = writer.json_file_path_dict.get(constants.DATASET_FILENAME)
+        writer.update_json_file_with_additional_data(
+            dataset_filepath, additional_inputs
+        )
