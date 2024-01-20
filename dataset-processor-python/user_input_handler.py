@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
+import logging.config
 from pathlib import Path
-from typing import Dict
+from typing import Any, Dict, List, Tuple, Union, Optional
 import constants
 import questionary
 import re
@@ -24,10 +25,10 @@ class DatasetSettings:
     thumbnailRoot: str = ""
     downloadRoot: str = ""
     volumeViewerDataRoot: str = ""
-    xAxis: Dict = field(default_factory=dict)
-    yAxis: Dict = field(default_factory=dict)
-    colorBy: Dict = field(default_factory=dict)
-    groupBy: Dict = field(default_factory=dict)
+    xAxis: Dict[str, str] = field(default_factory=dict)
+    yAxis: Dict[str, str] = field(default_factory=dict)
+    colorBy: Dict[str, str] = field(default_factory=dict)
+    groupBy: Dict[str, str] = field(default_factory=dict)
     featuresDisplayOrder: list = field(default_factory=list)
     featuresDataOrder: list = field(default_factory=list)
 
@@ -37,18 +38,22 @@ class UserInputHandler:
     Class to handle user inputs
     """
 
-    def __init__(self, path, dataset_writer=None):
+    def __init__(self, path: str, dataset_writer: Optional[Any] = None):
+        # Configure logger
+        logging.config.fileConfig(Path(__file__).resolve().parent / "logging.conf")
+        self.logger = logging.getLogger()
+
         self.path = Path(path)
         self.dataset_writer = dataset_writer
         self.inputs = self.get_initial_settings()
 
     @staticmethod
-    def is_valid_version(version):
+    def is_valid_version(version: str) -> bool:
         pattern = r"^[0-9]{4}\.[0-9]+$"
         return re.match(pattern, version) is not None
 
     @staticmethod
-    def is_feature_in_list(input, features):
+    def is_feature_in_list(input: str, features: list) -> bool:
         return input in features
 
     def get_initial_settings(self):
@@ -60,7 +65,9 @@ class UserInputHandler:
         dataset_name = self.path.stem.lower().replace(" ", "_")
         return DatasetSettings(name=dataset_name, version=version.strip())
 
-    def get_questionary_input(self, prompt, default=None, validator=None, choices=None):
+    def get_questionary_input(
+        self, prompt: str, default=None, validator=None, choices=None
+    ):
         """
         Helper function to get user input by prompts with validation and autocompletion
         """
@@ -75,12 +82,12 @@ class UserInputHandler:
             else default
         )
 
-    def get_feature(self, prompt, features, default_index=0):
+    def get_feature(self, prompt: str, features: List[str], default_index: int = 0) -> str:
         """
         Get feature input from the user
         """
         if not features or default_index >= len(features) or default_index < 0:
-            print("Error: Invalid feature list or default index.")
+            self.logger.error("Invalid feature list or default index.")
             return None
         default_feature = features[default_index]
 
@@ -96,7 +103,7 @@ class UserInputHandler:
         Collect additional settings from the user via interactive prompts
         """
         if not self.dataset_writer:
-            print("Error: Dataset writer not initialized.")
+            self.logger.error("Dataset writer not initialized.")
             return None
 
         title = questionary.text("Enter the dataset title:").ask()

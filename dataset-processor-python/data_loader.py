@@ -1,14 +1,16 @@
-from dataclasses import asdict
+import csv
 import json
-from pathlib import Path
+import logging.config
 import re
 import sys
-import csv
+from dataclasses import asdict
+from pathlib import Path
+from typing import Any, Dict, List, Tuple, Union, Optional
 import numpy
 import pandas as pd
 import questionary
-from user_input_handler import UserInputHandler
 import constants
+from user_input_handler import UserInputHandler
 
 
 class DataLoader:
@@ -17,24 +19,26 @@ class DataLoader:
     Returns a list of dictionaries, where each dictionary represents a row in the csv file
     """
 
-    def __init__(self, inputs, path):
+    def __init__(self, inputs: UserInputHandler, path: Path):
+        # Configure logger
+        logging.config.fileConfig(Path(__file__).resolve().parent / "logging.conf")
+        self.logger = logging.getLogger()
         self.inputs = inputs
         self.path = path
         self.data = self.load_csv()
 
-    def load_csv(self):
+    def load_csv(self) -> List[Dict[str, str]]:
         """
         Read the csv file and store the data
         Returns a list of dictionaries, where each dictionary represents a row in the csv file
         """
         try:
-            print("path 4: ", self.path)
             with open(self.path, "r") as f:
                 reader = csv.DictReader(f)
                 return list(reader)
         except Exception as e:
-            print(f"Error while reading CSV: {e}")
-            return None
+            self.logger.error(f"Error while reading CSV: {e}")
+            raise
 
 
 class DatasetDoc:
@@ -57,10 +61,10 @@ class CellFeatureDoc:
     """
 
     def __init__(self):
-        self.cell_feature_analysis_data = []
+        self.cell_feature_analysis_data: List[Dict] = []
 
     @staticmethod
-    def convert_str_to_num(value):
+    def convert_str_to_num(value: str) -> Union[int, float, str]:
         try:
             numeric_value = float(value)
             if numeric_value.is_integer():
@@ -70,7 +74,7 @@ class CellFeatureDoc:
             # if not number, return the original value
             return value
 
-    def compile_cell_feature_analysis(self, file_info, features):
+    def compile_cell_feature_analysis(self, file_info: List[Any], features: List[Any]):
         self.cell_feature_analysis_data.append(
             {"file_info": file_info, "features": features}
         )
@@ -84,31 +88,31 @@ class FeatureDefsDoc:
     def __init__(self, data, inputs):
         self.data = data
         self.inputs = inputs
-        self.feature_defs_data = []
+        self.feature_defs_data: List[str] = []
+        self.logger = logging.getLogger()
 
-        # self.feature_def_keys is a list of feature names(with units if applicable) in order of appearance in the csv file
-        self.feature_def_keys = []
-        # self.feature_discreteness_map is a dictionary of feature names and whether they are discrete or not
-        # e.g. {"feature1": True, "feature2": False}
-        self.feature_discreteness_map = {}
-        # self.features_data_order is a list of feature names(without units) in order of appearance in the csv file
-        self.features_data_order = []
-        # self.discrete_features is a list of discrete feature names
-        self.discrete_features = []
+        # feature names(with units if applicable) in order of appearance in the csv file
+        self.feature_def_keys: List[str] = []
+        # feature name -> discrete or not
+        self.feature_discreteness_map: Dict[str, bool] = {}
+        # feature names(without units) in order of appearance in the csv file
+        self.features_data_order: List[str] = []
+        # list of discrete features
+        self.discrete_features: List[str] = []
 
     @staticmethod
-    def is_valid_feature_value(value):
+    def is_valid_feature_value(value: Any) -> bool:
         return pd.isna(value) or isinstance(value, (int, float))
 
     @staticmethod
-    def is_discrete(numeric_value):
+    def is_discrete(numeric_value: Union[int, float]) -> bool:
         """
         Determines if the numeric value is discrete
         """
         return not pd.isna(numeric_value) and numeric_value == int(numeric_value)
 
     @staticmethod
-    def get_unit(key):
+    def get_unit(key: str) -> str:
         """
         Extracts the unit from the key if present
         """
@@ -116,7 +120,7 @@ class FeatureDefsDoc:
         return match.group(1) if match else ""
 
     @staticmethod
-    def format_display_name(title):
+    def format_display_name(title: str) -> str:
         """
         Formats the title to display name, e.g. "the-title-of-the-feature" -> "The Title of the Feature"
         """
@@ -129,7 +133,7 @@ class FeatureDefsDoc:
         )
 
     @staticmethod
-    def get_color(index):
+    def get_color(index: int) -> str:
         colors = [
             "#A6CEE3",
             "#1F78B4",
@@ -145,7 +149,7 @@ class FeatureDefsDoc:
             index = index % len(colors)
         return colors[index]
 
-    def update_feature_metadata(self, column, value):
+    def update_feature_metadata(self, column: str, value: Union[int, float]):
         """
         Updates the feature metadata with whether the feature is discrete or not
         Store the list of original feature names for writing the feature defs file
@@ -155,7 +159,7 @@ class FeatureDefsDoc:
             column in self.feature_discreteness_map
             and is_discrete != self.feature_discreteness_map[column]
         ):
-            print(
+            self.logger.warning(
                 f"Column {column} has both discrete and continuous values. Please make sure that all values in a column are either discrete or continuous."
             )
             return
@@ -163,15 +167,17 @@ class FeatureDefsDoc:
         if column not in self.feature_def_keys:
             self.feature_def_keys.append(column)
 
-    def process_features(self, column, value, features):
+    def process_features(
+        self, column: str, value: Union[int, float], features: List[Any]
+    ):
         if self.is_valid_feature_value(value):
             features.append(value)
             self.update_feature_metadata(column, value)
         else:
-            print(f"Invalid value: {value} in column {column}")
-            return
+            self.logger.error(f"Invalid value: {value} in column {column}")
+            raise ValueError
 
-    def get_column_data(self, column):
+    def get_column_data(self, column: str) -> List[Any]:
         """
         Returns the column data from the dataset
         """
@@ -180,7 +186,9 @@ class FeatureDefsDoc:
             column_data.append(row.get(column, ""))
         return column_data
 
-    def write_discrete_feature_options(self, data_values):
+    def write_discrete_feature_options(
+        self, data_values: List[Any]
+    ) -> Optional[Dict[str, Any]]:
         """
         Keys in options are the unique values in the column, and values are the color and name of the feature
         Returns the options for a discrete feature
@@ -244,9 +252,10 @@ class DatasetWriter:
     Class to create the dataset folder and write json files
     """
 
-    def __init__(self, data_loader, inputs):
+    def __init__(self, data_loader: DataLoader, inputs: UserInputHandler):
         self.data = data_loader.data
         self.inputs = inputs
+        self.logger = logging.getLogger()
 
         # initialize the doc classes
         self.cell_feature_doc = CellFeatureDoc()
@@ -255,12 +264,12 @@ class DatasetWriter:
         self.image_settings_doc = ImageSettingsDoc()
 
         # utility variables
-        self.features_data_order = self.feature_defs_doc.features_data_order
-        self.discrete_features = self.feature_defs_doc.discrete_features
+        self.features_data_order: List[str] = self.feature_defs_doc.features_data_order
+        self.discrete_features: List[str] = self.feature_defs_doc.discrete_features
         # dictionary of json file names and their paths
-        self.json_file_path_dict = {}
+        self.json_file_path_dict: Dict[str, Path] = {}
 
-    def get_row_data(self, row):
+    def get_row_data(self, row: Dict[str, str]) -> Tuple[List[Any], List[Any]]:
         """
         Separates the file info and features from the row
         """
@@ -283,7 +292,7 @@ class DatasetWriter:
         self.feature_defs_doc.compile_feature_defs()
         self.dataset_doc.compile_dataset()
 
-    def write_json_files(self, path):
+    def write_json_files(self, path: Path):
         json_files = {
             constants.CELL_FEATURE_ANALYSIS_FILENAME: self.cell_feature_doc.cell_feature_analysis_data,
             constants.DATASET_FILENAME: self.dataset_doc.dataset_data,
@@ -295,7 +304,7 @@ class DatasetWriter:
             self.json_file_path_dict[file_name] = file_path
             with open(file_path, "w") as f:
                 json.dump(data, f, indent=4)
-        print("Generating JSON files... Done!")
+        self.logger.info("Generating JSON files... Done!")
 
     def create_dataset_folder(self):
         folder_name = f"{self.inputs.name}_v{self.inputs.version}"
@@ -303,24 +312,22 @@ class DatasetWriter:
         path.mkdir(parents=True, exist_ok=True)
         self.write_json_files(path)
 
-    def update_json_file_with_additional_data(self, file_path, additional_data):
+    def update_json_file_with_additional_data(
+        self, file_path: Path, additional_data: Union[UserInputHandler, Dict[str, Any]]
+    ):
         """
         Updates the JSON file with additional settings
-
-        Args:
-            - file_path: Path of the JSON file
-            - additional_data: DatasetSettings object
         """
         # Load existing data from the JSON file
         try:
             with open(file_path, "r") as file:
                 data = json.load(file)
         except FileNotFoundError:
-            print(f"File not found: {file_path}")
-            return
+            self.logger.error(f"File not found: {file_path}")
+            raise
         except json.JSONDecodeError:
-            print(f"Error decoding JSON from {file_path}")
-            return
+            self.logger.error(f"Error decoding JSON from {file_path}")
+            raise
 
         # Convert DatasetSettings object to dictionary
         additional_data_dict = asdict(additional_data)
@@ -332,13 +339,12 @@ class DatasetWriter:
         with open(file_path, "w") as file:
             json.dump(data, file, indent=4)
 
-        print(f"Updating {file_path}... Done!")
+        self.logger.info(f"Updating {file_path}... Done!")
 
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         file_path = sys.argv[1]
-        print(f"File path 1: {file_path}")
     else:
         file_path = input("Enter the file path: ")
 
