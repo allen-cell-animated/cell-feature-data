@@ -10,7 +10,12 @@ import numpy
 import pandas as pd
 import questionary
 import constants
-from user_input_handler import UserInputHandler
+from user_input_handler import (
+    DatasetInputHandler,
+    DiscreteFeatureOptions,
+    FeatureDefsSettings,
+    CellFeatureSettings,
+)
 
 
 class DataLoader:
@@ -19,9 +24,7 @@ class DataLoader:
     Returns a list of dictionaries, where each dictionary represents a row in the csv file
     """
 
-    def __init__(self, inputs: UserInputHandler, path: Path):
-        # Configure logger
-        logging.config.fileConfig(Path(__file__).resolve().parent / "logging.conf")
+    def __init__(self, inputs: DatasetInputHandler, path: Path):
         self.logger = logging.getLogger()
         self.inputs = inputs
         self.path = path
@@ -46,13 +49,8 @@ class DatasetDoc:
     Class to store data for the dataset.json
     """
 
-    def __init__(self, inputs):
-        self.inputs = inputs
-        self.dataset_data = {}
-
-    def compile_dataset(self):
-        required_fields_to_write = asdict(self.inputs)
-        self.dataset_data.update(required_fields_to_write)
+    def __init__(self, inputs: DatasetInputHandler):
+        self.dataset_data: Dict[str, Any] = asdict(inputs)
 
 
 class CellFeatureDoc:
@@ -61,7 +59,7 @@ class CellFeatureDoc:
     """
 
     def __init__(self):
-        self.cell_feature_analysis_data: List[Dict] = []
+        self.cell_feature_analysis_data: List[CellFeatureSettings] = []
 
     @staticmethod
     def convert_str_to_num(value: str) -> Union[int, float, str]:
@@ -74,10 +72,11 @@ class CellFeatureDoc:
             # if not number, return the original value
             return value
 
-    def compile_cell_feature_analysis(self, file_info: List[Any], features: List[Any]):
-        self.cell_feature_analysis_data.append(
-            {"file_info": file_info, "features": features}
-        )
+    def compile_cell_feature_analysis(
+        self, file_info: List[Union[int, str]], features: List[Union[int, float]]
+    ):
+        cell_feature_setting = CellFeatureSettings(file_info, features)
+        self.cell_feature_analysis_data.append(cell_feature_setting.to_dict())
 
 
 class FeatureDefsDoc:
@@ -88,7 +87,7 @@ class FeatureDefsDoc:
     def __init__(self, data, inputs):
         self.data = data
         self.inputs = inputs
-        self.feature_defs_data: List[str] = []
+        self.feature_defs_data: List[FeatureDefsSettings] = []
         self.logger = logging.getLogger()
 
         # feature names(with units if applicable) in order of appearance in the csv file
@@ -101,7 +100,7 @@ class FeatureDefsDoc:
         self.discrete_features: List[str] = []
 
     @staticmethod
-    def is_valid_feature_value(value: Any) -> bool:
+    def is_valid_feature_value(value: Union[int, float]) -> bool:
         return pd.isna(value) or isinstance(value, (int, float))
 
     @staticmethod
@@ -168,7 +167,7 @@ class FeatureDefsDoc:
             self.feature_def_keys.append(column)
 
     def process_features(
-        self, column: str, value: Union[int, float], features: List[Any]
+        self, column: str, value: Union[int, float], features: List[Union[int, float]]
     ):
         if self.is_valid_feature_value(value):
             features.append(value)
@@ -177,7 +176,7 @@ class FeatureDefsDoc:
             self.logger.error(f"Invalid value: {value} in column {column}")
             raise ValueError
 
-    def get_column_data(self, column: str) -> List[Any]:
+    def get_column_data(self, column: str) -> List[str]:
         """
         Returns the column data from the dataset
         """
@@ -187,8 +186,8 @@ class FeatureDefsDoc:
         return column_data
 
     def write_discrete_feature_options(
-        self, data_values: List[Any]
-    ) -> Optional[Dict[str, Any]]:
+        self, data_values: List[str]
+    ) -> Optional[Dict[str, DiscreteFeatureOptions]]:
         """
         Keys in options are the unique values in the column, and values are the color and name of the feature
         Returns the options for a discrete feature
@@ -210,32 +209,30 @@ class FeatureDefsDoc:
         options = {}
         for index, key in enumerate(keys):
             # "key" is optional, if "name" is not unique, use "key" to distinguish between the options
-            options[key] = {"color": self.get_color(index), "name": key, "key": key}
+            options[key] = DiscreteFeatureOptions(
+                color=self.get_color(index), name=key, key=key
+            )
         return options
 
     def compile_feature_defs(self):
-        description = ""
-        tooltip = ""
         for key in self.feature_def_keys:
             discrete = self.feature_discreteness_map[key]
             unit = self.get_unit(key)
             stripped_key = key.replace(f"({unit})", "").strip()
             self.features_data_order.append(stripped_key)
             display_name = self.format_display_name(stripped_key)
-            feature_def = {
-                "key": stripped_key,
-                "displayName": display_name,
-                "unit": unit,
-                "description": description,
-                "tooltip": tooltip,
-                "discrete": discrete,
-            }
+            feature_def = FeatureDefsSettings(
+                key=stripped_key,
+                displayName=display_name,
+                unit=unit,
+                discrete=discrete,
+            )
             if discrete:
                 self.discrete_features.append(stripped_key)
                 column_data = self.get_column_data(key)
                 options = self.write_discrete_feature_options(column_data)
-                feature_def["options"] = options
-            self.feature_defs_data.append(feature_def)
+                feature_def.options = options
+            self.feature_defs_data.append(feature_def.to_dict())
 
 
 class ImageSettingsDoc:
@@ -252,7 +249,7 @@ class DatasetWriter:
     Class to create the dataset folder and write json files
     """
 
-    def __init__(self, data_loader: DataLoader, inputs: UserInputHandler):
+    def __init__(self, data_loader: DataLoader, inputs: DatasetInputHandler):
         self.data = data_loader.data
         self.inputs = inputs
         self.logger = logging.getLogger()
@@ -269,7 +266,9 @@ class DatasetWriter:
         # dictionary of json file names and their paths
         self.json_file_path_dict: Dict[str, Path] = {}
 
-    def get_row_data(self, row: Dict[str, str]) -> Tuple[List[Any], List[Any]]:
+    def get_row_data(
+        self, row: Dict[str, str]
+    ) -> Tuple[List[Union[int, str]], List[Union[int, float]]]:
         """
         Separates the file info and features from the row
         """
@@ -284,13 +283,12 @@ class DatasetWriter:
 
     def process_data(self):
         """
-        Process each row of the csv file and compile the json files
+        Process each row of the csv file and compile cell feature analysis and feature defs
         """
         for row in self.data:
             file_info, features = self.get_row_data(row)
             self.cell_feature_doc.compile_cell_feature_analysis(file_info, features)
         self.feature_defs_doc.compile_feature_defs()
-        self.dataset_doc.compile_dataset()
 
     def write_json_files(self, path: Path):
         json_files = {
@@ -313,7 +311,7 @@ class DatasetWriter:
         self.write_json_files(path)
 
     def update_json_file_with_additional_data(
-        self, file_path: Path, additional_data: Union[UserInputHandler, Dict[str, Any]]
+        self, file_path: Path, additional_data: Dict[str, Any]
     ):
         """
         Updates the JSON file with additional settings
@@ -329,11 +327,8 @@ class DatasetWriter:
             self.logger.error(f"Error decoding JSON from {file_path}")
             raise
 
-        # Convert DatasetSettings object to dictionary
-        additional_data_dict = asdict(additional_data)
-
         # Update the data with additional settings
-        data.update(additional_data_dict)
+        data.update(additional_data)
 
         # Write the updated data back to the JSON file
         with open(file_path, "w") as file:
@@ -343,13 +338,16 @@ class DatasetWriter:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
+    if len(sys.argv) > 1 and Path(sys.argv[1]).is_file():
         file_path = sys.argv[1]
     else:
-        file_path = input("Enter the file path: ")
+        file_path = input("Enter a valid file path: ")
+
+    # Configure logging
+    logging.config.fileConfig(Path(__file__).resolve().parent / "logging.conf")
 
     # Initialize the user input handler, data loader and dataset writer
-    input_handler = UserInputHandler(file_path)
+    input_handler = DatasetInputHandler(file_path)
     init_inputs = input_handler.inputs
     loader = DataLoader(init_inputs, input_handler.path)
     writer = DatasetWriter(loader, init_inputs)
@@ -367,5 +365,5 @@ if __name__ == "__main__":
         additional_inputs = input_handler.get_additional_settings()
         dataset_filepath = writer.json_file_path_dict.get(constants.DATASET_FILENAME)
         writer.update_json_file_with_additional_data(
-            dataset_filepath, additional_inputs
+            dataset_filepath, asdict(additional_inputs)
         )

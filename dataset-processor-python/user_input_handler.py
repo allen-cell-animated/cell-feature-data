@@ -1,7 +1,7 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, asdict
 import logging.config
 from pathlib import Path
-from typing import Any, Dict, List, Tuple, Union, Optional
+from typing import Any, Dict, List, Optional, Union
 import constants
 import questionary
 import re
@@ -33,14 +33,53 @@ class DatasetSettings:
     featuresDataOrder: list = field(default_factory=list)
 
 
-class UserInputHandler:
+@dataclass
+class DiscreteFeatureOptions:
+    color: str
+    name: str
+    key: Optional[str]
+
+    def to_dict(self):
+        return asdict(self)
+
+
+@dataclass
+class FeatureDefsSettings:
     """
-    Class to handle user inputs
+    Class to store required feature defs settings
+    """
+
+    key: str
+    displayName: str
+    unit: str
+    description: str = ""
+    tooltip: str = ""
+    discrete: bool = False
+    options: Optional[Dict[str, DiscreteFeatureOptions]] = None
+
+    def to_dict(self):
+        return {k: v for k, v in asdict(self).items() if v is not None}
+
+
+@dataclass
+class CellFeatureSettings:
+    """
+    Class to store required cell feature settings
+    """
+
+    file_info: List[Union[int, str]]
+    features: List[Union[int, float]]
+
+    def to_dict(self):
+        return asdict(self)
+
+
+class DatasetInputHandler:
+    """
+    Class to handle user inputs for dataset
     """
 
     def __init__(self, path: str, dataset_writer: Optional[Any] = None):
-        # Configure logger
-        logging.config.fileConfig(Path(__file__).resolve().parent / "logging.conf")
         self.logger = logging.getLogger()
 
         self.path = Path(path)
@@ -82,7 +121,9 @@ class UserInputHandler:
             else default
         )
 
-    def get_feature(self, prompt: str, features: List[str], default_index: int = 0) -> str:
+    def get_feature(
+        self, prompt: str, features: List[str], default_index: int = 0
+    ) -> str:
         """
         Get feature input from the user
         """
