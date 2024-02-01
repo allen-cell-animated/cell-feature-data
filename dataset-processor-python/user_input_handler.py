@@ -39,7 +39,7 @@ class DiscreteFeatureOptions:
     name: str
     key: Optional[str]
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
 
 
@@ -57,7 +57,7 @@ class FeatureDefsSettings:
     discrete: bool = False
     options: Optional[Dict[str, DiscreteFeatureOptions]] = None
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, Any]:
         return {k: v for k, v in asdict(self).items() if v is not None}
 
 
@@ -70,7 +70,7 @@ class CellFeatureSettings:
     file_info: List[Union[int, str]]
     features: List[Union[int, float]]
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, List[Union[int, Any]]]:
         return asdict(self)
 
 
@@ -95,7 +95,7 @@ class DatasetInputHandler:
     def is_feature_in_list(input: str, features: list) -> bool:
         return input in features
 
-    def get_initial_settings(self):
+    def get_initial_settings(self) -> DatasetSettings:
         version = questionary.text(
             "Enter the version(yyyy.number):",
             default="2024.0",
@@ -106,7 +106,7 @@ class DatasetInputHandler:
 
     def get_questionary_input(
         self, prompt: str, default=None, validator=None, choices=None
-    ):
+    ) -> Optional[str]:
         """
         Helper function to get user input by prompts with validation and autocompletion
         """
@@ -123,7 +123,7 @@ class DatasetInputHandler:
 
     def get_feature(
         self, prompt: str, features: List[str], default_index: int = 0
-    ) -> str:
+    ) -> Optional[str]:
         """
         Get feature input from the user
         """
@@ -139,7 +139,7 @@ class DatasetInputHandler:
             validator=lambda user_input: self.is_feature_in_list(user_input, features),
         )
 
-    def get_additional_settings(self):
+    def get_additional_settings(self) -> Optional[DatasetSettings]:
         """
         Collect additional settings from the user via interactive prompts
         """

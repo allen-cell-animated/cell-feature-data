@@ -72,9 +72,9 @@ class CellFeatureDoc:
             # if not number, return the original value
             return value
 
-    def compile_cell_feature_analysis(
+    def add_cell_feature_analysis(
         self, file_info: List[Union[int, str]], features: List[Union[int, float]]
-    ):
+    ) -> None:
         cell_feature_setting = CellFeatureSettings(file_info, features)
         self.cell_feature_analysis_data.append(cell_feature_setting.to_dict())
 
@@ -148,7 +148,7 @@ class FeatureDefsDoc:
             index = index % len(colors)
         return colors[index]
 
-    def update_feature_metadata(self, column: str, value: Union[int, float]):
+    def update_feature_metadata(self, column: str, value: Union[int, float]) -> None:
         """
         Updates the feature metadata with whether the feature is discrete or not
         Store the list of original feature names for writing the feature defs file
@@ -168,7 +168,7 @@ class FeatureDefsDoc:
 
     def process_features(
         self, column: str, value: Union[int, float], features: List[Union[int, float]]
-    ):
+    ) -> None:
         if self.is_valid_feature_value(value):
             features.append(value)
             self.update_feature_metadata(column, value)
@@ -214,7 +214,7 @@ class FeatureDefsDoc:
             )
         return options
 
-    def compile_feature_defs(self):
+    def add_feature_defs(self) -> None:
         for key in self.feature_def_keys:
             discrete = self.feature_discreteness_map[key]
             unit = self.get_unit(key)
@@ -281,16 +281,16 @@ class DatasetWriter:
                 self.feature_defs_doc.process_features(column, value, features)
         return file_info, features
 
-    def process_data(self):
+    def process_data(self) -> None:
         """
-        Process each row of the csv file and compile cell feature analysis and feature defs
+        Process each row of the csv file and create cell feature analysis and feature defs
         """
         for row in self.data:
             file_info, features = self.get_row_data(row)
-            self.cell_feature_doc.compile_cell_feature_analysis(file_info, features)
-        self.feature_defs_doc.compile_feature_defs()
+            self.cell_feature_doc.add_cell_feature_analysis(file_info, features)
+        self.feature_defs_doc.add_feature_defs()
 
-    def write_json_files(self, path: Path):
+    def write_json_files(self, path: Path) -> None:
         json_files = {
             constants.CELL_FEATURE_ANALYSIS_FILENAME: self.cell_feature_doc.cell_feature_analysis_data,
             constants.DATASET_FILENAME: self.dataset_doc.dataset_data,
@@ -304,7 +304,7 @@ class DatasetWriter:
                 json.dump(data, f, indent=4)
         self.logger.info("Generating JSON files... Done!")
 
-    def create_dataset_folder(self):
+    def create_dataset_folder(self) -> None:
         folder_name = f"{self.inputs.name}_v{self.inputs.version}"
         path = Path("data") / folder_name
         path.mkdir(parents=True, exist_ok=True)
@@ -312,7 +312,7 @@ class DatasetWriter:
 
     def update_json_file_with_additional_data(
         self, file_path: Path, additional_data: Dict[str, Any]
-    ):
+    ) -> None:
         """
         Updates the JSON file with additional settings
         """
