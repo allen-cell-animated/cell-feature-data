@@ -50,7 +50,7 @@ const checkForError = (fileName, json, schemaFileName) => {
   }
 
 
-  if (json["dataset"]) {
+  if (json["dataset"] && json["dataset"]["userData"]) {
     const totalCells = json.dataset.userData.totalCells;
     const totalFOVs = json.dataset.userData.totalFOVs;
     const { userDataError, userDataErrorMsg }= utils.validateUserDataValues(totalCells, totalFOVs);
