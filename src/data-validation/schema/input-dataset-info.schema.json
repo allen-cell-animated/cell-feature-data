@@ -93,7 +93,6 @@
         "description",
         "featuresDataPath",
         "viewerSettingsPath",
-        "albumPath",
         "thumbnailRoot",
         "downloadRoot",
         "volumeViewerDataRoot",
