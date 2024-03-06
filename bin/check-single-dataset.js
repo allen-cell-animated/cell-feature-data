@@ -35,7 +35,7 @@ const checkForError = (fileName, json, schemaFileName) => {
     );
     return false;
   };
-  if (!valid) return logError(errorMsg);
+  if (!valid) return logError(error);
 
   if (json["feature-defs"]) {
     const featuresDataOrder = json.dataset.featuresDataOrder;

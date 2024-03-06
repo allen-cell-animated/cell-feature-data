@@ -38,8 +38,6 @@
     },
     "required": [
         "displayName",
-        "description",
-        "tooltip",
         "unit",
         "key",
         "discrete"
