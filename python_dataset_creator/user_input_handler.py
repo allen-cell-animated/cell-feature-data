@@ -2,7 +2,7 @@ from dataclasses import dataclass, field, asdict
 import logging.config
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
-import constants
+from python_dataset_creator import constants
 import questionary
 import re
 
