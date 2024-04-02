@@ -2,6 +2,18 @@
 
 # For dataset creators:
 ## To create a new dataset:
+#### Option 1: Upload a csv file and use the `create-dataset` python script
+1. Make a branch or fork of this repo
+2. Navigate to `dataset-processor-python` and create the virtual environment if not already created: `python3 -m venv [ENV-NAME]`
+3. Activate the virtual environment: `source [ENV-NAME]/bin/activate`
+4. Install the required packages: `pip install -r requirements.txt`
+5. Run the `create-dataset` script with the path to your csv file: `npm run create-dataset [PATH/TO/CSV]`. This will: 
+   - Create a new dataset folder under `data` with the same name as the csv file
+   - Process the csv file and create the necessary json files for the dataset
+   - Prompt you in the terminal for additional information about the dataset and update the json files based on your input
+6. Deactivate the virtual environment once finished: `deactivate`
+
+#### Option 2: Manually create json files within a dataset folder
 1. make a branch or fork of this repo
 2. create a new dataset folder under `data`
     #### Expected files in a dataset directory:
@@ -10,17 +22,19 @@
     - a json file listing the per cell data. Key in `dataset.json`: `featuresDataPath`
     - a json file with settings for volume data channels in the 3d viewer. Key in `dataset.json`: `viewerSettingsPath`
 
-    #### For more on what these files should look like, look at `process-dataset/data-validation/schema.js` and [Full spec documentation](https://allen-cell-animated.github.io/cell-feature-data/HandoffSpecification.html)
-
-3. Before pushing a PR back to this repo, run the preliminary data consistency checks locally and make sure the validation passes. If it doesn't check the logs to see what went wrong and fix any errors.
+#### After creating the dataset:
+  
+1. Before pushing a PR back to this repo, run the preliminary data consistency checks locally and make sure the validation passes. If it doesn't check the logs to see what went wrong and fix any errors.
     * to validate a single dataset: `npm run validate-single-dataset [PATH/TO/DATASET]` 
     * to validate all datasets: `npm run validate-datasets`
 
-4. If everything looks good, run the [process dataset from `Actions`](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/upload-dataset.yml) by clicking the "Run workflow" dropdown and entering the following settings:
+2. If everything looks good, run the [process dataset from `Actions`](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/upload-dataset.yml) by clicking the "Run workflow" dropdown and entering the following settings:
     * set `branch` to your branch
     * enter the folder name that contains your dataset
     * leave checkbox unchecked if this is your first time uploading
     * leave db set to `staging`
+
+#### For more on what these files should look like, look at `process-dataset/data-validation/schema.js` and [Full spec documentation](https://allen-cell-animated.github.io/cell-feature-data/HandoffSpecification.html)
 
 ## To view your dataset:
 #### Option 1: Point cell feature explorer staging site to staging database
@@ -78,7 +92,7 @@ DEV_FIREBASE_EMAIL= project settings/services accounts/firebase service account
 - `staging`: group testing || for scientists to review. NODE_ENV=="staging"
 - `production`: production database for cfe.allencell.org. NODE_ENV=="production"
 
-## To create a new dataset:
+## To process a new dataset:
 
 `node process-dataset [PATH/TO/DATASET]`
 or
