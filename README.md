@@ -27,7 +27,7 @@
   
 1. Before pushing a PR back to this repo, run the preliminary data consistency checks locally and make sure the validation passes. If it doesn't check the logs to see what went wrong and fix any errors.
     * to validate a single dataset: `npm run validate-single-dataset [PATH/TO/DATASET]` 
-    * to validate all datasets: `npm run validate-datasets`
+    * to validate all datasets within `data` folder: `npm run validate-datasets`
 
 2. If everything looks good, run the [process dataset from `Actions`](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/upload-dataset.yml) by clicking the "Run workflow" dropdown and entering the following settings:
     * set `branch` to your branch
