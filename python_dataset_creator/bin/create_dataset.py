@@ -1,6 +1,5 @@
 from dataclasses import asdict
-import sys
-from pathlib import Path
+
 from python_dataset_creator.user_input_handler import DatasetInputHandler
 from python_dataset_creator.data_loader import DataLoader, DatasetWriter
 from python_dataset_creator import constants
@@ -8,11 +7,11 @@ from python_dataset_creator import constants
 import questionary
 
 
-def create_dataset():
-    if len(sys.argv) > 1 and Path(sys.argv[1]).is_file():
-        file_path = sys.argv[1]
-    else:
-        file_path = input("Enter a valid file path: ")
+def main():
+    file_path = questionary.text(
+        "Enter a valid file path:",
+        validate=lambda text: True if len(text) > 0 else "File path cannot be empty.",
+    ).ask()
 
     # Initialize the user input handler, data loader and dataset writer
     input_handler = DatasetInputHandler(file_path)
@@ -38,4 +37,4 @@ def create_dataset():
 
 
 if __name__ == "__main__":
-    create_dataset()
+    main()
