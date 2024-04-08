@@ -2,15 +2,16 @@
 
 # For dataset creators:
 ## To create a new dataset:
-#### Option 1: Upload a csv file and use the `create-dataset` python script
+#### Option 1: Use the `python_dataset_creator` package
 1. Make a branch or fork of this repo
-2. Navigate to `dataset-processor-python` and create the virtual environment if not already created: `python3 -m venv [ENV-NAME]`
+2. Create a virtual environment if not already created: `python3 -m venv [ENV-NAME]`
 3. Activate the virtual environment: `source [ENV-NAME]/bin/activate`
-4. Install the required packages: `pip install -r requirements.txt`
-5. Run the `create-dataset` script with the path to your csv file: `npm run create-dataset [PATH/TO/CSV]`. This will: 
-   - Create a new dataset folder under `data` with the same name as the csv file
-   - Process the csv file and create the necessary json files for the dataset
-   - Prompt you in the terminal for additional information about the dataset and update the json files based on your input
+4. Install the dependencies: `pip install -e .` This step also makes the `create-dataset` command available globally within the virtual environment.
+5. Run `create-dataset` to start the dataset creation process. This will: 
+   - Request the path of the file you want to process. Formats supported: `.csv`, with more formats to be added as development progresses
+   - Ask for an output path to save your dataset. If not specified, a new dataset folder is created in `data`, named after the input file
+   - Process the input file and generate the required json files for the dataset
+   - Prompt you for additional information about the dataset and update the json files accordingly
 6. Deactivate the virtual environment once finished: `deactivate`
 
 #### Option 2: Manually create json files within a dataset folder
