@@ -303,13 +303,18 @@ class DatasetWriter:
             self.json_file_path_dict[file_name] = file_path
             with open(file_path, "w") as f:
                 json.dump(data, f, indent=4)
-        logger.info("Generating JSON files... Done!")
+        logger.info("Successfully wrote JSON files.")
 
-    def create_dataset_folder(self) -> None:
-        folder_name = f"{self.inputs.name}_v{self.inputs.version}"
-        path = Path("data") / folder_name
-        path.mkdir(parents=True, exist_ok=True)
-        self.write_json_files(path)
+    def create_dataset_folder(self, output_path:str) -> None:
+        if self.inputs.name and self.inputs.version:
+            folder_name = f"{self.inputs.name}_v{self.inputs.version}"
+            path = Path(output_path) / folder_name
+            path.mkdir(parents=True, exist_ok=True)
+            self.write_json_files(path)
+            logger.info(f"Successfully created {folder_name} at {path}.")
+        else:
+            logger.error("Name and version are required to create the dataset folder.")
+            raise ValueError
 
     def update_json_file_with_additional_data(
         self, file_path: Path, additional_data: Dict[str, Any]
@@ -335,4 +340,4 @@ class DatasetWriter:
         with open(file_path, "w") as file:
             json.dump(data, file, indent=4)
 
-        logger.info(f"Updating {file_path}... Done!")
+        logger.info(f"Successfully updated {file_path} with additional settings.")

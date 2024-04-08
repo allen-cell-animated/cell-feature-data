@@ -13,6 +13,11 @@ def main():
         validate=lambda text: True if len(text) > 0 else "File path cannot be empty.",
     ).ask()
 
+    output_path = questionary.text(
+        "Enter the output folder path (default: 'data'):",
+        default="data",
+    ).ask()
+
     # Initialize the user input handler, data loader and dataset writer
     input_handler = DatasetInputHandler(file_path)
     init_inputs = input_handler.inputs
@@ -20,7 +25,7 @@ def main():
     writer = DatasetWriter(loader, init_inputs)
 
     writer.process_data()
-    writer.create_dataset_folder()
+    writer.create_dataset_folder(output_path)
 
     additional_settings = questionary.select(
         "How do you want to add additional settings for the dataset?",

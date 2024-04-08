@@ -88,8 +88,15 @@ class DatasetInputHandler:
 
     @staticmethod
     def is_valid_version(version: str) -> bool:
+        # Check if the version is in the format yyyy.number
         pattern = r"^[0-9]{4}\.[0-9]+$"
         return re.match(pattern, version) is not None
+
+    @staticmethod
+    def is_valid_name(name: str) -> bool:
+        # Check if the name contains only alphanumeric characters, underscores, and hyphens
+        pattern = r"^[a-zA-Z0-9_-]+$"
+        return re.match(pattern, name) is not None
 
     @staticmethod
     def is_feature_in_list(input: str, features: list) -> bool:
@@ -102,6 +109,11 @@ class DatasetInputHandler:
             validate=self.is_valid_version,
         ).ask()
         dataset_name = self.path.stem.lower().replace(" ", "_")
+        if not self.is_valid_name(dataset_name):
+            dataset_name = questionary.text(
+                "Invalid dataset name detected. Please enter a name with only alphanumeric characters, underscores, and hyphens:",
+                validate=self.is_valid_name,
+            ).ask()
         return DatasetSettings(name=dataset_name, version=version.strip())
 
     def get_questionary_input(
