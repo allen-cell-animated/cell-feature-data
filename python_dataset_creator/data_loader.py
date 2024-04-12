@@ -2,20 +2,24 @@ import csv
 import json
 import logging.config
 import re
-import sys
 from dataclasses import asdict
 from pathlib import Path
 from typing import Any, Dict, List, Tuple, Union, Optional
 import numpy
 import pandas as pd
-import questionary
-import constants
-from user_input_handler import (
+from python_dataset_creator import constants
+from python_dataset_creator.user_input_handler import (
     DatasetInputHandler,
     DiscreteFeatureOptions,
     FeatureDefsSettings,
     CellFeatureSettings,
 )
+
+###############################################################################
+log_file_path = Path(__file__).resolve().parent / "logging.conf"
+logging.config.fileConfig(log_file_path, disable_existing_loggers=False)
+logger = logging.getLogger()
+###############################################################################
 
 
 class DataLoader:
@@ -25,7 +29,6 @@ class DataLoader:
     """
 
     def __init__(self, inputs: DatasetInputHandler, path: Path):
-        self.logger = logging.getLogger()
         self.inputs = inputs
         self.path = path
         self.data = self.load_csv()
@@ -40,7 +43,7 @@ class DataLoader:
                 reader = csv.DictReader(f)
                 return list(reader)
         except Exception as e:
-            self.logger.error(f"Error while reading CSV: {e}")
+            logger.error(f"Error while reading CSV: {e}")
             raise
 
 
@@ -88,7 +91,6 @@ class FeatureDefsDoc:
         self.data = data
         self.inputs = inputs
         self.feature_defs_data: List[FeatureDefsSettings] = []
-        self.logger = logging.getLogger()
 
         # feature names(with units if applicable) in order of appearance in the csv file
         self.feature_def_keys: List[str] = []
@@ -158,7 +160,7 @@ class FeatureDefsDoc:
             column in self.feature_discreteness_map
             and is_discrete != self.feature_discreteness_map[column]
         ):
-            self.logger.warning(
+            logger.warning(
                 f"Column {column} has both discrete and continuous values. Please make sure that all values in a column are either discrete or continuous."
             )
             return
@@ -173,7 +175,7 @@ class FeatureDefsDoc:
             features.append(value)
             self.update_feature_metadata(column, value)
         else:
-            self.logger.error(f"Invalid value: {value} in column {column}")
+            logger.error(f"Invalid value: {value} in column {column}")
             raise ValueError
 
     def get_column_data(self, column: str) -> List[str]:
@@ -252,7 +254,6 @@ class DatasetWriter:
     def __init__(self, data_loader: DataLoader, inputs: DatasetInputHandler):
         self.data = data_loader.data
         self.inputs = inputs
-        self.logger = logging.getLogger()
 
         # initialize the doc classes
         self.cell_feature_doc = CellFeatureDoc()
@@ -302,13 +303,18 @@ class DatasetWriter:
             self.json_file_path_dict[file_name] = file_path
             with open(file_path, "w") as f:
                 json.dump(data, f, indent=4)
-        self.logger.info("Generating JSON files... Done!")
+        logger.info("Successfully wrote JSON files.")
 
-    def create_dataset_folder(self) -> None:
-        folder_name = f"{self.inputs.name}_v{self.inputs.version}"
-        path = Path("data") / folder_name
-        path.mkdir(parents=True, exist_ok=True)
-        self.write_json_files(path)
+    def create_dataset_folder(self, output_path:str) -> None:
+        if self.inputs.name and self.inputs.version:
+            folder_name = f"{self.inputs.name}_v{self.inputs.version}"
+            path = Path(output_path) / folder_name
+            path.mkdir(parents=True, exist_ok=True)
+            self.write_json_files(path)
+            logger.info(f"Successfully created {folder_name} at {path}.")
+        else:
+            logger.error("Name and version are required to create the dataset folder.")
+            raise ValueError
 
     def update_json_file_with_additional_data(
         self, file_path: Path, additional_data: Dict[str, Any]
@@ -321,10 +327,10 @@ class DatasetWriter:
             with open(file_path, "r") as file:
                 data = json.load(file)
         except FileNotFoundError:
-            self.logger.error(f"File not found: {file_path}")
+            logger.error(f"File not found: {file_path}")
             raise
         except json.JSONDecodeError:
-            self.logger.error(f"Error decoding JSON from {file_path}")
+            logger.error(f"Error decoding JSON from {file_path}")
             raise
 
         # Update the data with additional settings
@@ -334,36 +340,4 @@ class DatasetWriter:
         with open(file_path, "w") as file:
             json.dump(data, file, indent=4)
 
-        self.logger.info(f"Updating {file_path}... Done!")
-
-
-if __name__ == "__main__":
-    if len(sys.argv) > 1 and Path(sys.argv[1]).is_file():
-        file_path = sys.argv[1]
-    else:
-        file_path = input("Enter a valid file path: ")
-
-    # Configure logging
-    logging.config.fileConfig(Path(__file__).resolve().parent / "logging.conf")
-
-    # Initialize the user input handler, data loader and dataset writer
-    input_handler = DatasetInputHandler(file_path)
-    init_inputs = input_handler.inputs
-    loader = DataLoader(init_inputs, input_handler.path)
-    writer = DatasetWriter(loader, init_inputs)
-
-    writer.process_data()
-    writer.create_dataset_folder()
-
-    additional_settings = questionary.select(
-        "How do you want to add additional settings for the dataset?",
-        choices=["By prompts", "Manually edit the JSON files later"],
-    ).ask()
-
-    if additional_settings == "By prompts":
-        input_handler.dataset_writer = writer
-        additional_inputs = input_handler.get_additional_settings()
-        dataset_filepath = writer.json_file_path_dict.get(constants.DATASET_FILENAME)
-        writer.update_json_file_with_additional_data(
-            dataset_filepath, asdict(additional_inputs)
-        )
+        logger.info(f"Successfully updated {file_path} with additional settings.")

@@ -16,3 +16,4 @@ docs/DatasetHandoffRef.adoc
 docs/DatasetHandoffSchema.adoc
 cfe-pyenv/
 __pycache__/
+*.egg-info/
