@@ -2,10 +2,10 @@
 
 # For dataset creators:
 ## To create a new dataset:
-#### Option 1: Use the `python_dataset_creator` package
+#### Option 1: Use the `cell_feature_data` package
 1. Make a branch or fork of this repo
-2. Create a virtual environment if not already created: `python3 -m venv [ENV-NAME]`
-3. Activate the virtual environment: `source [ENV-NAME]/bin/activate`
+2. Create a virtual environment if not already created: `python3 -m venv venv/[ENV-NAME]`
+3. Activate the virtual environment: `source [ENV-PATH]/bin/activate`
 4. Install the dependencies: `pip install -e .` This step also makes the `create-dataset` command available globally within the virtual environment.
 5. Run `create-dataset` to start the dataset creation process. This will: 
    - Request the path of the file you want to process. Formats supported: `.csv`, with more formats to be added as development progresses
