@@ -19,11 +19,11 @@ requirements = [
 ]
 
 setup(
-    name='creator',
+    name='cell_feature_data',
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'create-dataset = python_dataset_creator.bin.create_dataset:main',
+            'create-dataset = cell_feature_data.bin.create_dataset:main',
         ],
     },
     install_requires= requirements,
