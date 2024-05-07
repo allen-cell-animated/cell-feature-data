@@ -1,19 +1,43 @@
+# OS generated files
 .DS_Store
+
+# IDE generated files
 .vscode
 node_modules
 */node_modules
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# virtualenv
+.venv
+env/
+venv/
+ENV/
+
+# Distribution / packaging
+*.egg-info/
+
+# dotenv
 .env
+
+# temporary files
 tmp/
+
+# log files
+*.log
+
+# dataset files
 dataset-*/cell_feature_analysis.json
 dataset-*/cell-feature-analysis.json
-*.log
+
+# local scripts
 local-scripts.js
+
+# generated files
 dist/DatabaseSpecification.html
 dist/HandoffSpecification.html
 docs/DatabaseRef.adoc
 docs/DatabaseSchema.adoc
 docs/DatasetHandoffRef.adoc
 docs/DatasetHandoffSchema.adoc
-cfe-pyenv/
-__pycache__/
-*.egg-info/
