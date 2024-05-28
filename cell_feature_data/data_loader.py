@@ -7,8 +7,8 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple, Union, Optional
 import numpy
 import pandas as pd
-from python_dataset_creator import constants
-from python_dataset_creator.user_input_handler import (
+from cell_feature_data import constants
+from cell_feature_data.user_input_handler import (
     DatasetInputHandler,
     DiscreteFeatureOptions,
     FeatureDefsSettings,

@@ -1,8 +1,8 @@
 from dataclasses import asdict
 
-from python_dataset_creator.user_input_handler import DatasetInputHandler
-from python_dataset_creator.data_loader import DataLoader, DatasetWriter
-from python_dataset_creator import constants
+from cell_feature_data.user_input_handler import DatasetInputHandler
+from cell_feature_data.data_loader import DataLoader, DatasetWriter
+from cell_feature_data import constants
 
 import questionary
 
