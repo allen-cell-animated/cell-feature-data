@@ -34,6 +34,19 @@ class DatasetSettings:
 
 
 @dataclass
+class MegasetDatasetSettings:
+    """
+    Class to store required dataset settings for megaset
+    """
+
+    title: str = ""
+    name: str = ""
+    dataCreated: str = ""
+    publications: List[Dict[str, str]] = field(default_factory=list)
+    datasets: list = field(default_factory=list)
+
+
+@dataclass
 class DiscreteFeatureOptions:
     color: str
     name: str
@@ -81,7 +94,6 @@ class DatasetInputHandler:
 
     def __init__(self, path: str, dataset_writer: Optional[Any] = None):
         self.logger = logging.getLogger()
-
         self.path = Path(path)
         self.dataset_writer = dataset_writer
         self.inputs = self.get_initial_settings()
@@ -191,5 +203,52 @@ class DatasetInputHandler:
         self.inputs.colorBy = {"default": color_by}
         self.inputs.groupBy = {"default": group_by}
         self.inputs.featuresDataOrder = cell_features
+
+        return self.inputs
+
+
+class MegasetInputHandler:
+    """
+    Class to handle user inputs for megaset
+    """
+
+    def __init__(self):
+        self.inputs = self.get_initial_settings()
+
+    def get_initial_settings(self) -> MegasetDatasetSettings:
+        title = questionary.text(
+            "Enter the megaset title:",
+            validate=lambda text: (
+                True if len(text) > 0 else "Megaset title cannot be empty."
+            ),
+        ).ask()
+        name = questionary.text(
+            "Enter the megaset name:",
+            validate=lambda text: (
+                True if len(text) > 0 else "Megaset name cannot be empty."
+            ),
+        ).ask()
+        return MegasetDatasetSettings(title=title, name=name)
+
+    def get_settings_for_megaset(self) -> Optional[MegasetDatasetSettings]:
+        """
+        Collect settings for megaset from the user via interactive prompts
+        """
+        data_created = questionary.text("Enter the date the megaset was created:").ask()
+        # TODO: Add support for multiple publications
+        publication_title = questionary.text("Enter the publication title:").ask()
+        publication_url = questionary.text("Enter the publication URL:").ask()
+        publication_citation = questionary.text("Enter the publication citation:").ask()
+        datasets = []
+
+        self.inputs.dataCreated = data_created
+        self.inputs.publications = [
+            {
+                "title": publication_title,
+                "url": publication_url,
+                "citation": publication_citation,
+            }
+        ]
+        self.inputs.datasets = datasets
 
         return self.inputs
