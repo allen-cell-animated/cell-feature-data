@@ -120,7 +120,11 @@ class DatasetInputHandler:
             default="2024.0",
             validate=self.is_valid_version,
         ).ask()
-        dataset_name = self.path.stem.lower().replace(" ", "_")
+        dataset_name = questionary.text(
+            "Enter the dataset name:",
+            default=self.path.stem.lower().replace(" ", "_"),
+            validate=self.is_valid_name,
+        ).ask()
         if not self.is_valid_name(dataset_name):
             dataset_name = questionary.text(
                 "Invalid dataset name detected. Please enter a name with only alphanumeric characters, underscores, and hyphens:",
@@ -230,7 +234,9 @@ class MegasetInputHandler:
         ).ask()
         return MegasetDatasetSettings(title=title, name=name)
 
-    def get_settings_for_megaset(self) -> Optional[MegasetDatasetSettings]:
+    def get_settings_for_megaset(
+        self, dataset_names
+    ) -> Optional[MegasetDatasetSettings]:
         """
         Collect settings for megaset from the user via interactive prompts
         """
@@ -239,7 +245,7 @@ class MegasetInputHandler:
         publication_title = questionary.text("Enter the publication title:").ask()
         publication_url = questionary.text("Enter the publication URL:").ask()
         publication_citation = questionary.text("Enter the publication citation:").ask()
-        datasets = []
+        datasets = dataset_names
 
         self.inputs.dataCreated = data_created
         self.inputs.publications = [

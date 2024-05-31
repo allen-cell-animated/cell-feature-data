@@ -28,7 +28,7 @@ def main():
         create_megaset(output_path)
 
 
-def create_single_dataset(output_path: str):
+def create_single_dataset(output_path: str, for_megaset: bool = False):
     file_path = questionary.text(
         "Enter a valid file path:",
         validate=lambda text: True if len(text) > 0 else "File path cannot be empty.",
@@ -38,7 +38,7 @@ def create_single_dataset(output_path: str):
     input_handler = DatasetInputHandler(file_path)
     init_inputs = input_handler.inputs
     loader = DataLoader(init_inputs, input_handler.path)
-    writer = DatasetWriter(init_inputs, loader)
+    writer = DatasetWriter(init_inputs, loader, for_megaset)
 
     writer.process_data()
     writer.create_dataset_folder(output_path)
@@ -55,6 +55,7 @@ def create_single_dataset(output_path: str):
         writer.update_json_file_with_additional_data(
             dataset_filepath, asdict(additional_inputs)
         )
+    return init_inputs.name
 
 
 def create_megaset(output_path: str):
@@ -64,30 +65,33 @@ def create_megaset(output_path: str):
         Path(output_path) / f"{init_inputs.name}_{datetime.utcnow().year}"
     )
     megaset_folder_path.mkdir(parents=True, exist_ok=True)
-
-    # TODO: collect single dataset names to be included in dataset.json
-    # TODO: when creating megasets, change the name of each single set folder. e.g."i1m1"
-    # single_datasets = []
+    dataset_names = []
 
     next_dataset = "Yes"
     while next_dataset == "Yes":
         print(
             "Starting the process to create single datasets within the megaset---------"
         )
-        create_single_dataset(output_path=megaset_folder_path)
+        dataset_name = create_single_dataset(
+            output_path=megaset_folder_path, for_megaset=True
+        )
+        dataset_names.append(dataset_name)
         next_dataset = questionary.select(
             "Do you want to create another dataset?", choices=["Yes", "No"]
         ).ask()
+
     # create the high-level dataset.json
     print("Creating the high-level dataset.json file for the megaset---------")
     writer = DatasetWriter(inputs=init_inputs, for_megaset=True)
-    writer.write_json_files(megaset_folder_path)
+    writer.write_json_files(megaset_folder_path, write_megaset=True)
     additional_settings = questionary.select(
         "How do you want to add settings for the megaset?",
         choices=["By prompts", "Manually edit the JSON file later"],
     ).ask()
     if additional_settings == "By prompts":
-        additional_inputs = input_handler.get_settings_for_megaset()
+        additional_inputs = input_handler.get_settings_for_megaset(
+            dataset_names=dataset_names
+        )
         dataset_filepath = writer.json_file_path_dict.get(
             constants.MEGASET_DATASET_FILENAME
         )

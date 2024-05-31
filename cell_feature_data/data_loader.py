@@ -311,17 +311,17 @@ class DatasetWriter:
             self.cell_feature_doc.add_cell_feature_analysis(file_info, features)
         self.feature_defs_doc.add_feature_defs()
 
-    def write_json_files(self, path: Path) -> None:
-        if not self.for_megaset:
+    def write_json_files(self, path: Path, write_megaset: bool = False) -> None:
+        if write_megaset:
+            json_files = {
+                constants.MEGASET_DATASET_FILENAME: self.mega_dataset_doc.megaset_data,
+            }
+        else:
             json_files = {
                 constants.CELL_FEATURE_ANALYSIS_FILENAME: self.cell_feature_doc.cell_feature_analysis_data,
                 constants.DATASET_FILENAME: self.dataset_doc.dataset_data,
                 constants.FEATURE_DEFS_FILENAME: self.feature_defs_doc.feature_defs_data,
                 constants.IMAGE_SETTINGS_FILENAME: self.image_settings_doc.image_settings_data,
-            }
-        else:
-            json_files = {
-                constants.MEGASET_DATASET_FILENAME: self.mega_dataset_doc.megaset_data,
             }
         for file_name, data in json_files.items():
             file_path = path / file_name
@@ -330,10 +330,10 @@ class DatasetWriter:
                 json.dump(data, f, indent=4)
 
     def create_dataset_folder(self, output_path: str) -> None:
-        if not self.for_megaset:
-            folder_name = f"{self.inputs.name}_v{self.inputs.version}"
-        else:
+        if self.for_megaset:
             folder_name = self.inputs.name
+        else:
+            folder_name = f"{self.inputs.name}_v{self.inputs.version}"
         path = Path(output_path) / folder_name
         path.mkdir(parents=True, exist_ok=True)
         self.write_json_files(path)
