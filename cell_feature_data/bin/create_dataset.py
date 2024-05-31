@@ -79,8 +79,9 @@ def create_megaset(output_path: str):
             "Do you want to create another dataset?", choices=["Yes", "No"]
         ).ask()
     # create the high-level dataset.json
-    writer = DatasetWriter(inputs=init_inputs)
-    writer.write_json_files(megaset_folder_path, dataset_type="megaset")
+    print("Creating the high-level dataset.json file for the megaset---------")
+    writer = DatasetWriter(inputs=init_inputs, for_megaset=True)
+    writer.write_json_files(megaset_folder_path)
     additional_settings = questionary.select(
         "How do you want to add settings for the megaset?",
         choices=["By prompts", "Manually edit the JSON file later"],

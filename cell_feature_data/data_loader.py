@@ -265,6 +265,7 @@ class DatasetWriter:
         self,
         inputs: Union[DatasetInputHandler, MegasetInputHandler],
         data_loader: Optional[DataLoader] = None,
+        for_megaset: bool = False,
     ):
         self.inputs = inputs
         if data_loader:
@@ -281,6 +282,7 @@ class DatasetWriter:
                 self.feature_defs_doc.features_data_order
             )
             self.discrete_features: List[str] = self.feature_defs_doc.discrete_features
+        self.for_megaset = for_megaset
         self.mega_dataset_doc = MegasetDoc(inputs)
         # dictionary of json file names and their paths
         self.json_file_path_dict: Dict[str, Path] = {}
@@ -309,15 +311,15 @@ class DatasetWriter:
             self.cell_feature_doc.add_cell_feature_analysis(file_info, features)
         self.feature_defs_doc.add_feature_defs()
 
-    def write_json_files(self, path: Path, dataset_type: str = "single") -> None:
-        if dataset_type == "single":
+    def write_json_files(self, path: Path) -> None:
+        if not self.for_megaset:
             json_files = {
                 constants.CELL_FEATURE_ANALYSIS_FILENAME: self.cell_feature_doc.cell_feature_analysis_data,
                 constants.DATASET_FILENAME: self.dataset_doc.dataset_data,
                 constants.FEATURE_DEFS_FILENAME: self.feature_defs_doc.feature_defs_data,
                 constants.IMAGE_SETTINGS_FILENAME: self.image_settings_doc.image_settings_data,
             }
-        if dataset_type == "megaset":
+        else:
             json_files = {
                 constants.MEGASET_DATASET_FILENAME: self.mega_dataset_doc.megaset_data,
             }
@@ -326,18 +328,16 @@ class DatasetWriter:
             self.json_file_path_dict[file_name] = file_path
             with open(file_path, "w") as f:
                 json.dump(data, f, indent=4)
-        logger.info("Successfully wrote JSON files.")
 
-    def create_dataset_folder(self, output_path: str, dataset_type="single") -> None:
-        if self.inputs.name and self.inputs.version:
+    def create_dataset_folder(self, output_path: str) -> None:
+        if not self.for_megaset:
             folder_name = f"{self.inputs.name}_v{self.inputs.version}"
-            path = Path(output_path) / folder_name
-            path.mkdir(parents=True, exist_ok=True)
-            self.write_json_files(path, dataset_type)
-            logger.info(f"Successfully created {folder_name} at {path}.")
         else:
-            logger.error("Name and version are required to create the dataset folder.")
-            raise ValueError
+            folder_name = self.inputs.name
+        path = Path(output_path) / folder_name
+        path.mkdir(parents=True, exist_ok=True)
+        self.write_json_files(path)
+        logger.info(f"Successfully created {folder_name} at {path}.")
 
     def update_json_file_with_additional_data(
         self, file_path: Path, additional_data: Dict[str, Any]
