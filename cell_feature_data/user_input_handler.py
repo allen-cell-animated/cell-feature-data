@@ -92,10 +92,13 @@ class DatasetInputHandler:
     Class to handle user inputs for dataset
     """
 
-    def __init__(self, path: str, dataset_writer: Optional[Any] = None):
+    def __init__(
+        self, path: str, dataset_writer: Optional[Any] = None, output_path: str = None
+    ):
         self.logger = logging.getLogger()
         self.path = Path(path)
         self.dataset_writer = dataset_writer
+        self.output_path = Path(output_path) if output_path else Path("data")
         self.inputs = self.get_initial_settings()
 
     @staticmethod
@@ -110,6 +113,11 @@ class DatasetInputHandler:
         pattern = r"^[a-zA-Z0-9_-]+$"
         return re.match(pattern, name) is not None
 
+    def is_dir_exists(self, name: str) -> bool:
+        folder_name = name
+        path = self.output_path / folder_name
+        return path.exists()
+
     @staticmethod
     def is_feature_in_list(input: str, features: list) -> bool:
         return input in features
@@ -123,13 +131,12 @@ class DatasetInputHandler:
         dataset_name = questionary.text(
             "Enter the dataset name:",
             default=self.path.stem.lower().replace(" ", "_"),
-            validate=self.is_valid_name,
+            validate=lambda text: (
+                True
+                if self.is_valid_name(text) and not self.is_dir_exists(text)
+                else "Invalid dataset name, should be unique and contain only alphanumeric characters, underscores, and hyphens."
+            ),
         ).ask()
-        if not self.is_valid_name(dataset_name):
-            dataset_name = questionary.text(
-                "Invalid dataset name detected. Please enter a name with only alphanumeric characters, underscores, and hyphens:",
-                validate=self.is_valid_name,
-            ).ask()
         return DatasetSettings(name=dataset_name, version=version.strip())
 
     def get_questionary_input(

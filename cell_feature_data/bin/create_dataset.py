@@ -35,7 +35,7 @@ def create_single_dataset(output_path: str, for_megaset: bool = False):
     ).ask()
 
     # Initialize the user input handler, data loader and dataset writer
-    input_handler = DatasetInputHandler(file_path)
+    input_handler = DatasetInputHandler(file_path, output_path=output_path)
     init_inputs = input_handler.inputs
     loader = DataLoader(init_inputs, input_handler.path)
     writer = DatasetWriter(init_inputs, loader, for_megaset)
