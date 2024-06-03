@@ -134,7 +134,7 @@ class DatasetInputHandler:
             validate=lambda text: (
                 True
                 if self.is_valid_name(text) and not self.is_dir_exists(text)
-                else "Invalid dataset name, should be unique and contain only alphanumeric characters, underscores, and hyphens."
+                else "Invalid dataset name, should be unique and contain only alphanumeric characters, underscores, and dashes."
             ),
         ).ask()
         return DatasetSettings(name=dataset_name, version=version.strip())
