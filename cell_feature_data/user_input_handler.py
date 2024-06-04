@@ -241,6 +241,23 @@ class MegasetInputHandler:
         ).ask()
         return MegasetDatasetSettings(title=title, name=name)
 
+    def collect_publications(self) -> list:
+        """
+        Collect publication details from the user
+        """
+        publications = []
+        while True:
+            title = questionary.text("Enter the publication title:").ask()
+            url = questionary.text("Enter the publication URL:").ask()
+            citation = questionary.text("Enter the publication citation:").ask()
+            publications.append({"title": title, "url": url, "citation": citation})
+            add_another = questionary.confirm(
+                "Would you like to add another publications?"
+            ).ask()
+            if not add_another:
+                break
+        return publications
+
     def get_settings_for_megaset(
         self, dataset_names
     ) -> Optional[MegasetDatasetSettings]:
@@ -248,20 +265,10 @@ class MegasetInputHandler:
         Collect settings for megaset from the user via interactive prompts
         """
         data_created = questionary.text("Enter the date the megaset was created:").ask()
-        # TODO: Add support for multiple publications
-        publication_title = questionary.text("Enter the publication title:").ask()
-        publication_url = questionary.text("Enter the publication URL:").ask()
-        publication_citation = questionary.text("Enter the publication citation:").ask()
         datasets = dataset_names
 
         self.inputs.dataCreated = data_created
-        self.inputs.publications = [
-            {
-                "title": publication_title,
-                "url": publication_url,
-                "citation": publication_citation,
-            }
-        ]
+        self.inputs.publications = self.collect_publications()
         self.inputs.datasets = datasets
 
         return self.inputs
