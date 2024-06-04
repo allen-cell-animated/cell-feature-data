@@ -13,7 +13,7 @@ import questionary
 
 
 def main():
-    output_path = questionary.text(
+    output_path = questionary.path(
         "Enter the output folder path (default: 'data'):",
         default="data",
     ).ask()
@@ -29,7 +29,7 @@ def main():
 
 
 def create_single_dataset(output_path: str, for_megaset: bool = False):
-    file_path = questionary.text(
+    file_path = questionary.path(
         "Enter a valid file path:",
         validate=lambda text: True if len(text) > 0 else "File path cannot be empty.",
     ).ask()
@@ -66,9 +66,9 @@ def create_megaset(output_path: str):
     )
     megaset_folder_path.mkdir(parents=True, exist_ok=True)
     dataset_names = []
+    next_dataset = True
 
-    next_dataset = "Yes"
-    while next_dataset == "Yes":
+    while next_dataset:
         print(
             "Starting the process to create single datasets within the megaset---------"
         )
@@ -76,8 +76,8 @@ def create_megaset(output_path: str):
             output_path=megaset_folder_path, for_megaset=True
         )
         dataset_names.append(dataset_name)
-        next_dataset = questionary.select(
-            "Do you want to create another dataset?", choices=["Yes", "No"]
+        next_dataset = questionary.confirm(
+            "Do you want to add another dataset to the megaset?"
         ).ask()
 
     # create the high-level dataset.json
