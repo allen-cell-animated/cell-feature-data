@@ -265,10 +265,8 @@ class MegasetInputHandler:
         Collect settings for megaset from the user via interactive prompts
         """
         data_created = questionary.text("Enter the date the megaset was created:").ask()
-        datasets = dataset_names
 
         self.inputs.dataCreated = data_created
         self.inputs.publications = self.collect_publications()
-        self.inputs.datasets = datasets
 
         return self.inputs

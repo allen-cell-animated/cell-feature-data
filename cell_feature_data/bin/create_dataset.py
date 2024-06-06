@@ -79,6 +79,7 @@ def create_megaset(output_path: str):
         next_dataset = questionary.confirm(
             "Do you want to add another dataset to the megaset?"
         ).ask()
+        init_inputs.datasets = dataset_names
 
     # create the high-level dataset.json
     print("Creating the high-level dataset.json file for the megaset---------")
