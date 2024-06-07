@@ -258,9 +258,7 @@ class MegasetInputHandler:
                 break
         return publications
 
-    def get_settings_for_megaset(
-        self, dataset_names
-    ) -> Optional[MegasetDatasetSettings]:
+    def get_settings_for_megaset(self) -> Optional[MegasetDatasetSettings]:
         """
         Collect settings for megaset from the user via interactive prompts
         """
