@@ -123,11 +123,12 @@ class DatasetInputHandler:
         return input in features
 
     def get_initial_settings(self) -> DatasetSettings:
+        # unsafe_ask() is used to avoid the prompt from being interrupted by the KeyboardInterrupt, which would raise an exception that can be caught
         version = questionary.text(
             "Enter the version(yyyy.number):",
             default="2024.0",
             validate=self.is_valid_version,
-        ).ask()
+        ).unsafe_ask()
         dataset_name = questionary.text(
             "Enter the dataset name:",
             default=self.path.stem.lower().replace(" ", "_"),
@@ -136,7 +137,7 @@ class DatasetInputHandler:
                 if self.is_valid_name(text) and not self.is_dir_exists(text)
                 else "Invalid dataset name, should be unique and contain only alphanumeric characters, underscores, and dashes."
             ),
-        ).ask()
+        ).unsafe_ask()
         return DatasetSettings(name=dataset_name, version=version.strip())
 
     def get_questionary_input(
@@ -151,7 +152,7 @@ class DatasetInputHandler:
                 default=default,
                 validate=validator,
                 choices=choices,
-            ).ask()
+            ).unsafe_ask()
             if choices
             else default
         )
@@ -182,13 +183,13 @@ class DatasetInputHandler:
             self.logger.error("Dataset writer not initialized.")
             return None
 
-        title = questionary.text("Enter the dataset title:").ask()
-        description = questionary.text("Enter the dataset description:").ask()
-        thumbnail_root = questionary.text("Enter the thumbnail root:").ask()
-        download_root = questionary.text("Enter the download root:").ask()
+        title = questionary.text("Enter the dataset title:").unsafe_ask()
+        description = questionary.text("Enter the dataset description:").unsafe_ask()
+        thumbnail_root = questionary.text("Enter the thumbnail root:").unsafe_ask()
+        download_root = questionary.text("Enter the download root:").unsafe_ask()
         volume_viewer_data_root = questionary.text(
             "Enter the volume viewer data root:"
-        ).ask()
+        ).unsafe_ask()
         cell_features = self.dataset_writer.features_data_order
         discrete_features = self.dataset_writer.discrete_features
         xAxis_default = self.get_feature(
@@ -232,13 +233,13 @@ class MegasetInputHandler:
             validate=lambda text: (
                 True if len(text) > 0 else "Megaset title cannot be empty."
             ),
-        ).ask()
+        ).unsafe_ask()
         name = questionary.text(
             "Enter the megaset name:",
             validate=lambda text: (
                 True if len(text) > 0 else "Megaset name cannot be empty."
             ),
-        ).ask()
+        ).unsafe_ask()
         return MegasetDatasetSettings(title=title, name=name)
 
     def collect_publications(self) -> list:
@@ -247,13 +248,13 @@ class MegasetInputHandler:
         """
         publications = []
         while True:
-            title = questionary.text("Enter the publication title:").ask()
-            url = questionary.text("Enter the publication URL:").ask()
-            citation = questionary.text("Enter the publication citation:").ask()
+            title = questionary.text("Enter the publication title:").unsafe_ask()
+            url = questionary.text("Enter the publication URL:").unsafe_ask()
+            citation = questionary.text("Enter the publication citation:").unsafe_ask()
             publications.append({"title": title, "url": url, "citation": citation})
             add_another = questionary.confirm(
                 "Would you like to add another publications?"
-            ).ask()
+            ).unsafe_ask()
             if not add_another:
                 break
         return publications
@@ -264,7 +265,9 @@ class MegasetInputHandler:
         """
         Collect settings for megaset from the user via interactive prompts
         """
-        data_created = questionary.text("Enter the date the megaset was created:").ask()
+        data_created = questionary.text(
+            "Enter the date the megaset was created:"
+        ).unsafe_ask()
         datasets = dataset_names
 
         self.inputs.dataCreated = data_created
