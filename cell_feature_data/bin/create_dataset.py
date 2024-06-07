@@ -97,14 +97,14 @@ def create_megaset(output_path: str):
             output_path=megaset_folder_path, for_megaset=True
         )
         dataset_names.append(dataset_name)
+        init_inputs.datasets = dataset_names
         next_dataset = questionary.confirm(
             "Do you want to add another dataset to the megaset?"
         ).unsafe_ask()
-        init_inputs.datasets = dataset_names
 
     try:
-        # create the high-level dataset.json
-        print("Creating the high-level dataset.json file for the megaset---------")
+        # create the top-level dataset.json
+        print("Creating the top-level dataset.json file for the megaset---------")
         writer = DatasetWriter(inputs=init_inputs, for_megaset=True)
         writer.write_json_files(megaset_folder_path, write_megaset=True)
         additional_settings = questionary.select(
