@@ -13,6 +13,7 @@
             "$ref": "definitions.schema.json#/definitions/name"
         },
         "datasets": {
+            "type": "array",
             "$ref": "definitions.schema.json#/definitions/input-datasets",
             "uniqueItems": true
         },
