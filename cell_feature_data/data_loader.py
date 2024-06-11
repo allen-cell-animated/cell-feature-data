@@ -286,6 +286,8 @@ class DatasetWriter:
         self.mega_dataset_doc = MegasetDoc(inputs)
         # dictionary of json file names and their paths
         self.json_file_path_dict: Dict[str, Path] = {}
+        # list of updated dataset names in the dataset.json, used for updating additional settings when updating a megaset
+        self.updated_dataset_list: List[str] = []
 
     def get_row_data(
         self, row: Dict[str, str]
@@ -326,8 +328,9 @@ class DatasetWriter:
         for file_name, data in json_files.items():
             file_path = path / file_name
             self.json_file_path_dict[file_name] = file_path
-            with open(file_path, "w") as f:
-                json.dump(data, f, indent=4)
+            if not file_path.exists():
+                with open(file_path, "w") as f:
+                    json.dump(data, f, indent=4)
 
     def create_dataset_folder(self, output_path: str) -> None:
         if self.for_megaset:
@@ -338,6 +341,15 @@ class DatasetWriter:
         path.mkdir(parents=True, exist_ok=True)
         self.write_json_files(path)
         logger.info(f"Successfully created {folder_name} at {path}.")
+
+        # If creating within a megaset, update the top-level dataset.json
+        dataset_json_path = Path(output_path) / constants.MEGASET_DATASET_FILENAME
+        if dataset_json_path.exists():
+            new_dataset_entry = folder_name
+            self.update_dataset_json(
+                Path(output_path) / constants.MEGASET_DATASET_FILENAME,
+                new_dataset_entry,
+            )
 
     def update_json_file_with_additional_data(
         self, file_path: Path, additional_data: Dict[str, Any]
@@ -364,3 +376,32 @@ class DatasetWriter:
             json.dump(data, file, indent=4)
 
         logger.info(f"Successfully updated {file_path} with additional settings.")
+
+    def update_dataset_json(self, file_path: Path, new_dataset: str) -> None:
+        """
+        Updates the top-level dataset.json file with the new dataset
+        """
+        try:
+            with open(file_path, "r+") as file:
+                data = json.load(file)
+                data["datasets"].append(new_dataset)
+                file.seek(0)
+                json.dump(data, file, indent=4)
+                file.truncate()
+                self.updated_dataset_list = data["datasets"]
+
+            logger.info(
+                f"Successfully updated {file_path} with the new dataset: {new_dataset}."
+            )
+
+        except KeyError:
+            logger.error(
+                f"Key 'datasets' not found in {file_path}, please check the JSON file."
+            )
+            raise
+        except FileNotFoundError:
+            logger.error(f"File not found: {file_path}")
+            raise
+        except json.JSONDecodeError:
+            logger.error(f"Error decoding JSON from {file_path}")
+            raise

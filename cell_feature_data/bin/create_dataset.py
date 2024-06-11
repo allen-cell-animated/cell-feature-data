@@ -73,7 +73,7 @@ def create_single_dataset(output_path: str, for_megaset: bool = False):
             writer.update_json_file_with_additional_data(
                 dataset_filepath, asdict(additional_inputs)
             )
-        return init_inputs.name
+        return init_inputs.name, writer.updated_dataset_list
 
     except KeyboardInterrupt:
         exit_message()
@@ -86,18 +86,17 @@ def create_megaset(output_path: str):
         Path(output_path) / f"{init_inputs.name}_{datetime.utcnow().year}"
     )
     megaset_folder_path.mkdir(parents=True, exist_ok=True)
-    dataset_names = []
     next_dataset = True
 
     while next_dataset:
         print(
             "Starting the process to create single datasets within the megaset---------"
         )
-        dataset_name = create_single_dataset(
+        dataset_name, dataset_list = create_single_dataset(
             output_path=megaset_folder_path, for_megaset=True
         )
-        dataset_names.append(dataset_name)
-        init_inputs.datasets = dataset_names
+        init_inputs.datasets.append(dataset_name)
+
         next_dataset = questionary.confirm(
             "Do you want to add another dataset to the megaset?"
         ).unsafe_ask()
@@ -112,12 +111,13 @@ def create_megaset(output_path: str):
             choices=["By prompts", "Manually edit the JSON file later"],
         ).unsafe_ask()
         if additional_settings == "By prompts":
-            additional_inputs = input_handler.get_settings_for_megaset(
-                dataset_names=dataset_names
-            )
+            additional_inputs = input_handler.get_settings_for_megaset()
             dataset_filepath = writer.json_file_path_dict.get(
                 constants.MEGASET_DATASET_FILENAME
             )
+            # update the datasets in dataset.json file if a new dataset is added
+            if dataset_list:
+                additional_inputs.datasets = dataset_list
             writer.update_json_file_with_additional_data(
                 dataset_filepath, asdict(additional_inputs)
             )
