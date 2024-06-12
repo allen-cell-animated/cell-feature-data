@@ -1,6 +1,7 @@
 from pathlib import Path
 from datetime import datetime
 from dataclasses import asdict
+import sys
 
 from cell_feature_data.user_input_handler import (
     DatasetInputHandler,
@@ -43,6 +44,7 @@ def exit_message(folder_created: bool = True):
         print(
             "Keyboard interrupt detected, exiting the process. Please run the script again to continue."
         )
+    sys.exit(0)
 
 
 def create_single_dataset(output_path: str, for_megaset: bool = False):
