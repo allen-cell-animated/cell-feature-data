@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field, asdict
+from datetime import datetime
 import logging.config
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
@@ -126,7 +127,7 @@ class DatasetInputHandler:
         # unsafe_ask() is used to avoid the prompt from being interrupted by the KeyboardInterrupt, which would raise an exception that can be caught
         version = questionary.text(
             "Enter the version(yyyy.number):",
-            default="2024.0",
+            default=f"{datetime.utcnow().year}.0",
             validate=self.is_valid_version,
         ).unsafe_ask()
         dataset_name = questionary.text(
