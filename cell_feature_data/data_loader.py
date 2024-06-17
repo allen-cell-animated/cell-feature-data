@@ -331,6 +331,10 @@ class DatasetWriter:
             if not file_path.exists():
                 with open(file_path, "w") as f:
                     json.dump(data, f, indent=4)
+            else:
+                logger.info(
+                    f"Skip writing {file_name} as it already exists at {file_path}, please edit the json file if needed."
+                )
 
     def create_dataset_folder(self, output_path: str) -> None:
         if self.for_megaset:
