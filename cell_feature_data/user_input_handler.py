@@ -252,7 +252,7 @@ class MegasetInputHandler:
             citation = questionary.text("Enter the publication citation:").ask()
             publications.append({"title": title, "url": url, "citation": citation})
             add_another = questionary.confirm(
-                "Would you like to add another publications?"
+                "Would you like to add another publication?"
             ).ask()
             if not add_another:
                 break
