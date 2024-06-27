@@ -13,7 +13,9 @@
             "$ref": "definitions.schema.json#/definitions/name"
         },
         "datasets": {
-            "$ref": "definitions.schema.json#/definitions/input-datasets"
+            "type": "array",
+            "$ref": "definitions.schema.json#/definitions/input-datasets",
+            "uniqueItems": true
         },
         "dateCreated": {
             "$ref": "definitions.schema.json#/definitions/input-dateCreated"

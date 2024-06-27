@@ -10,6 +10,7 @@ import pandas as pd
 from cell_feature_data import constants
 from cell_feature_data.user_input_handler import (
     DatasetInputHandler,
+    MegasetInputHandler,
     DiscreteFeatureOptions,
     FeatureDefsSettings,
     CellFeatureSettings,
@@ -45,6 +46,15 @@ class DataLoader:
         except Exception as e:
             logger.error(f"Error while reading CSV: {e}")
             raise
+
+
+class MegasetDoc:
+    """
+    Class to store data for the high-level dataset.json for megasets
+    """
+
+    def __init__(self, inputs: MegasetInputHandler):
+        self.megaset_data: Dict[str, Any] = asdict(inputs)
 
 
 class DatasetDoc:
@@ -251,19 +261,29 @@ class DatasetWriter:
     Class to create the dataset folder and write json files
     """
 
-    def __init__(self, data_loader: DataLoader, inputs: DatasetInputHandler):
-        self.data = data_loader.data
+    def __init__(
+        self,
+        inputs: Union[DatasetInputHandler, MegasetInputHandler],
+        data_loader: Optional[DataLoader] = None,
+        for_megaset: bool = False,
+    ):
         self.inputs = inputs
+        if data_loader:
+            self.data = data_loader.data
 
-        # initialize the doc classes
-        self.cell_feature_doc = CellFeatureDoc()
-        self.feature_defs_doc = FeatureDefsDoc(self.data, inputs)
-        self.dataset_doc = DatasetDoc(inputs)
-        self.image_settings_doc = ImageSettingsDoc()
+            # initialize the doc classes
+            self.cell_feature_doc = CellFeatureDoc()
+            self.feature_defs_doc = FeatureDefsDoc(self.data, inputs)
+            self.dataset_doc = DatasetDoc(inputs)
+            self.image_settings_doc = ImageSettingsDoc()
 
-        # utility variables
-        self.features_data_order: List[str] = self.feature_defs_doc.features_data_order
-        self.discrete_features: List[str] = self.feature_defs_doc.discrete_features
+            # utility variables
+            self.features_data_order: List[str] = (
+                self.feature_defs_doc.features_data_order
+            )
+            self.discrete_features: List[str] = self.feature_defs_doc.discrete_features
+        self.for_megaset = for_megaset
+        self.mega_dataset_doc = MegasetDoc(inputs)
         # dictionary of json file names and their paths
         self.json_file_path_dict: Dict[str, Path] = {}
 
@@ -291,30 +311,33 @@ class DatasetWriter:
             self.cell_feature_doc.add_cell_feature_analysis(file_info, features)
         self.feature_defs_doc.add_feature_defs()
 
-    def write_json_files(self, path: Path) -> None:
-        json_files = {
-            constants.CELL_FEATURE_ANALYSIS_FILENAME: self.cell_feature_doc.cell_feature_analysis_data,
-            constants.DATASET_FILENAME: self.dataset_doc.dataset_data,
-            constants.FEATURE_DEFS_FILENAME: self.feature_defs_doc.feature_defs_data,
-            constants.IMAGE_SETTINGS_FILENAME: self.image_settings_doc.image_settings_data,
-        }
+    def write_json_files(self, path: Path, write_megaset: bool = False) -> None:
+        if write_megaset:
+            json_files = {
+                constants.MEGASET_DATASET_FILENAME: self.mega_dataset_doc.megaset_data,
+            }
+        else:
+            json_files = {
+                constants.CELL_FEATURE_ANALYSIS_FILENAME: self.cell_feature_doc.cell_feature_analysis_data,
+                constants.DATASET_FILENAME: self.dataset_doc.dataset_data,
+                constants.FEATURE_DEFS_FILENAME: self.feature_defs_doc.feature_defs_data,
+                constants.IMAGE_SETTINGS_FILENAME: self.image_settings_doc.image_settings_data,
+            }
         for file_name, data in json_files.items():
             file_path = path / file_name
             self.json_file_path_dict[file_name] = file_path
             with open(file_path, "w") as f:
                 json.dump(data, f, indent=4)
-        logger.info("Successfully wrote JSON files.")
 
-    def create_dataset_folder(self, output_path:str) -> None:
-        if self.inputs.name and self.inputs.version:
-            folder_name = f"{self.inputs.name}_v{self.inputs.version}"
-            path = Path(output_path) / folder_name
-            path.mkdir(parents=True, exist_ok=True)
-            self.write_json_files(path)
-            logger.info(f"Successfully created {folder_name} at {path}.")
+    def create_dataset_folder(self, output_path: str) -> None:
+        if self.for_megaset:
+            folder_name = self.inputs.name
         else:
-            logger.error("Name and version are required to create the dataset folder.")
-            raise ValueError
+            folder_name = f"{self.inputs.name}_v{self.inputs.version}"
+        path = Path(output_path) / folder_name
+        path.mkdir(parents=True, exist_ok=True)
+        self.write_json_files(path)
+        logger.info(f"Successfully created {folder_name} at {path}.")
 
     def update_json_file_with_additional_data(
         self, file_path: Path, additional_data: Dict[str, Any]

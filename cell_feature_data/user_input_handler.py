@@ -34,6 +34,19 @@ class DatasetSettings:
 
 
 @dataclass
+class MegasetDatasetSettings:
+    """
+    Class to store required dataset settings for megaset
+    """
+
+    title: str = ""
+    name: str = ""
+    dataCreated: str = ""
+    publications: List[Dict[str, str]] = field(default_factory=list)
+    datasets: list = field(default_factory=list)
+
+
+@dataclass
 class DiscreteFeatureOptions:
     color: str
     name: str
@@ -79,11 +92,13 @@ class DatasetInputHandler:
     Class to handle user inputs for dataset
     """
 
-    def __init__(self, path: str, dataset_writer: Optional[Any] = None):
+    def __init__(
+        self, path: str, dataset_writer: Optional[Any] = None, output_path: str = None
+    ):
         self.logger = logging.getLogger()
-
         self.path = Path(path)
         self.dataset_writer = dataset_writer
+        self.output_path = Path(output_path) if output_path else Path("data")
         self.inputs = self.get_initial_settings()
 
     @staticmethod
@@ -98,6 +113,11 @@ class DatasetInputHandler:
         pattern = r"^[a-zA-Z0-9_-]+$"
         return re.match(pattern, name) is not None
 
+    def is_dir_exists(self, name: str) -> bool:
+        folder_name = name
+        path = self.output_path / folder_name
+        return path.exists()
+
     @staticmethod
     def is_feature_in_list(input: str, features: list) -> bool:
         return input in features
@@ -108,12 +128,15 @@ class DatasetInputHandler:
             default="2024.0",
             validate=self.is_valid_version,
         ).ask()
-        dataset_name = self.path.stem.lower().replace(" ", "_")
-        if not self.is_valid_name(dataset_name):
-            dataset_name = questionary.text(
-                "Invalid dataset name detected. Please enter a name with only alphanumeric characters, underscores, and hyphens:",
-                validate=self.is_valid_name,
-            ).ask()
+        dataset_name = questionary.text(
+            "Enter the dataset name:",
+            default=self.path.stem.lower().replace(" ", "_"),
+            validate=lambda text: (
+                True
+                if self.is_valid_name(text) and not self.is_dir_exists(text)
+                else "Invalid dataset name, should be unique and contain only alphanumeric characters, underscores, and dashes."
+            ),
+        ).ask()
         return DatasetSettings(name=dataset_name, version=version.strip())
 
     def get_questionary_input(
@@ -191,5 +214,57 @@ class DatasetInputHandler:
         self.inputs.colorBy = {"default": color_by}
         self.inputs.groupBy = {"default": group_by}
         self.inputs.featuresDataOrder = cell_features
+
+        return self.inputs
+
+
+class MegasetInputHandler:
+    """
+    Class to handle user inputs for megaset
+    """
+
+    def __init__(self):
+        self.inputs = self.get_initial_settings()
+
+    def get_initial_settings(self) -> MegasetDatasetSettings:
+        title = questionary.text(
+            "Enter the megaset title:",
+            validate=lambda text: (
+                True if len(text) > 0 else "Megaset title cannot be empty."
+            ),
+        ).ask()
+        name = questionary.text(
+            "Enter the megaset name:",
+            validate=lambda text: (
+                True if len(text) > 0 else "Megaset name cannot be empty."
+            ),
+        ).ask()
+        return MegasetDatasetSettings(title=title, name=name)
+
+    def collect_publications(self) -> list:
+        """
+        Collect publication details from the user
+        """
+        publications = []
+        while True:
+            title = questionary.text("Enter the publication title:").ask()
+            url = questionary.text("Enter the publication URL:").ask()
+            citation = questionary.text("Enter the publication citation:").ask()
+            publications.append({"title": title, "url": url, "citation": citation})
+            add_another = questionary.confirm(
+                "Would you like to add another publication?"
+            ).ask()
+            if not add_another:
+                break
+        return publications
+
+    def get_settings_for_megaset(self) -> Optional[MegasetDatasetSettings]:
+        """
+        Collect settings for megaset from the user via interactive prompts
+        """
+        data_created = questionary.text("Enter the date the megaset was created:").ask()
+
+        self.inputs.dataCreated = data_created
+        self.inputs.publications = self.collect_publications()
 
         return self.inputs
