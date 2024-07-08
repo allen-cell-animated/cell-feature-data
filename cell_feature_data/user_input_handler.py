@@ -249,9 +249,9 @@ class MegasetInputHandler:
         """
         publications = []
         while True:
-            title = questionary.text("Enter the publication title:").ask()
-            url = questionary.text("Enter the publication URL:").ask()
-            citation = questionary.text("Enter the publication citation:").ask()
+            title = questionary.text("Enter the publication title:").unsafe_ask()
+            url = questionary.text("Enter the publication URL:").unsafe_ask()
+            citation = questionary.text("Enter the publication citation:").unsafe_ask()
             publications.append({"title": title, "url": url, "citation": citation})
             add_another = questionary.confirm(
                 "Would you like to add another publication?"

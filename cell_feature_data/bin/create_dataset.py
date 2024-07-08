@@ -51,7 +51,7 @@ def create_single_dataset(output_path: str, for_megaset: bool = False):
     file_path = questionary.path(
         "Enter a valid file path:",
         validate=lambda text: True if len(text) > 0 else "File path cannot be empty.",
-    ).ask()
+    ).unsafe_ask()
 
     # Initialize the user input handler, data loader and dataset writer
     input_handler = DatasetInputHandler(file_path, output_path=output_path)
