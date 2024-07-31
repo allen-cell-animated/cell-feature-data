@@ -49,6 +49,11 @@ class MegasetDatasetSettings:
 
 @dataclass
 class DiscreteFeatureOptions:
+    """
+    Class to store discrete feature options
+    returns a dictionary of color, name, and key as keys
+    """
+
     color: str
     name: str
     key: Optional[str]
@@ -60,7 +65,7 @@ class DiscreteFeatureOptions:
 @dataclass
 class FeatureDefsSettings:
     """
-    Class to store required feature defs settings
+    Class to store required feature defs settings in feature_defs.json
     """
 
     key: str
@@ -90,7 +95,7 @@ class CellFeatureSettings:
 
 class DatasetInputHandler:
     """
-    Class to handle user inputs for dataset
+    Class to handle user inputs for single dataset in dataset.json
     """
 
     def __init__(
@@ -222,7 +227,7 @@ class DatasetInputHandler:
 
 class MegasetInputHandler:
     """
-    Class to handle user inputs for megaset
+    Class to handle user inputs for megaset in top level dataset.json
     """
 
     def __init__(self):
