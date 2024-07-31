@@ -38,6 +38,7 @@ dependencies = [
     "six>=1.16.0",
     "tzdata>=2023.4",
     "wcwidth>=0.2.13",
+    "pytest>=7.1.2",
 ]
 
 [project.scripts]
