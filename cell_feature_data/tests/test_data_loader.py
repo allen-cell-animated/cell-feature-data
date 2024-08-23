@@ -1,6 +1,6 @@
 import numpy as np
 from pathlib import Path
-from unittest.mock import MagicMock, mock_open, patch
+from unittest.mock import MagicMock, patch
 from cell_feature_data.user_input_handler import DatasetInputHandler
 from cell_feature_data.data_loader import (
     CellFeatureDoc,
