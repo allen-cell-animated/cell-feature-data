@@ -6,8 +6,6 @@ from typing import Dict, List
 from cell_feature_data import constants
 from cell_feature_data.user_input_handler import (
     DatasetInputHandler,
-    DatasetSettings,
-    MegasetDatasetSettings,
     MegasetInputHandler,
 )
 
