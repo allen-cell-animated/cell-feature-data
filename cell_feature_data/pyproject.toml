@@ -39,10 +39,16 @@ dependencies = [
     "wcwidth>=0.2.13",
     "black>=22.3.0",
     "check-manifest>=0.48",
+]
+
+[project.optional-dependencies]
+lint = [
     "flake8>=4.0.1",
     "flake8-debugger>=3.2.1",
     "flake8-typing-imports>=1.9.0",
     "flake8-pyproject>=0.4.0",
+]
+test = [
     "coverage>=5.1",
     "pytest>=7.1.2",
     "pytest-cov>=4.0.0",
