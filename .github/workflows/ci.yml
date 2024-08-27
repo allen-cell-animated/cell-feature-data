@@ -63,7 +63,8 @@ jobs:
           pip install -e .
       - name: Lint with flake8
         run: |
-          flake8 cell_feature_data --count --verbose --show-source --statistics
+          cd cell_feature_data
+          flake8 . --count --verbose --show-source --statistics
       - name: Check with black
         run: |
           black --check cell_feature_data
@@ -72,7 +73,6 @@ jobs:
     if: success() && startsWith(github.ref, 'refs/tags/')
     needs: [lint, test]
     runs-on: ubuntu-latest
-    environment: release
     permissions:
       id-token: write
 
