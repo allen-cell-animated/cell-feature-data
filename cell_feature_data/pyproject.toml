@@ -70,4 +70,4 @@ per-file-ignores = ["__init__.py:F401",]
 exclude = ["*/pyMCDS.py", "venv", "build", "dist", "build", "site-packages", "*.egg-info",]
 
 [project.scripts]
-create-dataset = "bin.create_dataset:main"
+create-dataset = "cell_feature_data.bin.create_dataset:main"
