@@ -65,6 +65,7 @@ jobs:
           pip install -e '.[lint,test]'
       - name: Lint with flake8
         run: |
+          cd cell_feature_data
           flake8 . --count --verbose --show-source --statistics
       - name: Check with black
         run: |
