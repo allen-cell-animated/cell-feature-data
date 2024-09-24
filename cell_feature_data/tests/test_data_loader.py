@@ -78,6 +78,8 @@ def test_format_display_name():
     )
     assert FeatureDefsDoc.format_display_name("cellular-volume") == "Cellular Volume"
     assert FeatureDefsDoc.format_display_name("cell-line") == "Cell Line"
+    assert FeatureDefsDoc.format_display_name("the-mock-input") == "The Mock Input"
+    
 
 
 @patch("questionary.text")
