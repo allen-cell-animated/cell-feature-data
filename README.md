@@ -6,7 +6,7 @@
 1. Create a virtual environment if not already created: `python3 -m venv venv/[ENV-NAME]`
 2. Activate the virtual environment: 
    - On macOS/Linux: `source [ENV-PATH]/bin/activate`
-   - On Windows: `venv/[ENV-PATH]\Scripts\activate`
+   - On Windows: `[ENV-PATH]\Scripts\activate`
 3. Navigate to `cell_feature_data` directory: `cd cell_feature_data` Install the dependencies: `pip install -e .` This step also makes the `create-dataset` command available globally within the virtual environment. (The command will be updated once the package is published to PyPI)
 4. Run `create-dataset` to start the dataset creation process. This will: 
    - Request the path of the file you want to process. Formats supported: `.csv`, with more formats to be added as development progresses
