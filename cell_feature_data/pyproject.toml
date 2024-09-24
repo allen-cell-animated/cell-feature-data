@@ -1,26 +1,24 @@
 [build-system]
-requires = ["setuptools>=45", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "cell_feature_data"
-version = "1.0.0"
+version = "1.0.1"
 description = "A Python package for creating a dataset for the Cell Feature Explorer."
 keywords = []
 readme = "README.md"
 requires-python = ">=3.8"
 license = { text = "MIT License" }
-authors = [
-{ name = "Allen Institute", email = "ruge.li@alleninstitute.org" }
-]
+authors = [{ name = "Ruge Li", email = "ruge.li@alleninstitute.org" }]
 classifiers = [
-"Development Status :: 4 - Beta",
-"Natural Language :: English",
-"Programming Language :: Python :: 3.8",
-"Programming Language :: Python :: 3.9",
-"Programming Language :: Python :: 3.10",
-"Programming Language :: Python :: 3.11",
-"Programming Language :: Python :: 3.12",
+    "Development Status :: 4 - Beta",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
     "click>=8.1.7",
@@ -64,10 +62,18 @@ exclude = ["*docs/*", "*tests/*"]
 
 [tool.flake8]
 max-line-length = 88
-ignore = "E501,E277,E203,E402,W291,W503"
+ignore = ["E501", "E277", "E203", "E402", "W291", "W503"]
 min-python-version = "3.8.0"
-per-file-ignores = ["__init__.py:F401",]
-exclude = ["*/pyMCDS.py", "venv", "build", "dist", "build", "site-packages", "*.egg-info",]
+per-file-ignores = ["__init__.py:F401"]
+exclude = [
+    "*/pyMCDS.py",
+    "venv",
+    "build",
+    "dist",
+    "build",
+    "site-packages",
+    "*.egg-info"
+]
 
 [project.scripts]
 create-dataset = "cell_feature_data.bin.create_dataset:main"
