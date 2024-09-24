@@ -89,11 +89,14 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          cd cell_feature_data
           pip install build wheel
       - name: Build Package
         run: |
           cd cell_feature_data
           python -m build
+      - name: Copy Distribution
+        run: |
+          mkdir -p dist
+          cp cell_feature_data/dist/* dist/
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
