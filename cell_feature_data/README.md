@@ -2,7 +2,8 @@
 
 [![Dataset validation](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/validate.yml)
 
-**Python Package for Creating and Validating Cell Feature Datasets**
+
+**Python Package for Creating and Validating Cell Feature Datasets for [Cell Feature Explore](https://cfe.allencell.org/)**
 
 ---
 
@@ -28,3 +29,7 @@ For full documentation, please see the [full documentation on Github](https://gi
    - Process the input file and generate the necessary json files for the dataset
    - Prompt for additional information about the dataset and update the json files accordingly
 5. Deactivate the virtual environment when finished: `deactivate`
+
+#### For more on what these files should look like, look at [Full spec documentation](https://allen-cell-animated.github.io/cell-feature-data/HandoffSpecification.html)
+
+**MIT license**
