@@ -58,6 +58,7 @@ zip-safe = false
 include-package-data = true
 
 [tool.setuptools.packages.find]
+include = ["cell_feature_data"]
 exclude = ["*docs/*", "*tests/*"]
 
 [tool.flake8]
@@ -70,7 +71,6 @@ exclude = [
     "venv",
     "build",
     "dist",
-    "build",
     "site-packages",
     "*.egg-info"
 ]
