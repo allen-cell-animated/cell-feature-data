@@ -9,6 +9,7 @@ on:
   pull_request:
     branches:
       - main
+      #remove this before merging to main
       - feature/*
   schedule:
     # <minute [0,59]> <hour [0,23]> <day of the month [1,31]>
@@ -36,17 +37,18 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
-          cache-dependency-path: pyproject.toml
+          cache-dependency-path: cell_feature_data/pyproject.toml
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          cd cell_feature_data
-          pip install -e '.[lint,test]'
+          pip install -e './cell_feature_data[all]'
       - name: Test with pytest
         run: |
-          pytest --cov cell_feature_data/tests/
+          pytest --cov cell_feature_data
       - name: Upload codecov
         uses: codecov/codecov-action@v4
+        with:
+          files: ./cell_feature_data/.coverage.xml
 
   lint:
     runs-on: ubuntu-latest
@@ -58,12 +60,11 @@ jobs:
         with:
           python-version: 3.9
           cache: "pip"
-          cache-dependency-path: pyproject.toml
+          cache-dependency-path: cell_feature_data/pyproject.toml
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          cd cell_feature_data
-          pip install -e '.[lint,test]'
+          pip install -e './cell_feature_data[all]'
       - name: Lint with flake8
         run: |
           cd cell_feature_data
@@ -77,6 +78,7 @@ jobs:
     needs: [lint, test]
     runs-on: ubuntu-latest
     permissions:
+      contents: write
       id-token: write
 
     steps:
@@ -86,7 +88,7 @@ jobs:
         with:
           python-version: 3.9
           cache: "pip"
-          cache-dependency-path: pyproject.toml
+          cache-dependency-path: cell_feature_data/pyproject.toml
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip

@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cell_feature_data"
-version = "1.0.2"
+version = "1.0.3"
 description = "A Python package for creating a dataset for the Cell Feature Explorer."
 keywords = []
 readme = "README.md"
 requires-python = ">=3.8"
-license = { text = "MIT License" }
+license = { file = "LICENSE" }
 authors = [{ name = "Ruge Li", email = "ruge.li@alleninstitute.org" }]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -52,14 +52,24 @@ test = [
     "pytest-cov>=4.0.0",
     "pytest-raises>=0.11",
 ]
+all = [
+    "flake8>=4.0.1",
+    "flake8-debugger>=3.2.1",
+    "flake8-typing-imports>=1.9.0",
+    "flake8-pyproject>=0.4.0",
+    "coverage>=5.1",
+    "pytest>=7.1.2",
+    "pytest-cov>=4.0.0",
+    "pytest-raises>=0.11",
+]
 
 [tool.setuptools]
 zip-safe = false
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["cell_feature_data"]
-exclude = ["*docs/*", "*tests/*"]
+include = ["cell_feature_data*"]
+exclude = ["*tests*"]
 
 [tool.flake8]
 max-line-length = 88
