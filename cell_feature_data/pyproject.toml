@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cell_feature_data"
-version = "1.0.3"
+version = "1.0.4"
 description = "A Python package for creating a dataset for the Cell Feature Explorer."
 keywords = []
 readme = "README.md"
