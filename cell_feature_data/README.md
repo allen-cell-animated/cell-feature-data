@@ -11,25 +11,36 @@
 
 For full documentation, please see the [full documentation on Github](https://github.com/allen-cell-animated/cell-feature-data).
 
----
 
-## Install and Setup
+## Installation
 
 ```pip install cell-feature-data```
 
-## To create a new dataset using the package:
-1. Create a virtual environment if not already created: `python3 -m venv [ENV-PATH]`
-2. Activate the virtual environment: 
-   - On macOS/Linux: `source [ENV-PATH]/bin/activate`
-   - On Windows: `[ENV-PATH]\Scripts\activate`
-3. Install the dependencies: `pip install cell-feature-data`. 
-4. Run `create-dataset` to start the dataset creation process. This will: 
-   - Request the path of the file you want to process. Formats supported: `.csv`, with more formats to be added as development progresses
-   - Ask for an output path to save your dataset. If not specified, a new dataset folder is created in `data`, named after the input file
-   - Process the input file and generate the necessary json files for the dataset
-   - Prompt for additional information about the dataset and update the json files accordingly
-5. Deactivate the virtual environment when finished: `deactivate`
+## Usage
+### Create a single dataset or a megaset for the Cell Feature Explore:
 
-#### For more on what these files should look like, look at [Full spec documentation](https://allen-cell-animated.github.io/cell-feature-data/HandoffSpecification.html)
+Run the following command in your terminal:
+```create-dataset```
 
-**MIT license**
+### This command will guide you through the following steps: 
+  1. **Specify the Path to the Input File:** 
+      Supported formats: `.csv` (with more formats to be added in future releases).
+  2. **Set the Output Directory:**
+      Provide a path to save the generated dataset files. The dataset folder will be named after the input file.
+  3. **Process the input file:**
+      The tool will calculate and generate the necessary JSON files based on the input data.
+  4. **Enter Additional Metadata:** 
+      You will be prompted to add more details about the dataset, which will be used to update the generated JSON files.
+
+### Import and use the package within your python scripts:
+```
+   from cell_feature_data.bin.create_dataset import main
+
+
+   # Call the main function
+   if __name__ == "__main__":
+      main()
+```
+
+## Dataset Specification 
+For more information on the dataset structure and settings, refer to the [Full spec documentation](https://allen-cell-animated.github.io/cell-feature-data/HandoffSpecification.html)
