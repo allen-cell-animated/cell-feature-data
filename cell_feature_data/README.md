@@ -26,7 +26,7 @@ Run the following command in your terminal:
   1. **Specify the Path to the Input File:** 
       Supported formats: `.csv` (with more formats to be added in future releases).
   2. **Set the Output Directory:**
-      Provide a path to save the generated dataset files. The dataset folder will be named after the input file.
+      Provide a path to save the generated dataset files. If not specified, a new dataset folder will be created in the `data` directory, named after the input file.
   3. **Process the input file:**
       The tool will calculate and generate the necessary JSON files based on the input data.
   4. **Enter Additional Metadata:** 
