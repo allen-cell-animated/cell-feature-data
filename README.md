@@ -2,12 +2,12 @@
 
 # For dataset creators:
 ## To create a new dataset:
-#### Option 1: Use the `cell_feature_data` package
+#### Option 1: Use the `cell-feature-data` package
 1. Create a virtual environment if not already created: `python3 -m venv venv/[ENV-NAME]`
 2. Activate the virtual environment: 
-   - On macOS/Linux: `source [ENV-PATH]/bin/activate`
-   - On Windows: `[ENV-PATH]\Scripts\activate`
-3. Navigate to `cell_feature_data` directory: `cd cell_feature_data` Install the dependencies: `pip install -e .` This step also makes the `create-dataset` command available globally within the virtual environment. (The command will be updated once the package is published to PyPI)
+   - On macOS/Linux: `source venv/[ENV-NAME]/bin/activate`
+   - On Windows: `venv\[ENV-NAME]\Scripts\activate`
+3. Install the dependencies: `pip install -e ./cell_feature_data` This step makes the `create-dataset` command available globally within the virtual environment.
 4. Run `create-dataset` to start the dataset creation process. This will: 
    - Request the path of the file you want to process. Formats supported: `.csv`, with more formats to be added as development progresses
    - Ask for an output path to save your dataset. If not specified, a new dataset folder is created in `data`, named after the input file
