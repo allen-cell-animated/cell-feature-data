@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+      #remove this before merging to main
+      - feature/*
     tags:
       - "v*"
   pull_request:
