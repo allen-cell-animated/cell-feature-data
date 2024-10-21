@@ -1,0 +1,27 @@
+# virtual environments
+.venv
+env/
+venv/
+ENV/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# build directories and files
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# test results
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+
+#dotenv
+.env

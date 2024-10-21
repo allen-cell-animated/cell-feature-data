@@ -1,0 +1,105 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+      #remove this before merging to main
+      - feature/*
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - main
+      #remove this before merging to main
+      - feature/*
+  schedule:
+    # <minute [0,59]> <hour [0,23]> <day of the month [1,31]>
+    # <month of the year [1,12]> <day of the week [0,6]>
+    # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07
+    # Run every Monday at 10:24:00 PST
+    # (Since these CRONs are used by a lot of people -
+    # let's be nice to the servers and schedule it _not_ on the hour)
+    - cron: "24 18 * * 1"
+  workflow_dispatch:
+
+jobs:
+  test:
+    if: ${{ !contains(github.event.head_commit.message, 'Bump version') }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        python-version: [3.9]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+          cache-dependency-path: cell_feature_data/pyproject.toml
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e './cell_feature_data[all]'
+      - name: Test with pytest
+        run: |
+          pytest --cov cell_feature_data
+      - name: Upload codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./cell_feature_data/.coverage.xml
+
+  lint:
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.head_commit.message, 'Bump version') }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+          cache: "pip"
+          cache-dependency-path: cell_feature_data/pyproject.toml
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e './cell_feature_data[all]'
+      - name: Lint with flake8
+        run: |
+          cd cell_feature_data
+          flake8 . --count --verbose --show-source --statistics
+      - name: Check with black
+        run: |
+          black --check cell_feature_data
+
+  publish:
+    if: success() && startsWith(github.ref, 'refs/tags/')
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+          cache: "pip"
+          cache-dependency-path: cell_feature_data/pyproject.toml
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build wheel
+      - name: Build Package
+        run: |
+          cd cell_feature_data
+          python -m build
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: cell_feature_data/dist
