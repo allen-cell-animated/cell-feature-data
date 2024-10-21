@@ -3,7 +3,7 @@
 [![Dataset validation](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/validate.yml)
 
 
-**Python Package for Creating and Validating Cell Feature Datasets for [Cell Feature Explore](https://cfe.allencell.org/)**
+**Python Package for Creating and Validating Cell Feature Datasets for [Cell Feature Explorer](https://cfe.allencell.org/)**
 
 ---
 
