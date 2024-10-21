@@ -4,15 +4,11 @@ on:
   push:
     branches:
       - main
-      #remove this before merging to main
-      - feature/*
     tags:
       - "v*"
   pull_request:
     branches:
       - main
-      #remove this before merging to main
-      - feature/*
   schedule:
     # <minute [0,59]> <hour [0,23]> <day of the month [1,31]>
     # <month of the year [1,12]> <day of the week [0,6]>
@@ -43,7 +39,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e './cell_feature_data[all]'
+          pip install './cell_feature_data[all]'
       - name: Test with pytest
         run: |
           pytest --cov cell_feature_data
@@ -66,7 +62,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e './cell_feature_data[all]'
+          pip install './cell_feature_data[all]'
       - name: Lint with flake8
         run: |
           cd cell_feature_data

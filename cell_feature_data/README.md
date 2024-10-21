@@ -1,6 +1,8 @@
 # Cell Feature Data
 
 [![Dataset validation](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/validate.yml)
+[![Continuous Integration](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/ci.yml/badge.svg)](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/ci.yml)
+[![Documentation](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/build-docs.yml/badge.svg)](https://github.com/allen-cell-animated/cell-feature-data/actions/workflows/build-docs.yml)
 
 
 **Python Package for Creating and Validating Cell Feature Datasets for [Cell Feature Explorer](https://cfe.allencell.org/)**
